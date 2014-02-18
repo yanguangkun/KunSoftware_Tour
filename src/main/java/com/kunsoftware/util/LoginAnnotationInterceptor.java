@@ -1,5 +1,6 @@
 package com.kunsoftware.util;
 
+import java.net.URLEncoder;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-@SuppressWarnings({"unused","rawtypes"})
+import com.kunsoftware.entity.SysUser;
+
+@SuppressWarnings({"rawtypes"})
 public class LoginAnnotationInterceptor extends HandlerInterceptorAdapter {
 
 @Override
@@ -21,7 +24,13 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     String paramStr = getParamStr(request);
     String referer = uri + paramStr;
     request.setAttribute("referer", referer);
-    return true;
+    SysUser userEntity = (SysUser)session.getAttribute(WebUtil.User_Info);
+
+    if (null == userEntity) {
+    	request.getRequestDispatcher("/manager/login?loginMsg=" + URLEncoder.encode("请登录!", "utf-8")).forward(request, response); 
+        return false;
+    }
+	return true;
 }
 
 public String getParamStr(HttpServletRequest request) {
@@ -45,7 +54,7 @@ public String getParamStr(HttpServletRequest request) {
 
 public boolean isLogin(HttpServletRequest request) {
 	 String uri = request.getRequestURI();
-	 if(uri.indexOf("user/login") != -1) {
+	 if(uri.indexOf("manager/login") != -1) {
 		 return true;
 	 }
 	 return false;
