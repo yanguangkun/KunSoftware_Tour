@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kunsoftware.mapper.SysMenuMapper">
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.SysMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menu_tree_name" jdbcType="VARCHAR" property="menuTreeName" />
+    <result column="menu_ename" jdbcType="VARCHAR" property="menuEname" />
+    <result column="menu_cname" jdbcType="VARCHAR" property="menuCname" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menu_tree_name, menu_ename, menu_cname, menu_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.SysMenu">
+    insert into sys_menu (id, menu_tree_name, menu_ename, 
+      menu_cname, menu_url)
+    values (#{id,jdbcType=INTEGER}, #{menuTreeName,jdbcType=VARCHAR}, #{menuEname,jdbcType=VARCHAR}, 
+      #{menuCname,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.SysMenu">
+    insert into sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuTreeName != null">
+        menu_tree_name,
+      </if>
+      <if test="menuEname != null">
+        menu_ename,
+      </if>
+      <if test="menuCname != null">
+        menu_cname,
+      </if>
+      <if test="menuUrl != null">
+        menu_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuTreeName != null">
+        #{menuTreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuEname != null">
+        #{menuEname,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCname != null">
+        #{menuCname,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.SysMenu">
+    update sys_menu
+    <set>
+      <if test="menuTreeName != null">
+        menu_tree_name = #{menuTreeName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuEname != null">
+        menu_ename = #{menuEname,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCname != null">
+        menu_cname = #{menuCname,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null">
+        menu_url = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.SysMenu">
+    update sys_menu
+    set menu_tree_name = #{menuTreeName,jdbcType=VARCHAR},
+      menu_ename = #{menuEname,jdbcType=VARCHAR},
+      menu_cname = #{menuCname,jdbcType=VARCHAR},
+      menu_url = #{menuUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getMenuListPage" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu 
+    order by id DESC
+  </select>
+</mapper>
