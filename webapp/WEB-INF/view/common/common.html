@@ -3,7 +3,7 @@
 </#macro>  
 
 <#macro sysName>     
-CodeHube   
+旅游网站   
 </#macro>
 
 <#macro css>
@@ -16,13 +16,10 @@ CodeHube
 </#macro>  
 
 <#macro top>
-<table width="1220" border="0" align="center" cellspacing="0" class="table">
+<table border="0" align="center" cellspacing="0" class="table table-striped table-hover">
   <tr>
-    <td height="26" bgcolor="#CCCCCC" class="paddingleft"> <@c.sysName /> <span class="zimu">ymbose.com</span> 欢迎您：<@UserInfo /> <a href="${request.contextPath}/user/logout">退出</a></td>
-  </tr>
-  <tr>
-    <td class="menu"><@Menu /></td>
-  </tr>
+    <td height="26" bgcolor="#CCCCCC" class="paddingleft"> <@c.sysName /> <span class="zimu">ymbose.com</span> 欢迎您：<@UserInfo /> <a href="${request.contextPath}/manager/logout">退出</a></td>
+  </tr> 
 </table> 
 </#macro> 
 
