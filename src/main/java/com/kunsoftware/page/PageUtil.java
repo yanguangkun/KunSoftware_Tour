@@ -109,7 +109,7 @@ public static String dialogPageToString(PageInfo pageInfo) {
 		}
 
 		retStr +="    <td width=\"10\"></td>\n";
-		retStr +="    <td><input type=\"text\" class=\"form-control\" name=\"cli_page\" value=\""+pageInfo.getPageNo()+"\" id=\"cli_page\"/></td>\n";
+		retStr +="    <td><input type=\"text\" class=\"form-control input-sm\" style=\"width:50px\" name=\"cli_page\" value=\""+pageInfo.getPageNo()+"\" id=\"cli_page\"/></td>\n";
 		retStr +="    <td width=\"10\"></td>\n";
 		retStr +="    <td class=\"page_span\">共</td>\n";
 		retStr +="    <td width=\"10\">&nbsp;</td>\n";

@@ -20,8 +20,8 @@ public class MenuServiceTest {
 	@Test
 	public void selectByPrimaryKey(){  
 
-		SysMenu sysMenu = menuService.selectByPrimaryKey(1);
+		//SysMenu sysMenu = menuService.selectByPrimaryKey(1);
 		
-		System.out.println(sysMenu);
+		//System.out.println(sysMenu);
 	}
 }

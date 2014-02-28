@@ -1,5 +1,7 @@
 package com.kunsoftware.util;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
@@ -69,5 +71,37 @@ public class WebUtil {
 			link = parentLink + link;
 		}
 		return link;
+	}
+	
+	public static String option(String text,String value,String selectedValue) {
+		 
+		String selected = value.equals(selectedValue)?"selected":"";
+		String s = "<option value=\""+value+"\" "+selected+">"+text+"</option>";
+		
+		return s;
+	}
+	
+	public static String radio(String name,String id,String text,String value,String selectedValue) {
+		 
+		String selected = value.equals(selectedValue)?"checked":"";
+		String s = "<input type=\"radio\" name=\""+name+"\" "+selected+" id=\""+id+"\" value=\""+value+"\" /> " + text + " ";
+		
+		return s;
+	}
+	
+	public static String checkbox(String name,String id,String text,String value,List selectedValue) {
+		 
+		String selected = selectedValue.contains(value)?"checked":"";
+		String s = "<input type=\"checkbox\" name=\""+name+"\" "+selected+" id=\""+id+"\" value=\""+value+"\" /> " + text + " ";
+		
+		return s;
+	}
+	
+	public static String write(String text,String value,List selectedValue) {
+		 
+		String selected = selectedValue.contains(value)?text:"";
+		
+		
+		return selected;
 	}
 }

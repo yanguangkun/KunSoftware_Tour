@@ -91,10 +91,16 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-  <select id="getMenuListPage" resultMap="BaseResultMap">
+  <select id="getMenuListPage" resultMap="BaseResultMap" parameterType="com.kunsoftware.bean.MenuRequestBean">
     select 
     <include refid="Base_Column_List" />
-    from sys_menu 
+    from sys_menu where 1=1
+    <if test="menuRequestBean.menuTreeName != null and menuRequestBean.menuTreeName != ''">
+		AND menu_tree_name = #{menuRequestBean.menuTreeName}
+	</if>
+	<if test="menuRequestBean.menuTreeName != null and menuRequestBean.menuTreeName != ''">
+		AND menu_tree_name = #{menuRequestBean.menuTreeName}
+	</if>
     order by id DESC
   </select>
 </mapper>

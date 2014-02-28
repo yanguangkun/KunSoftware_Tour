@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.FlightMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Flight" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="instruction" property="instruction" jdbcType="VARCHAR" />
+    <result column="price_instruction" property="priceInstruction" jdbcType="VARCHAR" />
+    <result column="start_country_id" property="startCountryId" jdbcType="INTEGER" />
+    <result column="start_city_id" property="startCityId" jdbcType="INTEGER" />
+    <result column="arrive_country_id" property="arriveCountryId" jdbcType="INTEGER" />
+    <result column="arrive_city_id" property="arriveCityId" jdbcType="INTEGER" />
+    <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
+    <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
+    <result column="adult_price" property="adultPrice" jdbcType="DECIMAL" />
+    <result column="child_price" property="childPrice" jdbcType="DECIMAL" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, instruction, price_instruction, start_country_id, start_city_id, arrive_country_id, 
+    arrive_city_id, arrive_destination, deadline, adult_price, child_price, enable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flight
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Flight" >
+    insert into flight (id, name, instruction, 
+      price_instruction, start_country_id, start_city_id, 
+      arrive_country_id, arrive_city_id, arrive_destination, 
+      deadline, adult_price, child_price, 
+      enable)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, 
+      #{priceInstruction,jdbcType=VARCHAR}, #{startCountryId,jdbcType=INTEGER}, #{startCityId,jdbcType=INTEGER}, 
+      #{arriveCountryId,jdbcType=INTEGER}, #{arriveCityId,jdbcType=INTEGER}, #{arriveDestination,jdbcType=INTEGER}, 
+      #{deadline,jdbcType=TIMESTAMP}, #{adultPrice,jdbcType=DECIMAL}, #{childPrice,jdbcType=DECIMAL}, 
+      #{enable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Flight" >
+    insert into flight
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="instruction != null" >
+        instruction,
+      </if>
+      <if test="priceInstruction != null" >
+        price_instruction,
+      </if>
+      <if test="startCountryId != null" >
+        start_country_id,
+      </if>
+      <if test="startCityId != null" >
+        start_city_id,
+      </if>
+      <if test="arriveCountryId != null" >
+        arrive_country_id,
+      </if>
+      <if test="arriveCityId != null" >
+        arrive_city_id,
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination,
+      </if>
+      <if test="deadline != null" >
+        deadline,
+      </if>
+      <if test="adultPrice != null" >
+        adult_price,
+      </if>
+      <if test="childPrice != null" >
+        child_price,
+      </if>
+      <if test="enable != null" >
+        enable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null" >
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="priceInstruction != null" >
+        #{priceInstruction,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountryId != null" >
+        #{startCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="startCityId != null" >
+        #{startCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCountryId != null" >
+        #{arriveCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCityId != null" >
+        #{arriveCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveDestination != null" >
+        #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adultPrice != null" >
+        #{adultPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childPrice != null" >
+        #{childPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Flight" >
+    update flight
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null" >
+        instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="priceInstruction != null" >
+        price_instruction = #{priceInstruction,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountryId != null" >
+        start_country_id = #{startCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="startCityId != null" >
+        start_city_id = #{startCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCountryId != null" >
+        arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCityId != null" >
+        arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adultPrice != null" >
+        adult_price = #{adultPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childPrice != null" >
+        child_price = #{childPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Flight" >
+    update flight
+    set name = #{name,jdbcType=VARCHAR},
+      instruction = #{instruction,jdbcType=VARCHAR},
+      price_instruction = #{priceInstruction,jdbcType=VARCHAR},
+      start_country_id = #{startCountryId,jdbcType=INTEGER},
+      start_city_id = #{startCityId,jdbcType=INTEGER},
+      arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      adult_price = #{adultPrice,jdbcType=DECIMAL},
+      child_price = #{childPrice,jdbcType=DECIMAL},
+      enable = #{enable,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

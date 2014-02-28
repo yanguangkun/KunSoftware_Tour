@@ -24,7 +24,7 @@ public class LoginController {
 private static Logger logger = LoggerFactory.getLogger(LoginController.class);	
 	
 	@Autowired
-	private UserService userService;
+	private UserService service;
 	
 	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	public String userLogin(ModelMap model,HttpServletRequest request) {
@@ -50,22 +50,22 @@ private static Logger logger = LoggerFactory.getLogger(LoginController.class);
 			return "manager/login";
 		}
 		
-		SysUser sysUser = userService.selectByUserName(userName);
-		if(sysUser == null) {
+		SysUser entity = service.selectByUserName(userName);
+		if(entity == null) {
 			model.addAttribute("loginMsg", "用户不存在!"); 
 			model.addAttribute("userName", userName);
 			model.addAttribute("referer", referer);
 			return "manager/login";
 		}
 		
-		if(!password.equals(sysUser.getPassword())) {
+		if(!password.equals(entity.getPassword())) {
 			model.addAttribute("loginMsg", "用户名或密码错误!"); 
 			model.addAttribute("userName", userName); 
 			model.addAttribute("referer", referer);
 			return "manager/login";
 		}  
 		HttpSession session = request.getSession();  
-		session.setAttribute(WebUtil.User_Info, sysUser); 
+		session.setAttribute(WebUtil.User_Info, entity); 
 		
 		if(StringUtils.isNotEmpty(referer)) {
 			referer = StringUtils.replace(referer, request.getContextPath(), "");

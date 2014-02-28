@@ -26,9 +26,11 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     request.setAttribute("referer", referer);
     SysUser userEntity = (SysUser)session.getAttribute(WebUtil.User_Info);
 
-    if (null == userEntity) {
-    	request.getRequestDispatcher("/manager/login?loginMsg=" + URLEncoder.encode("请登录!", "utf-8")).forward(request, response); 
-        return false;
+    if(uri.indexOf("manager") != -1) {
+	    if (null == userEntity) {
+	    	request.getRequestDispatcher("/manager/login?loginMsg=" + URLEncoder.encode("请登录!", "gbk")).forward(request, response); 
+	        return false;
+	    }
     }
 	return true;
 }

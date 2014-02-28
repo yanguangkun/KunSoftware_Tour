@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.GalleryDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.GalleryDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="gallery_id" property="galleryId" jdbcType="INTEGER" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, gallery_id, order_value, image_path, title
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gallery_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gallery_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.GalleryDetail" >
+    insert into gallery_detail (id, gallery_id, order_value, 
+      image_path, title)
+    values (#{id,jdbcType=INTEGER}, #{galleryId,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
+      #{imagePath,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.GalleryDetail" >
+    insert into gallery_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="galleryId != null" >
+        gallery_id,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="galleryId != null" >
+        #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.GalleryDetail" >
+    update gallery_detail
+    <set >
+      <if test="galleryId != null" >
+        gallery_id = #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.GalleryDetail" >
+    update gallery_detail
+    set gallery_id = #{galleryId,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

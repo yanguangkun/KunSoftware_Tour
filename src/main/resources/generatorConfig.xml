@@ -21,7 +21,19 @@
     <table tableName="news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>-->
-     <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false" enableUpdateByExample="false"
+     <table tableName="airline" domainObjectName="Airline" enableCountByExample="false" enableUpdateByExample="false"
+     enableDeleteByExample="false" enableSelectByExample="false"
+     selectByExampleQueryId="false"></table>
+     <table tableName="gallery" domainObjectName="Gallery" enableCountByExample="false" enableUpdateByExample="false"
+     enableDeleteByExample="false" enableSelectByExample="false"
+     selectByExampleQueryId="false"></table>
+     <table tableName="gallery_detail" domainObjectName="GalleryDetail" enableCountByExample="false" enableUpdateByExample="false"
+     enableDeleteByExample="false" enableSelectByExample="false"
+     selectByExampleQueryId="false"></table>
+     <table tableName="flight" domainObjectName="Flight" enableCountByExample="false" enableUpdateByExample="false"
+     enableDeleteByExample="false" enableSelectByExample="false"
+     selectByExampleQueryId="false"></table>
+     <table tableName="flight_segment" domainObjectName="FlightSegment" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>
   </context>

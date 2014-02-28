@@ -14,21 +14,21 @@ import com.kunsoftware.page.PageInfo;
 public class NewsService {
 
 	@Autowired
-	private NewsMapper newsMapper;
+	private NewsMapper mapper;
 	
 	public List<News> getNewsListPage(@Param("page") PageInfo page) {
 		 
-		return newsMapper.getNewsListPage(page);
+		return mapper.getNewsListPage(page);
 	}
 	
 	public void inserUser(News record) {
-		newsMapper.insert(record);
+		mapper.insert(record);
 	}
 	
 	public void inserUser(List<News> list) {
 		
 		for(News record:list) {
-			if(newsMapper.titleMd5Count(record.getTitleMd5()) == 0) {
+			if(mapper.titleMd5Count(record.getTitleMd5()) == 0) {
 				inserUser(record);
 			} 
 		}
@@ -36,9 +36,9 @@ public class NewsService {
 	
 	public void readNews(Integer id) {
 		
-		News record = newsMapper.selectByPrimaryKey(id);
+		News record = mapper.selectByPrimaryKey(id);
 		record.setIsRead("1");
 		
-		newsMapper.updateByPrimaryKey(record);
+		mapper.updateByPrimaryKey(record);
 	}
 }

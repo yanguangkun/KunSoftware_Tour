@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.ValueSetMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.ValueSet" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="parent_value" property="parentValue" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="attr" property="attr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name, name_en, value, order_value, parent_value, type, attr
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from value_set
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from value_set
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.ValueSet" useGeneratedKeys="true"  keyProperty="id">
+    insert into value_set (id, code, name, 
+      name_en, value, order_value, 
+      parent_value, type, attr
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{nameEn,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{orderValue,jdbcType=INTEGER}, 
+      #{parentValue,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{attr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.ValueSet" >
+    insert into value_set
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="parentValue != null" >
+        parent_value,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="attr != null" >
+        attr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="parentValue != null" >
+        #{parentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="attr != null" >
+        #{attr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.ValueSet" >
+    update value_set
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="parentValue != null" >
+        parent_value = #{parentValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="attr != null" >
+        attr = #{attr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.ValueSet" >
+    update value_set
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      parent_value = #{parentValue,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      attr = #{attr,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getValueSetListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from value_set where 1=1
+    and code = #{code,jdbcType=VARCHAR}
+    <if test="keyword != null and keyword != ''">
+		AND name like CONCAT('%', #{keyword} , '%') 
+	</if>
+    order by order_value ASC, id DESC
+  </select>
+  
+  <select id="getValueSetListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from value_set where 1=1
+    and code = #{code,jdbcType=VARCHAR} 
+    order by order_value ASC, id DESC
+  </select>
+  
+  <select id="selectValueSetList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from value_set
+    where code = #{code,jdbcType=VARCHAR} order by order_value ASC,id DESC
+  </select>
+  
+  <select id="selectValueSet" resultMap="BaseResultMap" parameterType="com.kunsoftware.entity.ValueSet" >
+    select 
+    <include refid="Base_Column_List" />
+    from value_set
+    where code = #{code,jdbcType=VARCHAR} and value=#{value,jdbcType=VARCHAR}
+  </select>
+</mapper>
+ 

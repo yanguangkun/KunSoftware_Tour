@@ -24,14 +24,14 @@ public class NewsController extends BaseController {
 	private static Logger logger = LoggerFactory.getLogger(NewsController.class);	
 	
 	@Autowired
-	private NewsService newsService;
+	private NewsService service;
 	
 	@RequestMapping("/list")
 	public String list(ModelMap model,PageInfo pageInfo) {
 		 
 		logger.info("新闻列表");  
 		
-		List<News> list = newsService.getNewsListPage(pageInfo); 
+		List<News> list = service.getNewsListPage(pageInfo); 
 		model.addAttribute("retList", list);  
 		PageUtil.pageInfo(model, pageInfo);
 		return "manager/news/news-list";
@@ -43,7 +43,7 @@ public class NewsController extends BaseController {
 		 
 		logger.info("新闻阅读");
 		 
-		newsService.readNews(id);
+		service.readNews(id);
 		JsonBean jsonBean = new JsonBean();
 		jsonBean.setMessage("操作成功");		 
 		return jsonBean;

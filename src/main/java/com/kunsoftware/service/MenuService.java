@@ -22,43 +22,39 @@ public class MenuService {
 	private static Logger logger = LoggerFactory.getLogger(MenuService.class);	
 	
 	@Autowired
-	private SysMenuMapper menuMapper;
+	private SysMenuMapper mapper;
 	
-	public List<SysMenu> getMenuListPage(@Param("page") PageInfo page) {
+	public List<SysMenu> getMenuListPage(MenuRequestBean menuRequestBean,@Param("page") PageInfo page) {
 		 
 		logger.info("query");
-		return menuMapper.getMenuListPage(page);
+		return mapper.getMenuListPage(menuRequestBean,page);
 	}
 	
 	@Transactional
-	public int insert(MenuRequestBean menuRequestBean) throws KunSoftwareException {
-		
-		if("1".equals(menuRequestBean.getMenuTreeName())) {
-			throw new KunSoftwareException("保存失败");
-		}
-		
+	public SysMenu insert(MenuRequestBean menuRequestBean) throws KunSoftwareException {
+		 
 		SysMenu record = new SysMenu();
 		BeanUtils.copyProperties(menuRequestBean, record);
-		 
-		return menuMapper.insert(record);
+		mapper.insert(record);
+		return record;
 	}
 	
 	public SysMenu selectByPrimaryKey(Integer id) {
 		
-		return menuMapper.selectByPrimaryKey(id);
+		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
 	public int updateByPrimaryKey(MenuRequestBean menuRequestBean,Integer id) {
 		
-		SysMenu record = menuMapper.selectByPrimaryKey(id); 
+		SysMenu record = mapper.selectByPrimaryKey(id); 
 		BeanUtils.copyProperties(menuRequestBean, record);
 		 
-		return menuMapper.updateByPrimaryKeySelective(record);
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 	
 	@Transactional
 	public int deleteByPrimaryKey(Integer id) {
-		return menuMapper.deleteByPrimaryKey(id);
+		return mapper.deleteByPrimaryKey(id);
 	}
 }

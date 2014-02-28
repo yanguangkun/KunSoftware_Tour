@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.kunsoftware.bean.MenuRequestBean;
 import com.kunsoftware.entity.SysMenu;
 import com.kunsoftware.page.PageInfo;
 
@@ -20,5 +21,5 @@ public interface SysMenuMapper {
 
     int updateByPrimaryKey(SysMenu record);
     
-    List<SysMenu> getMenuListPage(@Param("page") PageInfo page);
+    List<SysMenu> getMenuListPage(@Param(value="menuRequestBean")MenuRequestBean menuRequestBean,@Param("page") PageInfo page);
 }

@@ -12,7 +12,7 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 
-public class UserInfo implements TemplateDirectiveModel {
+public class UserInfoDirective implements TemplateDirectiveModel {
 
 	@SuppressWarnings("rawtypes")
 	public void execute(Environment env, Map params, TemplateModel[] loopVars, 

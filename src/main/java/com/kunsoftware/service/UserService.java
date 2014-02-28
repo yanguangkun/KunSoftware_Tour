@@ -14,11 +14,11 @@ public class UserService {
 private static Logger logger = LoggerFactory.getLogger(UserService.class);	
 	
 	@Autowired
-	private SysUserMapper userMapper;
+	private SysUserMapper mapper;
 	
 	public SysUser selectByUserName(String userName) {
 		
 		logger.info("查询用户");
-		return userMapper.selectByUserName(userName);
+		return mapper.selectByUserName(userName);
 	}
 }

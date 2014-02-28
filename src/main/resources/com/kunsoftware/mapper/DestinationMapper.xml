@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.DestinationMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Destination" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="country_value" property="countryValue" jdbcType="VARCHAR" />
+    <result column="gallery_id" property="galleryId" jdbcType="INTEGER" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, name_en, country_value, gallery_id, image_path, enable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from destination
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from destination
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Destination" >
+    insert into destination (id, name, name_en, 
+      country_value, gallery_id, image_path, 
+      enable)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
+      #{countryValue,jdbcType=VARCHAR}, #{galleryId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
+      #{enable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Destination" >
+    insert into destination
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="countryValue != null" >
+        country_value,
+      </if>
+      <if test="galleryId != null" >
+        gallery_id,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="enable != null" >
+        enable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryValue != null" >
+        #{countryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="galleryId != null" >
+        #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Destination" >
+    update destination
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryValue != null" >
+        country_value = #{countryValue,jdbcType=VARCHAR},
+      </if>
+      <if test="galleryId != null" >
+        gallery_id = #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Destination" >
+    update destination
+    set name = #{name,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      country_value = #{countryValue,jdbcType=VARCHAR},
+      gallery_id = #{galleryId,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+   
+  <select id="getDestinationListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from destination where 1=1 
+    <if test="keyword != null and keyword != ''">
+		AND name like CONCAT('%', #{keyword} , '%') 
+	</if>
+    
+    order by id DESC
+  </select>
+  <select id="selectValueSetList" resultType="com.kunsoftware.entity.ValueSet" parameterType="java.lang.String">
+    select 
+    name,id as value,'0' as type
+    from destination where 1=1  
+    order by id DESC
+  </select>
+</mapper>

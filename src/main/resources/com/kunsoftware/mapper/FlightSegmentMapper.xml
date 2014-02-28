@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.FlightSegmentMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.FlightSegment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="flight_id" property="flightId" jdbcType="INTEGER" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="airline_id" property="airlineId" jdbcType="INTEGER" />
+    <result column="flight_num" property="flightNum" jdbcType="VARCHAR" />
+    <result column="start_country_id" property="startCountryId" jdbcType="INTEGER" />
+    <result column="start_city_id" property="startCityId" jdbcType="INTEGER" />
+    <result column="start_airport" property="startAirport" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="arrive_country_id" property="arriveCountryId" jdbcType="INTEGER" />
+    <result column="arrive_city_id" property="arriveCityId" jdbcType="INTEGER" />
+    <result column="arrive_airport" property="arriveAirport" jdbcType="INTEGER" />
+    <result column="arrive_time" property="arriveTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, flight_id, order_value, serial_number, airline_id, flight_num, start_country_id, 
+    start_city_id, start_airport, start_time, arrive_country_id, arrive_city_id, arrive_airport, 
+    arrive_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight_segment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flight_segment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.FlightSegment" >
+    insert into flight_segment (id, flight_id, order_value, 
+      serial_number, airline_id, flight_num, 
+      start_country_id, start_city_id, start_airport, 
+      start_time, arrive_country_id, arrive_city_id, 
+      arrive_airport, arrive_time)
+    values (#{id,jdbcType=INTEGER}, #{flightId,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
+      #{serialNumber,jdbcType=VARCHAR}, #{airlineId,jdbcType=INTEGER}, #{flightNum,jdbcType=VARCHAR}, 
+      #{startCountryId,jdbcType=INTEGER}, #{startCityId,jdbcType=INTEGER}, #{startAirport,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=VARCHAR}, #{arriveCountryId,jdbcType=INTEGER}, #{arriveCityId,jdbcType=INTEGER}, 
+      #{arriveAirport,jdbcType=INTEGER}, #{arriveTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.FlightSegment" >
+    insert into flight_segment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="flightId != null" >
+        flight_id,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="serialNumber != null" >
+        serial_number,
+      </if>
+      <if test="airlineId != null" >
+        airline_id,
+      </if>
+      <if test="flightNum != null" >
+        flight_num,
+      </if>
+      <if test="startCountryId != null" >
+        start_country_id,
+      </if>
+      <if test="startCityId != null" >
+        start_city_id,
+      </if>
+      <if test="startAirport != null" >
+        start_airport,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="arriveCountryId != null" >
+        arrive_country_id,
+      </if>
+      <if test="arriveCityId != null" >
+        arrive_city_id,
+      </if>
+      <if test="arriveAirport != null" >
+        arrive_airport,
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="flightId != null" >
+        #{flightId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="airlineId != null" >
+        #{airlineId,jdbcType=INTEGER},
+      </if>
+      <if test="flightNum != null" >
+        #{flightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountryId != null" >
+        #{startCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="startCityId != null" >
+        #{startCityId,jdbcType=INTEGER},
+      </if>
+      <if test="startAirport != null" >
+        #{startAirport,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountryId != null" >
+        #{arriveCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCityId != null" >
+        #{arriveCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveAirport != null" >
+        #{arriveAirport,jdbcType=INTEGER},
+      </if>
+      <if test="arriveTime != null" >
+        #{arriveTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.FlightSegment" >
+    update flight_segment
+    <set >
+      <if test="flightId != null" >
+        flight_id = #{flightId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null" >
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="airlineId != null" >
+        airline_id = #{airlineId,jdbcType=INTEGER},
+      </if>
+      <if test="flightNum != null" >
+        flight_num = #{flightNum,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountryId != null" >
+        start_country_id = #{startCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="startCityId != null" >
+        start_city_id = #{startCityId,jdbcType=INTEGER},
+      </if>
+      <if test="startAirport != null" >
+        start_airport = #{startAirport,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountryId != null" >
+        arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveCityId != null" >
+        arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      </if>
+      <if test="arriveAirport != null" >
+        arrive_airport = #{arriveAirport,jdbcType=INTEGER},
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time = #{arriveTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.FlightSegment" >
+    update flight_segment
+    set flight_id = #{flightId,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      airline_id = #{airlineId,jdbcType=INTEGER},
+      flight_num = #{flightNum,jdbcType=VARCHAR},
+      start_country_id = #{startCountryId,jdbcType=INTEGER},
+      start_city_id = #{startCityId,jdbcType=INTEGER},
+      start_airport = #{startAirport,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      arrive_airport = #{arriveAirport,jdbcType=INTEGER},
+      arrive_time = #{arriveTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
