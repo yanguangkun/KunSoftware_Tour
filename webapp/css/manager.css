@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+body,td,th {
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.table,.form-search{ margin-bottom:10px;}
+.main{width:80%; margin:auto}
+.main-login{width:300px; margin:auto}
+ 
+.table.table-form > tbody > tr > th { vertical-align:middle;}
+.table.table-result .btn{ padding-top:2px; padding-bottom:3px;}
+.panel-opt{padding:8px}
+
+.error{ color:#d9534f; padding-top:2px;}
+.loading-content { padding:10px;}
+.hide {display:none}
