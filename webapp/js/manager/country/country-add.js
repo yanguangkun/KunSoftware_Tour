@@ -11,16 +11,6 @@ define(function(require, exports, module) {
 	
 	$(document).ready(function(){  
 		
-		var json = {
-			value: '<strong>juicer</strong>'
-		};
-
-		var escape_tpl='${value}';
-		var unescape_tpl='$${value}';
-		 
-		//alert(juicer(escape_tpl, json)); //输出 '&lt;strong&gt;juicer&lt;/strong&gt;'
-		//alert(juicer(unescape_tpl, json)); //输出 '<strong>juicer</strong>'
-
 		var validate =  $("#saveFrm").validate({ 
 			submitHandler: function(form) { 
 				$(form).ajaxSubmit({
@@ -30,23 +20,18 @@ define(function(require, exports, module) {
 						if(data.success == '1') {
 							$("#id").val(data.id);
 						}
+						lockscreen.unLock();
 					}
 				});
 			}	
 		}); 
 		
-		$(".saveBtn").click(function(e) { 
-			lockscreen.lock();
-			//$("#saveFrm").submit();
-			/*$("#saveFrm").ajaxSubmit({
-				dataType:'json', 
-				success:function(data) { 
-					alert(data.message);
-					if(data.success == '1') {
-						$("#id").val(data.id);
-					}
-				}
-			});*/
+		$(".saveBtn").click(function(e) {  
+			var check = validate.form();  
+			if(check) {
+				lockscreen.lock();
+			} 
+			$("#saveFrm").submit();
         });
 	}); 
 });

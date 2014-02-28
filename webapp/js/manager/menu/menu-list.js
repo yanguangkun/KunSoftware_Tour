@@ -1,17 +1,19 @@
 define(function(require, exports, module) {
 	 
 	var $ = require('jquery'); 
-	require('jquery-form')($); 
-	
+	require('bootstrap')($); 
+	require('page'); 
 	$(document).ready(function(){  
-		$(".saveBtn").click(function(e) {
-            alert('ok');
-			$("#saveFrm").ajaxSubmit({
-				dataType:'json', 
-				success:function(data) {
-					alert(data.message);
-				}
-			});
+		$(".searchBtn").click(function(e) {
+            $("#searchForm").submit();
+        });
+		$(".del").click(function(e) {
+			var url = $(this).attr("href");
+			var that = this;
+			$.get(url, function(data){
+				$(that).parent("td").parent("tr").remove(); 
+			});  
+			return false;
         });
 	}); 
 });
