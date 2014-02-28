@@ -1,0 +1,54 @@
+<#macro test>     
+  hello word    
+</#macro>  
+
+<#macro sysName>     
+旅游网站   
+</#macro>
+
+<#macro css>
+<link href="${request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="${request.contextPath}/css/manager.css" rel="stylesheet" type="text/css">
+</#macro> 
+
+<#macro javascript> 
+<script src="${request.contextPath}/js/seajs/2.1.1/sea.js"></script>
+<script src="${request.contextPath}/js/seajs/2.1.1/app-manager.js"></script>
+</#macro>  
+
+<#macro top> 
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid"> 
+      <div class="navbar-header"> <a class="navbar-brand" href="#"><@c.sysName /></a> </div> 
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown active"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">基础数据 <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="${request.contextPath}/manager/country/list">国家</a></li>
+              <li><a href="${request.contextPath}/manager/city/list">城市</a></li>
+              <li><a href="${request.contextPath}/manager/destination/list">目的地</a></li>
+              <li class="divider"></li>
+              <li><a href="${request.contextPath}/manager/airline/list">航空公司</a></li>
+              <li><a href="${request.contextPath}/manager/flight/list">航班资源</a></li> 
+              <li class="divider"></li>
+              <li><a href="${request.contextPath}/manager/flight/list">相册管理</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">欢迎您：<@UserInfo /></a></li>
+          <li><a href="${request.contextPath}/manager/logout"> 退出</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+   
+</#macro> 
+
+<#macro bottom> 
+<div style="padding-top:25px;"></div>
+</#macro>
+<#macro page> 
+${pageInfo!}
+${pageParam}
+</#macro>

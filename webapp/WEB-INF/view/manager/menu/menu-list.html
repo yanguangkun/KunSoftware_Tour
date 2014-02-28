@@ -3,19 +3,33 @@
 <head>
 <meta charset="utf-8">
 <title>菜单管理 -
-<@c.sysName />
+<@cm.sysName />
 </title>
-<@c.css />
-<@c.javascript />
+<@cm.css />
+<@cm.javascript />
 <script>
     seajs.use("manager/menu/menu-list");  
 </script>
 </head>
 
 <body>
-<div style="width:800px; margin:auto">
-  <@c.top />
-  <table border="0" align="center" cellspacing="0" class="table table-striped table-hover">
+<div class="main">
+  <@cm.top />
+  
+  <form id="searchForm" name="searchForm" method="post" action="" class="form-inline form-search">
+    <div class="form-group">
+      <input type="text" class="form-control input-sm" name="menuTreeName" id="menuTreeName"  value="${RequestParameters.menuTreeName!}" placeholder="菜单树">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control input-sm" name="menuEname" id="menuEname" value="${RequestParameters.menuEname!}" placeholder="菜单英文名">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control input-sm" name="menuCname" id="menuCname" value="${RequestParameters.menuCname!}" placeholder="菜单中文名">
+    </div>
+    <input class="searchBtn btn btn-primary btn-sm" type="button" name="button" id="button" value="搜索">
+    <a href="add" class="btn btn-default btn-sm" role="button">添加</a>
+  </form>
+  <table border="0" align="center" cellspacing="0" class="table table-striped table-hover table-bordered table-result">
     <thead>
       <tr>
         <th width="20%">菜单树</th>
@@ -28,11 +42,12 @@
     <tr>
       <td>${item.menuTreeName!}</td>
       <td>${item.menuEname!}</td>
-      <td>${item.menuCname}</td>
-      <td>&nbsp;</td>
+      <td>${item.menuCname!}</td>
+      <td><a href="edit?id=${item.id}" class="btn btn-info btn-sm" role="button">编辑</a> <a href="del.json?id=${item.id}" class="btn btn-danger btn-sm del" role="button">删除</a></td>
     </tr>
     </#list>
   </table>
-  <@c.page /> </div>
+  <@cm.page />
+</div>
 </body>
 </html>

@@ -3,37 +3,42 @@
 <head>
 <meta charset="utf-8">
 <title>菜单管理 -
-<@c.sysName />
+<@cm.sysName />
 </title>
-<@c.css />
-<@c.javascript />
+<@cm.css />
+<@cm.javascript />
 <script>
     seajs.use("manager/menu/menu-add");  
 </script>
 </head>
 
 <body>
-<form name="saveFrm" id="saveFrm" method="post" action="add.json">
-  <div style="width:800px; margin:auto">
-    <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-hover">
+<div class="main">
+  <form name="saveFrm" id="saveFrm" method="post" action="add.json">
+    <@cm.top />
+    <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
       <tr>
-        <th width="15%">菜单树</th>
-        <th width="35%"><input type="text" name="menuTreeName" id="menuTreeName"></th>
-        <th width="15%">菜单英文名</th>
-        <th width="35%"><input type="text" name="menuEname" id="menuEname">
-        </th>
+        <th width="15%">菜单树 <span class="error">*</span></th>
+        <td width="35%"><input type="text" class="form-control input-sm required date" name="menuTreeName" id="menuTreeName" placeholder="菜单树">
+         </td>
+        <th width="15%">菜单英文名 <span class="error">*</span></th>
+        <td width="35%"><input type="text" class="form-control input-sm required" name="menuEname" id="menuEname" placeholder="菜单英文名"></td>
       </tr>
       <tr>
-        <td>菜单中文名</td>
-        <td><input type="text" name="menuCname" id="menuCname"></td>
-        <td>&nbsp;</td>
-        <td><input type="text" name="menuUrl" id="menuUrl"></td>
+        <th>菜单中文名</th>
+        <td><input type="text" class="form-control input-sm" name="menuCname" id="menuCname" placeholder="菜单中文名"></td>
+        <th>菜单URL</th>
+        <td><input type="text" class="form-control input-sm" name="menuUrl" id="menuUrl" placeholder="菜单英文名"></td>
       </tr>
+       
       <tr>
-        <td colspan="4"><input class="saveBtn" type="button" name="button" id="button" value="保存"></td>
+        <td colspan="4" align="center"><input type="hidden" name="id" id="id" value=""><input class="saveBtn btn btn-primary btn-sm" type="button" name="button" id="button" value="保存">
+         
+        <a href="list" class="btn btn-default btn-sm" role="button">返回</a>
+        </td>
       </tr>
     </table>
-  </div>
-</form>
+  </form>
+</div>
 </body>
 </html>

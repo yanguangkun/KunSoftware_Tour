@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>用户登陆 -
-<@c.sysName />
+<@cm.sysName />
 </title>
-<@c.css />
-<@c.javascript />
+<@cm.css />
+<@cm.javascript />
 <script>
 if (top.location != self.location){top.location = self.location}
 </script>
@@ -29,24 +29,23 @@ if (top.location != self.location){top.location = self.location}
 <br />
 <br />
 <br />
-<div style="width:800px; margin:auto">
-
+<div class="main-login"> 
 <form id="loginFrm" name="loginFrm" method="post" action="${request.contextPath}/manager/login">
-<table width="300"  align="center" cellpadding="0" cellspacing="0"  class="table">
+<table align="center" cellpadding="0" cellspacing="0"  class="table table-bordered table-form">
   <tr>
-    <td height="30" colspan="2" class="bg1 paddingleft">用户登陆</td>
+    <td colspan="2">用户登陆</td>
   </tr>
   <tr>
-    <td width="117" height="25" align="right" class="bg0">用户名：</td>
-    <td width="230"><input type="text" class="s_3" name="userName" id="userName" value="${userName!}" /></td>
+    <th width="35%">用户名</th>
+    <td width="65%"><input type="text" class="form-control input-sm" name="userName" id="userName" value="${userName!}" /></td>
   </tr>
   <tr>
-    <td height="25" align="right" class="bg0">密&nbsp;&nbsp;码：</td>
-    <td><input type="password" class="s_3" name="password" id="password" value="${password!}"/></td>
+    <th>密&nbsp;&nbsp;码</th>
+    <td><input type="password" class="form-control input-sm" name="password" id="password" value="${password!}"/></td>
   </tr> 
   <tr>
-    <td height="25" colspan="2" align="center" bgcolor="#FFFFFF"><input type="submit" name="createBtn" id="button" value="登陆" />
-      <input type="reset" name="cancelBtn" id="button" value="清除" />
+    <td  colspan="2" align="center"><input type="submit" name="createBtn" class="btn btn-primary" id="button" value="登陆" />
+      <input type="reset" name="cancelBtn" id="button" value="清除" class="btn btn-default" />
       <input name="referer" type="hidden" id="referer" value="${referer!}" /></td>
   </tr>
 </table>
