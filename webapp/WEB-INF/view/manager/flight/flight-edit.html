@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>国家管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/destination/destination-edit");
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form action="edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 编辑航班资源 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">航班名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="航班名称" value="${entity.name!}"></td>
+          <th width="15%">开班说明 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="instruction" id="instruction" placeholder="开班说明" value="${entity.instruction!}"></td>
+        </tr>
+        <tr>
+          <th>价格说明 <span class="error">*</span></th>
+          <td><input type="text" class="form-control input-sm required" name="priceInstruction"  id="priceInstruction" placeholder="价格说明" value="${entity.priceInstruction!}"></td>
+          <th>价格截止日期 <span class="error">*</span></th>
+          <td><input name="deadline" type="text" class="form-control input-sm required date" id="deadline" placeholder="价格截止日期" value="<#if entity.deadline??>${entity.deadline?string('yyyy-MM-dd')} </#if>" readonly></td>
+        </tr>
+        <tr>
+          <th>出发国家 <span class="error">*</span> </th>
+          <td><select name="startCountry" id="startCountry" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="country" value="${entity.startCountry!}" />
+            </select></td>
+          <th>出发城市 <span class="error">*</span> </th>
+          <td><select name="startCity" id="startCity" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="city" value="${entity.startCity!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>到达国家 <span class="error">*</span> </th>
+          <td><select name="arriveCountry" id="arriveCountry" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="country" value="${entity.arriveCountry!}" />
+            </select></td>
+          <th>到达城市 <span class="error">*</span> </th>
+          <td><select name="arriveCity" id="arriveCity" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="city" value="${entity.arriveCity!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>到达目的地 <span class="error">*</span> </th>
+          <td><select name="arriveDestination" id="arriveDestination" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="destination" value="${entity.arriveDestination!}" />
+            </select></td>
+          <th>成人价格 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required digits" name="adultPrice" id="adultPrice" placeholder="成人价格" value="${entity.adultPrice!}"></td>
+        </tr>
+        <tr>
+          <th>儿童价格 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required digits" name="childPrice" id="childPrice" placeholder="儿童价格" value="${entity.childPrice!}"></td>
+          <th>是否启用 <span class="error">*</span> </th>
+          <td><select name="enable" id="enable" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="enable_type" value="${entity.enable!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

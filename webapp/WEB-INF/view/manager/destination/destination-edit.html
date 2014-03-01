@@ -14,40 +14,52 @@
 
 <body>
 <div class="main">
+  <@cm.top />
   <form action="edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
-    <@cm.top />
-    <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
-      <tr>
-        <th width="15%">目的地中文名称 <span class="error">*</span></th>
-        <td width="35%"><input type="text" class="form-control input-sm required" name="name" id="name" placeholder="目的地中文名称" value="${entity.name!}"></td>
-        <th width="15%">目的地英文名称 <span class="error">*</span></th>
-        <td width="35%"><input type="text" class="form-control input-sm required" name="nameEn" id="nameEn" placeholder="目的地英文名称" value="${entity.nameEn!}"></td>
-      </tr>
-      <tr>
-        <th>所属国家</th>
-        <td><select name="countryValue" id="countryValue" class="form-control input-sm required">
-            <option value="">-请选择-</option>
-            <@ValueSet code="country" value="${entity.countryValue!}" />
-          </select></td>
-        <th>是否启用</th>
-        <td><select name="enable" id="enable" class="form-control input-sm required">
-            <option value="">-请选择-</option>
-            <@ValueSet code="enable_type" value="${entity.enable!}" />
-          </select></td>
-      </tr>
-      <tr>
-        <th>目的地图片</th>
-        <td colspan="3"><div class="row">
-            <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
-          </div>
-          <input type="file" name="destinationImageFile" id="destinationImageFile"></td>
-      </tr>
-      <tr>
-        <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
-          <input class="saveBtn btn btn-primary btn-sm" type="button" name="button" id="button" value="保存">
-          <a href="list" class="btn btn-default btn-sm" role="button">返回</a></td>
-      </tr>
-    </table>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 编辑目的地 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">目的地中文名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="name" id="name" placeholder="目的地中文名称" value="${entity.name!}"></td>
+          <th width="15%">目的地英文名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="nameEn" id="nameEn" placeholder="目的地英文名称" value="${entity.nameEn!}"></td>
+        </tr>
+        <tr>
+          <th>所属国家</th>
+          <td><select name="countryValue" id="countryValue" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="country" value="${entity.countryValue!}" />
+            </select></td>
+          <th>是否启用</th>
+          <td><select name="enable" id="enable" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="enable_type" value="${entity.enable!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>选择相册</th>
+          <td colspan="3"><input type="hidden" class="galleryId" name="galleryId"  id="galleryId" value="${entity.galleryId!}">
+            <input type="text" class="form-control input-sm required galleryName" name="galleryName"  id="galleryName" placeholder="选择相册" value="${entity.galleryName!}">
+            <div class="dialogControl">
+              <input class="dialogBtn btn btn-primary btn-sm" type="button" name="button2" id="button2"  value="选择">
+              <input class="btn btn-default btn-sm selectClean" type="button" name="button2" id="button2" value="清空">
+            </div></td>
+        </tr>
+        <tr>
+          <th>目的地图片</th>
+          <td colspan="3"><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="destinationImageFile" id="destinationImageFile"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
   </form>
 </div>
 </body>

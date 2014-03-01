@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>国家管理 -
+<title>航空公司管理 -
 <@cm.sysName />
 </title>
 <@cm.css />
@@ -14,26 +14,29 @@
 
 <body>
 <div class="main">
+  <@cm.top />
   <form action="edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
-    <@cm.top />
-    <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
-      <tr>
-        <th width="15%">航空公司名称 <span class="error">*</span></th>
-        <td width="85%"><input type="text" class="form-control input-sm required" name="name" id="name" placeholder="目的地中文名称" value="${entity.name!}"></td>
-      </tr>
-      <tr>
-        <th>航空公司logo</th>
-        <td><div class="row">
-            <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
-          </div>
-          <input type="file" name="airlineImageFile" id="airlineImageFile"></td>
-      </tr>
-      <tr>
-        <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
-          <input class="saveBtn btn btn-primary btn-sm" type="button" name="button" id="button" value="保存">
-          <a href="list" class="btn btn-default btn-sm" role="button">返回</a></td>
-      </tr>
-    </table>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 修改航空公司 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">航空公司名称 <span class="error">*</span></th>
+          <td width="85%"><input type="text" class="form-control input-sm required" name="name" id="name" placeholder="目的地中文名称" value="${entity.name!}"></td>
+        </tr>
+        <tr>
+          <th>航空公司logo</th>
+          <td><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="airlineImageFile" id="airlineImageFile"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
   </form>
 </div>
 </body>
