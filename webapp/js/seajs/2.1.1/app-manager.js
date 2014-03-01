@@ -11,6 +11,7 @@ var Context_Path = "/tour";
 		'datepicker':'libs/common/0.0.1/datepicker.js', 
 		'juicer':'libs/juicer/0.6.5/juicer-min.js', 
 		"lockscreen": "libs/common/0.0.1/lockscreen.js",
+		"modaldialog": "libs/common/0.0.1/modaldialog.js",
 		"page": "libs/common/0.0.1/page.js"
 	}; 
 	seajs.config({

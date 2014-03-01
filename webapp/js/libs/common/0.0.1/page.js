@@ -14,7 +14,7 @@ define(function(require, exports, module) {
 			this.select();
 		}); 
 	
-		$("img").click( function () {
+		$(".defaultPage").click( function () {
 			 
 			if($(this).attr("page")) {
 				page($(this).attr("page"));

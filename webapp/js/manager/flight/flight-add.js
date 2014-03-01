@@ -5,8 +5,8 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
+	require('datepicker');
 	var lockscreen = require('lockscreen');
-	var modaldialog = require('modaldialog'); 
 	
 	$(document).ready(function(){ 
 		
@@ -31,15 +31,7 @@ define(function(require, exports, module) {
 				lockscreen.lock();
 			} 
 			$("#saveFrm").submit();
-        });
-		
-		$("#destinationImageFile").change(function(e) { 
-            $("#imagePathShow").attr("src",$(this).val());
-        });
-		
-		$(".dialogBtn").click(function(e) { 
-			modaldialog({code:'gallery',obj:this});
-		}); 
+        }); 
 	}); 
 	 
 });

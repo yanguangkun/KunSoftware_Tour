@@ -14,4 +14,7 @@ body,td,th {
 
 .error{ color:#d9534f; padding-top:2px;}
 .loading-content { padding:10px;}
-.hide {display:none}
+.hide {display:none} 
+.panel-default > .panel-heading{font-size:14px; color:#5bc0de}
+.dialogControl{padding:3px 0}
+#loading{z-index:9999}
