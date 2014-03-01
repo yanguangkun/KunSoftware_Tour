@@ -11,6 +11,8 @@ public class DestinationRequestBean {
     private String countryValue;
 
     private Integer galleryId;
+    
+    private String galleryName;
 
     private String imagePath; 
     
@@ -48,6 +50,14 @@ public class DestinationRequestBean {
 
 	public void setGalleryId(Integer galleryId) {
 		this.galleryId = galleryId;
+	}
+
+	public String getGalleryName() {
+		return galleryName;
+	}
+
+	public void setGalleryName(String galleryName) {
+		this.galleryName = galleryName;
 	}
 
 	public String getImagePath() {

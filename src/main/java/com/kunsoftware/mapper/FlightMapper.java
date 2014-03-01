@@ -1,6 +1,11 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.kunsoftware.entity.Flight;
+import com.kunsoftware.page.PageInfo;
 
 public interface FlightMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +19,6 @@ public interface FlightMapper {
     int updateByPrimaryKeySelective(Flight record);
 
     int updateByPrimaryKey(Flight record);
+    
+    List<Flight> getFlightListPage(@Param("enable") String enable,@Param("page") PageInfo page);
 }

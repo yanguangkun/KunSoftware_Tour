@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.SysModalDialogMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.SysModalDialog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dialog_describe" property="dialogDescribe" jdbcType="VARCHAR" />
+    <result column="dialog_sql" property="dialogSql" jdbcType="VARCHAR" />
+    <result column="dialog_condition" property="dialogCondition" jdbcType="VARCHAR" />
+    <result column="show_column" property="showColumn" jdbcType="VARCHAR" />
+    <result column="show_column_width" property="showColumnWidth" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name, dialog_describe, dialog_sql, dialog_condition, show_column, show_column_width, 
+    type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_modal_dialog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_modal_dialog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.SysModalDialog" >
+    insert into sys_modal_dialog (id, code, name, 
+      dialog_describe, dialog_sql, dialog_condition, 
+      show_column, show_column_width, type
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{dialogDescribe,jdbcType=VARCHAR}, #{dialogSql,jdbcType=VARCHAR}, #{dialogCondition,jdbcType=VARCHAR}, 
+      #{showColumn,jdbcType=VARCHAR}, #{showColumnWidth,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.SysModalDialog" >
+    insert into sys_modal_dialog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="dialogDescribe != null" >
+        dialog_describe,
+      </if>
+      <if test="dialogSql != null" >
+        dialog_sql,
+      </if>
+      <if test="dialogCondition != null" >
+        dialog_condition,
+      </if>
+      <if test="showColumn != null" >
+        show_column,
+      </if>
+      <if test="showColumnWidth != null" >
+        show_column_width,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogDescribe != null" >
+        #{dialogDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogSql != null" >
+        #{dialogSql,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogCondition != null" >
+        #{dialogCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="showColumn != null" >
+        #{showColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="showColumnWidth != null" >
+        #{showColumnWidth,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.SysModalDialog" >
+    update sys_modal_dialog
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogDescribe != null" >
+        dialog_describe = #{dialogDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogSql != null" >
+        dialog_sql = #{dialogSql,jdbcType=VARCHAR},
+      </if>
+      <if test="dialogCondition != null" >
+        dialog_condition = #{dialogCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="showColumn != null" >
+        show_column = #{showColumn,jdbcType=VARCHAR},
+      </if>
+      <if test="showColumnWidth != null" >
+        show_column_width = #{showColumnWidth,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.SysModalDialog" >
+    update sys_modal_dialog
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      dialog_describe = #{dialogDescribe,jdbcType=VARCHAR},
+      dialog_sql = #{dialogSql,jdbcType=VARCHAR},
+      dialog_condition = #{dialogCondition,jdbcType=VARCHAR},
+      show_column = #{showColumn,jdbcType=VARCHAR},
+      show_column_width = #{showColumnWidth,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByCode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_modal_dialog
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectBySqlListDialog" resultType="java.util.HashMap" parameterType="java.lang.String" >
+    #{sql,jdbcType=VARCHAR}
+  </select>
+</mapper>

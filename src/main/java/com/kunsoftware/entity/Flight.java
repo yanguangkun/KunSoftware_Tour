@@ -12,13 +12,13 @@ public class Flight {
 
     private String priceInstruction;
 
-    private Integer startCountryId;
+    private String startCountry;
 
-    private Integer startCityId;
+    private String startCity;
 
-    private Integer arriveCountryId;
+    private String arriveCountry;
 
-    private Integer arriveCityId;
+    private String arriveCity;
 
     private Integer arriveDestination;
 
@@ -62,36 +62,36 @@ public class Flight {
         this.priceInstruction = priceInstruction;
     }
 
-    public Integer getStartCountryId() {
-        return startCountryId;
+    public String getStartCountry() {
+        return startCountry;
     }
 
-    public void setStartCountryId(Integer startCountryId) {
-        this.startCountryId = startCountryId;
+    public void setStartCountry(String startCountry) {
+        this.startCountry = startCountry;
     }
 
-    public Integer getStartCityId() {
-        return startCityId;
+    public String getStartCity() {
+        return startCity;
     }
 
-    public void setStartCityId(Integer startCityId) {
-        this.startCityId = startCityId;
+    public void setStartCity(String startCity) {
+        this.startCity = startCity;
     }
 
-    public Integer getArriveCountryId() {
-        return arriveCountryId;
+    public String getArriveCountry() {
+        return arriveCountry;
     }
 
-    public void setArriveCountryId(Integer arriveCountryId) {
-        this.arriveCountryId = arriveCountryId;
+    public void setArriveCountry(String arriveCountry) {
+        this.arriveCountry = arriveCountry;
     }
 
-    public Integer getArriveCityId() {
-        return arriveCityId;
+    public String getArriveCity() {
+        return arriveCity;
     }
 
-    public void setArriveCityId(Integer arriveCityId) {
-        this.arriveCityId = arriveCityId;
+    public void setArriveCity(String arriveCity) {
+        this.arriveCity = arriveCity;
     }
 
     public Integer getArriveDestination() {

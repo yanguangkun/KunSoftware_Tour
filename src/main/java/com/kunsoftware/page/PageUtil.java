@@ -22,7 +22,7 @@ public class PageUtil {
 		model.addAttribute("pageParam",getDialogPageParam(pageInfo));
 	}
 	
-public static String dialogPageToString(PageInfo pageInfo) {
+	public static String dialogPageToString(PageInfo pageInfo) {
 		
 		if(pageInfo == null || pageInfo.getTotalPages() <= 1) return "&nbsp;";
 		
@@ -69,7 +69,7 @@ public static String dialogPageToString(PageInfo pageInfo) {
 		
 		HttpServletRequest request = WebUtil.getRequest();
 		Enumeration paramNames = request.getParameterNames();
-		String retStr = "<form name=\"dialogPageFrm\" id=\"dialogPageFrm\" method=\"post\" action=\""+pageInfo.getPageAction()+"\">";
+		String retStr = "<form name=\"dialogPageFrm\" id=\"dialogPageFrm\" method=\"post\" action=\""+request.getContextPath()+"/manager/dialog/list\">";
 		retStr += "<input type=\"hidden\" id=\"pageNo\" name=\"pageNo\" value=\"" + pageInfo.getPageNo() + "\">";
 		retStr += "<input type=\"hidden\" id=\"pagesize\" name=\"pagesize\" value=\"" + pageInfo.getPageSize() + "\">";
 		
@@ -102,10 +102,10 @@ public static String dialogPageToString(PageInfo pageInfo) {
 			retStr +="    <td width=\"8\">\n";
 			retStr +="<img src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-prev-disabled.gif\" width=\"8\" height=\"12\" /></td>\n";
 		} else {
-			retStr +="<img page=\"1\" type=\"1\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-first.gif\" width=\"12\" height=\"12\"/></td>\n";
+			retStr +="<img class=\"defaultPage\" page=\"1\" type=\"1\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-first.gif\" width=\"12\" height=\"12\"/></td>\n";
 			retStr +="    <td width=\"10\"></td>\n";
 			retStr +="    <td width=\"8\">\n";
-			retStr +="<img page=\""+(pageInfo.getPageNo() -1)+"\" type=\"2\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-prev.gif\" width=\"8\" height=\"12\" /></td>\n";
+			retStr +="<img class=\"defaultPage\" page=\""+(pageInfo.getPageNo() -1)+"\" type=\"2\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-prev.gif\" width=\"8\" height=\"12\" /></td>\n";
 		}
 
 		retStr +="    <td width=\"10\"></td>\n";
@@ -113,14 +113,14 @@ public static String dialogPageToString(PageInfo pageInfo) {
 		retStr +="    <td width=\"10\"></td>\n";
 		retStr +="    <td class=\"page_span\">共</td>\n";
 		retStr +="    <td width=\"10\">&nbsp;</td>\n";
-		retStr +="    <td class=\"page_span\"><a href=\"#\" onclick=\"page("+pageInfo.getTotalPages()+")\">"+pageInfo.getTotalPages()+"</a></td>\n";
+		retStr +="    <td><a href=\"###\" class=\"defaultPage\" page=\""+pageInfo.getTotalPages()+"\">"+pageInfo.getTotalPages()+"</a></td>\n";
 		retStr +="    <td width=\"10\">&nbsp;</td>\n";
 		retStr +="    <td align=\"center\">\n";
 
 		if(pageInfo.getPageNo() == pageInfo.getTotalPages()) 
 			retStr +="<img src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-next-disabled.gif\" width=\"8\" height=\"12\" /></td>\n";
 		else {
-			retStr +="<img title=\"下一页\"  page=\""+(pageInfo.getPageNo() + 1)+"\" type=\"3\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-next.gif\" width=\"8\" height=\"12\" /></td>\n";
+			retStr +="<img title=\"下一页\" class=\"defaultPage\" page=\""+(pageInfo.getPageNo() + 1)+"\" src=\""+WebUtil.getContextPath()+"/images/pagination-arrow-next.gif\" width=\"8\" height=\"12\" /></td>\n";
 		}
 
 		retStr +="  </tr>\n";

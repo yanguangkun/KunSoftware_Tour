@@ -11,6 +11,8 @@ public class Destination {
 
     private Integer galleryId;
 
+    private String galleryName;
+
     private String imagePath;
 
     private String enable;
@@ -53,6 +55,14 @@ public class Destination {
 
     public void setGalleryId(Integer galleryId) {
         this.galleryId = galleryId;
+    }
+
+    public String getGalleryName() {
+        return galleryName;
+    }
+
+    public void setGalleryName(String galleryName) {
+        this.galleryName = galleryName;
     }
 
     public String getImagePath() {

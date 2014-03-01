@@ -6,10 +6,10 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="instruction" property="instruction" jdbcType="VARCHAR" />
     <result column="price_instruction" property="priceInstruction" jdbcType="VARCHAR" />
-    <result column="start_country_id" property="startCountryId" jdbcType="INTEGER" />
-    <result column="start_city_id" property="startCityId" jdbcType="INTEGER" />
-    <result column="arrive_country_id" property="arriveCountryId" jdbcType="INTEGER" />
-    <result column="arrive_city_id" property="arriveCityId" jdbcType="INTEGER" />
+    <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="arrive_country" property="arriveCountry" jdbcType="VARCHAR" />
+    <result column="arrive_city" property="arriveCity" jdbcType="VARCHAR" />
     <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
     <result column="deadline" property="deadline" jdbcType="TIMESTAMP" />
     <result column="adult_price" property="adultPrice" jdbcType="DECIMAL" />
@@ -17,8 +17,8 @@
     <result column="enable" property="enable" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, instruction, price_instruction, start_country_id, start_city_id, arrive_country_id, 
-    arrive_city_id, arrive_destination, deadline, adult_price, child_price, enable
+    id, name, instruction, price_instruction, start_country, start_city, arrive_country, 
+    arrive_city, arrive_destination, deadline, adult_price, child_price, enable
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -32,13 +32,13 @@
   </delete>
   <insert id="insert" parameterType="com.kunsoftware.entity.Flight" >
     insert into flight (id, name, instruction, 
-      price_instruction, start_country_id, start_city_id, 
-      arrive_country_id, arrive_city_id, arrive_destination, 
+      price_instruction, start_country, start_city, 
+      arrive_country, arrive_city, arrive_destination, 
       deadline, adult_price, child_price, 
       enable)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, 
-      #{priceInstruction,jdbcType=VARCHAR}, #{startCountryId,jdbcType=INTEGER}, #{startCityId,jdbcType=INTEGER}, 
-      #{arriveCountryId,jdbcType=INTEGER}, #{arriveCityId,jdbcType=INTEGER}, #{arriveDestination,jdbcType=INTEGER}, 
+      #{priceInstruction,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, #{startCity,jdbcType=VARCHAR}, 
+      #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, #{arriveDestination,jdbcType=INTEGER}, 
       #{deadline,jdbcType=TIMESTAMP}, #{adultPrice,jdbcType=DECIMAL}, #{childPrice,jdbcType=DECIMAL}, 
       #{enable,jdbcType=VARCHAR})
   </insert>
@@ -57,17 +57,17 @@
       <if test="priceInstruction != null" >
         price_instruction,
       </if>
-      <if test="startCountryId != null" >
-        start_country_id,
+      <if test="startCountry != null" >
+        start_country,
       </if>
-      <if test="startCityId != null" >
-        start_city_id,
+      <if test="startCity != null" >
+        start_city,
       </if>
-      <if test="arriveCountryId != null" >
-        arrive_country_id,
+      <if test="arriveCountry != null" >
+        arrive_country,
       </if>
-      <if test="arriveCityId != null" >
-        arrive_city_id,
+      <if test="arriveCity != null" >
+        arrive_city,
       </if>
       <if test="arriveDestination != null" >
         arrive_destination,
@@ -98,17 +98,17 @@
       <if test="priceInstruction != null" >
         #{priceInstruction,jdbcType=VARCHAR},
       </if>
-      <if test="startCountryId != null" >
-        #{startCountryId,jdbcType=INTEGER},
+      <if test="startCountry != null" >
+        #{startCountry,jdbcType=VARCHAR},
       </if>
-      <if test="startCityId != null" >
-        #{startCityId,jdbcType=INTEGER},
+      <if test="startCity != null" >
+        #{startCity,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCountryId != null" >
-        #{arriveCountryId,jdbcType=INTEGER},
+      <if test="arriveCountry != null" >
+        #{arriveCountry,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCityId != null" >
-        #{arriveCityId,jdbcType=INTEGER},
+      <if test="arriveCity != null" >
+        #{arriveCity,jdbcType=VARCHAR},
       </if>
       <if test="arriveDestination != null" >
         #{arriveDestination,jdbcType=INTEGER},
@@ -139,17 +139,17 @@
       <if test="priceInstruction != null" >
         price_instruction = #{priceInstruction,jdbcType=VARCHAR},
       </if>
-      <if test="startCountryId != null" >
-        start_country_id = #{startCountryId,jdbcType=INTEGER},
+      <if test="startCountry != null" >
+        start_country = #{startCountry,jdbcType=VARCHAR},
       </if>
-      <if test="startCityId != null" >
-        start_city_id = #{startCityId,jdbcType=INTEGER},
+      <if test="startCity != null" >
+        start_city = #{startCity,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCountryId != null" >
-        arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      <if test="arriveCountry != null" >
+        arrive_country = #{arriveCountry,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCityId != null" >
-        arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      <if test="arriveCity != null" >
+        arrive_city = #{arriveCity,jdbcType=VARCHAR},
       </if>
       <if test="arriveDestination != null" >
         arrive_destination = #{arriveDestination,jdbcType=INTEGER},
@@ -174,10 +174,10 @@
     set name = #{name,jdbcType=VARCHAR},
       instruction = #{instruction,jdbcType=VARCHAR},
       price_instruction = #{priceInstruction,jdbcType=VARCHAR},
-      start_country_id = #{startCountryId,jdbcType=INTEGER},
-      start_city_id = #{startCityId,jdbcType=INTEGER},
-      arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
-      arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
       arrive_destination = #{arriveDestination,jdbcType=INTEGER},
       deadline = #{deadline,jdbcType=TIMESTAMP},
       adult_price = #{adultPrice,jdbcType=DECIMAL},
@@ -185,4 +185,15 @@
       enable = #{enable,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getFlightListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from flight where 1=1 
+    <if test="enable != null and enable != ''">
+		AND enable = #{enable,jdbcType=VARCHAR}
+	</if>
+    
+    order by id DESC
+  </select>
 </mapper>

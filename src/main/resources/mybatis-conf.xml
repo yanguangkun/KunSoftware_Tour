@@ -9,6 +9,7 @@
         <plugin interceptor="com.kunsoftware.page.PagePlugin">
             <property name="dialect" value="mysql" />
             <property name="pageSqlId" value=".*ListPage.*" />
-        </plugin>
+            <property name="dialogSqlId" value=".*ListDialog.*" />
+        </plugin> 
     </plugins>
 </configuration>

@@ -28,7 +28,7 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 
     if(uri.indexOf("manager") != -1) {
 	    if (null == userEntity) {
-	    	request.getRequestDispatcher("/manager/login?loginMsg=" + URLEncoder.encode("请登录!", "gbk")).forward(request, response); 
+	    	request.getRequestDispatcher("/manager/login?loginMsg=请登录后再操作!").forward(request, response); 
 	        return false;
 	    }
     }

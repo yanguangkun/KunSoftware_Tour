@@ -39,8 +39,7 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 	public static String type2 = "2";
 	
 	@SuppressWarnings("rawtypes")
-	public void execute(Environment env, Map params, TemplateModel[] loopVars, 
-			TemplateDirectiveBody body) throws TemplateException, IOException {
+	public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
 		 
 		String code = ObjectUtils.toString(params.get("code")); 
 		String value = ObjectUtils.toString(params.get("value"));
@@ -50,6 +49,14 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 			id = name;
 		}
 		 
+		String str = getResult(code,value,name,id);
+		
+		Writer out = env.getOut();  
+		out.write(str);
+	}
+	
+	public static String getResult(String code,String value,String name,String id) {
+		
 		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(WebUtil.getRequest().getSession().getServletContext());
 		ValueSetService service = ctx.getBean(ValueSetService.class);
 		List<ValueSet> list = null;
@@ -75,8 +82,8 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 				str.append(WebUtil.radio(name,id,entity.getName(), entity.getValue(), value));
 			}
 		}
-		Writer out = env.getOut();  
-		out.write(str.toString());
+		
+		return str.toString();
 	}
 
 }

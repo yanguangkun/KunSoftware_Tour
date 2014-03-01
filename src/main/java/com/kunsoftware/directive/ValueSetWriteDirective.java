@@ -30,11 +30,26 @@ public class ValueSetWriteDirective implements TemplateDirectiveModel {
 		 
 		String code = ObjectUtils.toString(params.get("code")); 
 		String value = ObjectUtils.toString(params.get("value"));
+		  
+		String str = getResult(code,value);
 		 
+		Writer out = env.getOut();  
+		out.write(str.toString());
+		 
+	}
+	
+	public static String getResult(String code,String value) {
+		
 		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(WebUtil.getRequest().getSession().getServletContext());
-		ValueSetService service = ctx.getBean(ValueSetService.class); 
-		 
-		List<ValueSet> list = service.selectValueSetList(code);
+		ValueSetService service = ctx.getBean(ValueSetService.class);
+		List<ValueSet> list = null;
+		if("destination".equals(code)) {
+			list = service.selectValueSetDestinationList();
+		} else if("airline".equals(code)) {
+			list = service.selectValueSetAirlineList();
+		} else {
+			list = service.selectValueSetList(code);
+		} 
 		
 		StringBuilder str = new StringBuilder();
 		
@@ -50,10 +65,8 @@ public class ValueSetWriteDirective implements TemplateDirectiveModel {
 			if(StringUtils.isNotEmpty(str.toString())) str.append(",");
 			str.append(resultStr);
 		}
-		 
-		Writer out = env.getOut();  
-		out.write(str.toString());
-		 
+		
+		return str.toString();
 	}
 
 }

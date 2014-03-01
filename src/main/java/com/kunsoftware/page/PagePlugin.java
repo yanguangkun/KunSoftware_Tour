@@ -37,6 +37,7 @@ public class PagePlugin implements Interceptor {
 
     private static String dialect = "";
     private static String pageSqlId = "";
+    private static String dialogSqlId = "";
 
     @SuppressWarnings("unchecked")
     public Object intercept(Invocation ivk) throws Throwable {
@@ -91,7 +92,7 @@ public class PagePlugin implements Interceptor {
                     String pageSql = generatePageSql(sql, page);
                     ReflectHelper.setValueByFieldName(boundSql, "sql", pageSql);
                 }
-            }
+            } 
         }
         return ivk.proceed();
     }
@@ -134,7 +135,7 @@ public class PagePlugin implements Interceptor {
         }
     }
  
-    private String generatePageSql(String sql, PageInfo page) {
+    public static String generatePageSql(String sql, PageInfo page) {
         if (page != null && (dialect !=null || !dialect.equals(""))) {
             StringBuffer pageSql = new StringBuffer();
             if ("mysql".equals(dialect)) {
@@ -168,9 +169,18 @@ public class PagePlugin implements Interceptor {
             }
         }
         pageSqlId = p.getProperty("pageSqlId");
-        if (dialect ==null || dialect.equals("")) {
+        if (pageSqlId ==null || pageSqlId.equals("")) {
             try {
                 throw new PropertyException("pageSqlId property is not found!");
+            } catch (PropertyException e) { 
+                e.printStackTrace();
+            }
+        }
+        
+        dialogSqlId = p.getProperty("dialogSqlId");
+        if (dialogSqlId ==null || dialogSqlId.equals("")) {
+            try {
+                throw new PropertyException("dialogSqlId property is not found!");
             } catch (PropertyException e) { 
                 e.printStackTrace();
             }

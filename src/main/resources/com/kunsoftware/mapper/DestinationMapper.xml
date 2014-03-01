@@ -7,11 +7,12 @@
     <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
     <result column="country_value" property="countryValue" jdbcType="VARCHAR" />
     <result column="gallery_id" property="galleryId" jdbcType="INTEGER" />
+    <result column="gallery_name" property="galleryName" jdbcType="VARCHAR" />
     <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
     <result column="enable" property="enable" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, name_en, country_value, gallery_id, image_path, enable
+    id, name, name_en, country_value, gallery_id, gallery_name, image_path, enable
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,11 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.kunsoftware.entity.Destination" >
     insert into destination (id, name, name_en, 
-      country_value, gallery_id, image_path, 
-      enable)
+      country_value, gallery_id, gallery_name, 
+      image_path, enable)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
-      #{countryValue,jdbcType=VARCHAR}, #{galleryId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
-      #{enable,jdbcType=VARCHAR})
+      #{countryValue,jdbcType=VARCHAR}, #{galleryId,jdbcType=INTEGER}, #{galleryName,jdbcType=VARCHAR}, 
+      #{imagePath,jdbcType=VARCHAR}, #{enable,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kunsoftware.entity.Destination" >
     insert into destination
@@ -48,6 +49,9 @@
       </if>
       <if test="galleryId != null" >
         gallery_id,
+      </if>
+      <if test="galleryName != null" >
+        gallery_name,
       </if>
       <if test="imagePath != null" >
         image_path,
@@ -72,6 +76,9 @@
       <if test="galleryId != null" >
         #{galleryId,jdbcType=INTEGER},
       </if>
+      <if test="galleryName != null" >
+        #{galleryName,jdbcType=VARCHAR},
+      </if>
       <if test="imagePath != null" >
         #{imagePath,jdbcType=VARCHAR},
       </if>
@@ -95,6 +102,9 @@
       <if test="galleryId != null" >
         gallery_id = #{galleryId,jdbcType=INTEGER},
       </if>
+      <if test="galleryName != null" >
+        gallery_name = #{galleryName,jdbcType=VARCHAR},
+      </if>
       <if test="imagePath != null" >
         image_path = #{imagePath,jdbcType=VARCHAR},
       </if>
@@ -110,6 +120,7 @@
       name_en = #{nameEn,jdbcType=VARCHAR},
       country_value = #{countryValue,jdbcType=VARCHAR},
       gallery_id = #{galleryId,jdbcType=INTEGER},
+      gallery_name = #{galleryName,jdbcType=VARCHAR},
       image_path = #{imagePath,jdbcType=VARCHAR},
       enable = #{enable,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
