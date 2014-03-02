@@ -18,17 +18,13 @@ if (top.location != self.location){top.location = self.location}
 </head>
 
 <body> 
+<br />
 <#if loginMsg??>
-<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="bg1">
-  <tr>
-    <td align="center" class="error" height="22">${loginMsg}</td>
-  </tr>
-</table>
+ 
+<div class="main-login">
+<div class="alert alert-danger">${loginMsg}</div>
+</div>
 </#if> 
-<br />
-<br />
-<br />
-<br />
 <div class="main-login"> 
 <form id="loginFrm" name="loginFrm" method="post" action="${request.contextPath}/manager/login">
 <table align="center" cellpadding="0" cellspacing="0"  class="table table-bordered table-form">
