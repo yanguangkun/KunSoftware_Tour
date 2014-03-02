@@ -2,7 +2,7 @@ var Context_Path = "/tour";
 
 (function() { 
 	var alias = {
-		"jquery": "libs/jquery/1.10.2/jquery.js",
+		"jquery": "libs/jquery/1.11.0/jquery-1.11.0.min.js",
 		"jquery-form": "libs/jquery-form/3.49/jquery-form.js",
 		"bootstrap": "libs/bootstrap/3.1.1/bootstrap.min.js",
 		'jquery-validate': 'libs/jquery-validate/1.11.1/jquery.validate.min.js',
