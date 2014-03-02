@@ -13,19 +13,19 @@ public class FlightSegment {
 
     private String flightNum;
 
-    private Integer startCountryId;
+    private String startCountry;
 
-    private Integer startCityId;
+    private String startCity;
 
     private String startAirport;
 
     private String startTime;
 
-    private Integer arriveCountryId;
+    private String arriveCountry;
 
-    private Integer arriveCityId;
+    private String arriveCity;
 
-    private Integer arriveAirport;
+    private String arriveAirport;
 
     private String arriveTime;
 
@@ -77,20 +77,20 @@ public class FlightSegment {
         this.flightNum = flightNum;
     }
 
-    public Integer getStartCountryId() {
-        return startCountryId;
+    public String getStartCountry() {
+        return startCountry;
     }
 
-    public void setStartCountryId(Integer startCountryId) {
-        this.startCountryId = startCountryId;
+    public void setStartCountry(String startCountry) {
+        this.startCountry = startCountry;
     }
 
-    public Integer getStartCityId() {
-        return startCityId;
+    public String getStartCity() {
+        return startCity;
     }
 
-    public void setStartCityId(Integer startCityId) {
-        this.startCityId = startCityId;
+    public void setStartCity(String startCity) {
+        this.startCity = startCity;
     }
 
     public String getStartAirport() {
@@ -109,27 +109,27 @@ public class FlightSegment {
         this.startTime = startTime;
     }
 
-    public Integer getArriveCountryId() {
-        return arriveCountryId;
+    public String getArriveCountry() {
+        return arriveCountry;
     }
 
-    public void setArriveCountryId(Integer arriveCountryId) {
-        this.arriveCountryId = arriveCountryId;
+    public void setArriveCountry(String arriveCountry) {
+        this.arriveCountry = arriveCountry;
     }
 
-    public Integer getArriveCityId() {
-        return arriveCityId;
+    public String getArriveCity() {
+        return arriveCity;
     }
 
-    public void setArriveCityId(Integer arriveCityId) {
-        this.arriveCityId = arriveCityId;
+    public void setArriveCity(String arriveCity) {
+        this.arriveCity = arriveCity;
     }
 
-    public Integer getArriveAirport() {
+    public String getArriveAirport() {
         return arriveAirport;
     }
 
-    public void setArriveAirport(Integer arriveAirport) {
+    public void setArriveAirport(String arriveAirport) {
         this.arriveAirport = arriveAirport;
     }
 

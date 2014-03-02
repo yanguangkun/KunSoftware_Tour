@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.kunsoftware.entity.SysModalDialog;
 
+@SuppressWarnings("rawtypes")
 public class DialogBean {
 
 	private SysModalDialog entity;
 	
 	private List<HeadColumnBean> headColumnList; 
 	
-	private List<String> conditionList;
+	private List<String> conditionList;	
 	
 	private List resultList;
 	

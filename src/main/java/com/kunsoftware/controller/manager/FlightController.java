@@ -29,11 +29,11 @@ private static Logger logger = LoggerFactory.getLogger(DestinationController.cla
 	private FlightService service;
 	
 	@RequestMapping("/list")
-	public String listFlight(ModelMap model,String enable,PageInfo pageInfo) throws KunSoftwareException {
+	public String listFlight(ModelMap model,String arriveDestination,PageInfo pageInfo) throws KunSoftwareException {
 		 
 		logger.info("航班列表");  
 		 
-		List<Flight> list = service.getFlightListPage(enable,pageInfo); 
+		List<Flight> list = service.getFlightListPage(arriveDestination,pageInfo); 
 		model.addAttribute("retList", list);
 		PageUtil.pageInfo(model, pageInfo);
 		return "manager/flight/flight-list";

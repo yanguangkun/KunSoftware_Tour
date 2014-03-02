@@ -20,5 +20,5 @@ public interface FlightMapper {
 
     int updateByPrimaryKey(Flight record);
     
-    List<Flight> getFlightListPage(@Param("enable") String enable,@Param("page") PageInfo page);
+    List<Flight> getFlightListPage(@Param("arriveDestination") String arriveDestination,@Param("page") PageInfo page);
 }

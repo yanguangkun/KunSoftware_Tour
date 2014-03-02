@@ -8,18 +8,18 @@
     <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
     <result column="airline_id" property="airlineId" jdbcType="INTEGER" />
     <result column="flight_num" property="flightNum" jdbcType="VARCHAR" />
-    <result column="start_country_id" property="startCountryId" jdbcType="INTEGER" />
-    <result column="start_city_id" property="startCityId" jdbcType="INTEGER" />
+    <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
     <result column="start_airport" property="startAirport" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="VARCHAR" />
-    <result column="arrive_country_id" property="arriveCountryId" jdbcType="INTEGER" />
-    <result column="arrive_city_id" property="arriveCityId" jdbcType="INTEGER" />
-    <result column="arrive_airport" property="arriveAirport" jdbcType="INTEGER" />
+    <result column="arrive_country" property="arriveCountry" jdbcType="VARCHAR" />
+    <result column="arrive_city" property="arriveCity" jdbcType="VARCHAR" />
+    <result column="arrive_airport" property="arriveAirport" jdbcType="VARCHAR" />
     <result column="arrive_time" property="arriveTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, flight_id, order_value, serial_number, airline_id, flight_num, start_country_id, 
-    start_city_id, start_airport, start_time, arrive_country_id, arrive_city_id, arrive_airport, 
+    id, flight_id, order_value, serial_number, airline_id, flight_num, start_country, 
+    start_city, start_airport, start_time, arrive_country, arrive_city, arrive_airport, 
     arrive_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -35,14 +35,14 @@
   <insert id="insert" parameterType="com.kunsoftware.entity.FlightSegment" >
     insert into flight_segment (id, flight_id, order_value, 
       serial_number, airline_id, flight_num, 
-      start_country_id, start_city_id, start_airport, 
-      start_time, arrive_country_id, arrive_city_id, 
+      start_country, start_city, start_airport, 
+      start_time, arrive_country, arrive_city, 
       arrive_airport, arrive_time)
     values (#{id,jdbcType=INTEGER}, #{flightId,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
       #{serialNumber,jdbcType=VARCHAR}, #{airlineId,jdbcType=INTEGER}, #{flightNum,jdbcType=VARCHAR}, 
-      #{startCountryId,jdbcType=INTEGER}, #{startCityId,jdbcType=INTEGER}, #{startAirport,jdbcType=VARCHAR}, 
-      #{startTime,jdbcType=VARCHAR}, #{arriveCountryId,jdbcType=INTEGER}, #{arriveCityId,jdbcType=INTEGER}, 
-      #{arriveAirport,jdbcType=INTEGER}, #{arriveTime,jdbcType=VARCHAR})
+      #{startCountry,jdbcType=VARCHAR}, #{startCity,jdbcType=VARCHAR}, #{startAirport,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=VARCHAR}, #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, 
+      #{arriveAirport,jdbcType=VARCHAR}, #{arriveTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kunsoftware.entity.FlightSegment" >
     insert into flight_segment
@@ -65,11 +65,11 @@
       <if test="flightNum != null" >
         flight_num,
       </if>
-      <if test="startCountryId != null" >
-        start_country_id,
+      <if test="startCountry != null" >
+        start_country,
       </if>
-      <if test="startCityId != null" >
-        start_city_id,
+      <if test="startCity != null" >
+        start_city,
       </if>
       <if test="startAirport != null" >
         start_airport,
@@ -77,11 +77,11 @@
       <if test="startTime != null" >
         start_time,
       </if>
-      <if test="arriveCountryId != null" >
-        arrive_country_id,
+      <if test="arriveCountry != null" >
+        arrive_country,
       </if>
-      <if test="arriveCityId != null" >
-        arrive_city_id,
+      <if test="arriveCity != null" >
+        arrive_city,
       </if>
       <if test="arriveAirport != null" >
         arrive_airport,
@@ -109,11 +109,11 @@
       <if test="flightNum != null" >
         #{flightNum,jdbcType=VARCHAR},
       </if>
-      <if test="startCountryId != null" >
-        #{startCountryId,jdbcType=INTEGER},
+      <if test="startCountry != null" >
+        #{startCountry,jdbcType=VARCHAR},
       </if>
-      <if test="startCityId != null" >
-        #{startCityId,jdbcType=INTEGER},
+      <if test="startCity != null" >
+        #{startCity,jdbcType=VARCHAR},
       </if>
       <if test="startAirport != null" >
         #{startAirport,jdbcType=VARCHAR},
@@ -121,14 +121,14 @@
       <if test="startTime != null" >
         #{startTime,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCountryId != null" >
-        #{arriveCountryId,jdbcType=INTEGER},
+      <if test="arriveCountry != null" >
+        #{arriveCountry,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCityId != null" >
-        #{arriveCityId,jdbcType=INTEGER},
+      <if test="arriveCity != null" >
+        #{arriveCity,jdbcType=VARCHAR},
       </if>
       <if test="arriveAirport != null" >
-        #{arriveAirport,jdbcType=INTEGER},
+        #{arriveAirport,jdbcType=VARCHAR},
       </if>
       <if test="arriveTime != null" >
         #{arriveTime,jdbcType=VARCHAR},
@@ -153,11 +153,11 @@
       <if test="flightNum != null" >
         flight_num = #{flightNum,jdbcType=VARCHAR},
       </if>
-      <if test="startCountryId != null" >
-        start_country_id = #{startCountryId,jdbcType=INTEGER},
+      <if test="startCountry != null" >
+        start_country = #{startCountry,jdbcType=VARCHAR},
       </if>
-      <if test="startCityId != null" >
-        start_city_id = #{startCityId,jdbcType=INTEGER},
+      <if test="startCity != null" >
+        start_city = #{startCity,jdbcType=VARCHAR},
       </if>
       <if test="startAirport != null" >
         start_airport = #{startAirport,jdbcType=VARCHAR},
@@ -165,14 +165,14 @@
       <if test="startTime != null" >
         start_time = #{startTime,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCountryId != null" >
-        arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
+      <if test="arriveCountry != null" >
+        arrive_country = #{arriveCountry,jdbcType=VARCHAR},
       </if>
-      <if test="arriveCityId != null" >
-        arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
+      <if test="arriveCity != null" >
+        arrive_city = #{arriveCity,jdbcType=VARCHAR},
       </if>
       <if test="arriveAirport != null" >
-        arrive_airport = #{arriveAirport,jdbcType=INTEGER},
+        arrive_airport = #{arriveAirport,jdbcType=VARCHAR},
       </if>
       <if test="arriveTime != null" >
         arrive_time = #{arriveTime,jdbcType=VARCHAR},
@@ -187,14 +187,22 @@
       serial_number = #{serialNumber,jdbcType=VARCHAR},
       airline_id = #{airlineId,jdbcType=INTEGER},
       flight_num = #{flightNum,jdbcType=VARCHAR},
-      start_country_id = #{startCountryId,jdbcType=INTEGER},
-      start_city_id = #{startCityId,jdbcType=INTEGER},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
       start_airport = #{startAirport,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=VARCHAR},
-      arrive_country_id = #{arriveCountryId,jdbcType=INTEGER},
-      arrive_city_id = #{arriveCityId,jdbcType=INTEGER},
-      arrive_airport = #{arriveAirport,jdbcType=INTEGER},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      arrive_airport = #{arriveAirport,jdbcType=VARCHAR},
       arrive_time = #{arriveTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getFlightSegmentListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from flight_segment where 1=1 
+     and flight_id = #{flightId,jdbcType=INTEGER}
+    order by order_value ASC, id DESC
+  </select>
 </mapper>

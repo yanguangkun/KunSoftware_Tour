@@ -9,48 +9,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kunsoftware.bean.FlightRequestBean;
-import com.kunsoftware.entity.Flight;
+import com.kunsoftware.bean.FlightSegmentRequestBean;
+import com.kunsoftware.entity.FlightSegment;
 import com.kunsoftware.exception.KunSoftwareException;
-import com.kunsoftware.mapper.FlightMapper;
-import com.kunsoftware.page.PageInfo;
+import com.kunsoftware.mapper.FlightSegmentMapper;
 
 @Service
-public class FlightService {
+public class FlightSegmentService {
 
-	private static Logger logger = LoggerFactory.getLogger(FlightService.class);	
+	private static Logger logger = LoggerFactory.getLogger(FlightSegmentService.class);	
 	
 	@Autowired
-	private FlightMapper mapper;
+	private FlightSegmentMapper mapper;
 	
-	public List<Flight> getFlightListPage(String arriveDestination,PageInfo page) {
+	public List<FlightSegment> getFlightSegmentListAll(Integer flightId) {
 		 
 		logger.info("query");
-		return mapper.getFlightListPage(arriveDestination,page);
+		return mapper.getFlightSegmentListAll(flightId);
 	}
 	 
 	@Transactional
-	public Flight insert(FlightRequestBean requestBean) throws KunSoftwareException {		 
+	public FlightSegment insert(FlightSegmentRequestBean requestBean) throws KunSoftwareException {		 
 		
-		Flight record = new Flight();
-		BeanUtils.copyProperties(requestBean, record);
-		
+		FlightSegment record = new FlightSegment();
+		BeanUtils.copyProperties(requestBean, record);  
 		mapper.insert(record);
 		return record;
 	}
 	
-	public Flight selectByPrimaryKey(Integer id) throws KunSoftwareException {
+	public FlightSegment selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
-	public int updateByPrimaryKey(FlightRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public int updateByPrimaryKey(FlightSegmentRequestBean requestBean,Integer id) throws KunSoftwareException {
 		
-		Flight record = mapper.selectByPrimaryKey(id); 
+		FlightSegment record = mapper.selectByPrimaryKey(id); 
 		BeanUtils.copyProperties(requestBean, record);
 		 
-		
 		return mapper.updateByPrimaryKeySelective(record);
 	} 
 	

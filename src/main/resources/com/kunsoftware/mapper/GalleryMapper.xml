@@ -19,13 +19,13 @@
     delete from gallery
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kunsoftware.entity.Gallery" >
+  <insert id="insert" parameterType="com.kunsoftware.entity.Gallery" useGeneratedKeys="true"  keyProperty="id">
     insert into gallery (id, name, remark
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Gallery" >
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Gallery" useGeneratedKeys="true"  keyProperty="id">
     insert into gallery
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -68,4 +68,14 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getGalleryListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from gallery where 1=1 
+    <if test="keyword != null and keyword != ''">
+		AND name like CONCAT('%', #{keyword} , '%') 
+	</if>
+    order by id DESC
+  </select>
 </mapper>

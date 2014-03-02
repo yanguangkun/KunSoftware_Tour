@@ -1,6 +1,11 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.kunsoftware.entity.Gallery;
+import com.kunsoftware.page.PageInfo;
 
 public interface GalleryMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +19,6 @@ public interface GalleryMapper {
     int updateByPrimaryKeySelective(Gallery record);
 
     int updateByPrimaryKey(Gallery record);
+    
+    List<Gallery> getGalleryListPage(@Param("keyword") String keyword,@Param("page") PageInfo page);
 }

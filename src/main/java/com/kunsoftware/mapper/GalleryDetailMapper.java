@@ -1,5 +1,9 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.kunsoftware.entity.GalleryDetail;
 
 public interface GalleryDetailMapper {
@@ -14,4 +18,7 @@ public interface GalleryDetailMapper {
     int updateByPrimaryKeySelective(GalleryDetail record);
 
     int updateByPrimaryKey(GalleryDetail record);
+    
+    List<GalleryDetail> getGalleryDetailListAll(@Param("galleryId") Integer galleryId); 
+    int deleteByGalleryId(@Param("galleryId") Integer galleryId); 
 }

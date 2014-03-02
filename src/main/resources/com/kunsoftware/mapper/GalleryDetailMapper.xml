@@ -90,4 +90,18 @@
       title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getGalleryDetailListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from gallery_detail where 1=1 
+    and gallery_id = #{galleryId,jdbcType=INTEGER}
+    order by id ASC
+  </select>
+  
+  <delete id="deleteByGalleryId" parameterType="java.lang.Integer" >
+    delete from gallery_detail
+    where gallery_id = #{galleryId,jdbcType=INTEGER}
+   
+  </delete>
 </mapper>

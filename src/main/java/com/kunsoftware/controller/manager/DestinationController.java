@@ -55,9 +55,9 @@ public class DestinationController extends BaseController {
 		 
 		logger.info("保存目的地"); 
 		requestBean.setImageFile(file);
-		Destination destination = service.insert(requestBean);		
+		Destination entity = service.insert(requestBean);		
 		JsonBean jsonBean = new JsonBean();
-		jsonBean.put("id", destination.getId());
+		jsonBean.put("id", entity.getId());
 		jsonBean.setMessage("操作成功"); 		 
 		return jsonBean;
 	}
