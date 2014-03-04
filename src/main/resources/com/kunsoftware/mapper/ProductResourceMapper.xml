@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.ProductResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.ProductResource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="arrive_country" property="arriveCountry" jdbcType="VARCHAR" />
+    <result column="arrive_city" property="arriveCity" jdbcType="VARCHAR" />
+    <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
+    <result column="product_type" property="productType" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="INTEGER" />
+    <result column="flight_id" property="flightId" jdbcType="INTEGER" />
+    <result column="ground" property="ground" jdbcType="VARCHAR" />
+    <result column="travel_days" property="travelDays" jdbcType="INTEGER" />
+    <result column="stay_days" property="stayDays" jdbcType="INTEGER" />
+    <result column="early_days" property="earlyDays" jdbcType="INTEGER" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="standard_price" property="standardPrice" jdbcType="INTEGER" />
+    <result column="interact_recommend" property="interactRecommend" jdbcType="VARCHAR" />
+    <result column="whether_shelf" property="whetherShelf" jdbcType="VARCHAR" />
+    <result column="flight_chedule_start" property="flightCheduleStart" jdbcType="DATE" />
+    <result column="flight_chedule_end" property="flightCheduleEnd" jdbcType="DATE" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="sale_price" property="salePrice" jdbcType="VARCHAR" />
+    <result column="marry_recommend" property="marryRecommend" jdbcType="VARCHAR" />
+    <result column="combo" property="combo" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.ProductResource" extends="BaseResultMap" >
+    <result column="tag" property="tag" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, start_country, start_city, arrive_country, arrive_city, arrive_destination, 
+    product_type, product_id, flight_id, ground, travel_days, stay_days, early_days, 
+    order_value, standard_price, interact_recommend, whether_shelf, flight_chedule_start, 
+    flight_chedule_end, week, sale_price, marry_recommend, combo
+  </sql>
+  <sql id="Blob_Column_List" >
+    tag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.ProductResource" >
+    insert into product_resource (id, name, start_country, 
+      start_city, arrive_country, arrive_city, 
+      arrive_destination, product_type, product_id, 
+      flight_id, ground, travel_days, 
+      stay_days, early_days, order_value, 
+      standard_price, interact_recommend, whether_shelf, 
+      flight_chedule_start, flight_chedule_end, week, 
+      sale_price, marry_recommend, combo, 
+      tag)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, 
+      #{startCity,jdbcType=VARCHAR}, #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, 
+      #{arriveDestination,jdbcType=INTEGER}, #{productType,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
+      #{flightId,jdbcType=INTEGER}, #{ground,jdbcType=VARCHAR}, #{travelDays,jdbcType=INTEGER}, 
+      #{stayDays,jdbcType=INTEGER}, #{earlyDays,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
+      #{standardPrice,jdbcType=INTEGER}, #{interactRecommend,jdbcType=VARCHAR}, #{whetherShelf,jdbcType=VARCHAR}, 
+      #{flightCheduleStart,jdbcType=DATE}, #{flightCheduleEnd,jdbcType=DATE}, #{week,jdbcType=VARCHAR}, 
+      #{salePrice,jdbcType=VARCHAR}, #{marryRecommend,jdbcType=VARCHAR}, #{combo,jdbcType=VARCHAR}, 
+      #{tag,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.ProductResource" >
+    insert into product_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="startCountry != null" >
+        start_country,
+      </if>
+      <if test="startCity != null" >
+        start_city,
+      </if>
+      <if test="arriveCountry != null" >
+        arrive_country,
+      </if>
+      <if test="arriveCity != null" >
+        arrive_city,
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination,
+      </if>
+      <if test="productType != null" >
+        product_type,
+      </if>
+      <if test="productId != null" >
+        product_id,
+      </if>
+      <if test="flightId != null" >
+        flight_id,
+      </if>
+      <if test="ground != null" >
+        ground,
+      </if>
+      <if test="travelDays != null" >
+        travel_days,
+      </if>
+      <if test="stayDays != null" >
+        stay_days,
+      </if>
+      <if test="earlyDays != null" >
+        early_days,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="standardPrice != null" >
+        standard_price,
+      </if>
+      <if test="interactRecommend != null" >
+        interact_recommend,
+      </if>
+      <if test="whetherShelf != null" >
+        whether_shelf,
+      </if>
+      <if test="flightCheduleStart != null" >
+        flight_chedule_start,
+      </if>
+      <if test="flightCheduleEnd != null" >
+        flight_chedule_end,
+      </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="salePrice != null" >
+        sale_price,
+      </if>
+      <if test="marryRecommend != null" >
+        marry_recommend,
+      </if>
+      <if test="combo != null" >
+        combo,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountry != null" >
+        #{arriveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCity != null" >
+        #{arriveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="flightId != null" >
+        #{flightId,jdbcType=INTEGER},
+      </if>
+      <if test="ground != null" >
+        #{ground,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDays != null" >
+        #{travelDays,jdbcType=INTEGER},
+      </if>
+      <if test="stayDays != null" >
+        #{stayDays,jdbcType=INTEGER},
+      </if>
+      <if test="earlyDays != null" >
+        #{earlyDays,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="standardPrice != null" >
+        #{standardPrice,jdbcType=INTEGER},
+      </if>
+      <if test="interactRecommend != null" >
+        #{interactRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherShelf != null" >
+        #{whetherShelf,jdbcType=VARCHAR},
+      </if>
+      <if test="flightCheduleStart != null" >
+        #{flightCheduleStart,jdbcType=DATE},
+      </if>
+      <if test="flightCheduleEnd != null" >
+        #{flightCheduleEnd,jdbcType=DATE},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null" >
+        #{salePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="marryRecommend != null" >
+        #{marryRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="combo != null" >
+        #{combo,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.ProductResource" >
+    update product_resource
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        start_country = #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        start_city = #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountry != null" >
+        arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCity != null" >
+        arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="productType != null" >
+        product_type = #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="flightId != null" >
+        flight_id = #{flightId,jdbcType=INTEGER},
+      </if>
+      <if test="ground != null" >
+        ground = #{ground,jdbcType=VARCHAR},
+      </if>
+      <if test="travelDays != null" >
+        travel_days = #{travelDays,jdbcType=INTEGER},
+      </if>
+      <if test="stayDays != null" >
+        stay_days = #{stayDays,jdbcType=INTEGER},
+      </if>
+      <if test="earlyDays != null" >
+        early_days = #{earlyDays,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="standardPrice != null" >
+        standard_price = #{standardPrice,jdbcType=INTEGER},
+      </if>
+      <if test="interactRecommend != null" >
+        interact_recommend = #{interactRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="whetherShelf != null" >
+        whether_shelf = #{whetherShelf,jdbcType=VARCHAR},
+      </if>
+      <if test="flightCheduleStart != null" >
+        flight_chedule_start = #{flightCheduleStart,jdbcType=DATE},
+      </if>
+      <if test="flightCheduleEnd != null" >
+        flight_chedule_end = #{flightCheduleEnd,jdbcType=DATE},
+      </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="marryRecommend != null" >
+        marry_recommend = #{marryRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="combo != null" >
+        combo = #{combo,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kunsoftware.entity.ProductResource" >
+    update product_resource
+    set name = #{name,jdbcType=VARCHAR},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      product_type = #{productType,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      flight_id = #{flightId,jdbcType=INTEGER},
+      ground = #{ground,jdbcType=VARCHAR},
+      travel_days = #{travelDays,jdbcType=INTEGER},
+      stay_days = #{stayDays,jdbcType=INTEGER},
+      early_days = #{earlyDays,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      standard_price = #{standardPrice,jdbcType=INTEGER},
+      interact_recommend = #{interactRecommend,jdbcType=VARCHAR},
+      whether_shelf = #{whetherShelf,jdbcType=VARCHAR},
+      flight_chedule_start = #{flightCheduleStart,jdbcType=DATE},
+      flight_chedule_end = #{flightCheduleEnd,jdbcType=DATE},
+      week = #{week,jdbcType=VARCHAR},
+      sale_price = #{salePrice,jdbcType=VARCHAR},
+      marry_recommend = #{marryRecommend,jdbcType=VARCHAR},
+      combo = #{combo,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.ProductResource" >
+    update product_resource
+    set name = #{name,jdbcType=VARCHAR},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      product_type = #{productType,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=INTEGER},
+      flight_id = #{flightId,jdbcType=INTEGER},
+      ground = #{ground,jdbcType=VARCHAR},
+      travel_days = #{travelDays,jdbcType=INTEGER},
+      stay_days = #{stayDays,jdbcType=INTEGER},
+      early_days = #{earlyDays,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      standard_price = #{standardPrice,jdbcType=INTEGER},
+      interact_recommend = #{interactRecommend,jdbcType=VARCHAR},
+      whether_shelf = #{whetherShelf,jdbcType=VARCHAR},
+      flight_chedule_start = #{flightCheduleStart,jdbcType=DATE},
+      flight_chedule_end = #{flightCheduleEnd,jdbcType=DATE},
+      week = #{week,jdbcType=VARCHAR},
+      sale_price = #{salePrice,jdbcType=VARCHAR},
+      marry_recommend = #{marryRecommend,jdbcType=VARCHAR},
+      combo = #{combo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getProductResourceListPage" resultMap="BaseResultMap" parameterType="com.kunsoftware.bean.ProductResourceRequestBean">
+    select 
+    <include refid="Base_Column_List" />
+    from product_resource where 1=1 
+    <if test="bean != null" >
+	    <if test="bean.name != null and bean.name != ''">
+			AND name like CONCAT('%', #{bean.name} , '%') 
+		</if>
+		<if test="bean.startCity != null and bean.startCity != ''">
+			AND start_city = #{bean.startCity,jdbcType=VARCHAR}
+		</if>
+		<if test="bean.arriveDestination != null and arriveDestination != ''">
+			arrive_destination = #{bean.arriveDestination,jdbcType=INTEGER}
+		</if>
+		<if test="bean.productType != null and bean.productType != ''">
+			product_type = #{bean.productType,jdbcType=VARCHAR}
+		</if>
+		<if test="bean.whetherShelf != null and bean.whetherShelf != ''">
+			whether_shelf = #{bean.whetherShelf,jdbcType=VARCHAR}
+		</if>
+	</if>
+    
+    order by order_value ASC, id DESC
+  </select>
+</mapper>

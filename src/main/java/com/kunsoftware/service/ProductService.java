@@ -10,52 +10,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kunsoftware.bean.DestinationRequestBean;
-import com.kunsoftware.entity.Destination;
+import com.kunsoftware.bean.ProductRequestBean;
+import com.kunsoftware.entity.Product;
 import com.kunsoftware.exception.KunSoftwareException;
-import com.kunsoftware.mapper.DestinationMapper;
+import com.kunsoftware.mapper.ProductMapper;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.util.FileUtil;
 
 @Service
-public class DestinationService {
+public class ProductService {
 
-	private static Logger logger = LoggerFactory.getLogger(DestinationService.class);	
+	private static Logger logger = LoggerFactory.getLogger(ProductService.class);	
 	
 	@Autowired
-	private DestinationMapper mapper;
+	private ProductMapper mapper;
 	
-	public List<Destination> getDestinationListPage(@Param("keyword") String keyword,@Param("page") PageInfo page) {
+	public List<Product> getProductListPage(@Param("arriveProduct") String arriveProduct,
+   		 @Param("type") String type,
+   		 @Param("page") PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getDestinationListPage(keyword,page);
+		return mapper.getProductListPage(arriveProduct,type,page);
 	}
 	 
 	@Transactional
-	public Destination insert(DestinationRequestBean requestBean) throws KunSoftwareException {		 
+	public Product insert(ProductRequestBean requestBean) throws KunSoftwareException {		 
 		
-		Destination record = new Destination();
-		BeanUtils.copyProperties(requestBean, record); 
+		Product record = new Product();
+		BeanUtils.copyProperties(requestBean, record);
 		
 		if(requestBean.getImageFile() != null) {
 			String imagePath = FileUtil.uploadFile(requestBean.getImageFile());
 			record.setImagePath(imagePath);
 		}
-		
+		 
 		mapper.insert(record);
 		return record;
 	}
 	
-	public Destination selectByPrimaryKey(Integer id) throws KunSoftwareException {
+	public Product selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
-	public int updateByPrimaryKey(DestinationRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public int updateByPrimaryKey(ProductRequestBean requestBean,Integer id) throws KunSoftwareException {
 		
-		Destination record = mapper.selectByPrimaryKey(id); 
-		BeanUtils.copyProperties(requestBean, record);
+		Product record = mapper.selectByPrimaryKey(id); 
+		BeanUtils.copyProperties(requestBean, record);	
 		
 		if(requestBean.getImageFile() != null) {
 			String imagePath = FileUtil.uploadFile(requestBean.getImageFile());
@@ -63,16 +65,6 @@ public class DestinationService {
 		}
 		
 		return mapper.updateByPrimaryKeySelective(record);
-	}
-	
-	@Transactional
-	public void updateEnableByIds(Integer[] id,String enable) throws KunSoftwareException {
-		
-		for(int i = 0;i < id.length;i++) {
-			Destination record = mapper.selectByPrimaryKey(id[i]); 
-			record.setEnable(enable);
-			mapper.updateByPrimaryKeySelective(record);
-		}  
 	}
 	
 	@Transactional
@@ -87,5 +79,4 @@ public class DestinationService {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
 	}
-	 
 }

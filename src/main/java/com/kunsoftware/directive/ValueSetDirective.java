@@ -64,7 +64,9 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 			list = service.selectValueSetDestinationList();
 		} else if("airline".equals(code)) {
 			list = service.selectValueSetAirlineList();
-		} else {
+		} else if("ground".equals(code)) {
+			list = service.selectValueSetGround();
+		}  else {
 			list = service.selectValueSetList(code);
 		}		
 		

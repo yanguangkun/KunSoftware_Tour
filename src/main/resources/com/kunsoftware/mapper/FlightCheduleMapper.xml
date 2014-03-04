@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.FlightCheduleMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.FlightChedule" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_resource_id" property="productResourceId" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="valid" property="valid" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="last_reservation_date" property="lastReservationDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_resource_id, start_date, valid, audit, status, last_reservation_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight_chedule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flight_chedule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.FlightChedule" >
+    insert into flight_chedule (id, product_resource_id, start_date, 
+      valid, audit, status, 
+      last_reservation_date)
+    values (#{id,jdbcType=INTEGER}, #{productResourceId,jdbcType=INTEGER}, #{startDate,jdbcType=DATE}, 
+      #{valid,jdbcType=VARCHAR}, #{audit,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{lastReservationDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.FlightChedule" >
+    insert into flight_chedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastReservationDate != null" >
+        last_reservation_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceId != null" >
+        #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastReservationDate != null" >
+        #{lastReservationDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.FlightChedule" >
+    update flight_chedule
+    <set >
+      <if test="productResourceId != null" >
+        product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="lastReservationDate != null" >
+        last_reservation_date = #{lastReservationDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.FlightChedule" >
+    update flight_chedule
+    set product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      valid = #{valid,jdbcType=VARCHAR},
+      audit = #{audit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      last_reservation_date = #{lastReservationDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

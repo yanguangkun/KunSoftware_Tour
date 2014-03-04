@@ -170,5 +170,13 @@
     from value_set
     where code = #{code,jdbcType=VARCHAR} and value=#{value,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectValueSetListByParentValue" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from value_set where 1=1
+    and parent_value = #{parentValue,jdbcType=VARCHAR}
+    order by order_value ASC, id DESC
+  </select>
 </mapper>
  

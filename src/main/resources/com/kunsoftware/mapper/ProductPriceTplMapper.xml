@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.ProductPriceTplMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.ProductPriceTpl" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_resource_id" property="productResourceId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price_describe" property="priceDescribe" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="charge_unit" property="chargeUnit" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.ProductPriceTpl" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_resource_id, name, price_describe, order_value, charge_unit, price
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product_price_tpl
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_price_tpl
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.ProductPriceTpl" >
+    insert into product_price_tpl (id, product_resource_id, name, 
+      price_describe, order_value, charge_unit, 
+      price, remark)
+    values (#{id,jdbcType=INTEGER}, #{productResourceId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{priceDescribe,jdbcType=VARCHAR}, #{orderValue,jdbcType=INTEGER}, #{chargeUnit,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.ProductPriceTpl" >
+    insert into product_price_tpl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="priceDescribe != null" >
+        price_describe,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="chargeUnit != null" >
+        charge_unit,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceId != null" >
+        #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="priceDescribe != null" >
+        #{priceDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="chargeUnit != null" >
+        #{chargeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.ProductPriceTpl" >
+    update product_price_tpl
+    <set >
+      <if test="productResourceId != null" >
+        product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="priceDescribe != null" >
+        price_describe = #{priceDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="chargeUnit != null" >
+        charge_unit = #{chargeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kunsoftware.entity.ProductPriceTpl" >
+    update product_price_tpl
+    set product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      price_describe = #{priceDescribe,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      charge_unit = #{chargeUnit,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.ProductPriceTpl" >
+    update product_price_tpl
+    set product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      price_describe = #{priceDescribe,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      charge_unit = #{chargeUnit,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

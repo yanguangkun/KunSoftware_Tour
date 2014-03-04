@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Product" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="custom_made" property="customMade" jdbcType="VARCHAR" />
+    <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
+    <result column="start_city" property="startCity" jdbcType="VARCHAR" />
+    <result column="arrive_country" property="arriveCountry" jdbcType="VARCHAR" />
+    <result column="arrive_city" property="arriveCity" jdbcType="VARCHAR" />
+    <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
+    <result column="manager_comment" property="managerComment" jdbcType="VARCHAR" />
+    <result column="gallery_id" property="galleryId" jdbcType="INTEGER" />
+    <result column="gallery_name" property="galleryName" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.Product" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type, custom_made, start_country, start_city, arrive_country, arrive_city, 
+    arrive_destination, manager_comment, gallery_id, gallery_name, image_path
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Product" >
+    insert into product (id, name, type, 
+      custom_made, start_country, start_city, 
+      arrive_country, arrive_city, arrive_destination, 
+      manager_comment, gallery_id, gallery_name, 
+      image_path, remark)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{customMade,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, #{startCity,jdbcType=VARCHAR}, 
+      #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, #{arriveDestination,jdbcType=INTEGER}, 
+      #{managerComment,jdbcType=VARCHAR}, #{galleryId,jdbcType=INTEGER}, #{galleryName,jdbcType=VARCHAR}, 
+      #{imagePath,jdbcType=VARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="customMade != null" >
+        custom_made,
+      </if>
+      <if test="startCountry != null" >
+        start_country,
+      </if>
+      <if test="startCity != null" >
+        start_city,
+      </if>
+      <if test="arriveCountry != null" >
+        arrive_country,
+      </if>
+      <if test="arriveCity != null" >
+        arrive_city,
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination,
+      </if>
+      <if test="managerComment != null" >
+        manager_comment,
+      </if>
+      <if test="galleryId != null" >
+        gallery_id,
+      </if>
+      <if test="galleryName != null" >
+        gallery_name,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customMade != null" >
+        #{customMade,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountry != null" >
+        #{arriveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCity != null" >
+        #{arriveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="managerComment != null" >
+        #{managerComment,jdbcType=VARCHAR},
+      </if>
+      <if test="galleryId != null" >
+        #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="galleryName != null" >
+        #{galleryName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Product" >
+    update product
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="customMade != null" >
+        custom_made = #{customMade,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        start_country = #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="startCity != null" >
+        start_city = #{startCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCountry != null" >
+        arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveCity != null" >
+        arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="managerComment != null" >
+        manager_comment = #{managerComment,jdbcType=VARCHAR},
+      </if>
+      <if test="galleryId != null" >
+        gallery_id = #{galleryId,jdbcType=INTEGER},
+      </if>
+      <if test="galleryName != null" >
+        gallery_name = #{galleryName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kunsoftware.entity.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      custom_made = #{customMade,jdbcType=VARCHAR},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      manager_comment = #{managerComment,jdbcType=VARCHAR},
+      gallery_id = #{galleryId,jdbcType=INTEGER},
+      gallery_name = #{galleryName,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      custom_made = #{customMade,jdbcType=VARCHAR},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      start_city = #{startCity,jdbcType=VARCHAR},
+      arrive_country = #{arriveCountry,jdbcType=VARCHAR},
+      arrive_city = #{arriveCity,jdbcType=VARCHAR},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      manager_comment = #{managerComment,jdbcType=VARCHAR},
+      gallery_id = #{galleryId,jdbcType=INTEGER},
+      gallery_name = #{galleryName,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getProductListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from product where 1=1 
+    <if test="arriveDestination != null and arriveDestination != ''">
+		AND arrive_destination = #{arriveDestination,jdbcType=VARCHAR}
+	</if>
+	<if test="type != null and type != ''">
+		AND type = #{type,jdbcType=VARCHAR}
+	</if>
+    
+    order by id DESC
+  </select>
+</mapper>

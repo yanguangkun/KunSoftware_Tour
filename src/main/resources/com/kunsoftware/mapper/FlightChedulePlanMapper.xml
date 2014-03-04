@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.FlightChedulePlanMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.FlightChedulePlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="flight_chedule_id" property="flightCheduleId" jdbcType="INTEGER" />
+    <result column="product_plan_tpl_id" property="productPlanTplId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="plan_describe" property="planDescribe" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="adult_price" property="adultPrice" jdbcType="DECIMAL" />
+    <result column="adult_extra_bed_price" property="adultExtraBedPrice" jdbcType="DECIMAL" />
+    <result column="child_bed_price" property="childBedPrice" jdbcType="DECIMAL" />
+    <result column="child_no_bed_price" property="childNoBedPrice" jdbcType="DECIMAL" />
+    <result column="single_room" property="singleRoom" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.FlightChedulePlan" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, flight_chedule_id, product_plan_tpl_id, name, plan_describe, order_value, adult_price, 
+    adult_extra_bed_price, child_bed_price, child_no_bed_price, single_room
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from flight_chedule_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flight_chedule_plan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.FlightChedulePlan" >
+    insert into flight_chedule_plan (id, flight_chedule_id, product_plan_tpl_id, 
+      name, plan_describe, order_value, 
+      adult_price, adult_extra_bed_price, child_bed_price, 
+      child_no_bed_price, single_room, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{flightCheduleId,jdbcType=INTEGER}, #{productPlanTplId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{planDescribe,jdbcType=VARCHAR}, #{orderValue,jdbcType=INTEGER}, 
+      #{adultPrice,jdbcType=DECIMAL}, #{adultExtraBedPrice,jdbcType=DECIMAL}, #{childBedPrice,jdbcType=DECIMAL}, 
+      #{childNoBedPrice,jdbcType=DECIMAL}, #{singleRoom,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.FlightChedulePlan" >
+    insert into flight_chedule_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="flightCheduleId != null" >
+        flight_chedule_id,
+      </if>
+      <if test="productPlanTplId != null" >
+        product_plan_tpl_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="planDescribe != null" >
+        plan_describe,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="adultPrice != null" >
+        adult_price,
+      </if>
+      <if test="adultExtraBedPrice != null" >
+        adult_extra_bed_price,
+      </if>
+      <if test="childBedPrice != null" >
+        child_bed_price,
+      </if>
+      <if test="childNoBedPrice != null" >
+        child_no_bed_price,
+      </if>
+      <if test="singleRoom != null" >
+        single_room,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="flightCheduleId != null" >
+        #{flightCheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="productPlanTplId != null" >
+        #{productPlanTplId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="planDescribe != null" >
+        #{planDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="adultPrice != null" >
+        #{adultPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="adultExtraBedPrice != null" >
+        #{adultExtraBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childBedPrice != null" >
+        #{childBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childNoBedPrice != null" >
+        #{childNoBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="singleRoom != null" >
+        #{singleRoom,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.FlightChedulePlan" >
+    update flight_chedule_plan
+    <set >
+      <if test="flightCheduleId != null" >
+        flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="productPlanTplId != null" >
+        product_plan_tpl_id = #{productPlanTplId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="planDescribe != null" >
+        plan_describe = #{planDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="adultPrice != null" >
+        adult_price = #{adultPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="adultExtraBedPrice != null" >
+        adult_extra_bed_price = #{adultExtraBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childBedPrice != null" >
+        child_bed_price = #{childBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="childNoBedPrice != null" >
+        child_no_bed_price = #{childNoBedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="singleRoom != null" >
+        single_room = #{singleRoom,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kunsoftware.entity.FlightChedulePlan" >
+    update flight_chedule_plan
+    set flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER},
+      product_plan_tpl_id = #{productPlanTplId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      plan_describe = #{planDescribe,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      adult_price = #{adultPrice,jdbcType=DECIMAL},
+      adult_extra_bed_price = #{adultExtraBedPrice,jdbcType=DECIMAL},
+      child_bed_price = #{childBedPrice,jdbcType=DECIMAL},
+      child_no_bed_price = #{childNoBedPrice,jdbcType=DECIMAL},
+      single_room = #{singleRoom,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.FlightChedulePlan" >
+    update flight_chedule_plan
+    set flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER},
+      product_plan_tpl_id = #{productPlanTplId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      plan_describe = #{planDescribe,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      adult_price = #{adultPrice,jdbcType=DECIMAL},
+      adult_extra_bed_price = #{adultExtraBedPrice,jdbcType=DECIMAL},
+      child_bed_price = #{childBedPrice,jdbcType=DECIMAL},
+      child_no_bed_price = #{childNoBedPrice,jdbcType=DECIMAL},
+      single_room = #{singleRoom,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

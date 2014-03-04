@@ -21,9 +21,13 @@
     <table tableName="news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>-->
-     <table tableName="flight_segment" domainObjectName="FlightSegment" enableCountByExample="false" enableUpdateByExample="false"
+     <table tableName="ground" domainObjectName="Ground" enableCountByExample="false" enableUpdateByExample="false"
+     enableDeleteByExample="false" enableSelectByExample="false"
+     selectByExampleQueryId="false"></table>
+     <table tableName="ground_tag" domainObjectName="GroundTag" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>
       
+     
   </context>
 </generatorConfiguration>

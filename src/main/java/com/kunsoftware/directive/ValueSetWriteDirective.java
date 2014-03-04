@@ -43,27 +43,34 @@ public class ValueSetWriteDirective implements TemplateDirectiveModel {
 		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(WebUtil.getRequest().getSession().getServletContext());
 		ValueSetService service = ctx.getBean(ValueSetService.class);
 		List<ValueSet> list = null;
+		String writeValue = "";
 		if("destination".equals(code)) {
 			list = service.selectValueSetDestinationList();
 		} else if("airline".equals(code)) {
 			list = service.selectValueSetAirlineList();
+		} else if("ground".equals(code)) {
+			writeValue = service.getGroundName(value);
 		} else {
 			list = service.selectValueSetList(code);
 		} 
 		
 		StringBuilder str = new StringBuilder();
 		
-		List<String> selectedList = new ArrayList<String>();
-		if(StringUtils.isNotBlank(value))
-			selectedList.addAll(Arrays.asList(StringUtils.split(value,",")));
-		
-		String resultStr = null;
-		for(ValueSet entity:list) {
-			resultStr = WebUtil.write(entity.getName(), entity.getValue(), selectedList);
-			if(StringUtils.isEmpty(resultStr)) continue;
+		if(list != null) {
+			List<String> selectedList = new ArrayList<String>();
+			if(StringUtils.isNotBlank(value))
+				selectedList.addAll(Arrays.asList(StringUtils.split(value,",")));
 			
-			if(StringUtils.isNotEmpty(str.toString())) str.append(",");
-			str.append(resultStr);
+			String resultStr = null;
+			for(ValueSet entity:list) {
+				resultStr = WebUtil.write(entity.getName(), entity.getValue(), selectedList);
+				if(StringUtils.isEmpty(resultStr)) continue;
+				
+				if(StringUtils.isNotEmpty(str.toString())) str.append(",");
+				str.append(resultStr);
+			}
+		} else {
+			str.append(writeValue);
 		}
 		
 		return str.toString();

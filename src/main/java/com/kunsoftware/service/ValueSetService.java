@@ -2,6 +2,7 @@ package com.kunsoftware.service;
 
 import java.util.List;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.ValueSetRequestBean;
+import com.kunsoftware.entity.Ground;
 import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.AirlineMapper;
 import com.kunsoftware.mapper.DestinationMapper;
+import com.kunsoftware.mapper.GroundMapper;
 import com.kunsoftware.mapper.ValueSetMapper;
 import com.kunsoftware.page.PageInfo;
 
@@ -31,6 +34,9 @@ public class ValueSetService {
 	
 	@Autowired
 	private AirlineMapper airlineMapper;
+	
+	@Autowired
+	private GroundMapper groundMapper;
 	
 	
 	public List<ValueSet> getValueSetListAll(@Param("code") String code) {
@@ -60,6 +66,18 @@ public class ValueSetService {
 		return airlineMapper.selectValueSetList();
 	}
 	
+	public List<ValueSet> selectValueSetGround() {
+		 
+		return groundMapper.selectValueSetList();
+	}
+
+	public String getGroundName(String value) {
+		
+		Ground entity = groundMapper.selectByPrimaryKey(NumberUtils.toInt(value));
+		if(entity != null) return entity.getName();
+		return "";
+	}
+	
 	public ValueSet selectValueSet(String valueSetCode,String valueSetValue) {
 		
 		ValueSet record = new ValueSet();
@@ -67,8 +85,8 @@ public class ValueSetService {
 		record.setValue(valueSetValue);
 		
 		return valueSetMapper.selectValueSet(record);
-	}
-	
+	} 
+
 	@Transactional
 	public ValueSet insert(ValueSetRequestBean valueSetRequestBean) throws KunSoftwareException {
 		 
