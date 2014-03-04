@@ -27,10 +27,12 @@ if (top.location != self.location){top.location = self.location}
 </#if> 
 <div class="main-login"> 
 <form id="loginFrm" name="loginFrm" method="post" action="${request.contextPath}/manager/login">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">用户登陆</div>
+   
 <table align="center" cellpadding="0" cellspacing="0"  class="table table-bordered table-form">
-  <tr>
-    <td colspan="2">用户登陆</td>
-  </tr>
+   
   <tr>
     <th width="35%">用户名</th>
     <td width="65%"><input type="text" class="form-control input-sm" name="userName" id="userName" value="${userName!}" /></td>
@@ -45,6 +47,7 @@ if (top.location != self.location){top.location = self.location}
       <input name="referer" type="hidden" id="referer" value="${referer!}" /></td>
   </tr>
 </table>
+</div>
 </form>
 </div>
 </body>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>地接标签管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/groundtag/groundtag-edit");
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form action="edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 编辑标签 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th>目的地 <span class="error">*</span> </th>
+          <td><select name="destination" id="destination" class="form-control input-sm required cascade" cascadeId="#groundId" cascadeParam="#destination" >
+              <option value="">-请选择-</option>
+              <@ValueSet code="destination" value="${entity.destination!}" />
+            </select></td>
+          <th width="15%">地接公司 <span class="error">*</span></th>
+          <td width="35%"><select name="groundId" id="groundId" class="form-control input-sm required" defaultValue="${entity.groundId!}" cascadeCode="ground">
+              <option value="">-请选择-</option> 
+            </select></td>
+        </tr>
+        <tr>
+          <th>类型 <span class="error">*</span></th>
+          <td colspan="3"><input type="text" class="form-control input-sm required" name="type"  id="type" placeholder="类型" value="${entity.keyword!}"></td>
+        </tr>
+        <tr>
+          <th>关键词 <span class="error">*</span> </th>
+          <td colspan="3"><textarea name="keyword" id="keyword" class="form-control" rows="3">${entity.keyword!}</textarea></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>
