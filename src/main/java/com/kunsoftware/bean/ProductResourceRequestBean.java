@@ -22,7 +22,7 @@ public class ProductResourceRequestBean {
 
     private Integer flightId;
 
-    private String ground;
+    private Integer groundId;
 
     private Integer travelDays;
 
@@ -123,13 +123,13 @@ public class ProductResourceRequestBean {
 	public void setFlightId(Integer flightId) {
 		this.flightId = flightId;
 	}
-
-	public String getGround() {
-		return ground;
+ 
+	public Integer getGroundId() {
+		return groundId;
 	}
 
-	public void setGround(String ground) {
-		this.ground = ground;
+	public void setGroundId(Integer groundId) {
+		this.groundId = groundId;
 	}
 
 	public Integer getTravelDays() {

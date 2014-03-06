@@ -142,4 +142,12 @@
       price = #{price,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getProductPriceTplListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from product_price_tpl where 1=1 
+     and product_resource_id = #{productResourceId,jdbcType=INTEGER}
+    order by order_value ASC, id DESC
+  </select>
 </mapper>

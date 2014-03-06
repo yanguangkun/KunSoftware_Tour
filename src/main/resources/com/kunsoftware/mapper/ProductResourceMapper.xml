@@ -12,7 +12,7 @@
     <result column="product_type" property="productType" jdbcType="VARCHAR" />
     <result column="product_id" property="productId" jdbcType="INTEGER" />
     <result column="flight_id" property="flightId" jdbcType="INTEGER" />
-    <result column="ground" property="ground" jdbcType="VARCHAR" />
+    <result column="ground_id" property="groundId" jdbcType="INTEGER" />
     <result column="travel_days" property="travelDays" jdbcType="INTEGER" />
     <result column="stay_days" property="stayDays" jdbcType="INTEGER" />
     <result column="early_days" property="earlyDays" jdbcType="INTEGER" />
@@ -32,7 +32,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, start_country, start_city, arrive_country, arrive_city, arrive_destination, 
-    product_type, product_id, flight_id, ground, travel_days, stay_days, early_days, 
+    product_type, product_id, flight_id, ground_id, travel_days, stay_days, early_days, 
     order_value, standard_price, interact_recommend, whether_shelf, flight_chedule_start, 
     flight_chedule_end, week, sale_price, marry_recommend, combo
   </sql>
@@ -55,7 +55,7 @@
     insert into product_resource (id, name, start_country, 
       start_city, arrive_country, arrive_city, 
       arrive_destination, product_type, product_id, 
-      flight_id, ground, travel_days, 
+      flight_id, ground_id, travel_days, 
       stay_days, early_days, order_value, 
       standard_price, interact_recommend, whether_shelf, 
       flight_chedule_start, flight_chedule_end, week, 
@@ -64,7 +64,7 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, 
       #{startCity,jdbcType=VARCHAR}, #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, 
       #{arriveDestination,jdbcType=INTEGER}, #{productType,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
-      #{flightId,jdbcType=INTEGER}, #{ground,jdbcType=VARCHAR}, #{travelDays,jdbcType=INTEGER}, 
+      #{flightId,jdbcType=INTEGER}, #{groundId,jdbcType=INTEGER}, #{travelDays,jdbcType=INTEGER}, 
       #{stayDays,jdbcType=INTEGER}, #{earlyDays,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
       #{standardPrice,jdbcType=INTEGER}, #{interactRecommend,jdbcType=VARCHAR}, #{whetherShelf,jdbcType=VARCHAR}, 
       #{flightCheduleStart,jdbcType=DATE}, #{flightCheduleEnd,jdbcType=DATE}, #{week,jdbcType=VARCHAR}, 
@@ -104,8 +104,8 @@
       <if test="flightId != null" >
         flight_id,
       </if>
-      <if test="ground != null" >
-        ground,
+      <if test="groundId != null" >
+        ground_id,
       </if>
       <if test="travelDays != null" >
         travel_days,
@@ -181,8 +181,8 @@
       <if test="flightId != null" >
         #{flightId,jdbcType=INTEGER},
       </if>
-      <if test="ground != null" >
-        #{ground,jdbcType=VARCHAR},
+      <if test="groundId != null" >
+        #{groundId,jdbcType=INTEGER},
       </if>
       <if test="travelDays != null" >
         #{travelDays,jdbcType=INTEGER},
@@ -258,8 +258,8 @@
       <if test="flightId != null" >
         flight_id = #{flightId,jdbcType=INTEGER},
       </if>
-      <if test="ground != null" >
-        ground = #{ground,jdbcType=VARCHAR},
+      <if test="groundId != null" >
+        ground_id = #{groundId,jdbcType=INTEGER},
       </if>
       <if test="travelDays != null" >
         travel_days = #{travelDays,jdbcType=INTEGER},
@@ -317,7 +317,7 @@
       product_type = #{productType,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=INTEGER},
       flight_id = #{flightId,jdbcType=INTEGER},
-      ground = #{ground,jdbcType=VARCHAR},
+      ground_id = #{groundId,jdbcType=INTEGER},
       travel_days = #{travelDays,jdbcType=INTEGER},
       stay_days = #{stayDays,jdbcType=INTEGER},
       early_days = #{earlyDays,jdbcType=INTEGER},
@@ -345,7 +345,7 @@
       product_type = #{productType,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=INTEGER},
       flight_id = #{flightId,jdbcType=INTEGER},
-      ground = #{ground,jdbcType=VARCHAR},
+      ground_id = #{groundId,jdbcType=INTEGER},
       travel_days = #{travelDays,jdbcType=INTEGER},
       stay_days = #{stayDays,jdbcType=INTEGER},
       early_days = #{earlyDays,jdbcType=INTEGER},

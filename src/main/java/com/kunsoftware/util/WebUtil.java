@@ -89,6 +89,14 @@ public class WebUtil {
 		return s;
 	}
 	
+	public static String radioTag(String name,String id,String text,String value,String selectedValue) {
+		 
+		String selected = value.equals(selectedValue)?"checked":"";
+		String s = "<input type=\"radio\" class=\"tag\" name=\""+name+"\" "+selected+" id=\""+id+"\" value=\""+value+"\" /> " + text + " ";
+		
+		return s;
+	}
+	
 	public static String checkbox(String name,String id,String text,String value,List selectedValue) {
 		 
 		String selected = selectedValue.contains(value)?"checked":"";

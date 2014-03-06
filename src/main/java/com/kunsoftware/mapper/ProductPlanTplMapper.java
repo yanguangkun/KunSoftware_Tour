@@ -1,5 +1,9 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.kunsoftware.entity.ProductPlanTpl;
 
 public interface ProductPlanTplMapper {
@@ -16,4 +20,6 @@ public interface ProductPlanTplMapper {
     int updateByPrimaryKeyWithBLOBs(ProductPlanTpl record);
 
     int updateByPrimaryKey(ProductPlanTpl record);
+    
+    List<ProductPlanTpl> getProductPlanTplListAll(@Param("productResourceId") Integer productResourceId);
 }

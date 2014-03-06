@@ -23,7 +23,7 @@ public class ProductResource {
 
     private Integer flightId;
 
-    private String ground;
+    private Integer groundId;
 
     private Integer travelDays;
 
@@ -133,12 +133,12 @@ public class ProductResource {
         this.flightId = flightId;
     }
 
-    public String getGround() {
-        return ground;
+    public Integer getGroundId() {
+        return groundId;
     }
 
-    public void setGround(String ground) {
-        this.ground = ground;
+    public void setGroundId(Integer groundId) {
+        this.groundId = groundId;
     }
 
     public Integer getTravelDays() {

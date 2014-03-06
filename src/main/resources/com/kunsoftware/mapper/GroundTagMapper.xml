@@ -118,4 +118,13 @@
 	</if>
     order by id DESC
   </select>
+  
+  <select id="getValueSetListByGround" resultType="com.kunsoftware.entity.ValueSet" parameterType="java.lang.String">
+    select 
+    type as name,keyword as value,'0' as type
+    from ground_tag where 1=1  
+    AND destination = #{destination,jdbcType=INTEGER}
+    AND ground_id = #{groundId,jdbcType=INTEGER}
+    order by id DESC
+  </select>
 </mapper>

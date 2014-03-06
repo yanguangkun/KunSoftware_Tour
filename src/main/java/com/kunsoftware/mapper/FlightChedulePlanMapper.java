@@ -1,5 +1,9 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.kunsoftware.entity.FlightChedulePlan;
 
 public interface FlightChedulePlanMapper {
@@ -16,4 +20,6 @@ public interface FlightChedulePlanMapper {
     int updateByPrimaryKeyWithBLOBs(FlightChedulePlan record);
 
     int updateByPrimaryKey(FlightChedulePlan record);
+    
+    List<FlightChedulePlan> getFlightChedulePlanListAll(@Param("flightCheduleId") Integer flightCheduleId);
 }

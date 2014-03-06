@@ -24,10 +24,12 @@ public class CascadeController extends BaseController {
 
 	@RequestMapping(value="/list.json")
 	@ResponseBody 
-	public JsonBean listCascade(ModelMap model,String cascadeCode,String cascadeValue,String defaultValue) throws KunSoftwareException {
+	public JsonBean listCascade(ModelMap model,String cascadeId,String cascadeCode,String cascadeValue,String defaultValue) throws KunSoftwareException {
 		 
 		logger.info("级联!");  
 		JsonBean jsonBean = new JsonBean();
+		jsonBean.put("cascadeId", cascadeId);
+		jsonBean.put("cascadeCode", cascadeCode);
 		jsonBean.put("result", service.getSelectResult(cascadeCode,cascadeValue, defaultValue));
 		jsonBean.setMessage("操作成功"); 		 
 		return jsonBean;

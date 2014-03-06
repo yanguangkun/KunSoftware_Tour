@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.kunsoftware.entity.GroundTag;
+import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.page.PageInfo;
 
 public interface GroundTagMapper {
@@ -25,4 +26,6 @@ public interface GroundTagMapper {
     List<GroundTag> getGroundTagListPage(@Param("destination") Integer destination,
     		@Param("groundId") Integer groundId,
     		@Param("page") PageInfo page);
+    
+    List<ValueSet> getValueSetListByGround(@Param("destination") Integer destination,@Param("groundId") Integer groundId);
 }

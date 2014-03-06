@@ -157,4 +157,12 @@
       price = #{price,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getFlightChedulePriceListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from flight_chedule_price where 1=1 
+     and flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
+    order by order_value ASC, id DESC
+  </select>
 </mapper>

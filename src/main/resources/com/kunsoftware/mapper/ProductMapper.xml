@@ -233,4 +233,12 @@
     
     order by id DESC
   </select>
+  
+  <select id="getValueSetListByType" resultType="com.kunsoftware.entity.ValueSet" parameterType="java.lang.String">
+    select 
+    name,id as value,'0' as type
+    from product where 1=1  
+    AND type = #{type,jdbcType=VARCHAR}
+    order by id DESC
+  </select>
 </mapper>
