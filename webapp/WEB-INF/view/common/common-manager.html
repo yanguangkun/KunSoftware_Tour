@@ -27,7 +27,8 @@
       <@c.sysName />
       </a> </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <@Menu/>
+      <!--<ul class="nav navbar-nav">
         <li class="dropdown active"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">基础数据 <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="${request.contextPath}/manager/country/list">国家</a></li>
@@ -57,7 +58,7 @@
             <li><a href="${request.contextPath}/manager/flight/list">所有订单</a></li>  
           </ul>
         </li>
-      </ul>
+      </ul>-->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">欢迎您：
           <@UserInfo />
