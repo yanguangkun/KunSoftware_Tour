@@ -22,4 +22,6 @@ public interface SysMenuMapper {
     int updateByPrimaryKey(SysMenu record);
     
     List<SysMenu> getMenuListPage(@Param(value="menuRequestBean")MenuRequestBean menuRequestBean,@Param("page") PageInfo page);
+    
+    List<SysMenu> getMenuListByTree(@Param(value="treeName")String treeName);
 }

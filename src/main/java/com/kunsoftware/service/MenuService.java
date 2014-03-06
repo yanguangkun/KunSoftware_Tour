@@ -57,4 +57,16 @@ public class MenuService {
 	public int deleteByPrimaryKey(Integer id) {
 		return mapper.deleteByPrimaryKey(id);
 	}
+	
+	public List<SysMenu> getMenuListRoot() {
+		 
+		logger.info("query");
+		return mapper.getMenuListByTree("root");
+	}
+	
+	public List<SysMenu> getMenuListByTree(String treeName) {
+		 
+		logger.info("query");
+		return mapper.getMenuListByTree(treeName);
+	}
 }

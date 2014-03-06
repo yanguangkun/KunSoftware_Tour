@@ -10,6 +10,10 @@ public class MenuRequestBean {
 
     private String menuUrl;
 
+    private String menuDivider;
+
+    private Integer orderValue;
+
 	public String getMenuTreeName() {
 		return menuTreeName;
 	}
@@ -40,6 +44,22 @@ public class MenuRequestBean {
 
 	public void setMenuUrl(String menuUrl) {
 		this.menuUrl = menuUrl;
+	}
+
+	public String getMenuDivider() {
+		return menuDivider;
+	}
+
+	public void setMenuDivider(String menuDivider) {
+		this.menuDivider = menuDivider;
+	}
+
+	public Integer getOrderValue() {
+		return orderValue;
+	}
+
+	public void setOrderValue(Integer orderValue) {
+		this.orderValue = orderValue;
 	}
     
     

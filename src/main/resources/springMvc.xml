@@ -33,6 +33,7 @@
 	<bean id="UserInfo" class="com.kunsoftware.directive.UserInfoDirective"/>
 	<bean id="ValueSet" class="com.kunsoftware.directive.ValueSetDirective"/>
 	<bean id="ValueSetWrite" class="com.kunsoftware.directive.ValueSetWriteDirective"/>
+	<bean id="Menu" class="com.kunsoftware.directive.MenuDirective"/>
 	
 	
 	<bean id="exceptionResolver" class="com.kunsoftware.util.ExceptionResolver">
@@ -92,6 +93,7 @@
 				 <entry key="UserInfo" value-ref="UserInfo"/>
 				 <entry key="ValueSet" value-ref="ValueSet"/> 
 				 <entry key="ValueSetWrite" value-ref="ValueSetWrite"/> 
+				 <entry key="Menu" value-ref="Menu"/>				 
 			</map>
 		</property>
 		
