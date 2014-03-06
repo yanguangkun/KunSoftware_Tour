@@ -58,7 +58,7 @@
         <#list retList as item>
         <tr>
           <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
-          <td><a href="">班期</a> <a href="">套餐模板</a> <a href="">价格模板</a></td>
+          <td><a href="${request.contextPath}/manager/flightchedule/list?productResourceId=${item.id}">班期</a> <a href="${request.contextPath}/manager/productplantpl/list?productResourceId=${item.id}">套餐模板</a> <a href="${request.contextPath}/manager/productpricetpl/list?productResourceId=${item.id}">价格模板</a></td>
           <td>${item.id!}</td>
           <td>${item.name!}</td>
           <td>${item.standardPrice!}</td>

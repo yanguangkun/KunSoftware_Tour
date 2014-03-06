@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>价格模板管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/productplantpl/productplantpl-add");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" method="post" action="add.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 新增价格模板 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">价格名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="价格名称" value=""></td>
+          <th width="15%">价格描述 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="priceDescribe" id="priceDescribe" placeholder="价格描述" value=""></td>
+        </tr>
+        <tr>
+          <th>排序 <span class="error">*</span></th>
+          <td><input type="text" class="form-control input-sm required" name="orderValue"  id="orderValue" placeholder="排序" value=""></td>
+          <th>计价单位 <span class="error">*</span></th>
+          <td><input name="chargeUnit" type="text" class="form-control input-sm required" id="chargeUnit" placeholder="计价单位" value="" ></td>
+        </tr>
+        <tr>
+          <th>价格 <span class="error">*</span></th>
+          <td colspan="3"><input name="price" type="text" class="form-control input-sm required" id="price" placeholder="价格" value="" ></td>
+        </tr>
+        <tr>
+          <th>备注 </th>
+          <td colspan="3"><textarea name="remark" id="remark" class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="">
+            <input type="hidden" name="productResourceId" id="productResourceId" value="${RequestParameters.productResourceId!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list?productResourceId=${RequestParameters.productResourceId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>
