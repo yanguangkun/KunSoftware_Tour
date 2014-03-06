@@ -30,6 +30,7 @@ define(function(require, exports, module) {
 						if(data.success == '1') {
 							$("#id").val(data.id);
 						}
+						lockscreen.unLock();
 					}
 				});
 			}	
@@ -37,7 +38,7 @@ define(function(require, exports, module) {
 		
 		$(".saveBtn").click(function(e) { 
 			lockscreen.lock();
-			//$("#saveFrm").submit();
+			$("#saveFrm").submit();
 			/*$("#saveFrm").ajaxSubmit({
 				dataType:'json', 
 				success:function(data) { 
