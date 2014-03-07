@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 	require('bootstrap')($); 
 	require('jquery-form')($); 
 	require('page'); 
+	var lockscreen = require('lockscreen');
 	$(document).ready(function(){  
 		
 		$(".searchBtn").click(function(e) {
@@ -34,23 +35,22 @@ define(function(require, exports, module) {
 			});
         });
 		
-		$(".enableBtn").click(function(e) {
+		$(".creatPrice").click(function(e) {
             
-			if($("#enable").val() == "") {
-				alert('状态不能为空!');
-				return;
-			}
+			lockscreen.lock();
+			var itemId = $(this).attr("itemId");
+			var url = "createPrice.json?id=" + itemId;
 			
-			var idLength = $("input[name='id']:checked").length;
-			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
-			
-			$("#controlForm").attr("action","enable.json");
-			$("#controlForm").ajaxSubmit({
+			$.ajax({ 
+				url:url, 
 				dataType:'json', 
-				success:function(data) {
+				success: function(data) { 
 					alert(data.message);  
+					lockscreen.unLock(); 
 				}
 			});
+		 
+			return false;
         });
 	}); 
 });

@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 	require('bootstrap')($); 
 	require('jquery-form')($); 
 	require('page'); 
+	var lockscreen = require('lockscreen');
 	$(document).ready(function(){  
 		
 		$(".searchBtn").click(function(e) {
@@ -20,7 +21,10 @@ define(function(require, exports, module) {
 		$(".delBtn").click(function(e) {
 			var idLength = $("input[name='id']:checked").length;
 			if(idLength <= 0) {alert("请选择一个进行操作!");return}			
-			 
+			if(!confirm("确定删除吗？")) {
+				return;
+			}
+			
 			$("#controlForm").attr("action","del.json");
 			$("#controlForm").ajaxSubmit({
 				dataType:'json', 
@@ -34,21 +38,18 @@ define(function(require, exports, module) {
 			});
         });
 		
-		$(".enableBtn").click(function(e) {
+		$(".createFlightCheduleBtn").click(function(e) {
             
-			if($("#enable").val() == "") {
-				alert('状态不能为空!');
-				return;
-			}
-			
 			var idLength = $("input[name='id']:checked").length;
 			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
 			
-			$("#controlForm").attr("action","enable.json");
+			lockscreen.lock();
+			$("#controlForm").attr("action","createFlightChedule.json");
 			$("#controlForm").ajaxSubmit({
 				dataType:'json', 
 				success:function(data) {
-					alert(data.message);  
+					alert(data.message); 
+					lockscreen.unLock(); 
 				}
 			});
         });
