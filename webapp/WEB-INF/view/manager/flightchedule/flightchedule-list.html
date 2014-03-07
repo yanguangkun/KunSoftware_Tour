@@ -82,9 +82,9 @@
           <td>
           <#if productResource.combo=='1'>
           <a href="${request.contextPath}/manager/flightcheduleplan/list?flightCheduleId=${item.id}">日套餐（${item.count!}）</a> 
-          日价格（0）
+          <span class="info4">日价格（0）</span>
           <#elseif productResource.combo=='0'>
-          日套餐（0）
+          <span class="info4">日套餐（0）</span>
           <a href="${request.contextPath}/manager/flightcheduleprice/list?flightCheduleId=${item.id}">日价格（${item.count!}）</a>
           </#if>
           </td>
