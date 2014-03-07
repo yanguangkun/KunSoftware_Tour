@@ -22,5 +22,6 @@ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,bkquote,pre,hr,figure,table,
 .info1{ color:#5cb85c}
 .info2{ color:#5bc0de}
 .info3{ color:#f0ad4e}
+.info4{ color:#999}
 .tags {list-style:none; line-height:25px;}
 .tags li span {padding-right:10px; padding-top:30px;color:#5bc0de}
