@@ -79,7 +79,15 @@
         <#list retList as item>
         <tr>
           <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
-          <td><a href="${request.contextPath}/manager/flightcheduleplan/list?flightCheduleId=${item.id}">日套餐（1）</a> <a href="${request.contextPath}/manager/flightcheduleprice/list?flightCheduleId=${item.id}">日价格（0）</a></td>
+          <td>
+          <#if productResource.combo=='1'>
+          <a href="${request.contextPath}/manager/flightcheduleplan/list?flightCheduleId=${item.id}">日套餐（${item.count!}）</a> 
+          日价格（0）
+          <#elseif productResource.combo=='0'>
+          日套餐（0）
+          <a href="${request.contextPath}/manager/flightcheduleprice/list?flightCheduleId=${item.id}">日价格（${item.count!}）</a>
+          </#if>
+          </td>
           <td><#if item.startDate??>${item.startDate?string('yyyy-MM-dd')} </#if></td>
           <td><@ValueSetWrite code="flight_chedule_valid" value="${item.valid!}" /></td>
           <td><@ValueSetWrite code="flight_chedule_audit" value="${item.audit!}" /></td>
@@ -90,6 +98,8 @@
       </table>
     </div>
   </form>
+  <@cm.page />
+  <@cm.bottom />
 </div>
 </body>
 </html>
