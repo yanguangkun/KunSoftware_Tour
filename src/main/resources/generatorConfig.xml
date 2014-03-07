@@ -21,7 +21,7 @@
     <table tableName="news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>-->
-     <table tableName="product_resource" domainObjectName="ProductResource" enableCountByExample="false" enableUpdateByExample="false"
+     <table tableName="sys_menu" domainObjectName="SysMenu" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>
       

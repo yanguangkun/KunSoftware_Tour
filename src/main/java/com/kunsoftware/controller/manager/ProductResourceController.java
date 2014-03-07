@@ -91,5 +91,16 @@ public class ProductResourceController extends BaseController {
 		jsonBean.setMessage("操作成功"); 
 		return jsonBean;
 	} 
+	
+	@RequestMapping(value="/createFlightChedule.json")
+	@ResponseBody 
+	public JsonBean createFlightChedule(Integer[] id) throws KunSoftwareException {
+		 
+		logger.info("创建班期");
+		service.createFlightChedule(id);
+		JsonBean jsonBean = new JsonBean();
+		jsonBean.setMessage("操作成功"); 
+		return jsonBean;
+	} 
 
 }

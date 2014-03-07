@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.ProductPlanTplRequestBean;
+import com.kunsoftware.entity.FlightChedule;
+import com.kunsoftware.entity.FlightChedulePlan;
 import com.kunsoftware.entity.ProductPlanTpl;
 import com.kunsoftware.exception.KunSoftwareException;
+import com.kunsoftware.mapper.FlightCheduleMapper;
+import com.kunsoftware.mapper.FlightChedulePlanMapper;
 import com.kunsoftware.mapper.ProductPlanTplMapper;
 
 @Service
@@ -21,6 +25,12 @@ public class ProductPlanTplService {
 	
 	@Autowired
 	private ProductPlanTplMapper mapper;
+	
+	@Autowired
+	private FlightCheduleMapper flightCheduleMapper;
+	
+	@Autowired
+	private FlightChedulePlanMapper flightChedulePlanMapper;
 	
 	public List<ProductPlanTpl> getProductPlanTplListAll(Integer flightId) {
 		 
@@ -62,5 +72,46 @@ public class ProductPlanTplService {
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	@Transactional
+	public void createFlightChedulePlan(Integer id) throws KunSoftwareException {
+
+		ProductPlanTpl productPlanTpl = mapper.selectByPrimaryKey(id); 			
+		createFlightChedulePlan(productPlanTpl); 
+	} 
+	
+	@Transactional
+	public void createFlightChedulePlan(ProductPlanTpl productPlanTpl) throws KunSoftwareException {
+
+		Integer productResourceId = productPlanTpl.getProductResourceId(); 
+		Integer productPlanTplId = productPlanTpl.getId();
+		Integer flightCheduleId;	
+		
+		FlightChedulePlan flightChedulePlan = null;
+	    List<FlightChedule> list = flightCheduleMapper.selectAuditFlightChedule(productResourceId);
+	    
+	    Integer id = null;
+	    for(FlightChedule flightChedule:list) {
+	    	flightCheduleId = flightChedule.getId();
+	    	flightChedulePlan = flightChedulePlanMapper.selectByFlightCheduleId(flightCheduleId, productPlanTplId);
+	    	if(flightChedulePlan == null) {
+	    		flightChedulePlan = new FlightChedulePlan();
+	    		id = null;
+	    	} else {
+	    		id = flightChedulePlan.getId();
+	    	}
+	    	
+	    	BeanUtils.copyProperties(productPlanTpl, flightChedulePlan);
+	    	flightChedulePlan.setId(id);
+	    	flightChedulePlan.setFlightCheduleId(flightCheduleId);
+	    	flightChedulePlan.setProductPlanTplId(productPlanTplId);
+	    	
+	    	if(flightChedulePlan.getId() == null) {
+	    		flightChedulePlanMapper.insert(flightChedulePlan);
+			} else {
+				flightChedulePlanMapper.updateByPrimaryKeySelective(flightChedulePlan);
+			}
+	    }
 	}
 }

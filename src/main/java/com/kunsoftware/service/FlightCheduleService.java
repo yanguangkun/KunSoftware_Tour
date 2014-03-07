@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.entity.FlightChedule;
+import com.kunsoftware.entity.ProductResource;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.FlightCheduleMapper;
+import com.kunsoftware.mapper.ProductResourceMapper;
 import com.kunsoftware.page.PageInfo;
 
 @Service
@@ -21,10 +23,24 @@ public class FlightCheduleService {
 	@Autowired
 	private FlightCheduleMapper mapper;
 	
-	public List<FlightChedule> getFlightCheduleListPage(String valid,String audit,String status,String startDate,PageInfo page) {
+	@Autowired
+	private ProductResourceMapper productResourceMapper;
+	
+	public List<FlightChedule> getFlightCheduleListPage(Integer productResourceId,String valid,String audit,String status,String startDate,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getFlightCheduleListPage(valid, audit, status, startDate,page);
+		
+		ProductResource productResource = productResourceMapper.selectByPrimaryKey(productResourceId);
+		List<FlightChedule> list = mapper.getFlightCheduleListPage(productResourceId,valid, audit, status, startDate,page);
+		for(FlightChedule flightChedule:list) {
+			if("1".equals(productResource.getCombo())) {
+				flightChedule.setCount(mapper.selectPlanCount(flightChedule.getId()));
+			} else {
+				flightChedule.setCount(mapper.selectPriceCount(flightChedule.getId()));
+			}
+		}
+		
+		return list;
 	}	 
 	
 	public FlightChedule selectByPrimaryKey(Integer id) throws KunSoftwareException {

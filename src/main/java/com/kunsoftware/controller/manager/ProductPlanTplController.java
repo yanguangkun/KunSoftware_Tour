@@ -95,5 +95,16 @@ public class ProductPlanTplController extends BaseController {
 		jsonBean.setMessage("操作成功"); 
 		return jsonBean;
 	}
+	
+	@RequestMapping(value="/createPlan.json")
+	@ResponseBody 
+	public JsonBean createFlightChedulePlan(Integer id) throws KunSoftwareException {
+		 
+		logger.info("创建日模板");
+		service.createFlightChedulePlan(id);
+		JsonBean jsonBean = new JsonBean();
+		jsonBean.setMessage("操作成功"); 
+		return jsonBean;
+	} 
 
 }

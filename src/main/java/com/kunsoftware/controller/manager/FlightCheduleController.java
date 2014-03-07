@@ -38,7 +38,7 @@ public class FlightCheduleController extends BaseController {
 		logger.info("产品班期列表");  
 		 
 		ProductResource productResource = productResourceService.selectByPrimaryKey(productResourceId);
-		List<FlightChedule> list = service.getFlightCheduleListPage(valid, audit, status, startDate,pageInfo);
+		List<FlightChedule> list = service.getFlightCheduleListPage(productResourceId,valid, audit, status, startDate,pageInfo);
 		model.addAttribute("retList", list);
 		model.addAttribute("productResource", productResource);
 		PageUtil.pageInfo(model, pageInfo);

@@ -22,4 +22,6 @@ public interface FlightChedulePlanMapper {
     int updateByPrimaryKey(FlightChedulePlan record);
     
     List<FlightChedulePlan> getFlightChedulePlanListAll(@Param("flightCheduleId") Integer flightCheduleId);
+    
+    FlightChedulePlan selectByFlightCheduleId(@Param("flightCheduleId") Integer flightCheduleId,@Param("productPlanTplId") Integer productPlanTplId);
 }

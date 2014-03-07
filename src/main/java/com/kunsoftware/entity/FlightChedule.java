@@ -16,6 +16,8 @@ public class FlightChedule {
     private String status;
 
     private Date lastReservationDate;
+    
+    private Integer count;
 
     public Integer getId() {
         return id;
@@ -72,4 +74,14 @@ public class FlightChedule {
     public void setLastReservationDate(Date lastReservationDate) {
         this.lastReservationDate = lastReservationDate;
     }
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+    
+    
 }

@@ -20,9 +20,17 @@ public interface FlightCheduleMapper {
 
     int updateByPrimaryKey(FlightChedule record);
     
-    List<FlightChedule> getFlightCheduleListPage(@Param("valid") String valid,
+    FlightChedule selectByStartDate(@Param("productResourceId")Integer productResourceId,@Param("startDate")String startDate);
+    
+    List<FlightChedule> getFlightCheduleListPage(@Param("productResourceId")Integer productResourceId,
+    		@Param("valid") String valid,
     		@Param("audit") String audit,
     		@Param("status") String status,
     		@Param("startDate") String startDate,
     		@Param("page") PageInfo page);
+    
+    List<FlightChedule> selectAuditFlightChedule(@Param("productResourceId")Integer productResourceId);
+    
+    int selectPlanCount(@Param("flightCheduleId")Integer flightCheduleId);
+    int selectPriceCount(@Param("flightCheduleId")Integer flightCheduleId);
 }

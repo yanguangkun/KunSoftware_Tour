@@ -22,4 +22,6 @@ public interface FlightChedulePriceMapper {
     int updateByPrimaryKey(FlightChedulePrice record);
     
     List<FlightChedulePrice> getFlightChedulePriceListAll(@Param("flightCheduleId") Integer flightCheduleId);
+    
+    FlightChedulePrice selectByFlightCheduleId(@Param("flightCheduleId") Integer flightCheduleId,@Param("productPriceTplId") Integer productPriceTplId);
 }

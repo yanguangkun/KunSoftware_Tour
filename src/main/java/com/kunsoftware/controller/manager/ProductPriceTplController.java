@@ -95,5 +95,15 @@ public class ProductPriceTplController extends BaseController {
 		jsonBean.setMessage("操作成功"); 
 		return jsonBean;
 	}
-
+	                        
+	@RequestMapping(value="/createPrice.json")
+	@ResponseBody 
+	public JsonBean createFlightChedulePrice(Integer id) throws KunSoftwareException {
+		 
+		logger.info("创建日价格");
+		service.createFlightChedulePrice(id);
+		JsonBean jsonBean = new JsonBean();
+		jsonBean.setMessage("操作成功"); 
+		return jsonBean;
+	} 
 }

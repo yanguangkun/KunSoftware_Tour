@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.ProductPriceTplRequestBean;
+import com.kunsoftware.entity.FlightChedule;
+import com.kunsoftware.entity.FlightChedulePrice;
 import com.kunsoftware.entity.ProductPriceTpl;
 import com.kunsoftware.exception.KunSoftwareException;
+import com.kunsoftware.mapper.FlightCheduleMapper;
+import com.kunsoftware.mapper.FlightChedulePriceMapper;
 import com.kunsoftware.mapper.ProductPriceTplMapper;
 
 @Service
@@ -21,6 +25,12 @@ public class ProductPriceTplService {
 	
 	@Autowired
 	private ProductPriceTplMapper mapper;
+	
+	@Autowired
+	private FlightCheduleMapper flightCheduleMapper;
+	
+	@Autowired
+	private FlightChedulePriceMapper flightChedulePriceMapper;
 	
 	public List<ProductPriceTpl> getProductPriceTplListAll(Integer flightId) {
 		 
@@ -62,5 +72,46 @@ public class ProductPriceTplService {
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	@Transactional
+	public void createFlightChedulePrice(Integer id) throws KunSoftwareException {
+
+		ProductPriceTpl productPriceTpl = mapper.selectByPrimaryKey(id); 			
+		createFlightChedulePrice(productPriceTpl); 
+	} 
+	
+	@Transactional
+	public void createFlightChedulePrice(ProductPriceTpl productPriceTpl) throws KunSoftwareException {
+
+		Integer productResourceId = productPriceTpl.getProductResourceId(); 
+		Integer productPriceTplId = productPriceTpl.getId();
+		Integer flightCheduleId;	
+		
+		FlightChedulePrice flightCheduleprice = null;
+	    List<FlightChedule> list = flightCheduleMapper.selectAuditFlightChedule(productResourceId);
+	    
+	    Integer id = null;
+	    for(FlightChedule flightChedule:list) {
+	    	flightCheduleId = flightChedule.getId();
+	    	flightCheduleprice = flightChedulePriceMapper.selectByFlightCheduleId(flightCheduleId, productPriceTplId);
+	    	if(flightCheduleprice == null) {
+	    		flightCheduleprice = new FlightChedulePrice();
+	    		id = null;
+	    	} else {
+	    		id = flightCheduleprice.getId();
+	    	}
+	    	
+	    	BeanUtils.copyProperties(productPriceTpl, flightCheduleprice);
+	    	flightCheduleprice.setId(id);
+	    	flightCheduleprice.setFlightCheduleId(flightCheduleId);
+	    	flightCheduleprice.setProductPriceTplId(productPriceTplId);
+	    	
+	    	if(flightCheduleprice.getId() == null) {
+	    		flightChedulePriceMapper.insert(flightCheduleprice);
+			} else {
+				flightChedulePriceMapper.updateByPrimaryKeySelective(flightCheduleprice);
+			}
+	    }
 	}
 }

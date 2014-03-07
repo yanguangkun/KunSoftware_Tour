@@ -115,10 +115,20 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
+  <select id="selectByStartDate" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight_chedule
+    where 1=1
+    AND product_resource_id = #{productResourceId,jdbcType=INTEGER} 
+    AND start_date = #{startDate,jdbcType=VARCHAR}
+  </select>
+  
   <select id="getFlightCheduleListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
     select 
     <include refid="Base_Column_List" />
     from flight_chedule where 1=1 
+    AND product_resource_id = #{productResourceId,jdbcType=INTEGER}
     <if test="valid != null and valid != ''">
 		AND valid = #{valid,jdbcType=VARCHAR}
 	</if>
@@ -132,6 +142,27 @@
 		AND start_date = #{startDate,jdbcType=VARCHAR}
 	</if>
     
-    order by id DESC
+    order by start_date ASC
+  </select>
+  
+  <select id="selectAuditFlightChedule" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight_chedule
+    where 1=1
+    AND product_resource_id = #{productResourceId,jdbcType=INTEGER} 
+    AND (audit = '0' OR audit IS NULL)
+  </select>
+  
+  <select id="selectPlanCount" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(id) 
+    from flight_chedule_plan
+    where flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectPriceCount" resultType="java.lang.Integer" parameterType="java.lang.Integer" >
+    select count(id) 
+    from flight_chedule_price
+    where flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
   </select>
 </mapper>

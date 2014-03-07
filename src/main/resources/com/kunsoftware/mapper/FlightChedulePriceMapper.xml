@@ -165,4 +165,14 @@
      and flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
     order by order_value ASC, id DESC
   </select>
+  
+  <select id="selectByFlightCheduleId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from flight_chedule_price
+    where flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
+	and product_price_tpl_id = #{productPriceTplId,jdbcType=INTEGER}
+  </select>
 </mapper>

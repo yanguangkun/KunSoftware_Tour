@@ -137,7 +137,7 @@ public class PageUtil {
 		
 		HttpServletRequest request = WebUtil.getRequest();
 		Enumeration paramNames = request.getParameterNames();
-		String retStr = "<form name=\"pageFrm\" method=\"post\" action=\"\">";
+		String retStr = "<form name=\"pageFrm\" method=\"post\" action=\""+request.getRequestURI()+"\">";
 		retStr += "<input type=\"hidden\" name=\"pageNo\" value=\"" + pageInfo.getPageNo() + "\">";
 		retStr += "<input type=\"hidden\" name=\"pagesize\" value=\"" + pageInfo.getPageSize() + "\">";
 		
