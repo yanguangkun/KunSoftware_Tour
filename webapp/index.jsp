@@ -1,1 +1,1 @@
-<script> location.href="manager/menu/list"; </script>
+<script> location.href="manager/productresource/list"; </script>

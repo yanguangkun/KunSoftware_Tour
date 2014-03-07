@@ -17,38 +17,38 @@ if (top.location != self.location){top.location = self.location}
 </script>
 </head>
 
-<body> 
+<body>
 <br />
-<#if loginMsg??>
- 
+
+<div style="height:70px;width:300px; margin:auto;">
+  <#if loginMsg??>
+  <div class="alert alert-danger">${loginMsg}</div>
+  </#if>
+</div>
+
 <div class="main-login">
-<div class="alert alert-danger">${loginMsg}</div>
-</div>
-</#if> 
-<div class="main-login"> 
-<form id="loginFrm" name="loginFrm" method="post" action="${request.contextPath}/manager/login">
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">用户登陆</div>
-   
-<table align="center" cellpadding="0" cellspacing="0"  class="table table-bordered table-form">
-   
-  <tr>
-    <th width="35%">用户名</th>
-    <td width="65%"><input type="text" class="form-control input-sm" name="userName" id="userName" value="${userName!}" /></td>
-  </tr>
-  <tr>
-    <th>密&nbsp;&nbsp;码</th>
-    <td><input type="password" class="form-control input-sm" name="password" id="password" value="${password!}"/></td>
-  </tr> 
-  <tr>
-    <td  colspan="2" align="center"><input type="submit" name="createBtn" class="btn btn-primary" id="button" value="登陆" />
-      <input type="reset" name="cancelBtn" id="button" value="清除" class="btn btn-default" />
-      <input name="referer" type="hidden" id="referer" value="${referer!}" /></td>
-  </tr>
-</table>
-</div>
-</form>
+  <form id="loginFrm" name="loginFrm" method="post" action="${request.contextPath}/manager/login">
+    <div class="panel panel-default"> 
+      <!-- Default panel contents -->
+      <div class="panel-heading">用户登陆</div>
+      <table align="center" cellpadding="0" cellspacing="0"  class="table  table-form">
+        <tr>
+          <th width="25%">用户名</th>
+          <td width="75%"><input type="text" class="form-control " name="userName" id="userName" value="${userName!}" placeholder="用户名" /></td>
+        </tr>
+        <tr>
+          <th>密&nbsp;&nbsp;码</th>
+          <td><input type="password" class="form-control " name="password" id="password" value="${password!}" placeholder="密码"/></td>
+        </tr>
+        <tr>
+          <td  colspan="2" align="center"><input type="submit" name="createBtn" class="btn btn-primary" id="button" value="登陆" />
+            <input type="reset" name="cancelBtn" id="button" value="清除" class="btn btn-default" />
+            <input name="referer" type="hidden" id="referer" value="${referer!}" /></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+  <@cm.bottom />
 </div>
 </body>
 </html>

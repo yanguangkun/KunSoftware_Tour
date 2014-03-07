@@ -7,7 +7,7 @@ body,td,th {
 html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,bkquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
 .table,.form-search{ margin-bottom:10px;}
 .main{width:80%; margin:auto}
-.main-login{width:300px; margin:auto}
+.main-login{width:300px; margin:auto;}
  
 .table.table-form > tbody > tr > th { vertical-align:middle;}
 .table.table-result .btn{ padding-top:2px; padding-bottom:3px;}
