@@ -7,9 +7,16 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
     <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="head_title_id" property="headTitleId" jdbcType="INTEGER" />
+    <result column="head_icon_id" property="headIconId" jdbcType="INTEGER" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_name, password, login_time, login_ip
+    id, user_name, password, login_time, login_ip, nick_name, role, sex, head_title_id, 
+    head_icon_id, enable
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +30,13 @@
   </delete>
   <insert id="insert" parameterType="com.kunsoftware.entity.SysUser" >
     insert into sys_user (id, user_name, password, 
-      login_time, login_ip)
+      login_time, login_ip, nick_name, 
+      role, sex, head_title_id, 
+      head_icon_id, enable)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{loginTime,jdbcType=TIMESTAMP}, #{loginIp,jdbcType=VARCHAR})
+      #{loginTime,jdbcType=TIMESTAMP}, #{loginIp,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{headTitleId,jdbcType=INTEGER}, 
+      #{headIconId,jdbcType=INTEGER}, #{enable,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kunsoftware.entity.SysUser" >
     insert into sys_user
@@ -45,6 +56,24 @@
       <if test="loginIp != null" >
         login_ip,
       </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="headTitleId != null" >
+        head_title_id,
+      </if>
+      <if test="headIconId != null" >
+        head_icon_id,
+      </if>
+      <if test="enable != null" >
+        enable,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -61,6 +90,24 @@
       </if>
       <if test="loginIp != null" >
         #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="headTitleId != null" >
+        #{headTitleId,jdbcType=INTEGER},
+      </if>
+      <if test="headIconId != null" >
+        #{headIconId,jdbcType=INTEGER},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +126,24 @@
       <if test="loginIp != null" >
         login_ip = #{loginIp,jdbcType=VARCHAR},
       </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="headTitleId != null" >
+        head_title_id = #{headTitleId,jdbcType=INTEGER},
+      </if>
+      <if test="headIconId != null" >
+        head_icon_id = #{headIconId,jdbcType=INTEGER},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -87,7 +152,13 @@
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       login_time = #{loginTime,jdbcType=TIMESTAMP},
-      login_ip = #{loginIp,jdbcType=VARCHAR}
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      head_title_id = #{headTitleId,jdbcType=INTEGER},
+      head_icon_id = #{headIconId,jdbcType=INTEGER},
+      enable = #{enable,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -95,5 +166,11 @@
     <include refid="Base_Column_List" />
     from sys_user
     where user_name = #{userName,jdbcType=VARCHAR}
-    </select>
+   </select>
+   <select id="getSysUserListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user where 1=1  
+    order by id DESC
+  </select>
 </mapper>

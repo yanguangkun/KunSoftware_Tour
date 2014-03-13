@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.OrdersStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.OrdersStatus" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orders_id" property="ordersId" jdbcType="INTEGER" />
+    <result column="status_describe" property="statusDescribe" jdbcType="VARCHAR" />
+    <result column="deal_date" property="dealDate" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="front_desk" property="frontDesk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orders_id, status_describe, deal_date, user_id, user_name, front_desk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.OrdersStatus" >
+    insert into orders_status (id, orders_id, status_describe, 
+      deal_date, user_id, user_name, 
+      front_desk)
+    values (#{id,jdbcType=INTEGER}, #{ordersId,jdbcType=INTEGER}, #{statusDescribe,jdbcType=VARCHAR}, 
+      #{dealDate,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{frontDesk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.OrdersStatus" >
+    insert into orders_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordersId != null" >
+        orders_id,
+      </if>
+      <if test="statusDescribe != null" >
+        status_describe,
+      </if>
+      <if test="dealDate != null" >
+        deal_date,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="frontDesk != null" >
+        front_desk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null" >
+        #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="statusDescribe != null" >
+        #{statusDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="dealDate != null" >
+        #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        #{frontDesk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.OrdersStatus" >
+    update orders_status
+    <set >
+      <if test="ordersId != null" >
+        orders_id = #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="statusDescribe != null" >
+        status_describe = #{statusDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="dealDate != null" >
+        deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        front_desk = #{frontDesk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.OrdersStatus" >
+    update orders_status
+    set orders_id = #{ordersId,jdbcType=INTEGER},
+      status_describe = #{statusDescribe,jdbcType=VARCHAR},
+      deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      front_desk = #{frontDesk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getOrdersStatusListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from orders_status where 1=1 
+     and orders_id = #{ordersId,jdbcType=INTEGER}
+    order by id DESC
+  </select>
+</mapper>

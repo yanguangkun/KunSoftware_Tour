@@ -9,53 +9,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kunsoftware.bean.SysUserRequestBean;
-import com.kunsoftware.entity.SysUser;
+import com.kunsoftware.bean.OrdersDetailRequestBean;
+import com.kunsoftware.entity.OrdersDetail;
 import com.kunsoftware.exception.KunSoftwareException;
-import com.kunsoftware.mapper.SysUserMapper;
+import com.kunsoftware.mapper.OrdersDetailMapper;
 
 @Service
-public class UserService {
+public class OrdersDetailService {
 
-	private static Logger logger = LoggerFactory.getLogger(UserService.class);	
+	private static Logger logger = LoggerFactory.getLogger(OrdersDetailService.class);	
 	
 	@Autowired
-	private SysUserMapper mapper;
+	private OrdersDetailMapper mapper;
 	
-	public SysUser selectByUserName(String userName) {
-		
-		logger.info("查询用户");
-		return mapper.selectByUserName(userName);
-	}
-
-	
-	public List<SysUser> getSysUserListAll() {
+	public List<OrdersDetail> getOrdersDetailListAll(Integer ordersId) {
 		 
 		logger.info("query");
-		return mapper.getSysUserListAll();
+		return mapper.getOrdersDetailListAll(ordersId);
 	}
 	 
 	@Transactional
-	public SysUser insert(SysUserRequestBean requestBean) throws KunSoftwareException {		 
+	public OrdersDetail insert(OrdersDetailRequestBean requestBean) throws KunSoftwareException {		 
 		
-		SysUser record = new SysUser();
-		BeanUtils.copyProperties(requestBean, record); 
-		  
+		OrdersDetail record = new OrdersDetail();
+		BeanUtils.copyProperties(requestBean, record); 		  
+		
 		mapper.insert(record);
 		return record;
 	}
 	
-	public SysUser selectByPrimaryKey(Integer id) throws KunSoftwareException {
+	public OrdersDetail selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
-	public int updateByPrimaryKey(SysUserRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public int updateByPrimaryKey(OrdersDetailRequestBean requestBean,Integer id) throws KunSoftwareException {
 		
-		SysUser record = mapper.selectByPrimaryKey(id); 
-		BeanUtils.copyProperties(requestBean, record);
-		 
+		OrdersDetail record = mapper.selectByPrimaryKey(id); 
+		BeanUtils.copyProperties(requestBean, record); 
+		
 		return mapper.updateByPrimaryKeySelective(record);
 	} 
 	

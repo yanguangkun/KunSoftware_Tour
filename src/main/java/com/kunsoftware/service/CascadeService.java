@@ -15,6 +15,7 @@ import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.mapper.FlightMapper;
 import com.kunsoftware.mapper.GroundMapper;
 import com.kunsoftware.mapper.GroundTagMapper;
+import com.kunsoftware.mapper.HeadIconTitleMapper;
 import com.kunsoftware.mapper.ProductMapper;
 import com.kunsoftware.mapper.ValueSetMapper;
 import com.kunsoftware.util.WebUtil;
@@ -37,13 +38,17 @@ public class CascadeService {
 	private FlightMapper flightMapper;
 	
 	@Autowired
-	private GroundTagMapper groundTagMapper;
+	private GroundTagMapper groundTagMapper;	
+	
+	@Autowired
+	private HeadIconTitleMapper headIconTitleMapper;
 	
 	public String getSelectResult(String cascadeCode,String cascadeValue,String defaultValue) {
 		 
 		logger.info("query");
 		
 		if("tag".equals(cascadeCode)) return tags(cascadeValue,defaultValue);
+		if("head_icon".equals(cascadeCode)) return headIcon(cascadeValue,defaultValue);
 		
 		List<ValueSet> list = null;
 		
@@ -55,6 +60,12 @@ public class CascadeService {
 			list = getProductList(cascadeValue);
 		} else if("flight".equals(cascadeCode)) {
 			list = getFlightList(cascadeValue);
+		} else if("head_title".equals(cascadeCode)) {
+			try {
+			list = getHeadTitleIconList("2",cascadeValue);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		StringBuilder str = new StringBuilder();
@@ -95,6 +106,13 @@ public class CascadeService {
 		
 	}
 	
+	public List<ValueSet> getHeadTitleIconList(String type,String cascadeValue) { 
+		 
+		List<ValueSet> list = headIconTitleMapper.getValueSetListBySex(type, cascadeValue);
+		return list;
+		
+	}
+	
 	public String tags(String cascadeValue,String defaultValue) {
 		
 		String[] s = StringUtils.split(cascadeValue,","); 
@@ -125,6 +143,35 @@ public class CascadeService {
 			}
 			str.append("</li>");			
 		}
+		
+		return str.toString();
+	}
+	
+	public String headIcon(String cascadeValue,String defaultValue) {
+		
+		List<ValueSet> list = getHeadTitleIconList("1",cascadeValue);
+		StringBuilder str = new StringBuilder();
+		StringBuilder tr1 = new StringBuilder();
+		StringBuilder tr2 = new StringBuilder();
+		ValueSet valueSet = null;
+		String name = null;
+		String value = null;
+		str.append("<table border=\"0\" cellspacing=\"3\" cellpadding=\"3\">");
+		tr1.append("<tr>");
+		tr2.append("<tr>");
+		for(int i = 0;i < list.size();i++) {
+			valueSet = list.get(i);
+			name = valueSet.getName();
+			value = valueSet.getValue();
+			if(value == null) continue;
+			tr1.append("<td> <img src=\""+WebUtil.getContextPath()+"/images/uploadDir"+name+"\" width=\"180\" height=\"100\"></td>");
+			tr2.append("<td align=\"center\">"+WebUtil.radio("headIconId","headIconId","", value, defaultValue)+"</td>");
+		}
+		tr1.append("</tr>");
+		tr2.append("</tr>");
+		str.append(tr1);
+		str.append(tr2);
+		str.append("</table>");
 		
 		return str.toString();
 	}

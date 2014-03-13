@@ -1,6 +1,5 @@
 package com.kunsoftware.util;
 
-import java.net.URLEncoder;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.OrdersTravelListMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.OrdersTravelList" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orders_id" property="ordersId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="DATE" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="permanent_city" property="permanentCity" jdbcType="VARCHAR" />
+    <result column="certificate_type" property="certificateType" jdbcType="VARCHAR" />
+    <result column="certificate_num" property="certificateNum" jdbcType="VARCHAR" />
+    <result column="certificate_start_date" property="certificateStartDate" jdbcType="DATE" />
+    <result column="certificate_end_date" property="certificateEndDate" jdbcType="DATE" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orders_id, name, sex, birthdate, country, province, city, permanent_city, certificate_type, 
+    certificate_num, certificate_start_date, certificate_end_date, mobile, image_path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders_travel_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders_travel_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.OrdersTravelList" >
+    insert into orders_travel_list (id, orders_id, name, 
+      sex, birthdate, country, 
+      province, city, permanent_city, 
+      certificate_type, certificate_num, certificate_start_date, 
+      certificate_end_date, mobile, image_path
+      )
+    values (#{id,jdbcType=INTEGER}, #{ordersId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birthdate,jdbcType=DATE}, #{country,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{permanentCity,jdbcType=VARCHAR}, 
+      #{certificateType,jdbcType=VARCHAR}, #{certificateNum,jdbcType=VARCHAR}, #{certificateStartDate,jdbcType=DATE}, 
+      #{certificateEndDate,jdbcType=DATE}, #{mobile,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.OrdersTravelList" >
+    insert into orders_travel_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordersId != null" >
+        orders_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="permanentCity != null" >
+        permanent_city,
+      </if>
+      <if test="certificateType != null" >
+        certificate_type,
+      </if>
+      <if test="certificateNum != null" >
+        certificate_num,
+      </if>
+      <if test="certificateStartDate != null" >
+        certificate_start_date,
+      </if>
+      <if test="certificateEndDate != null" >
+        certificate_end_date,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordersId != null" >
+        #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="permanentCity != null" >
+        #{permanentCity,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNum != null" >
+        #{certificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateStartDate != null" >
+        #{certificateStartDate,jdbcType=DATE},
+      </if>
+      <if test="certificateEndDate != null" >
+        #{certificateEndDate,jdbcType=DATE},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.OrdersTravelList" >
+    update orders_travel_list
+    <set >
+      <if test="ordersId != null" >
+        orders_id = #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=DATE},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="permanentCity != null" >
+        permanent_city = #{permanentCity,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        certificate_type = #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNum != null" >
+        certificate_num = #{certificateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateStartDate != null" >
+        certificate_start_date = #{certificateStartDate,jdbcType=DATE},
+      </if>
+      <if test="certificateEndDate != null" >
+        certificate_end_date = #{certificateEndDate,jdbcType=DATE},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.OrdersTravelList" >
+    update orders_travel_list
+    set orders_id = #{ordersId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=DATE},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      permanent_city = #{permanentCity,jdbcType=VARCHAR},
+      certificate_type = #{certificateType,jdbcType=VARCHAR},
+      certificate_num = #{certificateNum,jdbcType=VARCHAR},
+      certificate_start_date = #{certificateStartDate,jdbcType=DATE},
+      certificate_end_date = #{certificateEndDate,jdbcType=DATE},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getOrdersTravelListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from orders_travel_list where 1=1 
+     and orders_id = #{ordersId,jdbcType=INTEGER}
+    order by id DESC
+  </select>
+</mapper>

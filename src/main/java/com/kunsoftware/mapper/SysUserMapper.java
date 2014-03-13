@@ -1,5 +1,7 @@
 package com.kunsoftware.mapper;
 
+import java.util.List;
+
 import com.kunsoftware.entity.SysUser;
 
 public interface SysUserMapper {
@@ -16,4 +18,6 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
     
     SysUser selectByUserName(String userName);
+    
+    List<SysUser> getSysUserListAll();
 }

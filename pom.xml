@@ -199,6 +199,14 @@
         <directory>${project.build.directory}/${groupId}-${version}/WEB-INF/lib</directory>
         <targetPath>${basedir}/webapp/WEB-INF/lib</targetPath>
       </resource>
+      <resource>
+        <directory>${project.build.directory}/${groupId}-${version}</directory>
+        <filtering>true</filtering>
+        <excludes>
+          <exclude>**/jdbc.properties</exclude>
+        </excludes>
+        <targetPath>/java/web</targetPath>
+      </resource>
     </resources>
     <plugins>
       <plugin>

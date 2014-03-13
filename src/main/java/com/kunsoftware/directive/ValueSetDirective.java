@@ -66,13 +66,14 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 			list = service.selectValueSetAirlineList();
 		} else if("ground".equals(code)) {
 			list = service.selectValueSetGround();
-		}  else {
+		} else if("head_title".equals(code)) {
+			list = service.selectValueSetHeadIconTitle("2");
+		} else {
 			list = service.selectValueSetList(code);
 		}		
 		
 		StringBuilder str = new StringBuilder();
-		for(ValueSet entity:list) {
-			
+		for(ValueSet entity:list) { 
 			if(type0.equals(entity.getType())) {
 			str.append(WebUtil.option(entity.getName(), entity.getValue(), value));
 			} else if(type1.equals(entity.getType())) {

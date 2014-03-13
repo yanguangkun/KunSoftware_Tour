@@ -2,20 +2,16 @@ package com.kunsoftware.entity;
 
 import java.util.Date;
 
-public class SysUser {
+public class Member {
     private Integer id;
 
     private String userName;
 
     private String password;
 
-    private Date loginTime;
-
-    private String loginIp;
+    private String trueName;
 
     private String nickName;
-
-    private String role;
 
     private String sex;
 
@@ -23,7 +19,17 @@ public class SysUser {
 
     private Integer headIconId;
 
-    private String enable;
+    private Date birthday;
+
+    private String mobile;
+
+    private String email;
+
+    private String qq;
+
+    private String address;
+
+    private String postcode;
 
     public Integer getId() {
         return id;
@@ -49,20 +55,12 @@ public class SysUser {
         this.password = password;
     }
 
-    public Date getLoginTime() {
-        return loginTime;
+    public String getTrueName() {
+        return trueName;
     }
 
-    public void setLoginTime(Date loginTime) {
-        this.loginTime = loginTime;
-    }
-
-    public String getLoginIp() {
-        return loginIp;
-    }
-
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp;
+    public void setTrueName(String trueName) {
+        this.trueName = trueName;
     }
 
     public String getNickName() {
@@ -71,14 +69,6 @@ public class SysUser {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getSex() {
@@ -105,11 +95,51 @@ public class SysUser {
         this.headIconId = headIconId;
     }
 
-    public String getEnable() {
-        return enable;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setEnable(String enable) {
-        this.enable = enable;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 }

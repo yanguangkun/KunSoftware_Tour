@@ -9,51 +9,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kunsoftware.bean.SysUserRequestBean;
-import com.kunsoftware.entity.SysUser;
+import com.kunsoftware.bean.MemberRequestBean;
+import com.kunsoftware.entity.Member;
 import com.kunsoftware.exception.KunSoftwareException;
-import com.kunsoftware.mapper.SysUserMapper;
+import com.kunsoftware.mapper.MemberMapper;
 
 @Service
-public class UserService {
+public class MemberService {
 
-	private static Logger logger = LoggerFactory.getLogger(UserService.class);	
+	private static Logger logger = LoggerFactory.getLogger(MemberService.class);	
 	
 	@Autowired
-	private SysUserMapper mapper;
+	private MemberMapper mapper; 
 	
-	public SysUser selectByUserName(String userName) {
-		
-		logger.info("查询用户");
-		return mapper.selectByUserName(userName);
-	}
-
-	
-	public List<SysUser> getSysUserListAll() {
+	public List<Member> getMemberListAll() {
 		 
 		logger.info("query");
-		return mapper.getSysUserListAll();
+		return mapper.getMemberListAll();
 	}
 	 
 	@Transactional
-	public SysUser insert(SysUserRequestBean requestBean) throws KunSoftwareException {		 
+	public Member insert(MemberRequestBean requestBean) throws KunSoftwareException {		 
 		
-		SysUser record = new SysUser();
+		Member record = new Member();
 		BeanUtils.copyProperties(requestBean, record); 
 		  
 		mapper.insert(record);
 		return record;
 	}
 	
-	public SysUser selectByPrimaryKey(Integer id) throws KunSoftwareException {
+	public Member selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
-	public int updateByPrimaryKey(SysUserRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public int updateByPrimaryKey(MemberRequestBean requestBean,Integer id) throws KunSoftwareException {
 		
-		SysUser record = mapper.selectByPrimaryKey(id); 
+		Member record = mapper.selectByPrimaryKey(id); 
 		BeanUtils.copyProperties(requestBean, record);
 		 
 		return mapper.updateByPrimaryKeySelective(record);
