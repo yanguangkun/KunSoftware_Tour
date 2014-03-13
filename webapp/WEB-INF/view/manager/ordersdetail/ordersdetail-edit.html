@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>订单状态管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/ordersdetail/ordersdetail-edit");
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form action="edit.json" method="post" name="saveFrm" id="saveFrm">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 修改明细 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="名称" value="${entity.name!}"></td>
+          <th width="15%">类别 </th>
+          <td width="35%"><input type="text" class="form-control input-sm" name="type"  id="type" placeholder="类别" value="${entity.type!}"></td>
+        </tr>
+        <tr>
+          <th width="15%">单价 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="unitPrice"  id="unitPrice" placeholder="单价" value="${entity.unitPrice!}"></td>
+          <th width="15%">数量 </th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="quantity"  id="quantity" placeholder="数量" value="${entity.quantity!}"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <input type="hidden" name="ordersId" id="ordersId" value="${entity.ordersId!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list?ordersId=${entity.ordersId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

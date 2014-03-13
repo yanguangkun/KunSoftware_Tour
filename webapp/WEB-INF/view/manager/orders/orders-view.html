@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>订单详细管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <div class="panel panel-default">
+    <div class="panel-heading"> 订单详情 </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 基本信息 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">订单编号 </th>
+          <td width="35%">${bean.orders.code!}</td>
+          <th width="15%">订单状态 </th>
+          <td width="35%"><@ValueSetWrite code="orders_status" value="${bean.orders.status!}" /></td>
+        </tr>
+        <tr>
+          <th>产品名称 </th>
+          <td>${bean.orders.productName!}</td>
+          <th>产品编号 </th>
+          <td>${bean.orders.productCode!}</td>
+        </tr>
+        <tr>
+          <th>订单来源 </th>
+          <td><@ValueSetWrite code="orders_source" value="${bean.orders.source!}" /></td>
+          <th>订单类别 </th>
+          <td><@ValueSetWrite code="orders_type" value="${bean.orders.type!}" /></td>
+        </tr>
+        <tr>
+          <th>数量 </th>
+          <td>${bean.orders.quantity!}</td>
+          <th>是否只收全款 </th>
+          <td><@ValueSetWrite code="yes_no_r" value="${bean.orders.fullAmount!}" /></td>
+        </tr>
+        <tr>
+          <th>应收金额 </th>
+          <td>${bean.orders.amount!}</td>
+          <th>定金金额 </th>
+          <td>${bean.orders.earnest!}</td>
+        </tr>
+        <tr>
+          <th>实收金额 </th>
+          <td>${bean.orders.paidAmount!}</td>
+          <th>欠款金额 </th>
+          <td>${bean.orders.arrearsAmount!}</td>
+        </tr>
+        <tr>
+          <th>业务日期 </th>
+          <td><#if bean.orders.businessDate??>${bean.orders.businessDate?string('yyyy-MM-dd')}  </#if></td>
+          <th>下单日期 </th>
+          <td><#if bean.orders.orderDate??>${bean.orders.orderDate?string('yyyy-MM-dd')}  </#if></td>
+        </tr>
+        <tr>
+          <th>会员用户名 </th>
+          <td>${bean.orders.userName}</td>
+          <th>会员编号 </th>
+          <td>${bean.orders.userId}</td>
+        </tr>
+        <tr>
+          <th>联系人 </th>
+          <td>${bean.orders.linkman}</td>
+          <th>联系人手机 </th>
+          <td>${bean.orders.linkmanMobile}</td>
+        </tr>
+        <tr>
+          <th>到达国家 </th>
+          <td><@ValueSetWrite code="country" value="${bean.orders.arriveCountry!}" /></td>
+          <th>到达目的地 </th>
+          <td><@ValueSetWrite code="destination" value="${bean.orders.arriveDestination!}" /></td>
+        </tr>
+        <tr>
+          <th>客人备注 </th>
+          <td colspan="3">${bean.orders.guestRemark!}</td>
+        </tr>
+        <tr>
+          <th>客服备注 </th>
+          <td colspan="3">${bean.orders.serviceRemark!}</td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 订单明细 </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="40%">名称</th>
+            <th width="15%">类别</th>
+            <th width="15%">单价</th>
+            <th width="15%">数量</th>
+            <th width="15%">总价</th>
+          </tr>
+        </thead>
+        <#list bean.ordersDetail as item>
+        <tr>
+          <td>${item.name!}</td>
+          <td>${item.type!} </td>
+          <td>${item.unitPrice!}</td>
+          <td>${item.quantity!}</td>
+          <td><#if item.quantity?? && item.unitPrice??>
+            ${item.quantity*item.unitPrice}
+            </#if> </td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 订单状态 </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="10%">处理人</th>
+            <th width="15%">处理时间</th>
+            <th width="60%">状态描述</th>
+            <th width="15%">前台开发</th>
+          </tr>
+        </thead>
+        <#list bean.ordersStatus as item>
+        <tr>
+          <td>${item.userName!}</td>
+          <td><#if item.dealDate??>${item.dealDate?string('yyyy-MM-dd HH:mm')}  </#if> </td>
+          <td>${item.statusDescribe!}</td>
+          <td><@ValueSetWrite code="yes_no_r" value="${item.frontDesk!}" /></td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 订单收款 </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="10%">处理人</th>
+            <th width="15%">处理时间</th>
+            <th width="10%">收款金额</th>
+            <th width="50%">备注</th>
+            <th width="15%">状态</th>
+          </tr>
+        </thead>
+        <#list bean.ordersCash as item>
+        <tr>
+          <td>${item.userName!}</td>
+          <td><#if item.dealDate??>${item.dealDate?string('yyyy-MM-dd HH:mm')}  </#if> </td>
+          <td>${item.payeeAmount!}</td>
+          <td>${item.remark!}</td>
+          <td><@ValueSetWrite code="orders_cash_confirm" value="${item.confirm!}" /></td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 订单附件 </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="10%">处理人</th>
+            <th width="15%">处理时间</th>
+            <th width="50%">附近名称</th>
+            <th width="10%">前台开发</th>
+            <th width="15%">下载</th>
+          </tr>
+        </thead>
+        <#list bean.ordersAttachment as item>
+        <tr>
+          <td>${item.userName!}</td>
+          <td><#if item.dealDate??>${item.dealDate?string('yyyy-MM-dd HH:mm')}  </#if> </td>
+          <td>${item.name!}</td>
+          <td><@ValueSetWrite code="yes_no_r" value="${item.frontDesk!}" /></td>
+          <td><a href="${request.contextPath}/images/uploadDir${item.filePath!}" target="_blank">下载</a></td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+    <div class="panel panel-default panel-child">
+      <div class="panel-heading"> 出行名单 </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="8%">姓名</th>
+            <th width="6%">性别</th>
+            <th width="10%">出生日期</th>
+            <th width="6%">国家</th>
+            <th width="6%">省份</th>
+            <th width="6%">城市</th>
+            <th width="8%">常住城市</th>
+            <th width="8%">证件类型</th>
+            <th width="8%">证件号码</th>
+            <th width="10%">签发日期</th>
+            <th width="10%">证件有效期</th>
+            <th width="8%">手机</th>
+            <th width="6%">扫描件</th>
+          </tr>
+        </thead>
+        <#list bean.ordersTravel as item>
+        <tr> 
+          <td>${item.name!}</td>
+          <td>${item.sex!}</td>
+          <td><#if item.birthdate??>${item.birthdate?string('yyyy-MM-dd')}  </#if> </td>
+          <td>${item.country!}</td>
+          <td>${item.province!}</td>
+          <td>${item.city!}</td>
+          <td>${item.permanentCity!}</td>
+          <td><@ValueSetWrite code="certificate_type" value="${item.certificateType!}" /></td>
+          <td>${item.certificateNum!}</td>
+          <td><#if item.certificateStartDate??>${item.certificateStartDate?string('yyyy-MM-dd')}  </#if> </td>
+          <td><#if item.certificateEndDate??>${item.certificateEndDate?string('yyyy-MM-dd')}  </#if> </td>
+          <td>${item.mobile!}</td>
+          <td><#if item.imagePath??> <a href="${request.contextPath}/images/uploadDir${item.imagePath!}" target="_blank">下载</a> <#else> <a href="###">下载</a> </#if> </td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

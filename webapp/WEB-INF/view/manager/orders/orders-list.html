@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>订单管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/orders/orders-list");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form id="searchForm" name="searchForm" method="post" action="" class="form-inline form-search">
+    <div class="form-group"> 订单状态
+      <select name="status" id="status" class="form-control input-sm required">
+        <option value="">-请选择-</option>
+        <@ValueSet code="orders_status" value="${RequestParameters.status!}" />
+      </select>
+      目的地
+      <select name="arriveDestination" id="arriveDestination" class="form-control input-sm required">
+        <option value="">-请选择-</option>
+        <@ValueSet code="destination" value="${RequestParameters.arriveDestination!}" />
+      </select>
+      类型
+      <select name="type" id="type" class="form-control input-sm required">
+        <option value="">-请选择-</option>
+        <@ValueSet code="orders_type" value="${RequestParameters.type!}" />
+      </select>
+      订单来源
+      <select name="source" id="source" class="form-control input-sm required">
+        <option value="">-请选择-</option>
+        <@ValueSet code="orders_source" value="${RequestParameters.type!}" />
+      </select>
+      欠款订单
+      <select name="type" id="type" class="form-control input-sm required">
+        <option value="">-请选择-</option>
+        <@ValueSet code="orders_type" value="${RequestParameters.type!}" />
+      </select>
+    </div>
+    <br>
+    <div class="form-group" style="padding-top:3px;"> 订单编号
+      <input type="text" class="form-control input-sm" name="code" id="code"  value="${RequestParameters.code!}" placeholder="订单编号">
+      联系人
+      <input type="text" class="form-control input-sm" name="linkman" id="linkman"  value="${RequestParameters.linkman!}" placeholder="联系人">
+      手机号码
+      <input type="text" class="form-control input-sm" name="linkmanMobile" id="linkmanMobile"  value="${RequestParameters.linkmanMobile!}" placeholder="手机号码">
+      业务日期
+      <input type="text" class="form-control input-sm" name="businessDate" id="businessDate"  value="${RequestParameters.businessDate!}" placeholder="业务日期">
+    </div>
+    <button type="button" class="searchBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-search"></span> 搜索 </button>
+  </form>
+  <form id="controlForm" name="controlForm" method="post" action="">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 产品列表 </div>
+      <div class="panel-body form-inline panel-opt"> <a href="###" class="btn btn-default btn-sm editBtn" role="button"><span class="glyphicon glyphicon-pencil"></span> 修改</a> <a href="add" class="btn btn-default btn-sm addBtn" role="button"> <span class="glyphicon glyphicon-plus"></span> 新增</a> <a href="###" class="btn btn-default btn-sm delBtn" role="button"> <span class="glyphicon glyphicon-trash"></span> 删除</a> </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="5%"></th>
+            <th width="20%">操作</th>
+            <th width="8%">编号</th>
+            <th width="15%">产品名称</th>
+            <th width="10%">业务日期</th>
+            <th width="6%">应收</th>
+            <th width="6%">实收</th>
+            <th width="6%">欠款</th>
+            <th width="8%">目的地</th>
+            <th width="8%">联系人</th>
+            <th width="8%">订单状态</th>
+          </tr>
+        </thead>
+        <#list retList as item>
+        <tr>
+          <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
+          <td><a href="${request.contextPath}/manager/orders/view?ordersId=${item.id}">详情</a> <a href="${request.contextPath}/manager/ordersdetail/list?ordersId=${item.id}">明细</a> <a href="${request.contextPath}/manager/ordersstatus/list?ordersId=${item.id}">状态</a> <a href="${request.contextPath}/manager/orderscash/list?ordersId=${item.id}">收款</a> <a href="${request.contextPath}/manager/ordersattachment/list?ordersId=${item.id}">附件</a> <a href="${request.contextPath}/manager/orderstravel/list?ordersId=${item.id}">名单</a></td>
+          <td>${item.id!}</td>
+          <td>${item.productName!}</td>
+          <td><#if item.businessDate??>${item.businessDate?string('yyyy-MM-dd')}  </#if></td>
+          <td>${item.amount!}</td>
+          <td>${item.paidAmount!}</td>
+          <td>${item.arrearsAmount!}</td>
+          <td><@ValueSetWrite code="destination" value="${item.arriveDestination!}" /></td>
+          <td>${item.linkman!}</td>
+          <td><@ValueSetWrite code="orders_status" value="${item.status!}" /></td>
+        </tr>
+        </#list>
+      </table>
+    </div>
+  </form>
+  <@cm.page />
+  <@cm.bottom />
+</div>
+</body>
+</html>

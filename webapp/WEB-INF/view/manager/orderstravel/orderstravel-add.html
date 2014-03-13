@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>客人名单管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/orderstravel/orderstravel-add");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" method="post" action="add.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 新增客人名单 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">关联会员 </th>
+          <td width="35%"><span class="info4">${orders.userName!}</span></td>
+          <th width="15%">姓名 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="附件名称" value=""></td>
+        </tr>
+        <tr>
+          <th>性别 <span class="error">*</span></th>
+          <td><@ValueSet name="sex" code="sex" value="" /></td>
+          <th>出生日期 <span class="error">*</span></th>
+          <td><input type="text" class="form-control input-sm required date" name="birthdate"  id="birthdate" placeholder="出生日期" value="" readonly></td>
+        </tr>
+        <tr>
+          <th>国家 </th>
+          <td><input type="text" class="form-control input-sm " name="country"  id="country" placeholder="国家" value=""></td>
+          <th>省份</th>
+          <td><input type="text" class="form-control input-sm " name="province"  id="province" placeholder="省份" value=""></td>
+        </tr>
+        <tr>
+          <th>城市</th>
+          <td><input type="text" class="form-control input-sm " name="city"  id="city" placeholder="城市" value=""></td>
+          <th>常住城市 </th>
+          <td><input type="text" class="form-control input-sm " name="permanentCity"  id="permanentCity" placeholder="常住城市" value=""></td>
+        </tr>
+        <tr>
+          <th>证件类型 <span class="error">*</span></th>
+          <td><select name="certificateType" id="certificateType" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="certificate_type" value="" />
+            </select></td>
+          <th>证件号码 <span class="error">*</span></th>
+          <td><input type="text" class="form-control input-sm required" name="certificateNum"  id="certificateNum" placeholder="证件号码" value=""></td>
+        </tr>
+        <tr>
+          <th>证件签发日期 </th>
+          <td><input type="text" class="form-control input-sm date" name="certificateStartDate"  id="certificateStartDate" placeholder="证件签发日期" value="" readonly></td>
+          <th>证件有效截止日期 <span class="error">*</span></th>
+          <td><input type="text" class="form-control input-sm required date" name="certificateEndDate"  id="certificateEndDate" placeholder="证件有效截止日期" value="" readonly></td>
+        </tr>
+        <tr>
+          <th>手机号 </th>
+          <td colspan="3"><input type="text" class="form-control input-sm" name="mobile"  id="mobile" placeholder="手机号" value=""></td>
+        </tr>
+        <tr>
+          <th>上传附件 <span class="error">*</span></th>
+          <td colspan="3"><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="orderstravelFile" id="orderstravelFile"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="">
+            <input type="hidden" name="ordersId" id="ordersId" value="${RequestParameters.ordersId!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list?ordersId=${RequestParameters.ordersId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

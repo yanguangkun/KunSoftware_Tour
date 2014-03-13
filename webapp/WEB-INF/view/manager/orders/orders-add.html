@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>订单管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/orders/orders-add");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" method="post" enctype="multipart/form-data" action="add.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 新增订单 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">产品编号 <span class="error">*</span></th>
+          <td width="35%"><input type="hidden" class="form-control input-sm required" name="productCode"  id="productCode" placeholder="产品编号" value=""></td>
+          <th width="15%">产品名称 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="productName"  id="productName" placeholder="产品名称" value=""></td>
+        </tr>
+        <tr>
+          <th>订单状态 <span class="error">*</span></th>
+          <td><select name="status" id="status" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="orders_status" value="" />
+            </select></td>
+          <th>到达国家 <span class="error">*</span> </th>
+          <td><select name="arriveCountry" id="arriveCountry" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="country" value="" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>到达目的地 <span class="error">*</span> </th>
+          <td><select name="arriveDestination" id="arriveDestination" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="destination" value="" />
+            </select></td>
+          <th>订单来源 <span class="error">*</span> </th>
+          <td><select name="source" id="source" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="orders_source" value="" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>订单类别 <span class="error">*</span> </th>
+          <td><select name="type" id="type" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="orders_type" value="" />
+            </select></td>
+          <th>订单编号 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="code"  id="code" placeholder="订单编号" value=""></td>
+        </tr>
+        <tr>
+          <th>数量 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="quantity"  id="quantity" placeholder="数量" value=""></td>
+          <th>订单金额 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="amount"  id="amount" placeholder="订单金额" value=""></td>
+        </tr>
+        <tr>
+          <th>定金金额 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="earnest"  id="earnest" placeholder="定金金额" value=""></td>
+          <th>业务日期 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required date" name="businessDate"  id="businessDate" placeholder="业务日期" value="" readonly></td>
+        </tr>
+        <tr>
+          <th>会员编号 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="userId"  id="userId" placeholder="会员编号" value=""></td>
+          <th>联系人 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="linkman"  id="linkman" placeholder="联系人" value="" ></td>
+        </tr>
+        <tr>
+          <th>联系人手机 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm required" name="linkmanMobile"  id="linkmanMobile" placeholder="联系人手机" value=""></td>
+          <th>是否只收全款 <span class="error">*</span> </th>
+          <td><@ValueSet name="fullAmount" code="yes_no_r" value="" /></td>
+        </tr>
+        <tr>
+          <th>客人备注 </th>
+          <td colspan="3"><textarea name="guestRemark" id="guestRemark" class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <th>客服备注 </th>
+          <td colspan="3"><textarea name="serviceRemark" id="serviceRemark" class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>
