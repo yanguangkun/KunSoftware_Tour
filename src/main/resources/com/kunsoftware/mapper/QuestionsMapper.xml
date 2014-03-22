@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.QuestionsMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Questions" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_user_name" property="memberUserName" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="INTEGER" />
+    <result column="banner" property="banner" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="reply" property="reply" jdbcType="VARCHAR" />
+    <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.Questions" extends="BaseResultMap" >
+    <result column="reply_content" property="replyContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, member_id, member_user_name, destination, banner, order_value, content, create_time, 
+    audit, reply, reply_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    reply_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from questions
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from questions
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Questions" >
+    insert into questions (id, member_id, member_user_name, 
+      destination, banner, order_value, 
+      content, create_time, audit, 
+      reply, reply_time, reply_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{memberUserName,jdbcType=VARCHAR}, 
+      #{destination,jdbcType=INTEGER}, #{banner,jdbcType=VARCHAR}, #{orderValue,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{audit,jdbcType=VARCHAR}, 
+      #{reply,jdbcType=VARCHAR}, #{replyTime,jdbcType=TIMESTAMP}, #{replyContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Questions" >
+    insert into questions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="memberUserName != null" >
+        member_user_name,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+      <if test="banner != null" >
+        banner,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberUserName != null" >
+        #{memberUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="banner != null" >
+        #{banner,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Questions" >
+    update questions
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberUserName != null" >
+        member_user_name = #{memberUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="banner != null" >
+        banner = #{banner,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        reply = #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kunsoftware.entity.Questions" >
+    update questions
+    set member_id = #{memberId,jdbcType=INTEGER},
+      member_user_name = #{memberUserName,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=INTEGER},
+      banner = #{banner,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      audit = #{audit,jdbcType=VARCHAR},
+      reply = #{reply,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      reply_content = #{replyContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Questions" >
+    update questions
+    set member_id = #{memberId,jdbcType=INTEGER},
+      member_user_name = #{memberUserName,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=INTEGER},
+      banner = #{banner,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      audit = #{audit,jdbcType=VARCHAR},
+      reply = #{reply,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getQuestionsListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from questions where 1=1 
+    <if test="audit != null and audit != ''">
+		AND audit = #{audit,jdbcType=VARCHAR}
+	</if>
+	<if test="reply != null and reply != ''">
+		AND reply = #{reply,jdbcType=VARCHAR}
+	</if>
+    
+    order by id DESC
+  </select>
+</mapper>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.CustomizeMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Customize" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title1" property="title1" jdbcType="VARCHAR" />
+    <result column="title2" property="title2" jdbcType="VARCHAR" />
+    <result column="title3" property="title3" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="INTEGER" />
+    <result column="product_resource_id" property="productResourceId" jdbcType="INTEGER" />
+    <result column="product_resource_name" property="productResourceName" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="front_desk" property="frontDesk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title1, title2, title3, summary, destination, product_resource_id, product_resource_name, 
+    image_path, front_desk
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customize
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customize
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Customize" >
+    insert into customize (id, title1, title2, 
+      title3, summary, destination, 
+      product_resource_id, product_resource_name, 
+      image_path, front_desk)
+    values (#{id,jdbcType=INTEGER}, #{title1,jdbcType=VARCHAR}, #{title2,jdbcType=VARCHAR}, 
+      #{title3,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{destination,jdbcType=INTEGER}, 
+      #{productResourceId,jdbcType=INTEGER}, #{productResourceName,jdbcType=VARCHAR}, 
+      #{imagePath,jdbcType=VARCHAR}, #{frontDesk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Customize" >
+    insert into customize
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title1 != null" >
+        title1,
+      </if>
+      <if test="title2 != null" >
+        title2,
+      </if>
+      <if test="title3 != null" >
+        title3,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id,
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="frontDesk != null" >
+        front_desk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title1 != null" >
+        #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null" >
+        #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceId != null" >
+        #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        #{frontDesk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Customize" >
+    update customize
+    <set >
+      <if test="title1 != null" >
+        title1 = #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        title2 = #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null" >
+        title3 = #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        front_desk = #{frontDesk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Customize" >
+    update customize
+    set title1 = #{title1,jdbcType=VARCHAR},
+      title2 = #{title2,jdbcType=VARCHAR},
+      title3 = #{title3,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=INTEGER},
+      product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      front_desk = #{frontDesk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getCustomizeListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from customize where 1=1 
+    <if test="destination != null and destination != ''">
+		AND destination = #{destination,jdbcType=VARCHAR}
+	</if> 
+	<if test="keyword != null and keyword != ''">
+		AND title1 like CONCAT('%', #{keyword} , '%') 
+	</if>
+    
+    order by id DESC
+  </select>
+</mapper>

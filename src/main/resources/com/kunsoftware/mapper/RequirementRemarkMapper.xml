@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.RequirementRemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.RequirementRemark" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="requirement_id" property="requirementId" jdbcType="INTEGER" />
+    <result column="deal_date" property="dealDate" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, requirement_id, deal_date, user_id, user_name, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from requirement_remark
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from requirement_remark
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.RequirementRemark" >
+    insert into requirement_remark (id, requirement_id, deal_date, 
+      user_id, user_name, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{requirementId,jdbcType=INTEGER}, #{dealDate,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.RequirementRemark" >
+    insert into requirement_remark
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="requirementId != null" >
+        requirement_id,
+      </if>
+      <if test="dealDate != null" >
+        deal_date,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="requirementId != null" >
+        #{requirementId,jdbcType=INTEGER},
+      </if>
+      <if test="dealDate != null" >
+        #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.RequirementRemark" >
+    update requirement_remark
+    <set >
+      <if test="requirementId != null" >
+        requirement_id = #{requirementId,jdbcType=INTEGER},
+      </if>
+      <if test="dealDate != null" >
+        deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.RequirementRemark" >
+    update requirement_remark
+    set requirement_id = #{requirementId,jdbcType=INTEGER},
+      deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getRequirementRemarkListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from requirement_remark where 1=1 
+     and requirement_id = #{requirementId,jdbcType=INTEGER}
+    order by id DESC
+  </select>
+</mapper>

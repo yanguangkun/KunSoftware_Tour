@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.YamiDiaryMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.YamiDiary" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="bgcolor" property="bgcolor" jdbcType="VARCHAR" />
+    <result column="index_recommend" property="indexRecommend" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="index_image_path" property="indexImagePath" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, bgcolor, index_recommend, content, image_path, index_image_path, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yami_diary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yami_diary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.YamiDiary" >
+    insert into yami_diary (id, title, bgcolor, 
+      index_recommend, content, image_path, 
+      index_image_path, create_time)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{bgcolor,jdbcType=VARCHAR}, 
+      #{indexRecommend,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{indexImagePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.YamiDiary" >
+    insert into yami_diary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="bgcolor != null" >
+        bgcolor,
+      </if>
+      <if test="indexRecommend != null" >
+        index_recommend,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="indexImagePath != null" >
+        index_image_path,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="bgcolor != null" >
+        #{bgcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="indexRecommend != null" >
+        #{indexRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="indexImagePath != null" >
+        #{indexImagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.YamiDiary" >
+    update yami_diary
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="bgcolor != null" >
+        bgcolor = #{bgcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="indexRecommend != null" >
+        index_recommend = #{indexRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="indexImagePath != null" >
+        index_image_path = #{indexImagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.YamiDiary" >
+    update yami_diary
+    set title = #{title,jdbcType=VARCHAR},
+      bgcolor = #{bgcolor,jdbcType=VARCHAR},
+      index_recommend = #{indexRecommend,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      index_image_path = #{indexImagePath,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getYamiDiaryListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from yami_diary where 1=1 
+    <if test="keyword != null and keyword != ''">
+		AND title like CONCAT('%', #{keyword} , '%') 
+	</if>
+    
+    order by id DESC
+  </select>
+</mapper>

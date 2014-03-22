@@ -10,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kunsoftware.bean.ValueSetRequestBean;
 import com.kunsoftware.entity.Ground;
@@ -21,6 +22,7 @@ import com.kunsoftware.mapper.GroundMapper;
 import com.kunsoftware.mapper.HeadIconTitleMapper;
 import com.kunsoftware.mapper.ValueSetMapper;
 import com.kunsoftware.page.PageInfo;
+import com.kunsoftware.util.FileUtil;
 
 @Repository 
 public class ValueSetService {
@@ -132,5 +134,100 @@ public class ValueSetService {
 		for(int i = 0;i < id.length;i++) {
 			valueSetMapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	public String selectValueSetByCode(String code) {
+		
+		ValueSet record = valueSetMapper.selectValueSetByCode(code);
+		if(record != null && record.getValue() != null) {
+			return record.getValue();
+		}
+		return "";
+	}
+	
+	@Transactional
+	public void saveGcolor(String color1,String color2,String color3,String color4) {
+		
+		ValueSet record = valueSetMapper.selectValueSetByCode("index_color1");
+		if(record == null) record = new ValueSet();
+		record.setValue(color1);
+		record.setCode("index_color1");
+		saveUpdate(record);
+		
+		record = valueSetMapper.selectValueSetByCode("index_color2");
+		if(record == null) record = new ValueSet();
+		record.setValue(color2);
+		record.setCode("index_color2");
+		saveUpdate(record);
+		
+		record = valueSetMapper.selectValueSetByCode("index_color3");
+		if(record == null) record = new ValueSet();
+		record.setValue(color2);
+		record.setCode("index_color3");
+		saveUpdate(record);
+		
+		record = valueSetMapper.selectValueSetByCode("index_color4");
+		if(record == null) record = new ValueSet();
+		record.setValue(color1);
+		record.setCode("index_color4");
+		saveUpdate(record);
+		
+	}
+	
+	public void saveCustomize(String num,MultipartFile image) throws KunSoftwareException{
+		
+		ValueSet record = valueSetMapper.selectValueSetByCode("customize_num");
+		if(record == null) record = new ValueSet();
+		record.setValue(num);
+		record.setCode("customize_num");
+		saveUpdate(record);		
+		
+		if(image != null) {
+			record = valueSetMapper.selectValueSetByCode("customize_image");
+			if(record == null) record = new ValueSet();			
+			String imagePath = FileUtil.uploadFile(image);
+			
+			record.setValue(imagePath);
+			record.setCode("customize_image");
+			saveUpdate(record);
+		}
+	}
+	
+	public void saveHidePrice(String hidePrice) throws KunSoftwareException{
+		
+		ValueSet record = valueSetMapper.selectValueSetByCode("hide_price");
+		if(record == null) record = new ValueSet();
+		record.setValue(hidePrice);
+		record.setCode("hide_price");
+		saveUpdate(record);		
+	}
+	
+	public void saveGiftad(String num,MultipartFile image) throws KunSoftwareException{
+		
+		ValueSet record = valueSetMapper.selectValueSetByCode("giftad_link");
+		if(record == null) record = new ValueSet();
+		record.setValue(num);
+		record.setCode("giftad_link");
+		saveUpdate(record);		
+		
+		if(image != null) {
+			record = valueSetMapper.selectValueSetByCode("giftad_image");
+			if(record == null) record = new ValueSet();			
+			String imagePath = FileUtil.uploadFile(image);
+			
+			record.setValue(imagePath);
+			record.setCode("giftad_image");
+			saveUpdate(record);
+		}
+	}
+	
+	public void saveUpdate(ValueSet record) {
+		
+		if(record.getId() == null) {
+			valueSetMapper.insert(record);
+		} else {
+			valueSetMapper.updateByPrimaryKey(record);
+		}
+		
 	}
 }

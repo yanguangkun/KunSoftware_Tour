@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.RequirementMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Requirement" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
+    <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
+    <result column="membership" property="membership" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="holiday_partner" property="holidayPartner" jdbcType="VARCHAR" />
+    <result column="holiday_style" property="holidayStyle" jdbcType="VARCHAR" />
+    <result column="holiday_element" property="holidayElement" jdbcType="VARCHAR" />
+    <result column="holiday_favor" property="holidayFavor" jdbcType="VARCHAR" />
+    <result column="hotel_style" property="hotelStyle" jdbcType="VARCHAR" />
+    <result column="budget" property="budget" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, status, start_country, arrive_destination, membership, start_time, holiday_partner, 
+    holiday_style, holiday_element, holiday_favor, hotel_style, budget, remark, linkman, 
+    mobile, email
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from requirement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from requirement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Requirement" >
+    insert into requirement (id, status, start_country, 
+      arrive_destination, membership, start_time, 
+      holiday_partner, holiday_style, holiday_element, 
+      holiday_favor, hotel_style, budget, 
+      remark, linkman, mobile, 
+      email)
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, 
+      #{arriveDestination,jdbcType=INTEGER}, #{membership,jdbcType=INTEGER}, #{startTime,jdbcType=VARCHAR}, 
+      #{holidayPartner,jdbcType=VARCHAR}, #{holidayStyle,jdbcType=VARCHAR}, #{holidayElement,jdbcType=VARCHAR}, 
+      #{holidayFavor,jdbcType=VARCHAR}, #{hotelStyle,jdbcType=VARCHAR}, #{budget,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Requirement" >
+    insert into requirement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="startCountry != null" >
+        start_country,
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination,
+      </if>
+      <if test="membership != null" >
+        membership,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="holidayPartner != null" >
+        holiday_partner,
+      </if>
+      <if test="holidayStyle != null" >
+        holiday_style,
+      </if>
+      <if test="holidayElement != null" >
+        holiday_element,
+      </if>
+      <if test="holidayFavor != null" >
+        holiday_favor,
+      </if>
+      <if test="hotelStyle != null" >
+        hotel_style,
+      </if>
+      <if test="budget != null" >
+        budget,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="membership != null" >
+        #{membership,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayPartner != null" >
+        #{holidayPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayStyle != null" >
+        #{holidayStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayElement != null" >
+        #{holidayElement,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayFavor != null" >
+        #{holidayFavor,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelStyle != null" >
+        #{hotelStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        #{budget,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Requirement" >
+    update requirement
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="startCountry != null" >
+        start_country = #{startCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="arriveDestination != null" >
+        arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      </if>
+      <if test="membership != null" >
+        membership = #{membership,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayPartner != null" >
+        holiday_partner = #{holidayPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayStyle != null" >
+        holiday_style = #{holidayStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayElement != null" >
+        holiday_element = #{holidayElement,jdbcType=VARCHAR},
+      </if>
+      <if test="holidayFavor != null" >
+        holiday_favor = #{holidayFavor,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelStyle != null" >
+        hotel_style = #{hotelStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        budget = #{budget,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Requirement" >
+    update requirement
+    set status = #{status,jdbcType=VARCHAR},
+      start_country = #{startCountry,jdbcType=VARCHAR},
+      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+      membership = #{membership,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      holiday_partner = #{holidayPartner,jdbcType=VARCHAR},
+      holiday_style = #{holidayStyle,jdbcType=VARCHAR},
+      holiday_element = #{holidayElement,jdbcType=VARCHAR},
+      holiday_favor = #{holidayFavor,jdbcType=VARCHAR},
+      hotel_style = #{hotelStyle,jdbcType=VARCHAR},
+      budget = #{budget,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getRequirementListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from requirement where 1=1 
+    <if test="status != null and status != ''">
+		AND status = #{status,jdbcType=VARCHAR}
+	</if>
+	<if test="arriveDestination != null and arriveDestination != ''">
+		AND arrive_destination = #{arrive_destination,jdbcType=VARCHAR}
+	</if>
+	<if test="linkman != null and linkman != ''">
+		AND linkman like CONCAT('%', #{linkman} , '%') 
+	</if>
+	<if test="mobile != null and mobile != ''">
+		AND mobile like CONCAT('%', #{mobile} , '%') 
+	</if>    
+    order by id DESC
+  </select>
+</mapper>

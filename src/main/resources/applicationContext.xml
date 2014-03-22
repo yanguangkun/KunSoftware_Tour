@@ -33,6 +33,9 @@
 		<property name="url" value="${url}" />
 		<property name="username" value="${username}" />
 		<property name="password" value="${password}" />
+        <!--  <property name="preferredTestQuery" value="${cpool.preferredTestQuery}" />
+        <property name="idleConnectionTestPeriod" value="${cpool.idleConnectionTestPeriod}" />
+        <property name="testConnectionOnCheckout"  value="${cpool.testConnectionOnCheckout}" />-->
 	</bean>
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->

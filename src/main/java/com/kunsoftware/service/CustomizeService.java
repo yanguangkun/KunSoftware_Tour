@@ -9,54 +9,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kunsoftware.bean.GalleryRequestBean;
-import com.kunsoftware.entity.Gallery;
+import com.kunsoftware.bean.CustomizeRequestBean;
+import com.kunsoftware.entity.Customize;
 import com.kunsoftware.exception.KunSoftwareException;
-import com.kunsoftware.mapper.GalleryMapper;
+import com.kunsoftware.mapper.CustomizeMapper;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.util.FileUtil;
 
 @Service
-public class GalleryService {
+public class CustomizeService {
 
-private static Logger logger = LoggerFactory.getLogger(GalleryService.class);	
+private static Logger logger = LoggerFactory.getLogger(CustomizeService.class);	
 	
 	@Autowired
-	private GalleryMapper mapper;
+	private CustomizeMapper mapper;
 	
-	public List<Gallery> getGalleryListPage(String keyword,PageInfo page) {
+	public List<Customize> getCustomizeListPage(String destination,String keyword,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getGalleryListPage(keyword,page);
+		return mapper.getCustomizeListPage(destination,keyword,page);
 	}
 	 
 	@Transactional
-	public Gallery insert(GalleryRequestBean requestBean) throws KunSoftwareException {
-		 
-		Gallery record = new Gallery();
-		BeanUtils.copyProperties(requestBean, record); 
+	public Customize insert(CustomizeRequestBean requestBean) throws KunSoftwareException {		 
 		
+		Customize record = new Customize();
+		BeanUtils.copyProperties(requestBean, record);
 		if(requestBean.getImageFile() != null) {
 			String imagePath = FileUtil.uploadFile(requestBean.getImageFile());
 			record.setImagePath(imagePath);
 		}
-		
-		mapper.insert(record); 
-		
-		 
+		mapper.insert(record);
 		return record;
 	}
 	
-	public Gallery selectByPrimaryKey(Integer id) {
+	public Customize selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
 	
 	@Transactional
-	public int updateByPrimaryKey(GalleryRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public int updateByPrimaryKey(CustomizeRequestBean requestBean,Integer id) throws KunSoftwareException {
 		
-		Gallery record = mapper.selectByPrimaryKey(id); 
-		BeanUtils.copyProperties(requestBean, record);
+		Customize record = mapper.selectByPrimaryKey(id); 
+		BeanUtils.copyProperties(requestBean, record);	
+		 
 		if(requestBean.getImageFile() != null) {
 			String imagePath = FileUtil.uploadFile(requestBean.getImageFile());
 			record.setImagePath(imagePath);
@@ -66,7 +63,7 @@ private static Logger logger = LoggerFactory.getLogger(GalleryService.class);
 	}
 	
 	@Transactional
-	public int deleteByPrimaryKey(Integer id) {
+	public int deleteByPrimaryKey(Integer id) throws KunSoftwareException {
 		return mapper.deleteByPrimaryKey(id);
 	}
 	
@@ -76,15 +73,5 @@ private static Logger logger = LoggerFactory.getLogger(GalleryService.class);
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
-	}
-	
-	@Transactional
-	public void updateEnableByIds(Integer[] id,String enable) throws KunSoftwareException {
-		
-		for(int i = 0;i < id.length;i++) {
-			Gallery record = mapper.selectByPrimaryKey(id[i]); 
-			record.setEnable(enable);
-			mapper.updateByPrimaryKeySelective(record);
-		}  
 	}
 }

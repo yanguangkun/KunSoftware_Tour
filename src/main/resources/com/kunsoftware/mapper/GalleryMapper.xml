@@ -3,11 +3,20 @@
 <mapper namespace="com.kunsoftware.mapper.GalleryMapper" >
   <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Gallery" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="product_resource_id" property="productResourceId" jdbcType="INTEGER" />
+    <result column="product_resource_name" property="productResourceName" jdbcType="VARCHAR" />
+    <result column="title1" property="title1" jdbcType="VARCHAR" />
+    <result column="title2" property="title2" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="INTEGER" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="enable" property="enable" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, remark
+    id, type, product_resource_id, product_resource_name, title1, title2, order_value, 
+    link, destination, image_path, enable
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,53 +28,137 @@
     delete from gallery
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kunsoftware.entity.Gallery" useGeneratedKeys="true"  keyProperty="id">
-    insert into gallery (id, name, remark
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.kunsoftware.entity.Gallery" >
+    insert into gallery (id, type, product_resource_id, 
+      product_resource_name, title1, title2, 
+      order_value, link, destination, 
+      image_path, enable)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{productResourceId,jdbcType=INTEGER}, 
+      #{productResourceName,jdbcType=VARCHAR}, #{title1,jdbcType=VARCHAR}, #{title2,jdbcType=VARCHAR}, 
+      #{orderValue,jdbcType=INTEGER}, #{link,jdbcType=VARCHAR}, #{destination,jdbcType=INTEGER}, 
+      #{imagePath,jdbcType=VARCHAR}, #{enable,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Gallery" useGeneratedKeys="true"  keyProperty="id">
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Gallery" >
     insert into gallery
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="type != null" >
+        type,
       </if>
-      <if test="remark != null" >
-        remark,
+      <if test="productResourceId != null" >
+        product_resource_id,
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name,
+      </if>
+      <if test="title1 != null" >
+        title1,
+      </if>
+      <if test="title2 != null" >
+        title2,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="enable != null" >
+        enable,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
+      <if test="productResourceId != null" >
+        #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        #{enable,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Gallery" >
     update gallery
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
+      <if test="productResourceId != null" >
+        product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        title1 = #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        title2 = #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null" >
+        enable = #{enable,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Gallery" >
     update gallery
-    set name = #{name,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+    set type = #{type,jdbcType=VARCHAR},
+      product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      title1 = #{title1,jdbcType=VARCHAR},
+      title2 = #{title2,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   

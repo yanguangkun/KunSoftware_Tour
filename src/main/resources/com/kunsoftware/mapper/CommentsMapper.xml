@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.CommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.Comments" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_user_name" property="memberUserName" jdbcType="VARCHAR" />
+    <result column="product_resource_id" property="productResourceId" jdbcType="INTEGER" />
+    <result column="product_resource_name" property="productResourceName" jdbcType="VARCHAR" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reply_content" property="replyContent" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="VARCHAR" />
+    <result column="reply" property="reply" jdbcType="VARCHAR" />
+    <result column="reply_time" property="replyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, member_id, member_user_name, product_resource_id, product_resource_name, order_value, 
+    content, create_time, reply_content, audit, reply, reply_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.Comments" >
+    insert into comments (id, member_id, member_user_name, 
+      product_resource_id, product_resource_name, 
+      order_value, content, create_time, 
+      reply_content, audit, reply, 
+      reply_time)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{memberUserName,jdbcType=VARCHAR}, 
+      #{productResourceId,jdbcType=INTEGER}, #{productResourceName,jdbcType=VARCHAR}, 
+      #{orderValue,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{replyContent,jdbcType=VARCHAR}, #{audit,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, 
+      #{replyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.Comments" >
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="memberUserName != null" >
+        member_user_name,
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id,
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberUserName != null" >
+        #{memberUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="productResourceId != null" >
+        #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.Comments" >
+    update comments
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberUserName != null" >
+        member_user_name = #{memberUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="productResourceId != null" >
+        product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="productResourceName != null" >
+        product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=VARCHAR},
+      </if>
+      <if test="reply != null" >
+        reply = #{reply,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null" >
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.Comments" >
+    update comments
+    set member_id = #{memberId,jdbcType=INTEGER},
+      member_user_name = #{memberUserName,jdbcType=VARCHAR},
+      product_resource_id = #{productResourceId,jdbcType=INTEGER},
+      product_resource_name = #{productResourceName,jdbcType=VARCHAR},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      reply_content = #{replyContent,jdbcType=VARCHAR},
+      audit = #{audit,jdbcType=VARCHAR},
+      reply = #{reply,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getCommentsListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from comments where 1=1 
+    <if test="audit != null and audit != ''">
+		AND audit = #{audit,jdbcType=VARCHAR}
+	</if>
+	<if test="reply != null and reply != ''">
+		AND reply = #{reply,jdbcType=VARCHAR}
+	</if>
+    
+    order by id DESC
+  </select>
+</mapper>

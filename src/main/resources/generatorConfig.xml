@@ -20,16 +20,11 @@
     <table schema="" tableName="test" ></table>
     <table tableName="news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>-->
-     <table tableName="head_icon_title" domainObjectName="HeadIconTitle" enableCountByExample="false" enableUpdateByExample="false"
+     selectByExampleQueryId="false"></table>-->      
+      
+     <table tableName="yami_diary" domainObjectName="YamiDiary" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>
-     <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false" enableUpdateByExample="false"
-     enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>
-     <table tableName="member" domainObjectName="Member" enableCountByExample="false" enableUpdateByExample="false"
-     enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>
+     selectByExampleQueryId="false"></table> 
      
   </context>
 </generatorConfiguration>

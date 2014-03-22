@@ -25,4 +25,6 @@ public interface ValueSetMapper {
     List<ValueSet> getValueSetListPage(@Param("code") String code,@Param("keyword") String keyword,@Param("page") PageInfo page);
     List<ValueSet> getValueSetListAll(@Param("code") String code);
     List<ValueSet> selectValueSetListByParentValue(@Param("parentValue") String parentValue);
+    
+    ValueSet selectValueSetByCode(@Param("code") String code);
 }

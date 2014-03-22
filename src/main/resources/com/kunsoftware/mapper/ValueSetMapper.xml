@@ -178,5 +178,12 @@
     and parent_value = #{parentValue,jdbcType=VARCHAR}
     order by order_value ASC, id DESC
   </select>
+  
+  <select id="selectValueSetByCode" resultMap="BaseResultMap" parameterType="com.kunsoftware.entity.ValueSet" >
+    select 
+    <include refid="Base_Column_List" />
+    from value_set
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
 </mapper>
  
