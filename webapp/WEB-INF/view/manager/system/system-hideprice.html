@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>隐藏价格管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/system/system-hideprice");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" method="post" action="hideprice.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 隐藏价格 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">是否隐藏价格 <span class="error">*</span></th>
+          <td width="85%"><@ValueSet name="hidePrice" code="yes_no_r" value="${hidePrice!}" /></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

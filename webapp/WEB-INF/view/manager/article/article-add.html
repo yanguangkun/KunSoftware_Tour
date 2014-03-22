@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>分类管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.css_editor/>
+<@cm.javascript />
+<script>
+    seajs.use("manager/article/article-add");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" method="post" action="add.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 新增分类 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">标题 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="title1"  id="title1" placeholder="标题" value=""></td>
+          <th>分类 <span class="error">*</span> </th>
+          <td><select name="classifyId" id="classifyId" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="destination" value="" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>是否前台显示 <span class="error">*</span></th>
+          <td colspan="3"><@ValueSet name="frontDesk" code="yes_no_r" value="" /></td>
+        </tr>
+        <tr>
+          <th >内容 <span class="error">*</span></th>
+          <td  colspan="3"><textarea name="content" id="content" class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>
