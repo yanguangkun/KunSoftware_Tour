@@ -5,10 +5,11 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
-	var lockscreen = require('lockscreen');
-	var modaldialog = require('modaldialog'); 
 	
-	$(document).ready(function(){  
+	require('jquery-wysiwyg')($);	
+	var lockscreen = require('lockscreen');
+	
+	$(document).ready(function(){ 
 		
 		var validate =  $("#saveFrm").validate({ 
 			submitHandler: function(form) { 
@@ -31,9 +32,9 @@ define(function(require, exports, module) {
 				lockscreen.lock();
 			} 
 			$("#saveFrm").submit();
-        });
+        }); 
 		
-		$(".dialogBtn").click(function(e) { 
-			modaldialog({code:'product_resource',obj:this});
-		});
-	}); });
+		$('#content').wysiwyg();
+	}); 
+	 
+});

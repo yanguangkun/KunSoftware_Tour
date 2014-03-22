@@ -6,7 +6,7 @@ define(function(require, exports, module) {
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
 	var lockscreen = require('lockscreen');
-	var juicer = require('juicer'); 
+	var modaldialog = require('modaldialog'); 
 	
 	$(document).ready(function(){  
 		
@@ -33,35 +33,9 @@ define(function(require, exports, module) {
 			$("#saveFrm").submit();
         });
 		
-		$(".addBtn").click(function(e) {
-			var data = {};
-            var tpl = $("#tpl").html();
-			var html = juicer(tpl, data); 
-			var row = $("#galleryTable tr").length - 2;
-			 
-			var $tr = $("#galleryTable tr").eq(row);
-			 
-			$tr.after(html); 
-			return false;
-        });
-		
-		$(document).on('click', '.delBtn', function () {
-			delImage(this);
-		}); 
-		
-		$(document).on('change', "input[name='galleryImageFile']", function () {alert('ok');
-			$(this).parent("td").find("#isFile").val("1");
+		$(".dialogBtn").click(function(e) { 
+			modaldialog({code:'product_resource',obj:this});
 		});
 	}); 
 	
-	function delImage(that) {
-		var row = $("#galleryTable tr").length;
-		 
-		if(row <= 3) {
-			alert("最后一个不能删除!");
-			return;	
-		}
-		$(that).parent('td').parent('tr').remove();
-		return false;	
-	}
 });

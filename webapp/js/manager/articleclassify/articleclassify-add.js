@@ -4,9 +4,10 @@ define(function(require, exports, module) {
 	require('bootstrap')($); 
 	require('jquery-form')($); 
 	require('jquery-validate')($);
-	require('jquery-validate-messages')($); 
+	require('jquery-validate-messages')($);
+	require('datepicker');
+	var juicer = require('juicer'); 
 	var lockscreen = require('lockscreen');
-	var modaldialog = require('modaldialog'); 
 	
 	$(document).ready(function(){  
 		
@@ -32,8 +33,5 @@ define(function(require, exports, module) {
 			} 
 			$("#saveFrm").submit();
         });
-		
-		$(".dialogBtn").click(function(e) { 
-			modaldialog({code:'product_resource',obj:this});
-		});
-	}); });
+	}); 
+});

@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('page'); 
 	$(document).ready(function(){  
-		 
+		
 		$(".searchBtn").click(function(e) {
             $("#searchForm").submit();
         });
@@ -19,8 +19,7 @@ define(function(require, exports, module) {
 		
 		$(".delBtn").click(function(e) {
 			var idLength = $("input[name='id']:checked").length;
-			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
-			
+			if(idLength <= 0) {alert("请选择一个进行操作!");return}			
 			 
 			$("#controlForm").attr("action","del.json");
 			$("#controlForm").ajaxSubmit({

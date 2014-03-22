@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('page'); 
 	$(document).ready(function(){  
-		 
+		
 		$(".searchBtn").click(function(e) {
             $("#searchForm").submit();
         });
@@ -19,8 +19,7 @@ define(function(require, exports, module) {
 		
 		$(".delBtn").click(function(e) {
 			var idLength = $("input[name='id']:checked").length;
-			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
-			
+			if(idLength <= 0) {alert("请选择一个进行操作!");return}			
 			 
 			$("#controlForm").attr("action","del.json");
 			$("#controlForm").ajaxSubmit({
@@ -35,9 +34,9 @@ define(function(require, exports, module) {
 			});
         });
 		
-		$(".enableBtn").click(function(e) {
+		$(".statusBtn").click(function(e) {
             
-			if($("#enable").val() == "") {
+			if($("#status").val() == "") {
 				alert('状态不能为空!');
 				return;
 			}
@@ -45,7 +44,7 @@ define(function(require, exports, module) {
 			var idLength = $("input[name='id']:checked").length;
 			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
 			
-			$("#controlForm").attr("action","enable.json");
+			$("#controlForm").attr("action","status.json");
 			$("#controlForm").ajaxSubmit({
 				dataType:'json', 
 				success:function(data) {

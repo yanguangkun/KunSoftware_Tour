@@ -2,14 +2,8 @@ define(function(require, exports, module) {
 	 
 	var $ = require('jquery'); 
 	require('bootstrap')($); 
-	require('jquery-form')($); 
 	require('page'); 
 	$(document).ready(function(){  
-		 
-		$(".searchBtn").click(function(e) {
-            $("#searchForm").submit();
-        });
-		
 		$(".editBtn").click(function(e) {
             var idLength = $("input[name='id']:checked").length;
 			if(idLength <= 0) {alert("请选择一个进行编辑!");return}
@@ -31,25 +25,6 @@ define(function(require, exports, module) {
                         $(this).parent("td").parent("tr").remove();  
                     });
 					
-				}
-			});
-        });
-		
-		$(".enableBtn").click(function(e) {
-            
-			if($("#enable").val() == "") {
-				alert('状态不能为空!');
-				return;
-			}
-			
-			var idLength = $("input[name='id']:checked").length;
-			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
-			
-			$("#controlForm").attr("action","enable.json");
-			$("#controlForm").ajaxSubmit({
-				dataType:'json', 
-				success:function(data) {
-					alert(data.message);  
 				}
 			});
         });
