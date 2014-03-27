@@ -29,6 +29,11 @@ private static Logger logger = LoggerFactory.getLogger(GalleryService.class);
 		logger.info("query");
 		return mapper.getGalleryListPage(keyword,page);
 	}
+	
+	public List<Gallery> getGalleryListAll(String type) {
+		 
+		return mapper.getGalleryListAll(type);
+	}
 	 
 	@Transactional
 	public Gallery insert(GalleryRequestBean requestBean) throws KunSoftwareException {

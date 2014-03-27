@@ -21,4 +21,6 @@ public interface GalleryMapper {
     int updateByPrimaryKey(Gallery record);
     
     List<Gallery> getGalleryListPage(@Param("keyword") String keyword,@Param("page") PageInfo page);
+    
+    List<Gallery> getGalleryListAll(@Param("type") String type);
 }

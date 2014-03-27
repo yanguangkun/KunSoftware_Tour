@@ -171,4 +171,11 @@
 	</if>
     order by id DESC
   </select>
+  <select id="getGalleryListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from gallery where 1=1 
+    AND type = #{type,jdbcType=VARCHAR}
+    order by order_value ASC
+  </select>
 </mapper>
