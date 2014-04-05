@@ -1,1 +1,3 @@
-<script> location.href="manager/productresource/list"; </script>
+<script> 
+location.href="index"; 
+</script>
