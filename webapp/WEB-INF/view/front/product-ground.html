@@ -1,0 +1,55 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td width="347"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#fff">
+        <tr>
+          <td width="367" ><div class="product-content-m2-s1">最优质服务商</div></td>
+        </tr>
+        <tr>
+          <td><#list retList as item>
+            <table width="307" border="0" align="center" cellpadding="0" cellspacing="0" class="product-content-m2-s2">
+              <tr>
+                <td width="80" height="80" align="center" valign="top"><div class="product-content-m2-s6"><img src="${contextPath}/images/img3.jpg" width="64" height="64"></div></td>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><div class="product-content-m2-s3">${item.name!}</div></td>
+                    </tr>
+                    <tr>
+                      <td><div class="product-content-m2-s4">${item.groundDescribe!}</div></td>
+                    </tr>
+                    <tr>
+                      <td><div class="product-content-m2-s5">
+                          <@ValueSetWrite code="ground_type" value="${item.type!}" />
+                          | <a href="list-g?arriveDestination=${destination}&groundId=${item.id}">查阅详情</a></div></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            </#list></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td></td>
+    <td width="347" height="15"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td height="50" align="right" bgcolor="#FFFFFF"><table width="347" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="173">&nbsp;</td>
+          <td width="174"><div  class="product-content-m2-s7">
+              <ul>
+                <li class="page" value="${pageInfo.previousPageNo}">《</li>
+                <#list 1..pageInfo.totalPages as n>
+               <li class="page" value="${n}">${n}</li>
+                </#list> 
+                <li class="page" value="${pageInfo.nextPageNo}">》</li>
+              </ul>
+            </div></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>

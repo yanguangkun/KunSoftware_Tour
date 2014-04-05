@@ -20,14 +20,14 @@
       <div class="panel-heading"> 编辑相册 </div>
       <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
         <tr>
-          <th width="15%">类别 <span class="error">*</span></th>
-          <td width="35%"><select name="type" id="type" class="form-control input-sm required">
+          <th width="15%">类别 </th>
+          <td width="35%"><select name="type" id="type" class="form-control input-sm">
               <option value="">-请选择-</option>
               <@ValueSet code="gallery_type" value="${entity.type!}" />
             </select></td>
           <th width="15%">绑定产品资源</th>
           <td width="35%" class="form-inline"><input type="hidden" class="productResourceId" name="productResourceId"  id="productResourceId" value="${entity.productResourceId!}">
-            <input type="text" class="form-control input-sm required productResourceName" name="productResourceName"  id="productResourceName" placeholder="绑定产品资源" value="${entity.productResourceName!}" readonly>
+            <input type="text" class="form-control input-sm productResourceName" name="productResourceName"  id="productResourceName" placeholder="绑定产品资源" value="${entity.productResourceName!}" readonly>
             <div class="form-group dialogControl">
               <input class="dialogBtn btn btn-primary btn-sm" type="button" name="button2" id="button2"  value="选择">
               <input class="btn btn-default btn-sm selectClean" type="button" name="button2" id="button2" value="清空">
@@ -46,8 +46,8 @@
           <td><input type="text" class="form-control input-sm" name="link"  id="link" placeholder="连接" value="${entity.link!}" ></td>
         </tr>
         <tr>
-          <th>目的地 <span class="error">*</span></th>
-          <td><select name="destination" id="destination" class="form-control input-sm required">
+          <th>目的地 </th>
+          <td><select name="destination" id="destination" class="form-control input-sm">
               <option value="">-请选择-</option>
               <@ValueSet code="destination" value="${entity.destination!}" />
             </select></td>
@@ -59,7 +59,7 @@
           <td><div class="row">
               <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
             </div>
-            <input type="file" name="imageFile" id="imageFile"></td>
+            <input type="file" name="galleryImageFile" id="galleryImageFile"></td>
         </tr>
         <tr>
           <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id}">
