@@ -29,8 +29,8 @@ body, td, th {
 .top-col1{ width:140px}
 .top-col2{ width:130px}
 
-.top-base a{display:block; padding:0 25px; color:#c8c8c8; text-decoration:none}
-.top-base a:hover{display:block; color:#c8c8c8; background-color:#1f1f1f; text-decoration:none}
+.top-base a.a1{display:block; padding:0 25px; color:#c8c8c8; text-decoration:none}
+.top-base a.a1:hover{display:block; color:#c8c8c8; background-color:#1f1f1f; text-decoration:none}
 .top-base a.current{display:block;  background-color:#1f1f1f; color:#fff; text-decoration:none}
 .top-base a:hover.current{display:block; background-color:#1f1f1f; color:#fff; text-decoration:none}
 
@@ -156,7 +156,8 @@ body, td, th {
 .product-content-m2-s7 ul {}
 .product-content-m2-s7 ul li { cursor:pointer; border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
 
-.product-top .top-base a{padding:0 15px;}
+.product-top .top-base a.a1{padding:0 15px;}
+.product-top .top-base a.a2{padding:0 25px; }
 .product-top .top-col2{ padding: 0 0 0 25px;width:280px}
 .product-top .top-col3{ margin:10px 0 0 0px; padding: 0 0 0 10px; width:165px; height:29px; float:left; position:relative; background-image:url(../images/img5.jpg); line-height:29px;}
 .product-top .top-col3 input{ margin:0; padding:0; width:165px; height:29px;border:0px;background-color:transparent;line-height:29px;}
