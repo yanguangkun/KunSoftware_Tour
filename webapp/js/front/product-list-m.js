@@ -21,28 +21,7 @@ define(function(require, exports, module) {
 					 
 				}
 			});
-		});
-		
-		$(".product-type li").click(function(e) {
-			$(".product-type li").removeClass("active");
-			$(this).addClass("active");
-			page = 0; 
-            $("#pageNo").val(page++);
-			$("#productType").val($(this).attr("value"));
-			$(".productItem").remove();
-			$("#listMore").ajaxSubmit({
-				dataType:'json', 
-				success:function(data) { 
-					$("#productList").append(data.result);
-					totalPages = data.totalPages;
-				}
-			});
-        });
-		
-		$.getJSON("ground.json?destination=" + $("#arriveDestination").val() , function (data, textStatus){  
-			$(".groundInfo").append(data.result);
-			 
-		});
+		}); 
 		
 		$(document).on("click",".page",function(){ 
 			$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&pageNo=" + $(this).attr("value" ), function (data, textStatus){  
@@ -53,6 +32,14 @@ define(function(require, exports, module) {
 		 
 	}); 
 	 
+	$(".indexDestination").mouseenter(function(e) {
+        $(".arr").show();
+		$(".indexDestinationList").show();
+    });
 	
+	$(".indexDestination").mouseleave(function(e) {
+        $(".arr").hide();
+		$(".indexDestinationList").hide();
+    });
 	
 });

@@ -27,6 +27,7 @@ define(function(require, exports, module) {
 			$(".product-type li").removeClass("active");
 			$(this).addClass("active");
 			page = 0; 
+			$("#tag").val(""); 
             $("#pageNo").val(page++);
 			$("#productType").val($(this).attr("value"));
 			$(".productItem").remove();
@@ -37,20 +38,22 @@ define(function(require, exports, module) {
 					totalPages = data.totalPages;
 				}
 			});
-        });
+        }); 
 		
-		$.getJSON("ground.json?destination=" + $("#arriveDestination").val() , function (data, textStatus){  
-			$(".groundInfo").append(data.result);
-			 
-		});
-		
-		$(document).on("click",".page",function(){ 
-			$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&pageNo=" + $(this).attr("value" ), function (data, textStatus){  
-				
-				$(".groundInfo").html(data.result); 
+		$(".tag").click(function(e) {
+			page = 0; 
+            $("#pageNo").val(page++); 
+			$("#tag").val($(this).text()); 
+			$(".productItem").remove();
+			$("#listMore").ajaxSubmit({
+				dataType:'json', 
+				success:function(data) { 
+					$("#productList").append(data.result);
+					totalPages = data.totalPages;
+				}
 			});
-		});
-		 
+			return false;
+        }); 
 	}); 
 	 
 	

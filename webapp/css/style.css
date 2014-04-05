@@ -20,6 +20,9 @@ body, td, th {
 	 height:50px; background-color:#333333
 }
 
+ a{color:#333333; text-decoration:none;}
+ a:hover{color:#333333;}
+
 .top-base{ float:left; line-height:50px; height:50px;}
 .top-padding-right{ padding-right:20px}
 .top-padding{ padding:0 3px;}
@@ -151,7 +154,8 @@ body, td, th {
 .product-content-m2-s6{ padding:16px 0 0;  } 
 .product-content-m2-s7{width:150px;} 
 .product-content-m2-s7 ul {}
-.product-content-m2-s7 ul li { border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
+.product-content-m2-s7 ul li { cursor:pointer; border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
+
 .product-top .top-base a{padding:0 15px;}
 .product-top .top-col2{ padding: 0 0 0 25px;width:280px}
 .product-top .top-col3{ margin:10px 0 0 0px; padding: 0 0 0 10px; width:165px; height:29px; float:left; position:relative; background-image:url(../images/img5.jpg); line-height:29px;}
@@ -163,7 +167,15 @@ body, td, th {
 .product-bottom { height:70px; padding: 15px 0 0 0;}
 .product-bottom .bottom-m5{text-align:center; margin:auto;vertical-align:middle; line-height:25px; color:#999999}
  
+.product-content-m2-g1 { border-bottom:1px solid #d9d9d9}
+.product-content-m2-g2 { color:#333333;}
+.product-content-m2-g3 { color:#757575;}
+.product-content-m2-g3 a{color:#757575; text-decoration:none; padding:3px;}
+.product-content-m2-g3 a:hover{color:#757575;}
 
+.product-content-m-s1 { font-size:25px; color:#333333}
+.product-content-m-s2 { font-size:25px; color:#a8a6a7}
+.product-content-m-s3 { padding:0 0 0 15px;}
 		/* 本例子css */
 		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:1px solid #ddd;  }
 		
