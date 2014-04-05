@@ -176,7 +176,7 @@
     order by id DESC
   </select>
   
-  <select id="getGroundListAllByDestination" resultMap="BaseResultMap" parameterType="java.lang.String">
+  <select id="getGroundByDestinationListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
    select 
     <include refid="Base_Column_List" />
     from ground where 1=1 

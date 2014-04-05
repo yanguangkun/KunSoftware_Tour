@@ -2,6 +2,7 @@ package com.kunsoftware.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.GroundRequestBean;
 import com.kunsoftware.entity.Ground;
+import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.GroundMapper;
 import com.kunsoftware.page.PageInfo;
@@ -30,10 +32,10 @@ public class GroundService {
 		return mapper.getGroundListPage(destination,page);
 	}
 	 
-	public List<Ground> getGroundListAllByDestination(Integer destination) {
+	public List<Ground> getGroundByDestinationListPage(Integer destination,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getGroundListAllByDestination(destination);
+		return mapper.getGroundByDestinationListPage(destination,page);
 	}
 	
 	@Transactional
@@ -60,6 +62,7 @@ public class GroundService {
 		
 		return mapper.selectByPrimaryKey(id);
 	}
+	
 	
 	@Transactional
 	public int updateByPrimaryKey(GroundRequestBean requestBean,Integer id) throws KunSoftwareException {

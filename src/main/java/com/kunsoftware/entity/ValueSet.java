@@ -1,5 +1,7 @@
 package com.kunsoftware.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class ValueSet {
     private Integer id;
 
@@ -89,5 +91,11 @@ public class ValueSet {
 
     public void setAttr(String attr) {
         this.attr = attr;
+    }
+    
+    public String[] getValues() {
+    	
+    	if(StringUtils.isEmpty(value)) return null;
+    	return StringUtils.split(value, ",");
     }
 }

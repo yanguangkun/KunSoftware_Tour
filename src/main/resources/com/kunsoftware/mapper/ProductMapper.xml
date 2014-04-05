@@ -248,7 +248,7 @@
     from product_resource pr,product p where 1=1 and pr.product_id=p.id and whether_shelf='1'
     <if test="bean != null" >
 	    <if test="bean.tag != null and bean.tag != ''">
-			AND name like CONCAT('%', #{bean.tag} , '%') 
+			AND tag like CONCAT('%', #{bean.tag} , '%') 
 		</if> 
 		<if test="bean.arriveDestination != null and bean.arriveDestination != ''">
 			AND pr.arrive_destination = #{bean.arriveDestination,jdbcType=INTEGER}

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.GroundTagRequestBean;
 import com.kunsoftware.entity.GroundTag;
+import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.GroundTagMapper;
 import com.kunsoftware.page.PageInfo;
@@ -27,6 +28,11 @@ private static Logger logger = LoggerFactory.getLogger(GroundTagService.class);
 		 
 		logger.info("query");
 		return mapper.getGroundTagListPage(destination,groundId,page);
+	}
+	
+	public List<ValueSet> getValueSetListByGround(Integer destination,Integer groundId) throws KunSoftwareException {
+		
+		return mapper.getValueSetListByGround(destination,groundId);
 	}
 	 
 	@Transactional

@@ -75,7 +75,7 @@ public class GalleryController extends BaseController {
 	
 	@RequestMapping(value="/edit.json") 
 	@ResponseBody 
-	public JsonBean editGallery(@RequestParam(value = "imageFile", required = false) MultipartFile file,GalleryRequestBean requestBean,Integer id) throws KunSoftwareException {
+	public JsonBean editGallery(@RequestParam(value = "galleryImageFile", required = false) MultipartFile file,GalleryRequestBean requestBean,Integer id) throws KunSoftwareException {
 		 
 		logger.info("编辑保存相册"); 
 		requestBean.setImageFile(file);

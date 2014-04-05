@@ -14,18 +14,20 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 
 import com.kunsoftware.bean.JsonBean;
 import com.kunsoftware.bean.ProductResourceRequestBean;
 import com.kunsoftware.controller.BaseController;
 import com.kunsoftware.entity.Destination;
+import com.kunsoftware.entity.Ground;
+import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.page.PageUtil;
 import com.kunsoftware.service.DestinationService;
 import com.kunsoftware.service.GalleryService;
 import com.kunsoftware.service.GroundService;
+import com.kunsoftware.service.GroundTagService;
 import com.kunsoftware.service.ProductService;
 import com.kunsoftware.util.WebUtil;
 
@@ -48,6 +50,9 @@ public class FrontProductController extends BaseController {
 	
 	@Autowired
 	private GroundService groundService;
+	
+	@Autowired
+	private GroundTagService groundTagService;
 	
 	@Autowired
 	private FreeMarkerConfigurer  freeMarkerConfigurer = null;  
@@ -78,9 +83,13 @@ public class FrontProductController extends BaseController {
 		requestBean.setArriveDestination(destination.getId());
 		 
 		pageInfo.setPageSize(2);
+		
+		PageInfo groundPageInfo = new PageInfo();
+		groundPageInfo.setPageSize(4);
+		
 		List list = service.getProductResourceListPage(requestBean,pageInfo); 
 		List galleryList = galleryService.getGalleryListAll(null, destination.getId().toString(), null);
-		List groundList = groundService.getGroundListAllByDestination(destination.getId());
+		List groundList = groundService.getGroundByDestinationListPage(destination.getId(),groundPageInfo);
 		model.addAttribute("retList", list);
 		model.addAttribute("galleryList", galleryList); 
 		model.addAttribute("groundList", groundList); 
@@ -89,6 +98,80 @@ public class FrontProductController extends BaseController {
 		
 		PageUtil.pageInfo(model, pageInfo);
 		return "front/product-list";
+	}
+	
+	@RequestMapping("/list-g")
+	public String listProductG(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("产品列表"); 
+		
+		
+		if(StringUtils.isEmpty(requestBean.getProductType())) {
+			requestBean.setProductType("1");
+		}
+		
+		String productType = requestBean.getProductType();
+		if("4".equals(requestBean.getProductType())) {
+			requestBean.setSalePrice("1");
+			requestBean.setProductType("");
+		}
+		
+		Destination destination = null;
+		if(requestBean.getArriveDestination() == null) {
+			destination = destinationService.selectByName(requestBean.getDestination());
+		} else {
+			destination = destinationService.selectByPrimaryKey(requestBean.getArriveDestination());
+		}
+		requestBean.setArriveDestination(destination.getId());
+		 
+		Ground ground = groundService.selectByPrimaryKey(requestBean.getGroundId());
+		pageInfo.setPageSize(2);
+		
+		List<ValueSet> groundTagList = groundTagService.getValueSetListByGround(ground.getDestination(), ground.getId());
+		 
+		List list = service.getProductResourceListPage(requestBean,pageInfo); 
+		List galleryList = galleryService.getGalleryListAll(null, destination.getId().toString(), null);
+		model.addAttribute("retList", list);
+		model.addAttribute("galleryList", galleryList); 
+		model.addAttribute("ground", ground); 
+		model.addAttribute("groundTagList", groundTagList); 
+		model.addAttribute("destination", destination);
+		model.addAttribute("productType", productType);
+		
+		PageUtil.pageInfo(model, pageInfo);
+		return "front/product-list-g";
+	}
+	
+	@RequestMapping("/list-m")
+	public String listProductM(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("产品列表"); 
+		 
+		
+		Destination destination = null;
+		if(requestBean.getArriveDestination() == null) {
+			destination = destinationService.selectByName(requestBean.getDestination());
+		} else {
+			destination = destinationService.selectByPrimaryKey(requestBean.getArriveDestination());
+		}
+		List galleryList = null;
+		if(destination != null) {
+			requestBean.setArriveDestination(destination.getId());
+			galleryList = galleryService.getGalleryListAll(null, destination.getId().toString(), null);
+		} else {
+			galleryList = galleryService.getGalleryListAll("2");
+			destination = new Destination();
+		}
+		requestBean.setMarryRecommend("1");
+		pageInfo.setPageSize(2);
+		List list = service.getProductResourceListPage(requestBean,pageInfo); 
+		 
+		model.addAttribute("retList", list);
+		model.addAttribute("galleryList", galleryList);  
+		model.addAttribute("destination", destination); 
+		
+		PageUtil.pageInfo(model, pageInfo);
+		return "front/product-list-m";
 	}
 	
 	@RequestMapping(value="/more.json")
@@ -108,7 +191,9 @@ public class FrontProductController extends BaseController {
 			} else {
 				destination = destinationService.selectByPrimaryKey(requestBean.getArriveDestination());
 			}
-			requestBean.setArriveDestination(destination.getId());
+			
+			if(destination != null)
+				requestBean.setArriveDestination(destination.getId());
 			pageInfo.setPageSize(2);
 			List list = service.getProductResourceListPage(requestBean,pageInfo);
 			 
@@ -119,6 +204,36 @@ public class FrontProductController extends BaseController {
 			JsonBean jsonBean = new JsonBean();
 			jsonBean.put("result", FreeMarkerTemplateUtils.processTemplateIntoString(tpl, map));
 			jsonBean.put("totalPages", pageInfo.getTotalPages());
+			jsonBean.setMessage("操作成功");
+			 		 
+			return jsonBean;
+		} catch(Exception e) {
+			throw new KunSoftwareException(e);
+		}
+	}
+	
+	@RequestMapping(value="/ground.json")
+	@ResponseBody 
+	public JsonBean ground(ModelMap model,Integer destination,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("地接列表");  
+		 
+		try {
+			Template tpl =  freeMarkerConfigurer.getConfiguration().getTemplate("front/product-ground.html"); 
+			 
+			pageInfo.setPageSize(4);
+			List groundList = groundService.getGroundByDestinationListPage(destination,pageInfo);
+			 
+			Map map  = new HashMap();  
+			map.put("retList",groundList);  
+			map.put("destination",destination);  
+			map.put("pageInfo",pageInfo);  
+			map.put("contextPath",WebUtil.getContextPath());
+		    
+			
+			JsonBean jsonBean = new JsonBean();
+			
+			jsonBean.put("result", FreeMarkerTemplateUtils.processTemplateIntoString(tpl, map)); 
 			jsonBean.setMessage("操作成功");
 			 		 
 			return jsonBean;

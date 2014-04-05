@@ -1,7 +1,5 @@
 package com.kunsoftware.bean;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
 
