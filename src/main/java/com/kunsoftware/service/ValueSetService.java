@@ -162,13 +162,13 @@ public class ValueSetService {
 		
 		record = valueSetMapper.selectValueSetByCode("index_color3");
 		if(record == null) record = new ValueSet();
-		record.setValue(color2);
+		record.setValue(color3);
 		record.setCode("index_color3");
 		saveUpdate(record);
 		
 		record = valueSetMapper.selectValueSetByCode("index_color4");
 		if(record == null) record = new ValueSet();
-		record.setValue(color1);
+		record.setValue(color4);
 		record.setCode("index_color4");
 		saveUpdate(record);
 		

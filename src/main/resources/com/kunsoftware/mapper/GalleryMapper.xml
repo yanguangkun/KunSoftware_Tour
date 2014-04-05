@@ -175,7 +175,15 @@
     select 
     <include refid="Base_Column_List" />
     from gallery where 1=1 
+    <if test="type != null and type != ''">
     AND type = #{type,jdbcType=VARCHAR}
+    </if>
+    <if test="destination != null and destination != ''">
+    AND destination = #{destination,jdbcType=INTEGER}
+    </if>
+    <if test="resourceId != null and resourceId != ''">
+    AND product_resource_id = #{resourceId,jdbcType=INTEGER}
+    </if>
     order by order_value ASC
   </select>
 </mapper>

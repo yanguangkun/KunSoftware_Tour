@@ -374,7 +374,7 @@
 			AND start_city = #{bean.startCity,jdbcType=VARCHAR}
 		</if>
 		<if test="bean.arriveDestination != null and arriveDestination != ''">
-			arrive_destination = #{bean.arriveDestination,jdbcType=INTEGER}
+			AND arrive_destination = #{bean.arriveDestination,jdbcType=INTEGER}
 		</if>
 		<if test="bean.productType != null and bean.productType != ''">
 			product_type = #{bean.productType,jdbcType=VARCHAR}

@@ -32,9 +32,15 @@ private static Logger logger = LoggerFactory.getLogger(GalleryService.class);
 	
 	public List<Gallery> getGalleryListAll(String type) {
 		 
-		return mapper.getGalleryListAll(type);
+		return mapper.getGalleryListAll(type,null,null);
 	}
 	 
+	public List<Gallery> getGalleryListAll( String type, String destination, String resourceId) {
+		 
+		return mapper.getGalleryListAll(type,destination,resourceId);
+	}
+	 
+	
 	@Transactional
 	public Gallery insert(GalleryRequestBean requestBean) throws KunSoftwareException {
 		 

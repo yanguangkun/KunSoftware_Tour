@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.ProductRequestBean;
+import com.kunsoftware.bean.ProductResourceRequestBean;
 import com.kunsoftware.entity.Product;
 import com.kunsoftware.exception.KunSoftwareException;
+import com.kunsoftware.mapper.DestinationMapper;
 import com.kunsoftware.mapper.ProductMapper;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.util.FileUtil;
@@ -25,12 +27,21 @@ public class ProductService {
 	@Autowired
 	private ProductMapper mapper;
 	
+	@Autowired
+	private DestinationMapper destinationMapper;
+	
 	public List<Product> getProductListPage(@Param("arriveProduct") String arriveProduct,
    		 @Param("type") String type,
    		 @Param("page") PageInfo page) {
 		 
 		logger.info("query");
 		return mapper.getProductListPage(arriveProduct,type,page);
+	}
+	
+	public List getProductResourceListPage(ProductResourceRequestBean requestBean,PageInfo page) {
+		
+		logger.info("query");
+		return mapper.getProductResourceListPage(requestBean,page);
 	}
 	 
 	@Transactional

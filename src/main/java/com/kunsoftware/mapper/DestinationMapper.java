@@ -21,6 +21,8 @@ public interface DestinationMapper {
 
     int updateByPrimaryKey(Destination record);    
     
+    Destination selectByName(String name);
+    
     List<Destination> getDestinationListPage(@Param("keyword") String kewword,@Param("page") PageInfo page);
     List<ValueSet> selectValueSetList();
 }

@@ -22,5 +22,7 @@ public interface GalleryMapper {
     
     List<Gallery> getGalleryListPage(@Param("keyword") String keyword,@Param("page") PageInfo page);
     
-    List<Gallery> getGalleryListAll(@Param("type") String type);
+    List<Gallery> getGalleryListAll(@Param("type") String type,
+    		@Param("destination") String destination,
+    		@Param("resourceId") String resourceId);
 }

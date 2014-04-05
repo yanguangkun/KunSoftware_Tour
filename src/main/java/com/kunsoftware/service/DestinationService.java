@@ -51,6 +51,11 @@ public class DestinationService {
 		return mapper.selectByPrimaryKey(id);
 	}
 	
+	public Destination selectByName(String name) throws KunSoftwareException {
+		
+		return mapper.selectByName(name);
+	}
+	
 	@Transactional
 	public int updateByPrimaryKey(DestinationRequestBean requestBean,Integer id) throws KunSoftwareException {
 		

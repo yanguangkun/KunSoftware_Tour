@@ -142,4 +142,12 @@
     from destination where 1=1  
     order by id DESC
   </select>
+  
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from destination
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>

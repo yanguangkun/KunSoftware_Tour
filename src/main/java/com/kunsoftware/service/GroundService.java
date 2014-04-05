@@ -30,6 +30,12 @@ public class GroundService {
 		return mapper.getGroundListPage(destination,page);
 	}
 	 
+	public List<Ground> getGroundListAllByDestination(Integer destination) {
+		 
+		logger.info("query");
+		return mapper.getGroundListAllByDestination(destination);
+	}
+	
 	@Transactional
 	public Ground insert(GroundRequestBean requestBean) throws KunSoftwareException {		 
 		

@@ -13,7 +13,9 @@ public class ProductResourceRequestBean {
     private String arriveCountry;
 
     private String arriveCity;
-
+    
+    private String destination;
+    
     private Integer arriveDestination;
 
     private String productType;
@@ -90,6 +92,14 @@ public class ProductResourceRequestBean {
 
 	public void setArriveCity(String arriveCity) {
 		this.arriveCity = arriveCity;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
 	public Integer getArriveDestination() {

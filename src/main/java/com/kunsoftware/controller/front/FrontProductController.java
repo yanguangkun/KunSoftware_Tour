@@ -1,0 +1,129 @@
+package com.kunsoftware.controller.front;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
+
+import com.kunsoftware.bean.JsonBean;
+import com.kunsoftware.bean.ProductResourceRequestBean;
+import com.kunsoftware.controller.BaseController;
+import com.kunsoftware.entity.Destination;
+import com.kunsoftware.exception.KunSoftwareException;
+import com.kunsoftware.page.PageInfo;
+import com.kunsoftware.page.PageUtil;
+import com.kunsoftware.service.DestinationService;
+import com.kunsoftware.service.GalleryService;
+import com.kunsoftware.service.GroundService;
+import com.kunsoftware.service.ProductService;
+import com.kunsoftware.util.WebUtil;
+
+import freemarker.template.Template;
+
+@Controller 
+@RequestMapping("/product")
+public class FrontProductController extends BaseController {
+
+	private static Logger logger = LoggerFactory.getLogger(FrontProductController.class);	
+	
+	@Autowired
+	private ProductService service;
+	
+	@Autowired
+	private DestinationService destinationService;
+	
+	@Autowired
+	private GalleryService galleryService;
+	
+	@Autowired
+	private GroundService groundService;
+	
+	@Autowired
+	private FreeMarkerConfigurer  freeMarkerConfigurer = null;  
+	   
+	
+	@RequestMapping("/list")
+	public String listProduct(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("产品列表"); 
+		
+		
+		if(StringUtils.isEmpty(requestBean.getProductType())) {
+			requestBean.setProductType("1");
+		}
+		
+		String productType = requestBean.getProductType();
+		if("4".equals(requestBean.getProductType())) {
+			requestBean.setSalePrice("1");
+			requestBean.setProductType("");
+		}
+		
+		Destination destination = null;
+		if(requestBean.getArriveDestination() == null) {
+			destination = destinationService.selectByName(requestBean.getDestination());
+		} else {
+			destination = destinationService.selectByPrimaryKey(requestBean.getArriveDestination());
+		}
+		requestBean.setArriveDestination(destination.getId());
+		 
+		pageInfo.setPageSize(2);
+		List list = service.getProductResourceListPage(requestBean,pageInfo); 
+		List galleryList = galleryService.getGalleryListAll(null, destination.getId().toString(), null);
+		List groundList = groundService.getGroundListAllByDestination(destination.getId());
+		model.addAttribute("retList", list);
+		model.addAttribute("galleryList", galleryList); 
+		model.addAttribute("groundList", groundList); 
+		model.addAttribute("destination", destination);
+		model.addAttribute("productType", productType);
+		
+		PageUtil.pageInfo(model, pageInfo);
+		return "front/product-list";
+	}
+	
+	@RequestMapping(value="/more.json")
+	@ResponseBody 
+	public JsonBean listMoreProduct(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("产品列表"); 
+		if("4".equals(requestBean.getProductType())) {
+			requestBean.setSalePrice("1");
+			requestBean.setProductType("");
+		}
+		try {
+			Template tpl =  freeMarkerConfigurer.getConfiguration().getTemplate("front/product-more.html"); 
+			Destination destination = null;
+			if(requestBean.getArriveDestination() == null) {
+				destination = destinationService.selectByName(requestBean.getDestination());
+			} else {
+				destination = destinationService.selectByPrimaryKey(requestBean.getArriveDestination());
+			}
+			requestBean.setArriveDestination(destination.getId());
+			pageInfo.setPageSize(2);
+			List list = service.getProductResourceListPage(requestBean,pageInfo);
+			 
+			Map map  = new HashMap();  
+			map.put("retList",list);  
+			map.put("contextPath",WebUtil.getContextPath());
+		        
+			JsonBean jsonBean = new JsonBean();
+			jsonBean.put("result", FreeMarkerTemplateUtils.processTemplateIntoString(tpl, map));
+			jsonBean.put("totalPages", pageInfo.getTotalPages());
+			jsonBean.setMessage("操作成功");
+			 		 
+			return jsonBean;
+		} catch(Exception e) {
+			throw new KunSoftwareException(e);
+		}
+	}
+}

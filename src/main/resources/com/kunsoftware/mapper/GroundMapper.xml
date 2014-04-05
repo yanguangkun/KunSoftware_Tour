@@ -175,4 +175,14 @@
     AND destination = #{destination,jdbcType=INTEGER}
     order by id DESC
   </select>
+  
+  <select id="getGroundListAllByDestination" resultMap="BaseResultMap" parameterType="java.lang.String">
+   select 
+    <include refid="Base_Column_List" />
+    from ground where 1=1 
+    <if test="destination != null and destination != ''">
+		AND destination = #{destination,jdbcType=INTEGER}
+	</if>
+    order by id DESC
+  </select>
 </mapper>

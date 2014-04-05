@@ -26,4 +26,7 @@ public interface GroundMapper {
     List<ValueSet> selectValueSetList();
     
     List<ValueSet> getValueSetListByDestination(@Param("destination") Integer destination);
+    
+    List<Ground> getGroundListAllByDestination(@Param("destination") Integer destination);
+    
 }

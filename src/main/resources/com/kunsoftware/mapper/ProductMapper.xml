@@ -241,4 +241,35 @@
     AND type = #{type,jdbcType=VARCHAR}
     order by id DESC
   </select>
+  
+  <select id="getProductResourceListPage" resultType="java.util.HashMap" parameterType="com.kunsoftware.bean.ProductResourceRequestBean">
+    select 
+    pr.name,p.manager_comment as managerComment,p.image_path as imagePath
+    from product_resource pr,product p where 1=1 and pr.product_id=p.id and whether_shelf='1'
+    <if test="bean != null" >
+	    <if test="bean.tag != null and bean.tag != ''">
+			AND name like CONCAT('%', #{bean.tag} , '%') 
+		</if> 
+		<if test="bean.arriveDestination != null and bean.arriveDestination != ''">
+			AND pr.arrive_destination = #{bean.arriveDestination,jdbcType=INTEGER}
+		</if>
+		<if test="bean.productType != null and bean.productType != ''">
+			AND pr.product_type = #{bean.productType,jdbcType=VARCHAR}
+		</if>
+		<if test="bean.groundId != null and bean.groundId != ''">
+			AND pr.ground_id = #{bean.groundId,jdbcType=INTEGER}
+		</if>
+		<if test="bean.salePrice != null and bean.salePrice != ''">
+			AND pr.sale_price = #{bean.salePrice,jdbcType=VARCHAR}
+		</if>
+		<if test="bean.marryRecommend != null and bean.marryRecommend != ''">
+			AND pr.marry_recommend = #{bean.marryRecommend,jdbcType=VARCHAR}
+		</if>
+		<if test="bean.combo != null and bean.combo != ''">
+			AND pr.combo = #{bean.combo,jdbcType=VARCHAR}
+		</if>
+	</if>
+    
+    order by pr.order_value ASC, pr.id DESC
+  </select>
 </mapper>
