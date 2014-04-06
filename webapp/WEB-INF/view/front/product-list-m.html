@@ -60,7 +60,6 @@ color4
     <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
 </div>
 <div class="main main-row1 main-bg2"> </div>
-
 <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="162" bgcolor="#ebeae6">&nbsp;</td>
@@ -68,20 +67,29 @@ color4
         <tr>
           <td width="587" valign="top" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0" id="productList" bgcolor="#fff">
               <tr>
-                <td height="60"><div class="product-content-m-s3"><span class="product-content-m-s1"> 婚典精选 /</span>  <span class="product-content-m-s2"> 按目的地查看</span></div></td>
+                <td height="60" bgcolor="#FFFFFF"><div class="product-content-m-s3 destinationMain"> <#if (destination.id)??> <span class="product-content-m-s1 text1"> ${destination.name} /</span> <span class="product-content-m-s2"> <a href="list-m"><span class="product-content-m-s2">精选</span></a> /</span> <span class="product-content-m-s2 destinationParent"> 其它目的地</span> <#else> <span class="product-content-m-s1 text1"> 婚典精选 /</span> <span class="product-content-m-s2 destinationParent"> 按目的地查看</span> </#if>
+                    <div class="product-content-m-s4 destinationChild">
+                      <div class="product-content-m-s5">请选择目的地</div>
+                      <ul>
+                        <#list destinationList as item>
+                        <li><a href="#" class="destination" value="${item.value}">${item.name}</a></li>
+                        </#list>
+                      </ul>
+                    </div>
+                  </div></td>
               </tr>
               <#list retList as item>
               <tr class="productItem">
-                <td><div class="product-content-m1-s5"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" height="180"></div>
+                <td><div class="product-content-m1-s5"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" ></div>
                   <div class="product-content-m1-s6">${item.name!}</div>
                   <div class="product-content-m1-s7">${item.managerComment!}</div></td>
               </tr>
               <tr class="productItem">
-                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td height="30">&nbsp;</td>
                       <td width="25"><img src="${request.contextPath}/images/img1.jpg" width="17" height="19"></td>
-                      <td width="56" class="product-content-m1-s8">288</td>
+                      <td width="56" class="product-content-m1-s8">${item.somePraise!}</td>
                       <td width="26"><img src="${request.contextPath}/images/img2.jpg" width="20" height="17"></td>
                       <td width="56" class="product-content-m1-s8">188</td>
                     </tr>
@@ -92,16 +100,41 @@ color4
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="40" align="center" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td height="5" bgcolor="#EBEAE6"></td>
-                  </tr>
-                  <tr>
-                    <td height="40" align="center" bgcolor="#FFFFFF"><img id="moreBtn" style="cursor:pointer" src="${request.contextPath}/images/img4.jpg" width="24" height="21"></td>
-                  </tr>
-                </table></td>
+                    <tr>
+                      <td height="5" bgcolor="#EBEAE6"></td>
+                    </tr>
+                    <tr>
+                      <td height="40" align="center" bgcolor="#FFFFFF"><img id="moreBtn" style="cursor:pointer" src="${request.contextPath}/images/img4.jpg" width="24" height="21"></td>
+                    </tr>
+                  </table></td>
               </tr>
             </table></td>
-          <td valign="top" bgcolor="#EBEAE6" class="groundInfo">&nbsp;</td>
+          <td valign="top" bgcolor="#EBEAE6" class="groundInfo"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#fff;">
+            <tr>
+              <td bgcolor="#FFFFFF"><table width="307" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="210" height="50"><div class="product-left-s1">问答</div></td>
+                  <td width="97">&nbsp;</td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF"><div class="product-left-s2"><textarea  name="textarea" id="textarea"></textarea>
+              
+              <div class="product-left-s3"></div>
+              
+              </div></td>
+            </tr>
+            <tr>
+              <td height="50" bgcolor="#FFFFFF">&nbsp;</td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF">&nbsp;</td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF">&nbsp;</td>
+            </tr>
+          </table></td>
         </tr>
       </table></td>
     <td width="163" bgcolor="#ebeae6">&nbsp;</td>
@@ -112,9 +145,9 @@ color4
     <td bgcolor="#EBEAE6">&nbsp;</td>
   </tr>
 </table>
-
 <form action="more.json" method="post" id="listMore">
   <input type="hidden" name="pageNo" id="pageNo">
+  <input type="hidden" name="productType" id="productType" value="4">
   <input type="hidden" name="arriveDestination" id="arriveDestination" value="${destination.id!}">
   <input type="hidden" name="marryRecommend" id="marryRecommend" value="1">
 </form>

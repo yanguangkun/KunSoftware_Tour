@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>产品</title>
+<@c.css />
+<style type="text/css">
+.content-m1-col4 {
+background-color:$ {
+color1
+}
+;
+color:$ {
+color2
+};
+}
+.content-m1-col1:hover .content-m1-col4, .content-m1-col2:hover .content-m1-col4 {
+background-color:$ {
+color3
+}
+;
+color:$ {
+color4
+};
+}
+.content-m1-col1:hover .content-m1-col4 .s1, .content-m1-col2:hover .content-m1-col4 .s1 {
+color:$ {
+color4
+}
+;
+}
+</style>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/product-detail");  
+</script>
+</head>
+
+<body>
+<@c.top_p currentIndex="1" />
+<div class="main main-row1 main-bg1"></div>
+<div class="content-g destination-g">
+  <div id="slideBox" class="slideBox md">
+    <div class="hd">
+      <ul>
+        <#list galleryList as item>
+        <li>${item_index + 1}</li>
+        </#list>
+      </ul>
+    </div>
+    <div class="bd">
+      <ul>
+        <#list galleryList as item>
+        <li><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></li>
+        </#list>
+      </ul>
+    </div>
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 --> 
+    <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
+</div>
+<div class="main main-row1 main-bg2"> </div>
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="162" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="955"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="587" valign="top" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fff">
+              <tr>
+                <td height="50"><div class="product-detail-s1">${productResource.name}</div></td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td><div class="product-content-m1-s5"><img src="${request.contextPath}/images/uploadDir${product.imagePath!}" alt="" width="549"  ></div></td>
+              </tr>
+              <tr>
+                <td height="15"></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF"><div class="product-detail-s2">${productIntroduce.title}
+                    <div class="arr <#if productIntroduce.expand=='0'>expand</#if>"></div>
+                  </div>
+                  <div class="product-detail-s3 introduce <#if productIntroduce.expand=='0'>hide</#if>"> ${productIntroduce.introduce!} </div></td>
+              </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF"><div class="product-detail-s2">参考航班
+                    <div class="arr"></div>
+                  </div>
+                  <div class="product-detail-s4"> </div>
+                  <div class="product-detail-s3 introduce">
+                    <table width="558" border="0" cellspacing="0" cellpadding="0">
+                      <#list flightSegmentList as item>
+                      <tr class="product-detail-s5">
+                        <td height="80" width="55">第${item.serialNumber!}段</td>
+                        <td width="50"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="26" height="26"></td>
+                        <td width="112">${item.flightNum!}<br>
+                          ${item.name!}<br></td>
+                        <td width="181"><p>起：${item.startAirport!}</p>
+                          <p>降：${item.arriveAirport!}</p></td>
+                        <td width="160">${item.startTime!}<br>
+                          ${item.arriveTime!} <br></td>
+                      </tr>
+                      </#list>
+                    </table>
+                  </div></td>
+              </tr>
+            </table>
+            <#list productIntroducelist as item>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="10"></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FFFFFF"><div class="product-detail-s2">${item.title}
+                    <div class="arr <#if item.expand=='0'>expand</#if>"></div>
+                  </div>
+                  <div class="product-detail-s3 introduce <#if item.expand=='0'>hide</#if>"> ${item.introduce!} </div></td>
+              </tr>
+            </table>
+            </#list>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fff">
+              <tr> </tr>
+            </table></td>
+          <td valign="top" bgcolor="#EBEAE6" class="groundInfo"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#fff;">
+            <tr>
+              <td bgcolor="#FFFFFF">
+              <div class="product-detail-left-s1 productP">団期和价格
+                <div class="product-detail-left-s2 product"></div>
+              </div>
+              <#if productResource.combo =="0">
+              <!-- 价格模板 -->              
+              <div class="productPrice hide">
+              <div class="product-detail-left-s3">
+              
+              ￥${productResource.standardPrice!} <span class="s1">起</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="s2">出发地：<@ValueSetWrite code="city" value="${productResource.startCity!}" /></span>
+                <div class="s3 productHide"></div>
+                
+              </div>
+              <div class="product-detail-left-s4">请选择类别：</div>
+              <#list tplList as item>
+              <div class="product-detail-left-s5 product-item" value="${item.id}">
+                <div class="s0">
+                  <div class="s1">${item.name}</div>
+                  <div class="s2">${item.priceDescribe}</div>
+                </div>
+                <div class="s3"></div>
+              </div>
+              </#list>
+               
+              <div class="product-detail-left-s4">请选择预订月份：</div>
+              <div class="product-detail-left-s6">
+              
+              <ul>
+                <#list monthStart..monthEnd as n>
+                   <li class="product-month" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
+                </#list> 
+              </ul> 
+              </div>
+              <div class="product-detail-left-s4">请选择预订日期：</div>
+              <div class="product-detail-left-s6">
+              <ul>
+                <#list flightCheduleList as item>
+                <li class="product-day" value="<#if item.startDate??>${item.startDate?string('d')}</#if>"><a href="#"><#if item.startDate??>${item.startDate?string('d')} </#if></a><div class="s1"></div></li>
+                </#list>
+              </ul> 
+              </div>
+              <div class="product-detail-left-s4">请输入预订数量：</div>
+              <div class="product-detail-left-s7">
+                <input type="text" name="priceNum" id="priceNum">
+                量</div>
+              <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
+              <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
+              <div class="product-detail-left-s9"> <a href="#">预 订</a></div>
+              </div>
+              <!-- 价格模板结束 -->
+              <#else>
+              <!-- 套餐模板 -->
+              <div class="productPrice hide">
+              <div class="product-detail-left-s3">
+              
+              ￥${productResource.standardPrice!} <span class="s1">起</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="s2">出发地：<@ValueSetWrite code="city" value="${productResource.startCity!}" /></span>
+                <div class="s3 productHide"></div>
+                
+              </div>
+              <div class="product-detail-left-s4">请选择类别：</div>
+              <#list tplList as item>
+              <div class="product-detail-left-s5 product-item" value="${item.id}">
+                <div class="s0">
+                  <div class="s1">${item.name}</div>
+                  <div class="s2">${item.planDescribe}</div>
+                </div>
+                <div class="s3"></div>
+              </div>
+              </#list>
+               
+              <div class="product-detail-left-s4">请选择预订月份：</div>
+              <div class="product-detail-left-s6">
+              
+              <ul>
+                <#list monthStart..monthEnd as n>
+                   <li class="product-month" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
+                </#list> 
+              </ul> 
+              </div>
+              <div class="product-detail-left-s4">请选择预订日期：</div>
+              <div class="product-detail-left-s6">
+              <ul>
+                <#list flightCheduleList as item>
+                <li class="product-day" value="<#if item.startDate??>${item.startDate?string('d')}</#if>"><a href="#"><#if item.startDate??>${item.startDate?string('d')} </#if></a><div class="s1"></div></li>
+                </#list>
+              </ul> 
+              </div>
+              <div class="product-detail-left-s4">请选择出行人数：</div>
+              <div class="product-detail-left-s7">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="13%" height="30"> 
+                      <select name="select" id="select">
+                        <#list 0..10 as n> 
+                        <option value="${n}">${n}</option>
+                        </#list> 
+                      </select></td>
+                    <td width="33%">成人</td>
+                    <td width="13%"><select name="select" id="select">
+                        <#list 0..10 as n> 
+                        <option value="${n}">${n}</option>
+                        </#list> 
+                      </select></td>
+                    <td width="41%">儿童占床</td>
+                  </tr>
+                  <tr>
+                    <td height="30"><select name="select" id="select">
+                        <#list 0..10 as n> 
+                        <option value="${n}">${n}</option>
+                        </#list> 
+                      </select></td>
+                    <td>成人加床</td>
+                    <td><select name="select" id="select">
+                        <#list 0..10 as n> 
+                        <option value="${n}">${n}</option>
+                        </#list> 
+                      </select></td>
+                    <td>儿童不占床</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
+              <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
+              <div class="product-detail-left-s9"> <a href="#">预 订</a></div>
+              </div>
+              <!-- 套餐模板结束 -->
+              </#if>
+              </td>
+            </tr>
+            <tr>
+              <td bgcolor="#EBEAE6" height="10"></td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="210" height="50"><div class="product-left-s1">评论</div></td>
+                  <td width="97"><div class="product-left-s11"><a href="#">发布</a></div></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF"><div class="product-left-s2">
+                <textarea  name="textarea" id="textarea"></textarea>
+                <div class="product-left-s3"></div>
+              </div></td>
+            </tr>
+            <tr>
+              <td height="50" bgcolor="#FFFFFF">&nbsp;</td>
+            </tr>
+            
+            <tr>
+              <td bgcolor="#FFFFFF"><div class="product-left-s2"><div class="s1"></div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="48"><img src="${request.contextPath}/images/img17.jpg" width="48" height="48"></td>
+                    <td>
+                    <div class="product-left-s4"></div>
+                    <div class="product-left-s5">路人：请问巴厘岛怎样做，有什么推荐的行程。</div>
+                    <div class="product-left-s6"></div>
+                    </td>
+                    </tr>
+                    <tr><td colspan="2" height="30"></td></tr>
+                </table>
+              
+              </div>
+              <div class="product-left-s2"><div class="s2"></div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    
+                    <td align="right">
+                    <div class="product-left-s7"></div>
+                    <div class="product-left-s8"><span class="product-left-s10">雅米：</span>巴厘岛怎样玩都好。</div>
+                    <div class="product-left-s9"></div>
+                    </td>
+                    <td width="48"><img src="${request.contextPath}/images/img17.jpg" width="48" height="48"></td>
+                    </tr>
+                    <tr><td colspan="2" height="30"></td></tr>
+                </table>
+              
+              </div>
+              </td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    <td width="163" bgcolor="#ebeae6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+    <td bgcolor="#EBEAE6"></td>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+  </tr>
+</table>
+<form action="price.json" method="post" id="priceFrm">
+  <input type="hidden" name="id" id="id" value="${productResource.id}">
+   
+  <input type="hidden" name="tplId" id="tplId">
+  <input type="hidden" name="cheduleMonth" id="cheduleMonth">
+  <input type="hidden" name="cheduleDay" id="cheduleDay">
+</form>
+<@c.bottom_p />
+</body>
+</html>

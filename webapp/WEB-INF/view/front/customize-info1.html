@@ -1,0 +1,289 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>私家定制</title>
+
+<@c.css />
+
+<style type="text/css">
+.content-m1-col4 {
+background-color:$ {
+color1
+}
+;
+color:$ {
+color2
+};
+}
+.content-m1-col1:hover .content-m1-col4, .content-m1-col2:hover .content-m1-col4 {
+background-color:$ {
+color3
+}
+;
+color:$ {
+color4
+};
+}
+.content-m1-col1:hover .content-m1-col4 .s1, .content-m1-col2:hover .content-m1-col4 .s1 {
+color:$ {
+color4
+}
+;
+}
+</style>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/customize-info1");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="4" />
+<div class="main main-row1 main-bg2"> </div>
+<form name="saveFrm" method="post" action="" id="saveFrm">
+  <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="950"><table width="855" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="60"  ><span class="customize-title">私家定制</span></td>
+          </tr>
+          <tr>
+            <td  ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="283" height="128" class="customize-type1 active"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img22.png" width="36" height="31"></td>
+                        <td width="76%" ><span class="customize-type4">专属旅行顾问</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">填写你的出行意愿，雅米专属旅行顾问为你提供出行方案</div></td>
+                      </tr>
+                    </table></td>
+                  <td>&nbsp;</td>
+                  <td width="283" class="customize-type1"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img23.png"  ></td>
+                        <td width="76%" ><span class="customize-type4">互动推荐</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">系统根据你的意愿自动推荐适合你的行程，方便快捷。</div></td>
+                      </tr>
+                    </table></td>
+                  <td>&nbsp;</td>
+                  <td width="283" class="customize-type1"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img24.png"></td>
+                        <td width="76%" ><span class="customize-type4">别人怎么玩</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">看看别人定制的成功案例和点评，也许适合你。</div></td>
+                      </tr>
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td  >&nbsp;</td>
+          </tr>
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0"  class="customize-table">
+                <tr>
+                  <td width="10%" height="35">&nbsp;</td>
+                  <td colspan="3"><div class="customize-type5">
+                    亲，花2分钟时间填写下面需求单，获取雅米一对一专属旅游咨询服务：）
+                    <div></td>
+                </tr>
+                <tr>
+                  <td height="35" align="right" valign="top">&nbsp;</td>
+                  <td width="13%" align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的出发地</td>
+                  <td width="1%" valign="top">&nbsp;</td>
+                  <td width="76%" valign="top"><input type="text" class="required" name="de" id="de"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的目的地</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield2" id="textfield2"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;你的大概出行日期</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;你的出行人数</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;人均预算大概多少</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;和谁一起度假</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="36%" valign="top">和爱人一起蜜月游</td>
+                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="54%" valign="top">和孩子一起亲子游</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td valign="top">和闺蜜一起休闲游</td>
+                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top">和朋友一起开心游</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td valign="top">和同事一起公司游</td>
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;喜欢的度假风格</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="36%" valign="top">休闲长草</td>
+                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="54%" valign="top">异国文化</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td valign="top">观光景点</td>
+                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top">综合，但别太累</td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;度假需要的元素</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="36%" valign="top">私密独立私家定制一价全包</td>
+                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="54%" valign="top">省心省力跟着领队全程随团</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td valign="top">机票？酒店？一日游？单项自己组装</td>
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;酒店式重要的风景</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="36%" valign="top">大爱水上活动</td>
+                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="54%" valign="top">吃货美食少不了</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td valign="top">爱下午茶的静</td>
+                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top">探奇活动最精彩</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td valign="top">SPA、逛街我最爱</td>
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;去那儿干嘛呢？</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="36%" valign="top">国家奢侈大品牌</td>
+                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="54%" valign="top">本地别致风格奢华</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td valign="top">国际连锁5星度假村</td>
+                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top">性价比本地4-5行酒店</td>
+                      </tr>
+                      <tr>
+                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td valign="top">超值精品超值酒店</td>
+                        <td valign="top">&nbsp;</td>
+                        <td valign="top">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="35" colspan="4">不能面面俱到，亲们喜欢啥自己留言哈：）</td>
+                      </tr>
+                      <tr>
+                        <td height="150" colspan="4"><textarea name="textarea" id="textarea"></textarea></td>
+                      </tr>
+                    </table></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;联系人</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;联系人手机</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="35" valign="top">&nbsp;</td>
+                  <td align="right" valign="top"><span class="error">*</span>&nbsp;邮箱</td>
+                  <td valign="top">&nbsp;</td>
+                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                </tr>
+                <tr>
+                  <td height="60" colspan="4" align="center" valign="middle"><a id="saveBtn" href="#">提交需求单</a></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table></td>
+    </tr>
+  </table>
+  </td>
+  <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+    <td bgcolor="#EBEAE6"></td>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+  </tr>
+  </table>
+</form>
+<@c.bottom />
+</body>
+</html>

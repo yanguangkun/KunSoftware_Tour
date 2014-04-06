@@ -67,10 +67,10 @@ color4
         <tr>
           <td width="587" valign="top" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0" id="productList" bgcolor="#fff">
               <tr>
-                <td><div class="product-content-m1-s3">${destination.name}</div>
+                <td  bgcolor="#FFFFFF"><div class="product-content-m1-s3">${destination.name}</div>
                   <div class="product-content-m1-s4">
                     <ul class="product-type">
-                      <li value="4" class="<#if productType=='4'>active</#if>">限时促销 <img src="${request.contextPath}/images/type_arr.jpg" width="9" height="5"></li>
+                      <li value="4" class="<#if productType=='-1'>active</#if>">限时促销 <img src="${request.contextPath}/images/type_arr.jpg" width="9" height="5"></li>
                       <li value="1" class="<#if productType=='1'>active</#if>">无忧团队 <img src="${request.contextPath}/images/type_arr.jpg" width="9" height="5"></li>
                       <li value="2" class="<#if productType=='2'>active</#if>">爱自由行 <img src="${request.contextPath}/images/type_arr.jpg" width="9" height="5"></li>
                       <li value="3" class="<#if productType=='3'>active</#if>">自选单项 <img src="${request.contextPath}/images/type_arr.jpg" width="9" height="5"></li>
@@ -84,11 +84,11 @@ color4
                   <div class="product-content-m1-s7">${item.managerComment!}</div></td>
               </tr>
               <tr class="productItem">
-                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td height="30">&nbsp;</td>
                       <td width="25"><img src="${request.contextPath}/images/img1.jpg" width="17" height="19"></td>
-                      <td width="56" class="product-content-m1-s8">288</td>
+                      <td width="56" class="product-content-m1-s8">${item.somePraise!}</td>
                       <td width="26"><img src="${request.contextPath}/images/img2.jpg" width="20" height="17"></td>
                       <td width="56" class="product-content-m1-s8">188</td>
                     </tr>
@@ -113,10 +113,10 @@ color4
                 <td>&nbsp;</td>
                 <td width="347"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#fff">
                     <tr>
-                      <td width="367" ><div class="product-content-m2-s1">最优质服务商</div></td>
+                      <td width="367" bgcolor="#FFFFFF" ><div class="product-content-m2-s1">最优质服务商</div></td>
                     </tr>
                     <tr>
-                      <td><table width="307" border="0" align="center" cellpadding="0" cellspacing="0" class="product-content-m2-s2">
+                      <td bgcolor="#FFFFFF"><table width="307" border="0" align="center" cellpadding="0" cellspacing="0" class="product-content-m2-s2">
                           <tr>
                             <td><table width="270" border="0" align="center" cellpadding="0" cellspacing="0" class="product-content-m2-g1">
                                 <tr>

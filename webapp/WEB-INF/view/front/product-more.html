@@ -1,7 +1,7 @@
  <#list retList as item>
 <tr class="productItem">
   <td><div class="product-content-m1-s5"><img src="${contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" height="180"></div>
-    <div class="product-content-m1-s6">${item.name!}</div>
+    <div class="product-content-m1-s6"><a href="detail?id=${item.id}">${item.name!}</a></div>
     <div class="product-content-m1-s7">${item.managerComment!}</div></td>
 </tr>
 <tr class="productItem">
@@ -9,7 +9,7 @@
       <tr>
         <td height="30">&nbsp;</td>
         <td width="25"><img src="${contextPath}/images/img1.jpg" width="17" height="19"></td>
-        <td width="56" class="product-content-m1-s8">288</td>
+        <td width="56" class="product-content-m1-s8">${item.somePraise!}</td>
         <td width="26"><img src="${contextPath}/images/img2.jpg" width="20" height="17"></td>
         <td width="56" class="product-content-m1-s8">188</td>
       </tr>
