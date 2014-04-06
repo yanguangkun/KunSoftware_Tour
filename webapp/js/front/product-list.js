@@ -39,13 +39,13 @@ define(function(require, exports, module) {
 			});
         });
 		
-		$.getJSON("ground.json?destination=" + $("#arriveDestination").val() , function (data, textStatus){  
+		$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&r=" + Math.random() , function (data, textStatus){  
 			$(".groundInfo").append(data.result);
 			 
 		});
 		
 		$(document).on("click",".page",function(){ 
-			$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&pageNo=" + $(this).attr("value" ), function (data, textStatus){  
+			$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&pageNo=" + $(this).attr("value" ) + "&r=" + Math.random(), function (data, textStatus){  
 				
 				$(".groundInfo").html(data.result); 
 			});

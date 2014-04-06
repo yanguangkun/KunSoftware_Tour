@@ -31,6 +31,15 @@ define(function(require, exports, module) {
 		});
 		 
 	}); 
+	
+	$(".destinationParent").mouseenter(function(e) {
+        $(".destinationChild").show();
+    });
+	
+	$(".destinationMain").mouseleave(function(e) {
+        $(".destinationChild").hide();
+    });
+	
 	 
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();
@@ -42,4 +51,7 @@ define(function(require, exports, module) {
 		$(".indexDestinationList").hide();
     });
 	
+	$(".destination").click(function(e) {
+        location.href="list-m?arriveDestination=" + $(this).attr("value");
+    });
 });

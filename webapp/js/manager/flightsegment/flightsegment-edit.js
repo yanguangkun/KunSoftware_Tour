@@ -5,6 +5,7 @@ define(function(require, exports, module) {
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($);
 	require('jquery-form')($); 
+	require('datepicker');
 	var lockscreen = require('lockscreen');
 	
 	$(document).ready(function(){  
