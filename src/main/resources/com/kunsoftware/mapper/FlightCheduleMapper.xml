@@ -165,4 +165,21 @@
     from flight_chedule_price
     where flight_chedule_id = #{flightCheduleId,jdbcType=INTEGER}
   </select>
+  
+  <select id="getFlightCheduleListAll" resultType="java.util.HashMap" parameterType="java.lang.String">
+    select distinct start_date as startDate
+    from flight_chedule where 1=1 
+    AND product_resource_id = #{productResourceId,jdbcType=INTEGER} 
+    order by start_date ASC
+  </select>
+  
+  <select id="selectByResource" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from flight_chedule
+    where  product_resource_id = #{productResourceId,jdbcType=INTEGER} 
+    AND start_date = #{startDate,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>
+

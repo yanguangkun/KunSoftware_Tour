@@ -205,4 +205,13 @@
      and flight_id = #{flightId,jdbcType=INTEGER}
     order by order_value ASC, id DESC
   </select>
+  
+  <select id="getFlightSegmentAirlineListAll" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    fs.serial_number as serialNumber,fs.flight_num as flightNum,fs.start_airport as startAirport,fs.start_time startTime,
+    fs.arrive_airport as arriveAirport,fs.arrive_time arriveTime,a.name as name,a.image_path imagePath
+    from flight_segment fs,airline a where 1=1 and fs.airline_id=a.id
+     and flight_id = #{flightId,jdbcType=INTEGER}
+    order by fs.order_value ASC, fs.id DESC
+  </select>
 </mapper>

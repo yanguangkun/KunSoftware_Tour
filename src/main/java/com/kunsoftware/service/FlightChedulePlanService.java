@@ -63,4 +63,9 @@ public class FlightChedulePlanService {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
 	}
+	
+	public FlightChedulePlan selectByFlightCheduleId(Integer flightCheduleId,Integer productPlanTplId) {
+		return mapper.selectByFlightCheduleId(flightCheduleId, productPlanTplId);
+	}
+	
 }

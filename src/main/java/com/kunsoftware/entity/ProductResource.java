@@ -51,6 +51,8 @@ public class ProductResource {
 
     private String combo;
 
+    private Integer somePraise;
+
     private String tag;
 
     public Integer getId() {
@@ -243,6 +245,14 @@ public class ProductResource {
 
     public void setCombo(String combo) {
         this.combo = combo;
+    }
+
+    public Integer getSomePraise() {
+        return somePraise;
+    }
+
+    public void setSomePraise(Integer somePraise) {
+        this.somePraise = somePraise;
     }
 
     public String getTag() {

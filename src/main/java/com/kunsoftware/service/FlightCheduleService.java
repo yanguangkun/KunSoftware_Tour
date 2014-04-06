@@ -2,6 +2,7 @@ package com.kunsoftware.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,13 @@ public class FlightCheduleService {
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	public List getFlightCheduleListAll(Integer productResourceId) {
+		return mapper.getFlightCheduleListAll(productResourceId);
+	}
+	
+	public FlightChedule selectByResource(Integer productResourceId,String startDate) {
+		return mapper.selectByResource(productResourceId, startDate);
 	}
 }

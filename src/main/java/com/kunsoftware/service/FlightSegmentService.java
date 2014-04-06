@@ -27,6 +27,12 @@ public class FlightSegmentService {
 		logger.info("query");
 		return mapper.getFlightSegmentListAll(flightId);
 	}
+	
+	public List getFlightSegmentAirlineListAll(Integer flightId) {
+		 
+		logger.info("query");
+		return mapper.getFlightSegmentAirlineListAll(flightId);
+	}
 	 
 	@Transactional
 	public FlightSegment insert(FlightSegmentRequestBean requestBean) throws KunSoftwareException {		 

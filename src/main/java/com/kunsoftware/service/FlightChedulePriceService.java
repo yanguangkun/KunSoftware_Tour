@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.FlightChedulePriceRequestBean;
+import com.kunsoftware.entity.FlightChedulePlan;
 import com.kunsoftware.entity.FlightChedulePrice;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.FlightChedulePriceMapper;
@@ -62,5 +63,9 @@ public class FlightChedulePriceService {
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	public FlightChedulePrice selectByFlightCheduleId(Integer flightCheduleId,Integer productPlanTplId) {
+		return mapper.selectByFlightCheduleId(flightCheduleId, productPlanTplId);
 	}
 }

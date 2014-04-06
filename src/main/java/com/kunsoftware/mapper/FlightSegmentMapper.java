@@ -20,4 +20,6 @@ public interface FlightSegmentMapper {
     int updateByPrimaryKey(FlightSegment record);
     
     List<FlightSegment> getFlightSegmentListAll(@Param("flightId") Integer flightId);
+    
+    List getFlightSegmentAirlineListAll(@Param("flightId") Integer flightId);
 }

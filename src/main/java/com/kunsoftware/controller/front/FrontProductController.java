@@ -29,6 +29,7 @@ import com.kunsoftware.service.GalleryService;
 import com.kunsoftware.service.GroundService;
 import com.kunsoftware.service.GroundTagService;
 import com.kunsoftware.service.ProductService;
+import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.util.WebUtil;
 
 import freemarker.template.Template;
@@ -57,6 +58,8 @@ public class FrontProductController extends BaseController {
 	@Autowired
 	private FreeMarkerConfigurer  freeMarkerConfigurer = null;  
 	   
+	@Autowired
+	private ValueSetService valueSetService;
 	
 	@RequestMapping("/list")
 	public String listProduct(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
@@ -69,7 +72,7 @@ public class FrontProductController extends BaseController {
 		}
 		
 		String productType = requestBean.getProductType();
-		if("4".equals(requestBean.getProductType())) {
+		if("-1".equals(requestBean.getProductType())) {
 			requestBean.setSalePrice("1");
 			requestBean.setProductType("");
 		}
@@ -111,7 +114,7 @@ public class FrontProductController extends BaseController {
 		}
 		
 		String productType = requestBean.getProductType();
-		if("4".equals(requestBean.getProductType())) {
+		if("-1".equals(requestBean.getProductType())) {
 			requestBean.setSalePrice("1");
 			requestBean.setProductType("");
 		}
@@ -161,14 +164,17 @@ public class FrontProductController extends BaseController {
 		} else {
 			galleryList = galleryService.getGalleryListAll("2");
 			destination = new Destination();
+			requestBean.setMarryRecommend("1");
 		}
-		requestBean.setMarryRecommend("1");
+		
+		requestBean.setProductType("4");
 		pageInfo.setPageSize(2);
 		List list = service.getProductResourceListPage(requestBean,pageInfo); 
 		 
 		model.addAttribute("retList", list);
 		model.addAttribute("galleryList", galleryList);  
 		model.addAttribute("destination", destination); 
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		
 		PageUtil.pageInfo(model, pageInfo);
 		return "front/product-list-m";
@@ -179,7 +185,7 @@ public class FrontProductController extends BaseController {
 	public JsonBean listMoreProduct(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
 		 
 		logger.info("产品列表"); 
-		if("4".equals(requestBean.getProductType())) {
+		if("-1".equals(requestBean.getProductType())) {
 			requestBean.setSalePrice("1");
 			requestBean.setProductType("");
 		}

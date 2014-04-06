@@ -244,7 +244,7 @@
   
   <select id="getProductResourceListPage" resultType="java.util.HashMap" parameterType="com.kunsoftware.bean.ProductResourceRequestBean">
     select 
-    pr.name,p.manager_comment as managerComment,p.image_path as imagePath
+    pr.id as id,pr.name,p.manager_comment as managerComment,p.image_path as imagePath,pr.some_praise as somePraise
     from product_resource pr,product p where 1=1 and pr.product_id=p.id and whether_shelf='1'
     <if test="bean != null" >
 	    <if test="bean.tag != null and bean.tag != ''">

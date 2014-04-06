@@ -33,4 +33,10 @@ public interface FlightCheduleMapper {
     
     int selectPlanCount(@Param("flightCheduleId")Integer flightCheduleId);
     int selectPriceCount(@Param("flightCheduleId")Integer flightCheduleId);
+    
+    
+    List getFlightCheduleListAll(@Param("productResourceId")Integer productResourceId);
+    
+    FlightChedule selectByResource(@Param("productResourceId")Integer productResourceId,
+    		@Param("startDate")String startDate);
 }
