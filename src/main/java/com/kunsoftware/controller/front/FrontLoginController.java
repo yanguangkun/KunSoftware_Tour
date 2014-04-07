@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kunsoftware.entity.Member;
 import com.kunsoftware.service.MemberService;
+import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.util.WebUtil;
 
 @Controller
@@ -25,6 +26,9 @@ public class FrontLoginController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private ValueSetService valueSetService;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model,HttpServletRequest request) {
 		
@@ -32,6 +36,7 @@ public class FrontLoginController {
 		String loginMsg = request.getParameter("loginMsg");
 		model.addAttribute("referer", referer);
 		model.addAttribute("loginMsg", loginMsg);
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/login";
 	}
 	
@@ -76,6 +81,7 @@ public class FrontLoginController {
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
 	public String reg(ModelMap model) {
 		
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/reg";
 	}
 }

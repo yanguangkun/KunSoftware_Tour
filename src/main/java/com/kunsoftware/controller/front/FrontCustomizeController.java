@@ -33,6 +33,7 @@ public class FrontCustomizeController extends BaseController {
 	public String info1(ModelMap model) throws KunSoftwareException {
 		 
 		logger.info("私家定制");
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/customize-info1";
 	}
 

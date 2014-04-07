@@ -16,6 +16,7 @@ import com.kunsoftware.entity.YamiDiary;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.page.PageUtil;
+import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.service.YamiDiaryService;
 
 @Controller 
@@ -27,6 +28,9 @@ public class FrontYamiDiaryController extends BaseController {
 	@Autowired
 	private YamiDiaryService service;
 	
+	@Autowired
+	private ValueSetService valueSetService;
+	
 	@RequestMapping("/list")
 	public String listYamiDiary(ModelMap model,PageInfo pageInfo) throws KunSoftwareException {
 		 
@@ -34,6 +38,7 @@ public class FrontYamiDiaryController extends BaseController {
 		 
 		List<YamiDiary> list = service.getYamiDiaryListPage("",pageInfo); 
 		model.addAttribute("retList", list);
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		PageUtil.frontPageInfo(model, pageInfo);
 		return "front/yamidiary-list";
 	}
@@ -66,6 +71,7 @@ public class FrontYamiDiaryController extends BaseController {
 		model.addAttribute("yamiDiary", yamiDiary); 
 		model.addAttribute("nextId", nextId); 
 		model.addAttribute("preId", preId); 
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/yamidiary-detail";
 	}
 
