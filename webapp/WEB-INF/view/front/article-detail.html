@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+<@c.css />
+
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/article-detail");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="1" />
+ 
+<div class="main main-row1 main-bg2"> </div>
+
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="162" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="955"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="587" valign="top" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td bgcolor="#FFFFFF">
+                    <div class="articl-s1">${entity.title1!}</div>                    
+                    <div class="articl-s3">${entity.content!}</div>
+                    
+                    </td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+          <td valign="top" bgcolor="#EBEAE6" class="groundInfo"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              <th bgcolor="#FFFFFF">
+              <div class="articl-s4">${articleClassify.name}</div>
+              <#list retList as item> 
+              <div class="articl-s5"><a href="detail?id=${item.id}">${item.title1}</a></div>
+              </#list>
+              </th>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    <td width="163" bgcolor="#ebeae6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+    <td bgcolor="#EBEAE6"></td>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+  </tr>
+</table>
+ 
+<@c.bottom />
+</body>
+</html>

@@ -42,7 +42,7 @@
         <tr>
           <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
           <td>${item.id!}</td>
-          <td><@ValueSetWrite code="destination" value="${item.classifyId!}" /></td>
+          <td><@ValueSetWrite code="article_classify" value="${item.classifyId!}" /></td>
           <td>${item.title1!}</td>
           <td><#if item.createTime??>${item.createTime?string('yyyy-MM-dd')}  </#if></td>
         </tr>

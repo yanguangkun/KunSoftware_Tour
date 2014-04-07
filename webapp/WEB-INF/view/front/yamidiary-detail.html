@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>雅米日记</title>
+<@c.css /> 
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/yamidiary-detail");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="6" />
+<div class="main main-row1 main-bg2"> </div>
+  <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="950"><table width="855" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="60">&nbsp;&nbsp;&nbsp;&nbsp;<span class="customize-title">雅米日记</span></td>
+          </tr>
+          <tr>
+            <td height="10"> </td>
+          </tr> 
+          <tr>
+            <td bgcolor="#ece9d6"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="yamidiary-table">
+              
+              <tr >
+                <td width="1%" height="30"></td>
+                <td width="50%" valign="top" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="center">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td height="50" align="center"><div class="yamidiary-s3">${yamiDiary.title}</div></td>
+                  </tr>
+                  <tr>
+                    <td height="25" align="center"><#if yamiDiary.createTime??><span class="yamidiary-s2">${yamiDiary.createTime?string('yyyy-MM-dd')} </span></#if></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>${yamiDiary.content}</td>
+                  </tr>
+                </table></td>
+                <td width="49%" align="center" valign="top">
+                <div class="yamidiary-s5">
+                <img src="${request.contextPath}/images/uploadDir${yamiDiary.imagePath!}" width="390" height="350"></div></td>
+              </tr>
+              
+            </table></td>
+          </tr> 
+          <tr>
+            <td height="50" align="center">
+            <div class="yamidiary-s4">
+            <#if preId != ""><a href="detail?id=${preId}">上一篇</a></#if> 
+            <a href="list">目录</a> 
+            <#if nextId != "">
+            <a href="detail?id=${nextId}">下一篇</a></#if>
+            </div>
+            
+            </td>
+          </tr>
+        </table></td>
+        <td width="165" bgcolor="#ebeae6"></td>
+    </tr>
+  </table> 
+<@c.bottom />
+</body>
+</html>

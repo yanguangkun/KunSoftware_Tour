@@ -63,13 +63,14 @@ color4
 <div class="main main-row1 main-bg2"> </div>
 <div class="main content">
   <div class="content-m1">
-    
+      <form>
       <div class="content-m1-col1">
         <div class="content-m1-col3" style="background-image:url(${request.contextPath}/images/uploadDir${customizeImage!})">
           <div class="content-m1-s1">
             <div class="content-m1-s11">
               <input style=" " placeholder="" name="" type="text">
-              、 <span class="phTxt"> 输入我的出发地 </span> </div>
+              <input type="hidden" name="destination" id="destination">
+、 <span class="phTxt"> 输入我的出发地 </span> </div>
           </div>
           <div class="content-m1-s2">
             <div class="content-m1-s22 destinationParent">
@@ -77,19 +78,19 @@ color4
                 <div class="m2">请选择目的地</div>
                 <ul>
                   <#list destinationList as item>
-                  <li><a href="#0" class="destination">${item.name}</a></li>
+                  <li><a href="#0" class="destination" value="${item.value}">${item.name}</a></li>
                   </#list>
                 </ul>
               </div>
               <span class="phTxt1"> 我的目的地 </span> </div>
           </div>
           <div class="content-m1-s3">
-            <div class="content-m1-s33">开始定制 </div>
+            <div class="content-m1-s33 customizeBtn">开始定制 </div>
           </div>
         </div>
         <div class="content-m1-col4"> 有<span class="s1"> ${customizeNum!} </span>接受了雅米定制服务 </div>
       </div>
-     
+       </form>
     <div class="content-m1-col2">
       <div class="content-m1-col3" style="background-image:url(images/image2.jpg)"></div>
       <div class="content-m1-col4">照片分享 游记分享</div>

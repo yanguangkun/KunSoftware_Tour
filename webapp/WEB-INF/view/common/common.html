@@ -54,7 +54,7 @@
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='3'>current</#if>" href="${request.contextPath}/product/list-m">蜜月婚典</a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='4'>current</#if>" href="${request.contextPath}/customize/info1" >私家定制</a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='5'>current</#if>" href="#" >相册游记</a></div>
-  <div class="top-base top-padding"><a class="a1 <#if currentIndex=='6'>current</#if>" href="#" >雅米日记</a></div>
+  <div class="top-base top-padding"><a class="a1 <#if currentIndex=='6'>current</#if>" href="${request.contextPath}/yamidiary/list" >雅米日记</a></div>
   <div class="top-base top-col2"></div>
   <div class="top-login"><img src="${request.contextPath}/images/image8.jpg"></div>
   <div class="top-reg"><img src="${request.contextPath}/images/image9.jpg"></div>
@@ -109,8 +109,8 @@
     <div class="bottom-m4">
       <div class="bottom-m4-s1"><img src="${request.contextPath}/images/bottom3.jpg" width="267" height="37"></div>
       <ul>
-        <li><a href="#">关于雅米</a></li>
-        <li><a href="#">联系我们</a></li>
+        <li><a href="${request.contextPath}/article/detail?id=2">关于雅米</a></li>
+        <li><a href="${request.contextPath}/article/detail?id=1">联系我们</a></li>
         <li><a href="#">订单查询</a></li>
         <li><a href="#">合作伙伴</a></li>
         <li><a href="#">免测声明</a></li>
@@ -124,8 +124,8 @@
 <#macro bottom_p> 
 <div class="main bottom product-bottom">
   <div class="bottom-m5"> 
-   <a href="#">关于雅米</a> |
-   <a href="#">联系我们</a> |
+   <a href="${request.contextPath}/article/detail?id=2">关于雅米</a> |
+   <a href="${request.contextPath}/article/detail?id=1">联系我们</a> |
    <a href="#">订单查询</a> |
    <a href="#">合作伙伴</a> |
    <a href="#">免测声明</a> |
@@ -136,5 +136,6 @@
 </div>
 </#macro>
 <#macro page> 
-
+${pageInfo!}
+${pageParam!}
 </#macro>

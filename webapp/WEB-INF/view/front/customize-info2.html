@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>私家定制</title>
+<@c.css />
+<style type="text/css">
+.content-m1-col4 {
+background-color:$ {
+color1
+}
+;
+color:$ {
+color2
+};
+}
+.content-m1-col1:hover .content-m1-col4, .content-m1-col2:hover .content-m1-col4 {
+background-color:$ {
+color3
+}
+;
+color:$ {
+color4
+};
+}
+.content-m1-col1:hover .content-m1-col4 .s1, .content-m1-col2:hover .content-m1-col4 .s1 {
+color:$ {
+color4
+}
+;
+}
+</style>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/customize-info2");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="4" />
+<div class="main main-row1 main-bg2"> </div>
+  <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="950"><table width="855" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="60"  ><span class="customize-title">私家定制</span></td>
+          </tr>
+          <tr>
+            <td  ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="283" height="128" class="customize-type1"><table width="100%" border="0" cellspacing="0" cellpadding="0" id="customize-info1">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img22.png" width="36" height="31"></td>
+                        <td width="76%" ><span class="customize-type4">专属旅行顾问</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">填写你的出行意愿，雅米专属旅行顾问为你提供出行方案</div></td>
+                      </tr>
+                    </table></td>
+                  <td>&nbsp;</td>
+                  <td width="283" class="customize-type1"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img23.png"  ></td>
+                        <td width="76%" ><span class="customize-type4">互动推荐</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">系统根据你的意愿自动推荐适合你的行程，方便快捷。</div></td>
+                      </tr>
+                    </table></td>
+                  <td>&nbsp;</td>
+                  <td width="283" class="customize-type1 active"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="24%" height="58" align="center"><img src="${request.contextPath}/images/img24.png"></td>
+                        <td width="76%" ><span class="customize-type4">别人怎么玩</span></td>
+                      </tr>
+                      <tr class="customize-type2">
+                        <td height="70" align="center" valign="top">方式一：</td>
+                        <td valign="top"><div class="customize-type3">看看别人定制的成功案例和点评，也许适合你。</div></td>
+                      </tr>
+                    </table></td>
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td  >&nbsp;</td>
+          </tr>
+          <tr>
+            <td><div class="product-content-m-s3 destinationMain"> <span class="product-content-m-s1 text1"> 经典案例 /</span> <span class="product-content-m-s2 destinationParent"> 按目的地查看</span>
+                <div class="product-content-m-s4 destinationChild">
+                  <div class="product-content-m-s5">请选择目的地</div>
+                  <ul>
+                    <#list destinationList as item>
+                    <li><a href="#" class="destination" value="${item.value}">${item.name}</a></li>
+                    </#list>
+                  </ul>
+                </div>
+              </div></td>
+          </tr>
+          <tr>
+            <td>
+            <#list retList as item>
+            <div class="customize-content">
+            <div class="s1"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" width="269" height="183"></div>
+            <div class="s2">${item.title1}</div>
+            <div class="s2">${item.title2}</div>
+            <div class="s2 s3">${item.title3}</div>
+            <div class="s4">${item.summary}</div>
+            </div>
+            </#list>
+            </td>
+          </tr>
+          <tr>
+            <td height="50" align="right"><div class="product-content-m2-s7"><@c.page /><div></td>
+          </tr>
+        </table></td>
+        <td width="165" bgcolor="#ebeae6"></td>
+    </tr>
+  </table> 
+<@c.bottom />
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登陆</title>
+<@c.css /> 
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/reg");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="1" />
+<div class="main main-row1 main-bg2"> </div>
+  <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="950" height="518" valign="top"><table width="855" border="0" align="center" cellpadding="0" cellspacing="0" class="login-table">
+          <tr>
+            <td height="60"><span class="customize-title">注册会员</span></td>
+          </tr>
+          <tr>
+            <td height="10"> </td>
+          </tr> 
+          <tr>
+            <td height="30"><span class="login-s1">注册雅米会员，享受一对一专属定制服务。</span></td>
+          </tr> 
+          <tr>
+            <td height="30"><span class="login-s1">用户名</span></td>
+          </tr>
+          <tr>
+            <td height="30"><input type="text" name="textfield" id="textfield">&nbsp;&nbsp; <span class="login-s3">4到20位字母或数字</span></td>
+          </tr>
+          <tr>
+            <td height="30"><span class="login-s1">电子邮箱</span></td>
+          </tr>
+          <tr>
+            <td height="30"><input type="text" name="textfield" id="textfield">&nbsp;&nbsp; <span class="login-s3">电子邮箱可以作为登陆账号使用</span></td>
+          </tr>
+          <tr>
+            <td height="30"><span class="login-s1">登陆密码</span></td>
+          </tr>
+          <tr>
+            <td height="30"><input type="text" name="textfield" id="textfield">&nbsp;&nbsp; <span class="login-s3">密码请设置6-20位字母或数字</span></td>
+          </tr>
+          <tr>
+            <td height="30"><span class="login-s1">重复密码</span></td>
+          </tr>
+          <tr>
+            <td height="30"><input type="text" name="textfield" id="textfield">&nbsp;&nbsp; <span class="login-s3">确认输入密码</span></td>
+          </tr>
+          <tr>
+            <td height="30"><div class="login-s2"><a href="#">注册</a></div></td>
+        </tr>
+        <tr>
+            <td height="40"><span class="login-s1">已经注册过?</span> <a href="${request.contextPath}/login">登陆</a></td>
+        </tr
+        ></table></td>
+        <td width="165" bgcolor="#ebeae6"></td>
+    </tr>
+  </table> 
+  <div class="main main-row1 main-bg2"> </div>
+<@c.bottom />
+</body>
+</html>
