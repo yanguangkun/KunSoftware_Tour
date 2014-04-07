@@ -73,7 +73,7 @@ body, td, th {
 
 .content-m1-s2{ padding:0px 0 15px 15px; height:39px; width:123px;}
 .content-m1-s22{ height:39px; width:123px; line-height:39px;position:relative;background-image:url(../images/tou2.png) }
-.content-m1-s22 .m1{ display:none;position:absolute; top:0; left:125px; background-color:#fff;width:332px; height:126px; opacity:0.8;}
+.content-m1-s22 .m1{ display:none;position:absolute; top:0; left:122px; background-color:#fff;width:332px; height:126px; opacity:0.8;}
 .content-m1-s22 .m2{ height:36px; width:280px; margin:0 0 0 15px; font-size:14px; border-bottom:1px dashed #d3d3d1;}
 .content-m1-s22 .phTxt1{position:absolute; left:10px; height:39px; line-height:39px; top:0px; z-index:0; color:#696c65;}
 .content-m1-s22 ul { padding: 0 15px;}
@@ -86,7 +86,7 @@ body, td, th {
 .content-m1-s22 a:hover{color:#858585;}
 
 .content-m1-s3{ padding:40px 0 15px 15px; height:32px; width:88px;}
-.content-m1-s33{ text-align:center; color:#6d6d6d;height:32px; width:88px; line-height:32px;background-image:url(../images/tou3.png) }
+.content-m1-s33{ text-align:center; color:#6d6d6d;height:32px; width:88px; line-height:32px;background-image:url(../images/tou3.png); cursor:pointer;}
 .content-m1-s33:hover{ border:1px solid #000; height:30px; width:86px;line-height:30px;}
 
 .content-m2-col1{width:276px;height:348px; float:left; padding-left:25px;padding-top:25px;padding-bottom:15px; background-color:#fff}
@@ -157,6 +157,7 @@ body, td, th {
 .product-content-m2-s7{width:150px;} 
 .product-content-m2-s7 ul {}
 .product-content-m2-s7 ul li { cursor:pointer; border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
+.product-content-m2-s7 ul li.active{ background-color:#ad4834; color:#fff;}
 
 .product-top .top-base a.a1{padding:0 15px;}
 .product-top .top-base a.a2{padding:0 25px; }
@@ -298,7 +299,7 @@ body, td, th {
 .product-detail-left-s9 a{ padding:5px 30px;  background-color:#ad4834; font-size:18px; color:#fff;}
 
 .customize-title { font-size:25px; color:#333333;}
-.customize-type1 { background-color:#90d5fc; color:#fff;}
+.customize-type1 { background-color:#90d5fc; color:#fff; cursor:pointer;}
 .customize-type1.active{ background-color:#2aa6e6;}\
 .customize-type2 { line-height:25px;}
 .customize-type2 td{line-height:25px;}
@@ -311,6 +312,36 @@ body, td, th {
 .customize-table input[type=checkbox]{height:22px; width:22px; border:1px solid #bcbcbc}
 .customize-table textarea{ border:1px solid #bcbcbc; height:129px; width:556px;}
 .customize-table a{ padding: 5px 30px; background-color:#2aa6e6; color:#fff;}
+
+.customize-content { width:269px; height:320px; float:left; padding:20px 15px 0px 0;}
+.customize-content .s1{ width:269px; height:183px;}
+.customize-content .s2{ padding:5px 0 5px 0; font-size:14px; color:#1b1d1c;}
+.customize-content .s3{ border-bottom:1px solid #989898}
+.customize-content .s4{ padding:5px 0; color:#656567; line-height:22px;}
+
+.yamidiary-table td{ border-bottom:1px dotted #dddddd ;}
+.yamidiary-s1{ border-bottom:1px solid #bcc0c4;}
+.yamidiary-s2{ color:#a494b2;}
+.yamidiary-s3{ font-size:18px; color:#444444;}
+.yamidiary-s4 {}
+.yamidiary-s4 a { padding:3px 10px; color:#a1a1a1}
+.yamidiary-s5{ padding:10px;}
+
+.articl-s1{ margin:20px; padding:0 0 20px 0; border-bottom:2px solid #bcbfc4; font-size:22px; color:#767676; text-align:center;}
+.articl-s2{ padding:20px; text-align:center;}
+.articl-s3{ padding:20px;}
+
+.articl-s4{ margin:20px 20px 0 20px; padding:0 0 20px 0; border-bottom:1px solid #bcbfc4; font-size:18px; color:#333333; text-align:left;}
+.articl-s5 { margin:0 20px;text-align:left; padding:10px;}
+.articl-s5 a{ color:#767676;}
+
+.login-table a { color:#2aa5e5;}
+.login-table input{ border:1px solid #a5acb2; height:20px; width:160px}
+.login-s1{ color:#757575}
+.login-s2 { padding:15px 0 0 0;}
+.login-s2 a{ padding:3px 25px; color:#fff; background-color:#2aa5e5;}
+.login-s3 { color:#b4b4b4}
+ 
 
 		/* 本例子css */
 		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:1px solid #ddd;  }
@@ -454,6 +485,17 @@ body, td, th {
 }
 }
 
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px
+}
+.alert-danger {
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	color: #a94442
+}
 .loading-content { padding:10px;}
 .dialogControl{padding:3px 0}
 #loading{z-index:9999}
