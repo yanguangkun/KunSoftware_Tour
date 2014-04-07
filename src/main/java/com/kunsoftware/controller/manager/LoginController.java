@@ -71,7 +71,7 @@ public class LoginController {
 			referer = StringUtils.replace(referer, request.getContextPath(), "");
 			return "redirect:" + referer;
 		} else {
-			return "redirect:/manager/menu/list";
+			return "redirect:/manager/productresource/list";
 		} 
 	}
 	

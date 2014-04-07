@@ -147,4 +147,6 @@ public class FrontProductDetailController extends BaseController {
 		jsonBean.setMessage("操作成功"); 
 		return jsonBean;
 	}
+	
+	
 }

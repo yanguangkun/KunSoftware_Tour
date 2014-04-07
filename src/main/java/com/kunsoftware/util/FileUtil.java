@@ -14,11 +14,15 @@ import com.kunsoftware.exception.KunSoftwareException;
 
 public class FileUtil {
 
-	public static String uploadDir = "E:/project/prj_tour/webapp/images/uploadDir";
+	public static String uploadDir = "";
 	public static String separator = "/";
 	
 	public static String uploadFile(MultipartFile file) throws KunSoftwareException {
 		
+		if(StringUtils.isEmpty(uploadDir)) {
+			uploadDir = WebUtil.getRequest().getSession().getServletContext().getRealPath("/") + "images/uploadDir";
+			uploadDir = StringUtils.replace(uploadDir, "\\",separator);
+		}
 		CommonsMultipartFile cFile = (CommonsMultipartFile)file;
 		String ext = FilenameUtils.getExtension(cFile.getFileItem().getName());
 		
