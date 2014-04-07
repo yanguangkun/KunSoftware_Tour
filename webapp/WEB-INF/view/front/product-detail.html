@@ -67,7 +67,7 @@ color4
         <tr>
           <td width="587" valign="top" bgcolor="#EBEAE6"><table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fff">
               <tr>
-                <td height="50"><div class="product-detail-s1">${productResource.name}</div></td>
+                <td height="50"><div class="product-detail-s1">${productResource.name!}</div></td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
@@ -84,10 +84,10 @@ color4
                 <td height="10"></td>
               </tr>
               <tr>
-                <td bgcolor="#FFFFFF"><div class="product-detail-s2">${productIntroduce.title}
-                    <div class="arr <#if productIntroduce.expand=='0'>expand</#if>"></div>
+                <td bgcolor="#FFFFFF"><div class="product-detail-s2">${productIntroduce.title!}
+                    <div class="arr <#if productIntroduce.expand?? && productIntroduce.expand=='0'>expand</#if>"></div>
                   </div>
-                  <div class="product-detail-s3 introduce <#if productIntroduce.expand=='0'>hide</#if>"> ${productIntroduce.introduce!} </div></td>
+                  <div class="product-detail-s3 introduce <#if productIntroduce.expand?? && productIntroduce.expand=='0'>hide</#if>"> ${productIntroduce.introduce!} </div></td>
               </tr>
             </table>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">

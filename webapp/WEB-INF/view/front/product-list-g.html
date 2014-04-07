@@ -79,8 +79,8 @@ color4
               </tr>
               <#list retList as item>
               <tr class="productItem">
-                <td><div class="product-content-m1-s5"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" height="180"></div>
-                  <div class="product-content-m1-s6">${item.name!}</div>
+                <td><div class="product-content-m1-s5"><a href="detail?id=${item.id}"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" height="180"></a></div>
+                  <div class="product-content-m1-s6"><a href="detail?id=${item.id}">${item.name!}</a></div>
                   <div class="product-content-m1-s7">${item.managerComment!}</div></td>
               </tr>
               <tr class="productItem">
