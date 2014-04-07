@@ -1,6 +1,5 @@
 package com.kunsoftware.controller.front;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -85,6 +84,8 @@ public class FrontProductDetailController extends BaseController {
 		if(!productIntroducelist.isEmpty()) {
 			productIntroduce = productIntroducelist.get(0);
 			productIntroducelist.remove(0);
+		} else {
+			productIntroduce = new ProductIntroduce();
 		}
 		List galleryList = galleryService.getGalleryListAll(null, null, productResource.getId().toString());
 		List tplList = null;
