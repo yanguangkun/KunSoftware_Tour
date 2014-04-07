@@ -28,26 +28,12 @@
   <div class="arr"><img src="${request.contextPath}/images/arr.png" width="17" height="9"></div>
   <div class="d1 indexDestinationList">
     <ul>
+      <#list destinationList as item>
       <li>
-      <a href="${request.contextPath}/product/list?arriveDestination=1"><img src="${request.contextPath}/images/d1.jpg" width="154" height="75"> 
-      巴厘岛</a>
+      <a href="${request.contextPath}/product/list?arriveDestination=${item.value!}"><img src="${request.contextPath}/images/uploadDir${item.attr!}" width="154" height="75"> 
+      ${item.name!}</a>
       </li>
-      <li>
-      <a href="#"><img src="${request.contextPath}/images/d1.jpg" width="154" height="75"> 
-      巴厘岛</a>
-      </li>
-      <li>
-      <a href="#"><img src="${request.contextPath}/images/d1.jpg" width="154" height="75"> 
-      巴厘岛</a>
-      </li>
-      <li>
-      <a href="#"><img src="${request.contextPath}/images/d1.jpg" width="154" height="75"> 
-      巴厘岛</a>
-      </li>
-      <li>
-      <a href="#"><img src="${request.contextPath}/images/d1.jpg" width="154" height="75"> 
-      巴厘岛</a>
-      </li>
+      </#list> 
     </ul>
   </div>
   </div>
@@ -56,8 +42,8 @@
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='5'>current</#if>" href="#" >相册游记</a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='6'>current</#if>" href="${request.contextPath}/yamidiary/list" >雅米日记</a></div>
   <div class="top-base top-col2"></div>
-  <div class="top-login"><img src="${request.contextPath}/images/image8.jpg"></div>
-  <div class="top-reg"><img src="${request.contextPath}/images/image9.jpg"></div>
+  <div class="top-login"><a href="${request.contextPath}/login"><img src="${request.contextPath}/images/image8.jpg" /></a></div>
+  <div class="top-reg"><a href="${request.contextPath}/reg"><img src="${request.contextPath}/images/image9.jpg"></a></div>
 </div>
 </#macro> 
 <#macro top_p currentIndex>
@@ -80,8 +66,8 @@
       
     </div>
   </div>
-  <div class="top-login"><img src="${request.contextPath}/images/image8.jpg"></div>
-  <div class="top-reg"><img src="${request.contextPath}/images/image9.jpg"></div>
+  <div class="top-login"><a href="${request.contextPath}/login"><img src="${request.contextPath}/images/image8.jpg" /></a></div>
+  <div class="top-reg"><a href="${request.contextPath}/reg"><img src="${request.contextPath}/images/image9.jpg"></a></div>
 </div>
 </#macro> 
 
