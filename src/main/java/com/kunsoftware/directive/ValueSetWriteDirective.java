@@ -50,6 +50,8 @@ public class ValueSetWriteDirective implements TemplateDirectiveModel {
 			list = service.selectValueSetAirlineList();
 		} else if("ground".equals(code)) {
 			writeValue = service.getGroundName(value);
+		} else if("article_classify".equals(code)) {
+			list = service.selectValueSetArticleClassify();
 		} else {
 			list = service.selectValueSetList(code);
 		} 

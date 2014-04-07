@@ -68,6 +68,8 @@ public class ValueSetDirective implements TemplateDirectiveModel {
 			list = service.selectValueSetGround();
 		} else if("head_title".equals(code)) {
 			list = service.selectValueSetHeadIconTitle("2");
+		} else if("article_classify".equals(code)) {
+			list = service.selectValueSetArticleClassify();
 		} else {
 			list = service.selectValueSetList(code);
 		}		

@@ -90,4 +90,14 @@ public class YamiDiaryService {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
 	}
+	
+	public List getYamiDiaryNextPre(Integer id) {
+		
+		return mapper.getYamiDiaryNextPre(id);
+	}
+    
+	public YamiDiary selectByIndexRcommend() {
+		
+		return mapper.selectByIndexRcommend();
+	}
 }

@@ -75,4 +75,11 @@
     from article_classify where 1=1 
     order by  id DESC
   </select>
+  
+  <select id="selectValueSetList" resultType="com.kunsoftware.entity.ValueSet" parameterType="java.lang.String">
+    select 
+    name,id as value,'0' as type
+    from article_classify where 1=1  
+    order by id DESC
+  </select>
 </mapper>

@@ -17,6 +17,7 @@ import com.kunsoftware.entity.Ground;
 import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.AirlineMapper;
+import com.kunsoftware.mapper.ArticleClassifyMapper;
 import com.kunsoftware.mapper.DestinationMapper;
 import com.kunsoftware.mapper.GroundMapper;
 import com.kunsoftware.mapper.HeadIconTitleMapper;
@@ -44,6 +45,8 @@ public class ValueSetService {
 	@Autowired
 	private HeadIconTitleMapper headIconTitleMapper;
 	
+	@Autowired
+	private ArticleClassifyMapper articleClassifyMapper;
 	
 	public List<ValueSet> getValueSetListAll(@Param("code") String code) {
 		 
@@ -80,6 +83,11 @@ public class ValueSetService {
 	public List<ValueSet> selectValueSetHeadIconTitle(String type) {
 		 
 		return headIconTitleMapper.selectValueSetList(type);
+	}
+	
+	public List<ValueSet> selectValueSetArticleClassify() {
+		 
+		return articleClassifyMapper.selectValueSetList();
 	}
 
 	public String getGroundName(String value) {

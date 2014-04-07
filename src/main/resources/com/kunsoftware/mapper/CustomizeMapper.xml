@@ -164,4 +164,14 @@
     
     order by id DESC
   </select>
+  
+  <select id="getFrontCustomizeListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from customize where 1=1 AND front_desk='1'
+    <if test="destination != null and destination != ''">
+		AND destination = #{destination,jdbcType=VARCHAR}
+	</if>	 
+    order by id DESC
+  </select>
 </mapper>

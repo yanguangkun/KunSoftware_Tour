@@ -22,6 +22,12 @@ public class MemberService {
 	@Autowired
 	private MemberMapper mapper; 
 	
+	public Member selectByUserName(String userName) {
+		
+		logger.info("查询用户");
+		return mapper.selectByUserName(userName);
+	}
+
 	public List<Member> getMemberListAll() {
 		 
 		logger.info("query");

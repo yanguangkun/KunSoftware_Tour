@@ -21,4 +21,8 @@ public interface YamiDiaryMapper {
     int updateByPrimaryKey(YamiDiary record);
     
     List<YamiDiary> getYamiDiaryListPage(@Param("keyword") String kewword,@Param("page") PageInfo page);
+    
+    List getYamiDiaryNextPre(Integer id);
+    
+    YamiDiary selectByIndexRcommend();
 }

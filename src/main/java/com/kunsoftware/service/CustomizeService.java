@@ -29,6 +29,12 @@ private static Logger logger = LoggerFactory.getLogger(CustomizeService.class);
 		logger.info("query");
 		return mapper.getCustomizeListPage(destination,keyword,page);
 	}
+	
+	public List<Customize> getFrontCustomizeListPage(String destination,PageInfo page) {
+		 
+		logger.info("query");
+		return mapper.getFrontCustomizeListPage(destination,page);
+	}
 	 
 	@Transactional
 	public Customize insert(CustomizeRequestBean requestBean) throws KunSoftwareException {		 

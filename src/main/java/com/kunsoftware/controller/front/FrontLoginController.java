@@ -1,4 +1,4 @@
-package com.kunsoftware.controller.manager;
+package com.kunsoftware.controller.front;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,28 +13,26 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kunsoftware.entity.SysUser;
-import com.kunsoftware.service.UserService;
+import com.kunsoftware.entity.Member;
+import com.kunsoftware.service.MemberService;
 import com.kunsoftware.util.WebUtil;
 
-@Controller 
-@RequestMapping("/manager")
-public class LoginController {
+@Controller
+public class FrontLoginController {
 
-	private static Logger logger = LoggerFactory.getLogger(LoginController.class);	
+	private static Logger logger = LoggerFactory.getLogger(FrontLoginController.class);	
 	
 	@Autowired
-	private UserService service;
+	private MemberService service;
 	
-	@RequestMapping(value = "/login",method = RequestMethod.GET)
-	public String userLogin(ModelMap model,HttpServletRequest request) {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(ModelMap model,HttpServletRequest request) {
 		
 		String referer = (String)request.getAttribute("referer"); 
 		String loginMsg = request.getParameter("loginMsg");
 		model.addAttribute("referer", referer);
 		model.addAttribute("loginMsg", loginMsg);
-		 
-		return "manager/login";
+		return "front/login";
 	}
 	
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
@@ -47,39 +45,37 @@ public class LoginController {
 			model.addAttribute("userName", userName); 
 			model.addAttribute("referer", referer);
 			
-			return "manager/login";
+			return "front/login";
 		}
 		
-		SysUser entity = service.selectByUserName(userName);
+		Member entity = service.selectByUserName(userName);
 		if(entity == null) {
 			model.addAttribute("loginMsg", "用户不存在!"); 
 			model.addAttribute("userName", userName);
 			model.addAttribute("referer", referer);
-			return "manager/login";
+			return "front/login";
 		}
 		
 		if(!password.equals(entity.getPassword())) {
 			model.addAttribute("loginMsg", "用户名或密码错误!"); 
 			model.addAttribute("userName", userName); 
 			model.addAttribute("referer", referer);
-			return "manager/login";
+			return "front/login";
 		}  
 		HttpSession session = request.getSession();  
-		session.setAttribute(WebUtil.User_Info, entity); 
+		session.setAttribute(WebUtil.Member_Info, entity); 
 		
 		if(StringUtils.isNotEmpty(referer)) {
 			referer = StringUtils.replace(referer, request.getContextPath(), "");
 			return "redirect:" + referer;
 		} else {
-			return "redirect:/manager/menu/list";
+			return "redirect:/index";
 		} 
 	}
 	
-	@RequestMapping("/logout")
-	public String userLogout(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
+	public String reg(ModelMap model) {
 		
-		HttpSession session = request.getSession();  
-		session.setAttribute(WebUtil.User_Info, null); 
-		return "redirect:/manager/login"; 
+		return "front/reg";
 	}
 }

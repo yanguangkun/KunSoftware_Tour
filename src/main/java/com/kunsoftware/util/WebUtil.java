@@ -17,6 +17,7 @@ public class WebUtil {
 
 	public static String User_Info = "User_Info";
 	public static String User_Role = "User_Role";
+	public static String Member_Info = "Member_Info";
 	public static ApplicationContext context;
 	private static Object lockContext = new Object();
 	 

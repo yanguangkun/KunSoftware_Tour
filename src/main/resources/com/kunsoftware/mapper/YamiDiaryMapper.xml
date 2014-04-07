@@ -136,4 +136,19 @@
     
     order by id DESC
   </select>
+  
+  <select id="getYamiDiaryNextPre" resultType="java.util.HashMap" parameterType="java.lang.String">
+    (select id ,'1' as type from yami_diary where id &lt; #{id,jdbcType=INTEGER} order by id desc limit 1)
+	union all 
+	(select id,'2' as type from yami_diary where id &gt; #{id,jdbcType=INTEGER} order by id limit 1)
+  </select>
+  
+  <select id="selectByIndexRcommend" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yami_diary
+    where index_recommend = "1"
+    order by create_time desc limit 1
+  </select>
+  
 </mapper>

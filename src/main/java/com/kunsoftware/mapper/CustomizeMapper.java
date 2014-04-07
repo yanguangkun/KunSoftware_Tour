@@ -23,4 +23,7 @@ public interface CustomizeMapper {
     List<Customize> getCustomizeListPage(@Param("destination") String destination,
    		 @Param("keyword") String keyword,
    		 @Param("page") PageInfo page);
+    
+    List<Customize> getFrontCustomizeListPage(@Param("destination") String destination,
+      		 @Param("page") PageInfo page);
 }
