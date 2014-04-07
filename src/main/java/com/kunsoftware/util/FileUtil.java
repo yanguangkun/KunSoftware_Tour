@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -17,11 +19,15 @@ public class FileUtil {
 	public static String uploadDir = "";
 	public static String separator = "/";
 	
+	private static Logger logger = LoggerFactory.getLogger(FileUtil.class);	
+	
 	public static String uploadFile(MultipartFile file) throws KunSoftwareException {
 		
 		if(StringUtils.isEmpty(uploadDir)) {
 			uploadDir = WebUtil.getRequest().getSession().getServletContext().getRealPath("/") + "images/uploadDir";
 			uploadDir = StringUtils.replace(uploadDir, "\\",separator);
+			
+			logger.info("上传文件目录：" + uploadDir);
 		}
 		CommonsMultipartFile cFile = (CommonsMultipartFile)file;
 		String ext = FilenameUtils.getExtension(cFile.getFileItem().getName());
