@@ -7,6 +7,7 @@ define(function(require, exports, module) {
 	require('placeholder');  
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
+	require('frontpage');
 	var lockscreen = require('lockscreen');
 	$(document).ready(function(){ 
 		 var validate =  $("#saveFrm").validate({ 
@@ -31,11 +32,23 @@ define(function(require, exports, module) {
 			return false;
         });
 		
-		$("#customize-info2").click(function(e) {
-            location.href = "info2";
+		$("#customize-info1").click(function(e) {
+            location.href = "info1";
         });
+		
+		$(".destination").click(function(e) {
+            location.href = "info2?destination=" + $(this).attr("value");
+        });
+		
 	}); 
 	
+	$(".destinationParent").mouseenter(function(e) {
+        $(".destinationChild").show();
+    });
+	
+	$(".destinationMain").mouseleave(function(e) {
+        $(".destinationChild").hide();
+    });
 	
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();
@@ -46,7 +59,5 @@ define(function(require, exports, module) {
         $(".arr").hide();
 		$(".indexDestinationList").hide();
     });
-	
-	
 	 
 });

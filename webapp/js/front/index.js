@@ -10,7 +10,13 @@ define(function(require, exports, module) {
 	
 	$(".destination").click(function(e) {
         $(".phTxt1").html($(this).text());
-		 $(".destinationChild").hide();		
+		$(".destinationChild").hide();	
+		$("#destination").val($(this).attr("value"));
+		
+    });
+	
+	$(".customizeBtn").click(function(e) {
+        location.href = "customize/info2?destination=" + $("#destination").val();	
     });
 	
 	$(".destinationParent").mouseenter(function(e) {

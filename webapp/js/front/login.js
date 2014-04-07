@@ -4,38 +4,23 @@ define(function(require, exports, module) {
 	require('bootstrap')($); 
 	require('jquery-form')($); 
 	require('superslide')($); 
-	require('placeholder');  
+	require('placeholder');
 	require('jquery-validate')($);
-	require('jquery-validate-messages')($); 
+	require('jquery-validate-messages')($);   
 	var lockscreen = require('lockscreen');
 	$(document).ready(function(){ 
-		 var validate =  $("#saveFrm").validate({ 
-			submitHandler: function(form) { 
-				$(form).ajaxSubmit({
-					dataType:'json', 
-					success:function(data) {
-						alert(data.message); 
-						lockscreen.unLock();
-					}
-				});
-			}	
-		}); 
-		
-		$("#saveBtn").click(function(e) { 
+		 var validate =  $("#loginFrm").validate(); 
+		 
+		$("#loginBtn").click(function(e) { 
             var check = validate.form();  
 			 
 			if(check) {
 				lockscreen.lock();
 			} 
-			//$("#saveFrm").submit();
+			$("#loginFrm").submit();
 			return false;
         });
-		
-		$("#customize-info2").click(function(e) {
-            location.href = "info2";
-        });
 	}); 
-	
 	
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();
@@ -46,7 +31,5 @@ define(function(require, exports, module) {
         $(".arr").hide();
 		$(".indexDestinationList").hide();
     });
-	
-	
 	 
 });

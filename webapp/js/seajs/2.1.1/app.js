@@ -9,7 +9,8 @@ var Context_Path = "/tour";
 		'jquery-validate': 'libs/jquery-validate/1.11.1/jquery.validate.min.js',
 		'jquery-validate-messages': 'libs/jquery-validate/1.11.1/messages_cn.js',
 		"lockscreen": "libs/common/0.0.1/lockscreen.js",
-		'placeholder':'libs/common/0.0.1/placeholder.js'
+		'placeholder':'libs/common/0.0.1/placeholder.js',
+		"frontpage": "libs/common/0.0.1/frontpage.js"
 	}; 
 	seajs.config({
 		base: Context_Path + "/js/",

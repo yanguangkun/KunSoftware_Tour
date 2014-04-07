@@ -5,9 +5,7 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('superslide')($); 
 	require('placeholder');  
-	require('jquery-validate')($);
-	require('jquery-validate-messages')($); 
-	var lockscreen = require('lockscreen');
+	  
 	$(document).ready(function(){ 
 		 var validate =  $("#saveFrm").validate({ 
 			submitHandler: function(form) { 
@@ -20,22 +18,9 @@ define(function(require, exports, module) {
 				});
 			}	
 		}); 
+		 
 		
-		$("#saveBtn").click(function(e) { 
-            var check = validate.form();  
-			 
-			if(check) {
-				lockscreen.lock();
-			} 
-			//$("#saveFrm").submit();
-			return false;
-        });
-		
-		$("#customize-info2").click(function(e) {
-            location.href = "info2";
-        });
 	}); 
-	
 	
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();
@@ -46,7 +31,5 @@ define(function(require, exports, module) {
         $(".arr").hide();
 		$(".indexDestinationList").hide();
     });
-	
-	
 	 
 });
