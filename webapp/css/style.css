@@ -344,7 +344,7 @@ body, td, th {
  
 
 		/* 本例子css */
-		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:1px solid #ddd;  }
+		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:0px solid #ddd;  }
 		
 		.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
 		.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
