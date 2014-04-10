@@ -23,7 +23,12 @@
           <th width="15%">名称 <span class="error">*</span></th>
           <td width="35%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="名称" value="${entity.name!}"></td>
           <th width="15%">类别 </th>
-          <td width="35%"><input type="text" class="form-control input-sm" name="type"  id="type" placeholder="类别" value="${entity.type!}"></td>
+          <td width="35%">
+           <select name="type" id="type" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="ordersdetail_type" value="${entity.type!}" />
+            </select>
+             </td>
         </tr>
         <tr>
           <th width="15%">单价 <span class="error">*</span></th>

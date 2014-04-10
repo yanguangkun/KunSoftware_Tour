@@ -37,7 +37,7 @@
         <tr>
           <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
           <td>${item.name!}</td>
-          <td>${item.type!} </td>
+          <td><@ValueSetWrite code="ordersdetail_type" value="${item.type!}" /> </td>
           <td>${item.unitPrice!}</td>
           <td>${item.quantity!}</td>
           <td>

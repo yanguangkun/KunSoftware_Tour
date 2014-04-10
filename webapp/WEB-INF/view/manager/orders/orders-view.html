@@ -27,7 +27,7 @@
           <th>产品名称 </th>
           <td>${bean.orders.productName!}</td>
           <th>产品编号 </th>
-          <td>${bean.orders.productCode!}</td>
+          <td>${bean.orders.productId!}</td>
         </tr>
         <tr>
           <th>订单来源 </th>
@@ -105,7 +105,7 @@
         <#list bean.ordersDetail as item>
         <tr>
           <td>${item.name!}</td>
-          <td>${item.type!} </td>
+          <td><@ValueSetWrite code="ordersdetail_type" value="${item.type!}" /> </td>
           <td>${item.unitPrice!}</td>
           <td>${item.quantity!}</td>
           <td><#if item.quantity?? && item.unitPrice??>
