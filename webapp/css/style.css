@@ -29,13 +29,16 @@ body, td, th {
 .top-padding-right{ padding-right:20px}
 .top-padding{ padding:0 3px;}
 .top-col1{ width:140px}
-.top-col2{ width:130px}
+.top-col2{ width:140px}
 
 .top-base a.a1{display:block; padding:0 25px; color:#c8c8c8; text-decoration:none}
 .top-base a.a1:hover{display:block; color:#c8c8c8; background-color:#1f1f1f; text-decoration:none}
 .top-base a.a1.current{display:block;  background-color:#1f1f1f; color:#fff; text-decoration:none}
 .top-base a:hover.a1.current{display:block; background-color:#1f1f1f; color:#fff; text-decoration:none}
 
+.top-member{ padding: 0 0 0 20px; float:left; color:#c8c8c8;line-height:50px; height:50px;}
+.top-member a{ color:#c8c8c8;}
+.top-member a:hover{ color:#fff;}
 .top-login{float:left;height:37px; padding-top:13px; padding-right:10px; cursor:pointer;}
 .top-reg{float:left;height:37px; padding-top:13px; padding-right:10px;cursor:pointer;}
 
@@ -339,9 +342,31 @@ body, td, th {
 .login-table input{ border:1px solid #a5acb2; height:20px; width:160px}
 .login-s1{ color:#757575}
 .login-s2 { padding:15px 0 0 0;}
-.login-s2 a{ padding:3px 25px; color:#fff; background-color:#2aa5e5;}
+.login-s2 a { padding:3px 25px; color:#fff; background-color:#2aa5e5;}
+.login-s2 input{ clear: both;padding:3px 0px 5px 0px; color:#fff; background-color:#2aa5e5;}
 .login-s3 { color:#b4b4b4}
- 
+
+.member a{ color:#747474}
+.member a.active{color:#2aa5e5}
+.member-s1{ margin:15px 6px; color:#fff; padding:5px; text-align:center; background-color:#656565;}
+.member-s2{ margin:0px 6px; color:#fff; padding:5px; text-align:center; background-color:#fff;} 
+.member-s3{ padding:0px 20px 15px 20px;}
+.member-s4{ font-size:22px;   color:#333333; padding:15px 0 10px 0}
+.member-s5{color:#747474; padding:3px 0 5px 0; line-height:22px;}
+.member-s6 {text-align:right; padding:10px;} 
+.member-s6 ul {}
+.member-s6 ul li { cursor:pointer; border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
+.member-s6 ul li.active{ background-color:#ad4834; color:#fff;}
+.member-s7 { color:#009944}
+.member-s8 { margin:5px 0 0 0; border-top:1px solid #b6b5b5; text-align:right; padding:25px 15px 0 0;}
+.member-s9 {text-align:right; padding:3px 15px 0 0;}
+.member-s10{ font-size:25px; color:#4e4e4e}
+
+.member-table{ border:1px solid #d0d0d0}
+.member-table th,
+.member-table td{ padding:5px;}
+.member-table td { color:#656565; border-top:1px solid #d0d0d0;}
+.member-table thead th{ background-color:#efefef; font-weight:normal; }
 
 		/* 本例子css */
 		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:0px solid #ddd;  }
