@@ -28,7 +28,7 @@ public class OrdersAttachmentService {
 	public List<OrdersAttachment> getOrdersAttachmentListAll(Integer ordersId) {
 		 
 		logger.info("query");
-		return mapper.getOrdersAttachmentListAll(ordersId);
+		return mapper.getOrdersAttachmentListAll(ordersId,null);
 	}
 	 
 	@Transactional

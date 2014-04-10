@@ -9,10 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.kunsoftware.entity.SysUser;
+import com.kunsoftware.entity.Member;
 
-@SuppressWarnings({"rawtypes"})
-public class LoginAnnotationInterceptor extends HandlerInterceptorAdapter {
+public class FrontLoginAnnotationInterceptor extends HandlerInterceptorAdapter {
 
 @Override
 public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -20,23 +19,22 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     HttpSession session = request.getSession(); 
     String uri = request.getRequestURI();
     String paramStr = getParamStr(request);
-    
-    SysUser userEntity = (SysUser)session.getAttribute(WebUtil.User_Info);
+   
+    Member memberEntity = (Member)session.getAttribute(WebUtil.Member_Info);
 
     if(isLogin(request)) {
-    	if (null != userEntity) {
-    		response.sendRedirect(request.getContextPath() + "/manager/productresource/list");
-    		//request.getRequestDispatcher("/manager/productresource/list").forward(request, response);
+    	if (null != memberEntity) {
+    		response.sendRedirect(request.getContextPath() + "/index"); 
     		return false;
     	}
 		return true;
 	}
     
-    if(uri.indexOf("manager") != -1) {
+    if(uri.indexOf("/m/") != -1) {
     	String referer = uri + paramStr;
-        request.setAttribute("referer", referer);
-	    if (null == userEntity) {
-	    	request.getRequestDispatcher("/manager/login?loginMsg=请登录后再操作!").forward(request, response); 
+    	request.setAttribute("referer", referer);
+	    if (null == memberEntity) {
+	    	request.getRequestDispatcher("/m/login").forward(request, response); 
 	        return false;
 	    }
     }
@@ -64,9 +62,10 @@ public String getParamStr(HttpServletRequest request) {
 
 public boolean isLogin(HttpServletRequest request) {
 	 String uri = request.getRequestURI();
-	 if(uri.indexOf("manager/login") != -1) {
+	 if(uri.indexOf("m/login") != -1) {
 		 return true;
 	 }
 	 return false;
 }
+
 }

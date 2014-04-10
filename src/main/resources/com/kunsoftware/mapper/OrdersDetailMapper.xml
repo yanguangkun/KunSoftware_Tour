@@ -109,6 +109,6 @@
     <include refid="Base_Column_List" />
     from orders_detail where 1=1 
      and orders_id = #{ordersId,jdbcType=INTEGER}
-    order by id DESC
+    order by type ASC
   </select>
 </mapper>

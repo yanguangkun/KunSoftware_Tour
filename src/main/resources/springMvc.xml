@@ -59,6 +59,7 @@
             <list>
                 <bean class="com.kunsoftware.util.LoginAnnotationInterceptor"/>
                 <bean class="com.kunsoftware.util.PermissionAnnotationInterceptor"/>
+                <bean class="com.kunsoftware.util.FrontLoginAnnotationInterceptor"/>
             </list>
         </property>
 	</bean>

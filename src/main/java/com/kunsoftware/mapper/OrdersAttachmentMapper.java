@@ -19,5 +19,5 @@ public interface OrdersAttachmentMapper {
 
     int updateByPrimaryKey(OrdersAttachment record);
     
-    List<OrdersAttachment> getOrdersAttachmentListAll(@Param("ordersId") Integer ordersId);
+    List<OrdersAttachment> getOrdersAttachmentListAll(@Param("ordersId") Integer ordersId,@Param("frontDesk") String frontDesk);
 }

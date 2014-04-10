@@ -16,6 +16,7 @@ import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.service.ArticleClassifyService;
 import com.kunsoftware.service.ArticleService;
+import com.kunsoftware.service.ValueSetService;
 
 @Controller 
 @RequestMapping("/article")
@@ -29,6 +30,9 @@ public class FrontArticleController extends BaseController{
 	@Autowired
 	private ArticleClassifyService articleClassifyService;
 	
+	@Autowired
+	private ValueSetService valueSetService;
+	
 	@RequestMapping("/detail")
 	public String detailArticle(ModelMap model,Integer id) throws KunSoftwareException {
 		
@@ -39,6 +43,7 @@ public class FrontArticleController extends BaseController{
 		model.addAttribute("entity", entity);  
 		model.addAttribute("articleClassify", articleClassify);  
 		model.addAttribute("retList", list); 
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		
 		return "front/article-detail";
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.kunsoftware.entity.Member;
 import com.kunsoftware.entity.SysUser;
 
 public class WebUtil {
@@ -40,6 +41,22 @@ public class WebUtil {
 	public static String getUserName() {
 		SysUser sysUser = getUserEntity();
 		return sysUser.getUserName();
+	}
+	
+	public static Member getMemberEntity() {
+		HttpServletRequest request = getRequest();
+		Member member = (Member)request.getSession().getAttribute(Member_Info);
+		return member;
+	}
+	
+	public static Integer getMemberId() {
+		Member member = getMemberEntity();
+		return member.getId();
+	}
+	
+	public static String getMemberUserName() {
+		Member member = getMemberEntity();
+		return member.getUserName();
 	}
 	
 	public static String getContextPath() {

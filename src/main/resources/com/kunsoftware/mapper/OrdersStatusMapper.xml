@@ -120,6 +120,9 @@
     <include refid="Base_Column_List" />
     from orders_status where 1=1 
      and orders_id = #{ordersId,jdbcType=INTEGER}
+    <if test="frontDesk != null and frontDesk != ''">
+		AND front_desk = #{frontDesk,jdbcType=VARCHAR}
+	</if>
     order by id DESC
   </select>
 </mapper>

@@ -28,6 +28,12 @@ public class PageUtil {
 		model.addAttribute("pageParam",getPageParam(pageInfo));
 	}
 	
+	public static void frontPageInfo2(ModelMap model,PageInfo pageInfo) {
+		
+		model.addAttribute("pageInfo",frontPageToString2(pageInfo));
+		model.addAttribute("pageParam",getPageParam(pageInfo));
+	}
+	
 	public static String dialogPageToString(PageInfo pageInfo) {
 		
 		if(pageInfo == null || pageInfo.getTotalPages() <= 1) return "&nbsp;";
@@ -137,18 +143,34 @@ public class PageUtil {
 	
 	public static String frontPageToString(PageInfo pageInfo) {
 		
-		if(pageInfo == null || pageInfo.getTotalPages() <= 1) return "&nbsp;";
+		if(pageInfo == null || pageInfo.getTotalPages() <= 1) return "&nbsp;"; 
+		String retStr = "";
+		retStr +="<ul>";
+		retStr +="<li class=\"page\" value=\""+pageInfo.getPreviousPageNo()+"\">《</li>";
 		
+		int currentPage = pageInfo.getPageNo();
+		int startPage = currentPage - 3;
+		int endPage = currentPage + 3;
 		
-        /*
-          《</li>
-          <#list 1..pageInfo.totalPages as n>
-         <li class="page" value="${n}">${n}</li>
-          </#list> 
-          <li class="page" value="${pageInfo.nextPageNo}">》</li>
-        </ul>
-      </div>*/
-      
+		if(startPage <= 0) startPage = 1;
+		if(endPage >= pageInfo.getTotalPages()) endPage = pageInfo.getTotalPages();
+		 
+		for(int i = startPage;i <=endPage;i++) {
+			if(i == currentPage) {
+				retStr += "<li class=\"page active\" value=\""+i+"\">"+i+"</li>";
+			} else {
+				retStr += "<li class=\"page\" value=\""+i+"\">"+i+"</li>";				
+			}
+			
+		}
+		
+		retStr += "<li class=\"page\" value=\""+pageInfo.getNextPageNo()+"\">》</li>";
+		return retStr;
+	}
+	
+	public static String frontPageToString2(PageInfo pageInfo) {
+		
+		if(pageInfo == null || pageInfo.getTotalPages() <= 1) return "&nbsp;"; 
 		String retStr = "";
 		retStr +="<ul>";
 		retStr +="<li class=\"page\" value=\""+pageInfo.getPreviousPageNo()+"\">《</li>";

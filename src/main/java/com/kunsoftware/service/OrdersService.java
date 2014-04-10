@@ -93,9 +93,23 @@ public class OrdersService {
 	
 		orderViewBean.setOrders(mapper.selectByPrimaryKey(ordersId));
 		orderViewBean.setOrdersDetail(ordersDetailMapper.getOrdersDetailListAll(ordersId));
-		orderViewBean.setOrdersStatus(ordersStatusMapper.getOrdersStatusListAll(ordersId));
+		orderViewBean.setOrdersStatus(ordersStatusMapper.getOrdersStatusListAll(ordersId,null));
 		orderViewBean.setOrdersCash(ordersCashMapper.getOrdersCashListAll(ordersId));
-		orderViewBean.setOrdersAttachment(ordersAttachmentMapper.getOrdersAttachmentListAll(ordersId));
+		orderViewBean.setOrdersAttachment(ordersAttachmentMapper.getOrdersAttachmentListAll(ordersId,null));
+		orderViewBean.setOrdersTravel(ordersTravelMapper.getOrdersTravelListAll(ordersId));
+		
+		return orderViewBean;
+	}
+	
+	public OrderViewBean getFrontOrdersView(Integer ordersId) {
+		  
+		OrderViewBean orderViewBean = new OrderViewBean();
+	
+		orderViewBean.setOrders(mapper.selectByPrimaryKey(ordersId));
+		orderViewBean.setOrdersDetail(ordersDetailMapper.getOrdersDetailListAll(ordersId));
+		orderViewBean.setOrdersStatus(ordersStatusMapper.getOrdersStatusListAll(ordersId,"1"));
+		orderViewBean.setOrdersCash(ordersCashMapper.getOrdersCashListAll(ordersId));
+		orderViewBean.setOrdersAttachment(ordersAttachmentMapper.getOrdersAttachmentListAll(ordersId,"1"));
 		orderViewBean.setOrdersTravel(ordersTravelMapper.getOrdersTravelListAll(ordersId));
 		
 		return orderViewBean;

@@ -19,5 +19,5 @@ public interface OrdersStatusMapper {
 
     int updateByPrimaryKey(OrdersStatus record);
     
-    List<OrdersStatus> getOrdersStatusListAll(@Param("ordersId") Integer ordersId);
+    List<OrdersStatus> getOrdersStatusListAll(@Param("ordersId") Integer ordersId,@Param("frontDesk") String frontDesk);
 }

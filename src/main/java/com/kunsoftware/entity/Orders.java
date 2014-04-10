@@ -6,11 +6,11 @@ import java.util.Date;
 public class Orders {
     private Integer id;
 
-    private String productCode;
+    private String productId;
 
     private String productName;
 
-    private String status;
+    private Integer flightCheduleId;
 
     private String arriveCountry;
 
@@ -50,6 +50,10 @@ public class Orders {
 
     private String serviceRemark;
 
+    private Integer flightChedulePlanPriceId;
+
+    private String status;
+
     public Integer getId() {
         return id;
     }
@@ -58,12 +62,12 @@ public class Orders {
         this.id = id;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -74,12 +78,12 @@ public class Orders {
         this.productName = productName;
     }
 
-    public String getStatus() {
-        return status;
+    public Integer getFlightCheduleId() {
+        return flightCheduleId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setFlightCheduleId(Integer flightCheduleId) {
+        this.flightCheduleId = flightCheduleId;
     }
 
     public String getArriveCountry() {
@@ -232,5 +236,21 @@ public class Orders {
 
     public void setServiceRemark(String serviceRemark) {
         this.serviceRemark = serviceRemark;
+    }
+
+    public Integer getFlightChedulePlanPriceId() {
+        return flightChedulePlanPriceId;
+    }
+
+    public void setFlightChedulePlanPriceId(Integer flightChedulePlanPriceId) {
+        this.flightChedulePlanPriceId = flightChedulePlanPriceId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -26,10 +26,10 @@ public class FrontLoginController {
 	@Autowired
 	private MemberService service;
 	
-	@Autowired
+	@Autowired 
 	private ValueSetService valueSetService;
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/m/login", method = RequestMethod.GET)
 	public String login(ModelMap model,HttpServletRequest request) {
 		
 		String referer = (String)request.getAttribute("referer"); 
@@ -40,11 +40,11 @@ public class FrontLoginController {
 		return "front/login";
 	}
 	
-	@RequestMapping(value = "/login",method = RequestMethod.POST)
+	@RequestMapping(value = "/m/login",method = RequestMethod.POST)
 	public String userLogin(ModelMap model,HttpServletRequest request, HttpServletResponse response,String userName,String password,String referer,String remember) {
 		
 		logger.info("登录!");
-		
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		if(StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
 			model.addAttribute("loginMsg", "用户名或密码不能为空!"); 
 			model.addAttribute("userName", userName); 
@@ -83,5 +83,13 @@ public class FrontLoginController {
 		
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/reg";
+	}
+	
+	@RequestMapping("/m/logout")
+	public String userLogout(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session = request.getSession();  
+		session.setAttribute(WebUtil.Member_Info, null); 
+		return "redirect:/index"; 
 	}
 }

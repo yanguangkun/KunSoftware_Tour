@@ -27,7 +27,7 @@ public class OrdersStatusService {
 	public List<OrdersStatus> getOrdersStatusListAll(Integer ordersId) {
 		 
 		logger.info("query");
-		return mapper.getOrdersStatusListAll(ordersId);
+		return mapper.getOrdersStatusListAll(ordersId,null);
 	}
 	 
 	@Transactional
