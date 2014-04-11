@@ -23,6 +23,10 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     
     SysUser userEntity = (SysUser)session.getAttribute(WebUtil.User_Info);
 
+    if(isNotRole(request)) { 
+    	return true;
+    }
+    
     if(isLogin(request)) {
     	if (null != userEntity) {
     		response.sendRedirect(request.getContextPath() + "/manager/productresource/list");
@@ -69,4 +73,13 @@ public boolean isLogin(HttpServletRequest request) {
 	 }
 	 return false;
 }
+
+public boolean isNotRole(HttpServletRequest request) {
+	 String uri = request.getRequestURI();
+	 if(uri.indexOf("manager/cascade") != -1) {
+		 return true;
+	 }
+	 return false;
+}
+
 }

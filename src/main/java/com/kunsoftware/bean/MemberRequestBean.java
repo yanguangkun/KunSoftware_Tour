@@ -45,7 +45,7 @@ public class MemberRequestBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	public String getTrueName() {
 		return trueName;
 	}

@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kunsoftware.bean.JsonBean;
-import com.kunsoftware.bean.MemberRequestBean;
 import com.kunsoftware.bean.OrderViewBean;
 import com.kunsoftware.bean.OrdersRequestBean;
 import com.kunsoftware.controller.BaseController;
@@ -31,7 +28,7 @@ import com.kunsoftware.util.WebUtil;
 
 @Controller 
 @RequestMapping("/m")
-public class FrontMemberController extends BaseController{
+public class FrontMemberPayController extends BaseController{
 
 	private static Logger logger = LoggerFactory.getLogger(FrontMemberController.class);	
 
@@ -40,7 +37,7 @@ public class FrontMemberController extends BaseController{
 	
 	@Autowired
 	private ValueSetService valueSetService;
-	 
+	
 	@Autowired
 	private FlightChedulePriceService flightChedulePriceService;
 	
@@ -49,11 +46,11 @@ public class FrontMemberController extends BaseController{
 	
 	@Autowired
 	private ProductResourceService productResourceService;
-	
-	@RequestMapping("/order")
+
+	@RequestMapping("/order/pay")
 	public String order(ModelMap model,PageInfo pageInfo) throws KunSoftwareException {
 		
-		logger.info("会员订单");  
+		logger.info("会员订单支付");  
 
 		OrdersRequestBean bean = new OrdersRequestBean();
 		bean.setUserId(WebUtil.getMemberId());
@@ -65,26 +62,13 @@ public class FrontMemberController extends BaseController{
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		
 		PageUtil.frontPageInfo(model, pageInfo);
-		return "front/m/order";
+		return "front/m/order-pay";
 	}
 	
-	@RequestMapping(value="/orderEdit.json") 
-	@ResponseBody 
-	public JsonBean editOrders(OrdersRequestBean requestBean,Integer id) throws KunSoftwareException {
-		 
-		logger.info("编辑保存订单");  
-		
-		service.updateByPrimaryKey(requestBean,id);		
-		JsonBean jsonBean = new JsonBean();
-		jsonBean.setMessage("操作成功"); 	 
-		return jsonBean;
-	}
-	
-	
-	@RequestMapping("/orderd")
+	@RequestMapping("/order/payD")
 	public String orderd(ModelMap model,Integer id) throws KunSoftwareException {
 		
-		logger.info("会员订单详情");  
+		logger.info("会员订单支付详情");  
 		OrderViewBean orderViewBean = service.getFrontOrdersView(id); 
 		
 		ProductResource productResource = productResourceService.selectByPrimaryKey(new Integer(orderViewBean.getOrders().getProductId()));
@@ -102,8 +86,6 @@ public class FrontMemberController extends BaseController{
 		model.addAttribute("bean", orderViewBean); 
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		
-		return "front/m/orderd";
+		return "front/m/order-payD";
 	}
-	
-	
 }
