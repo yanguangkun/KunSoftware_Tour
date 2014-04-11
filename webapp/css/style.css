@@ -348,6 +348,7 @@ body, td, th {
 
 .member a{ color:#747474}
 .member a.active{color:#2aa5e5}
+.member input{ border:1px solid #bbbbbb; line-height:22px; width:220px;}
 .member-s1{ margin:15px 6px; color:#fff; padding:5px; text-align:center; background-color:#656565;}
 .member-s2{ margin:0px 6px; color:#fff; padding:5px; text-align:center; background-color:#fff;} 
 .member-s3{ padding:0px 20px 15px 20px;}
@@ -361,6 +362,16 @@ body, td, th {
 .member-s8 { margin:5px 0 0 0; border-top:1px solid #b6b5b5; text-align:right; padding:25px 15px 0 0;}
 .member-s9 {text-align:right; padding:3px 15px 0 0;}
 .member-s10{ font-size:25px; color:#4e4e4e}
+.member-s11{ color:#fd6b06}
+.member-s12{ padding:20px 0 0 15px;}
+.member-s13{ padding:10px 0 0px 15px;}
+.member-s13 input{ border:1px solid #bbbbbb; line-height:22px; width:75px;}
+.member-s14{ padding:25px 0 15px 15px;}
+.member-s14 a{ padding:5px 15px; background-color:#fd6b04; color: #fff;}
+.member-btn1{ width:110px; background-color:#2aa6e6; color:#fff; border:0; height:22px;}
+.userInput input{ width:80px;}
+.userInput a{ padding:3px 10px;  background-color:#2aa6e6; color:#fff;}
+.userInput a.cancel{ background-color:#ececec; color:#333; }
 
 .member-table{ border:1px solid #d0d0d0}
 .member-table th,
