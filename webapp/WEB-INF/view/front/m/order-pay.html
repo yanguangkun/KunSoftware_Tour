@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>首页</title>
+<title>在线支付</title>
 <@c.css />
  
 <link href="../../../../css/style.css" rel="stylesheet" type="text/css">
 <@c.javascript />
 <script>
-    seajs.use("front/m/order");  
+    seajs.use("front/m/order-pay");  
 </script>
 </head>
 
@@ -23,25 +23,24 @@
     <td width="955"><table width="955" border="0" cellspacing="0" cellpadding="0" class="member">
         <tr>
           <td width="170" height="520" valign="top" bgcolor="#FFFFFF">
-          <@c.member_left currentIndex="1" />
+          <@c.member_left currentIndex="2" />
           </td>
           <td width="5" valign="top" bgcolor="#EBEAE6"></td>
           <td width="780" valign="top" bgcolor="#FFFFFF" class="groundInfo">
           <div class="member-s3">
-            <div class="member-s4">我的订单</div>
-            <div class="member-s5">尊敬的 <a class="active">${memberTrueName}</a> 欢迎光临雅米旅行 :)<br>
+            <div class="member-s4">在线支付</div>
+            <div class="member-s5">雅米旅行订单支持支付宝在线支付，请选择订单进行支付。<br>
             一下为你的所有订单
             </div>
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="member-table">
                <thead>
                <tr>
-                 <th width="13%">订单编号</th>
-                 <th width="27%">产品名称</th>
-                 <th width="13%">出发日期</th>
-                 <th width="10%">订单金额</th>
-                 <th width="9%">定金金额</th>
-                 <th width="12%">订单状态</th>
-                 <th width="16%">操作</th>
+                 <th width="14%">订单编号</th>
+                 <th width="28%">产品名称</th>
+                 <th width="14%">出发日期</th>
+                 <th width="14%">订单金额</th>
+                 <th width="14%">定金金额</th> 
+                 <th width="16%">在线支付</th>
                </tr>
                </thead>
                <#list retList as item>
@@ -50,9 +49,8 @@
                  <td><a href="${request.contextPath}/product/detail?id=${item.productId}" target="_blank" class="active">${item.productName!}</a></td>
                  <td>2014-01-22</td>
                  <td>${item.amount!}</td>
-                 <td>${item.earnest!}</td>
-                 <td>待处理</td>
-                 <td align="center"><a href="orderd?id=${item.id}" class="active">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="active">点评</a></td>
+                 <td>${item.earnest!}</td> 
+                 <td align="center"><a href="payD?id=${item.id}" class="active">支付</a></td>
                </tr>
                </#list>
              </table>

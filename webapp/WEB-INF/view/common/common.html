@@ -133,3 +133,12 @@
 ${pageInfo!}
 ${pageParam!}
 </#macro>
+
+<#macro member_left currentIndex> 
+<div class="member-s1">订单管理</div>
+<div class="member-s2"><a href="${request.contextPath}/m/order" <#if currentIndex=='1'>class="active"</#if>>我的订单</a></div>
+<div class="member-s2"><a href="${request.contextPath}/m/order/pay" <#if currentIndex=='2'>class="active"</#if>>在线支付</a></div>
+<div class="member-s1">个人资料</div>
+<div class="member-s2"><a href="${request.contextPath}/m/member/edit" <#if currentIndex=='3'>class="active"</#if>>个人资料</a></div>
+<div class="member-s2"><a href="${request.contextPath}/m/member/password" <#if currentIndex=='4'>class="active"</#if>>修改密码</a></div>
+</#macro>

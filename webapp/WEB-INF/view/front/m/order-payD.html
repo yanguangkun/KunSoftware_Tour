@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>在线支付</title>
+<@c.css />
+<link href="../../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/m/order-payD");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="1" />
+<div class="main main-row1 main-bg2"> </div>
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="162" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="955"><table width="955" border="0" cellspacing="0" cellpadding="0" class="member">
+        <tr>
+          <td width="170" height="520" valign="top" bgcolor="#FFFFFF"> 
+            <@c.member_left currentIndex="2" /></td>
+          <td width="5" valign="top" bgcolor="#EBEAE6"></td>
+          <td width="780" valign="top" bgcolor="#FFFFFF" class="groundInfo"><div class="member-s3">
+              <div class="member-s4">订单详情</div>
+              <div class="member-s5">
+                <table width="740" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td height="30" colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;你正在查看编号为 <span class="member-s7">${bean.orders.code!}</span> 的订单，<a href="${request.contextPath}/m/orderd?id=${bean.orders.id!}" class="active">查看详情</a></td>
+                  </tr>
+                  <tr>
+                    <td width="76" height="30" align="right">产品名称：</td>
+                    <td width="664"><a href="#" class="active">巴厘岛宝格丽豪华自由行</a></td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">出发日期：</td>
+                    <td>2014-02-20</td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">定金金额：</td>
+                    <td><span class="member-s11">￥${bean.orders.earnest}</span> 元</td>
+                  </tr>
+                  <tr>
+                    <td height="30" align="right">订单金额：</td>
+                    <td><span class="member-s11">￥${bean.orders.amount}</span> 元</td>
+                  </tr>
+                </table>
+                <div class="member-s12"><img src="${request.contextPath}/images/alipay.jpg" width="255" height="40"></div>
+                <div class="member-s13">支付金额：
+                  <input type="text" name="textfield" id="textfield">
+                  <span class="member-s11">注：</span>首次支付金额请大于等于<span class="member-s11">定金金额 ${bean.orders.earnest}</span> 元</div>
+                <div class="member-s14"><a href="#">确认支付</a></div>
+                <div class="member-s4">付款记录</div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="member-table">
+                  <thead>
+                    <tr>
+                      <th width="20%" align="left">付款编号</th>
+                      <th width="10%" align="left">金额</th>
+                      <th width="15%" align="left">时间</th>
+                      <th width="40%" align="left">备注</th>
+                      <th width="15%" align="left">状态</th>
+                    </tr>
+                  </thead>
+                  <#list bean.ordersCash as item>
+                  <tr>
+                    <td>${item.id!} </td>
+                    <td>${item.payeeAmount!}</td>
+                    <td><#if item.dealDate??>${item.dealDate?string('yyyy-MM-dd HH:mm')}  </#if> </td>
+                    <td>${item.remark!}</td>
+                    <td><@ValueSetWrite code="orders_cash_confirm" value="${item.confirm!}" /></td>
+                  </tr>
+                  </#list>
+                </table>
+              </div>
+            </div></td>
+        </tr>
+      </table></td>
+    <td width="163" bgcolor="#ebeae6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+    <td bgcolor="#EBEAE6"></td>
+    <td bgcolor="#EBEAE6">&nbsp;</td>
+  </tr>
+</table>
+<div class="main main-row1 main-bg2"> </div>
+<@c.bottom/>
+</body>
+</html>
