@@ -10,6 +10,8 @@ var Context_Path = "/tour";
 		'jquery-validate-messages': 'libs/jquery-validate/1.11.1/messages_cn.js',
 		"lockscreen": "libs/common/0.0.1/lockscreen.js",
 		'placeholder':'libs/common/0.0.1/placeholder.js',
+		'wdatepicker': 'libs/wdatepicker/4.8/wdatepicker.js',
+		"cascade": "libs/common/0.0.1/cascade.js",
 		"frontpage": "libs/common/0.0.1/frontpage.js"
 	}; 
 	seajs.config({
