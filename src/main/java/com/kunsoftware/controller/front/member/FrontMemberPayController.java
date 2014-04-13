@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kunsoftware.bean.OrderViewBean;
 import com.kunsoftware.bean.OrdersRequestBean;
 import com.kunsoftware.controller.BaseController;
+import com.kunsoftware.entity.FlightChedule;
 import com.kunsoftware.entity.FlightChedulePlan;
 import com.kunsoftware.entity.FlightChedulePrice;
 import com.kunsoftware.entity.Orders;
@@ -21,6 +22,7 @@ import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.page.PageUtil;
 import com.kunsoftware.service.FlightChedulePlanService;
 import com.kunsoftware.service.FlightChedulePriceService;
+import com.kunsoftware.service.FlightCheduleService;
 import com.kunsoftware.service.OrdersService;
 import com.kunsoftware.service.ProductResourceService;
 import com.kunsoftware.service.ValueSetService;
@@ -37,6 +39,9 @@ public class FrontMemberPayController extends BaseController{
 	
 	@Autowired
 	private ValueSetService valueSetService;
+	
+	@Autowired
+	private FlightCheduleService flightCheduleService;
 	
 	@Autowired
 	private FlightChedulePriceService flightChedulePriceService;
@@ -72,7 +77,8 @@ public class FrontMemberPayController extends BaseController{
 		OrderViewBean orderViewBean = service.getFrontOrdersView(id); 
 		
 		ProductResource productResource = productResourceService.selectByPrimaryKey(new Integer(orderViewBean.getOrders().getProductId()));
-		 
+		FlightChedule flightChedule = flightCheduleService.selectByPrimaryKey(orderViewBean.getOrders().getFlightCheduleId());
+		if(flightChedule == null) flightChedule = new FlightChedule();
 		if("1".equals(productResource.getCombo())) {
 			FlightChedulePlan flightChedulePlan = flightChedulePlanService.selectByPrimaryKey(orderViewBean.getOrders().getFlightChedulePlanPriceId());
 			 
@@ -84,6 +90,7 @@ public class FrontMemberPayController extends BaseController{
 			model.addAttribute("decribe", flightChedulePrice.getPriceDescribe()); 
 		} 
 		model.addAttribute("bean", orderViewBean); 
+		model.addAttribute("flightChedule", flightChedule); 
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		
 		return "front/m/order-payD";

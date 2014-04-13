@@ -2,8 +2,11 @@ package com.kunsoftware.controller.front;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
@@ -11,29 +14,42 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import com.kunsoftware.bean.CommentsRequestBean;
 import com.kunsoftware.bean.JsonBean;
 import com.kunsoftware.controller.BaseController;
+import com.kunsoftware.entity.Comments;
 import com.kunsoftware.entity.FlightChedule;
 import com.kunsoftware.entity.FlightChedulePlan;
 import com.kunsoftware.entity.FlightChedulePrice;
+import com.kunsoftware.entity.HeadIconTitle;
+import com.kunsoftware.entity.Member;
 import com.kunsoftware.entity.Product;
 import com.kunsoftware.entity.ProductIntroduce;
 import com.kunsoftware.entity.ProductResource;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
+import com.kunsoftware.page.PageUtil;
+import com.kunsoftware.service.CommentsService;
 import com.kunsoftware.service.FlightChedulePlanService;
 import com.kunsoftware.service.FlightChedulePriceService;
 import com.kunsoftware.service.FlightCheduleService;
 import com.kunsoftware.service.FlightSegmentService;
 import com.kunsoftware.service.GalleryService;
+import com.kunsoftware.service.HeadIconTitleService;
+import com.kunsoftware.service.MemberService;
 import com.kunsoftware.service.ProductIntroduceService;
 import com.kunsoftware.service.ProductPlanTplService;
 import com.kunsoftware.service.ProductPriceTplService;
 import com.kunsoftware.service.ProductResourceService;
 import com.kunsoftware.service.ProductService;
+import com.kunsoftware.util.WebUtil;
+
+import freemarker.template.Template;
 
 @Controller 
 @RequestMapping("/product")
@@ -70,6 +86,18 @@ public class FrontProductDetailController extends BaseController {
 	
 	@Autowired
 	private FlightChedulePlanService flightChedulePlanService;
+	
+	@Autowired
+	private CommentsService commentsService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private HeadIconTitleService headIconTitleService;
+	
+	@Autowired
+	private FreeMarkerConfigurer  freeMarkerConfigurer = null;  
 	
 	@RequestMapping("/detail")
 	public String detailProduct(ModelMap model,Integer id,PageInfo pageInfo) throws KunSoftwareException {
@@ -149,4 +177,71 @@ public class FrontProductDetailController extends BaseController {
 	}
 	
 	
+	@RequestMapping(value="/comments.json")
+	@ResponseBody 
+	public JsonBean comments(ModelMap model,Integer productResourceId,PageInfo pageInfo) throws KunSoftwareException {
+		 
+		logger.info("评论列表");  
+		 
+		try {
+			Template tpl =  freeMarkerConfigurer.getConfiguration().getTemplate("front/product-coments.html"); 
+			 
+			pageInfo.setPageSize(3);
+			List<Comments> retList = commentsService.getFrontCommentsListPage(productResourceId,pageInfo);
+			
+			for(Comments comments: retList) {
+				Member member = memberService.selectByPrimaryKey(comments.getMemberId());
+				if(member != null && member.getHeadIconId() != null) {
+					HeadIconTitle headIconTitle = headIconTitleService.selectByPrimaryKey(member.getHeadIconId());
+					if(headIconTitle != null) { 
+						comments.setMemberImagePath("/images/uploadDir" + headIconTitle.getName()); 						
+					}
+				}
+				
+				if(StringUtils.isEmpty(comments.getMemberImagePath())) {
+					comments.setMemberImagePath("/images/yami.jpg");
+				}
+			}
+			
+			
+			
+			Map map  = new HashMap();  
+			map.put("retList",retList);
+			map.put("contextPath",WebUtil.getContextPath());
+			PageUtil.frontPageInfo(map, pageInfo); 
+			
+			JsonBean jsonBean = new JsonBean();
+			
+			jsonBean.put("result", FreeMarkerTemplateUtils.processTemplateIntoString(tpl, map)); 
+			jsonBean.setMessage("操作成功");
+			 		 
+			return jsonBean;
+		} catch(Exception e) {
+			throw new KunSoftwareException(e);
+		}
+	} 
+	
+	@RequestMapping(value="/commentsSave.json")
+	@ResponseBody 
+	public JsonBean editComments(CommentsRequestBean requestBean) throws KunSoftwareException {
+		 
+		logger.info("编辑保存评论"); 
+		JsonBean jsonBean = new JsonBean();
+		if(WebUtil.getMemberId() == null) {
+			jsonBean.setMessage("请登录后再评论。"); 	
+			return jsonBean;
+		}
+		Comments comments = commentsService.selectByProduct(requestBean.getProductResourceId(), WebUtil.getMemberId());
+		if(comments != null) {
+			jsonBean.setMessage("此产品已经评论,不能重复评论。"); 	
+			return jsonBean;
+		}
+		
+		requestBean.setMemberId(WebUtil.getMemberId());
+		requestBean.setMemberUserName(WebUtil.getMemberUserName());
+		commentsService.updateByProduct(requestBean);		
+		
+		jsonBean.setMessage("操作成功"); 	 
+		return jsonBean;
+	}
 }

@@ -185,7 +185,18 @@
 	<if test="reply != null and reply != ''">
 		AND reply = #{reply,jdbcType=VARCHAR}
 	</if>
+	<if test="productResourceId != null and productResourceId != ''">
+		AND product_resource_id = #{productResourceId,jdbcType=INTEGER}
+	</if>
     
     order by id DESC
+  </select>
+  
+  <select id="selectByProduct" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comments
+    where product_resource_id = #{productResourceId,jdbcType=INTEGER}
+    AND member_id = #{memberId,jdbcType=INTEGER}
   </select>
 </mapper>

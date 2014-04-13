@@ -20,5 +20,7 @@ public interface CommentsMapper {
 
     int updateByPrimaryKey(Comments record);
     
-    List<Comments> getCommentsListPage(@Param("audit") String audit,@Param("reply") String reply,@Param("page") PageInfo page);
+    List<Comments> getCommentsListPage(@Param("audit") String audit,@Param("reply") String reply,@Param("productResourceId") Integer productResourceId,@Param("page") PageInfo page);
+    
+    Comments selectByProduct(@Param("productResourceId") Integer productResourceId,@Param("memberId") Integer memberId);
 }

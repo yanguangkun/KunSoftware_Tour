@@ -8,6 +8,8 @@ public class Comments {
     private Integer memberId;
 
     private String memberUserName;
+    
+    private String memberImagePath;
 
     private Integer productResourceId;
 
@@ -51,7 +53,15 @@ public class Comments {
         this.memberUserName = memberUserName;
     }
 
-    public Integer getProductResourceId() {
+    public String getMemberImagePath() {
+		return memberImagePath;
+	}
+
+	public void setMemberImagePath(String memberImagePath) {
+		this.memberImagePath = memberImagePath;
+	}
+
+	public Integer getProductResourceId() {
         return productResourceId;
     }
 

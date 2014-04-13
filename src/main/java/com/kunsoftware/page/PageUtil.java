@@ -1,6 +1,7 @@
 package com.kunsoftware.page;
 
 import java.util.Enumeration;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +21,12 @@ public class PageUtil {
 		
 		model.addAttribute("pageInfo",dialogPageToString(pageInfo));
 		model.addAttribute("pageParam",getDialogPageParam(pageInfo));
+	}
+	
+	public static void frontPageInfo(Map model,PageInfo pageInfo) {
+		
+		model.put("pageInfo",frontPageToString(pageInfo));
+		model.put("pageParam",getPageParam(pageInfo));
 	}
 	
 	public static void frontPageInfo(ModelMap model,PageInfo pageInfo) {

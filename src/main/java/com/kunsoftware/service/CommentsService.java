@@ -26,7 +26,13 @@ public class CommentsService {
 	public List<Comments> getCommentsListPage(String audit,String reply,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getCommentsListPage(audit,reply,page);
+		return mapper.getCommentsListPage(audit,reply,null,page);
+	}
+	
+	public List<Comments> getFrontCommentsListPage(Integer productResourceId,PageInfo page) {
+		 
+		logger.info("query");
+		return mapper.getCommentsListPage(null,null,productResourceId,page);
 	}
 	 
 	@Transactional
@@ -42,6 +48,27 @@ public class CommentsService {
 	public Comments selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
+	}
+	
+	public Comments selectByProduct(Integer productResourceId ,Integer memberId) throws KunSoftwareException {
+		
+		return mapper.selectByProduct(productResourceId,memberId);
+	}
+	
+	@Transactional
+	public int updateByProduct(CommentsRequestBean requestBean) throws KunSoftwareException {
+		
+		Comments record = mapper.selectByProduct(requestBean.getProductResourceId(),requestBean.getMemberId()); 
+		if(record == null) {
+			record = new Comments();
+		}
+		BeanUtils.copyProperties(requestBean, record); 
+		
+		if(record.getId() == null) {
+			return mapper.insert(record);
+		}else {
+			return mapper.updateByPrimaryKeySelective(record);
+		}		
 	}
 	
 	@Transactional

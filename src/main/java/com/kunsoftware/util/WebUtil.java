@@ -51,6 +51,7 @@ public class WebUtil {
 	
 	public static Integer getMemberId() {
 		Member member = getMemberEntity();
+		if(member == null) return null;
 		return member.getId();
 	}
 	

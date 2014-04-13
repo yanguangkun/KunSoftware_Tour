@@ -12,8 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kunsoftware.bean.JsonBean;
+import com.kunsoftware.bean.MemberRequestBean;
 import com.kunsoftware.entity.Member;
+import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.service.MemberService;
 import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.util.WebUtil;
@@ -91,5 +95,21 @@ public class FrontLoginController {
 		HttpSession session = request.getSession();  
 		session.setAttribute(WebUtil.Member_Info, null); 
 		return "redirect:/index"; 
+	}
+
+	@RequestMapping(value="/reg.json")
+	@ResponseBody 
+	public JsonBean addMember(MemberRequestBean requestBean) throws KunSoftwareException {
+		 
+		logger.info("保存会员"); 
+		JsonBean jsonBean = new JsonBean();
+		if(service.selectByUserName(requestBean.getUserName()) != null) {			 
+			jsonBean.setMessage("账号已经存在,请不要重复注册!"); 	
+			return jsonBean;
+		}
+		Member entity = service.insert(requestBean);	 
+		jsonBean.put("id", entity.getId());
+		jsonBean.setMessage("操作成功"); 		 
+		return jsonBean;
 	}
 }

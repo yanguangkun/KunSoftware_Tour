@@ -229,12 +229,13 @@ public class FrontProductController extends BaseController {
 			 
 			pageInfo.setPageSize(4);
 			List groundList = groundService.getGroundByDestinationListPage(destination,pageInfo);
-			 
+			
 			Map map  = new HashMap();  
 			map.put("retList",groundList);  
 			map.put("destination",destination);  
 			map.put("pageInfo",pageInfo);  
 			map.put("contextPath",WebUtil.getContextPath());
+			PageUtil.frontPageInfo(map, pageInfo);
 		    
 			
 			JsonBean jsonBean = new JsonBean();
