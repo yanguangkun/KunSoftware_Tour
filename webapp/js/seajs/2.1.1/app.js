@@ -6,13 +6,14 @@ var Context_Path = "/tour";
 		"jquery-form": "libs/jquery-form/3.49/jquery-form.js",
 		"bootstrap": "libs/bootstrap/3.1.1/bootstrap.min.js",
 		"superslide": "libs/superslide/2.2.1/jquery.SuperSlide.2.1.1.js",
-		'jquery-validate': 'libs/jquery-validate/1.11.1/jquery.validate.min.js',
-		'jquery-validate-messages': 'libs/jquery-validate/1.11.1/messages_cn.js',
+		'jquery-validate': 'libs/jquery-validate/1.12.0/jquery.validate.js',
+		'jquery-validate-messages': 'libs/jquery-validate/1.12.0/messages_cn.js',
 		"lockscreen": "libs/common/0.0.1/lockscreen.js",
 		'placeholder':'libs/common/0.0.1/placeholder.js',
 		'wdatepicker': 'libs/wdatepicker/4.8/wdatepicker.js',
 		"cascade": "libs/common/0.0.1/cascade.js",
-		"frontpage": "libs/common/0.0.1/frontpage.js"
+		"frontpage": "libs/common/0.0.1/frontpage.js",
+		'datepicker':'libs/common/0.0.1/datepicker.js'
 	}; 
 	seajs.config({
 		base: Context_Path + "/js/",

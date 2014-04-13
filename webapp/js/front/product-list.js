@@ -40,7 +40,7 @@ define(function(require, exports, module) {
         });
 		
 		$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&r=" + Math.random() , function (data, textStatus){  
-			$(".groundInfo").append(data.result);
+			$(".groundInfo").html(data.result);
 			 
 		});
 		

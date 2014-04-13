@@ -35,10 +35,23 @@ define(function(require, exports, module) {
 			}	
 		}); 
 		
+		var travelEditValidate =  null;
+		
+		$(document).on("click",".saveBtn",function(){
+			
+			var check = travelEditValidate.form();  
+			if(check) {
+				lockscreen.lock();
+			} 
+			$("#saveFrm").submit();
+			return false;
+		}); 
+		
 		$(".edit").click(function(e) {
             $(this).parent().find(".userInfo").hide();
 			$(this).hide();
 			$(this).parent().find(".userInput").show(); 
+			
         });
 		
 		$(".cancel").click(function(e) {
@@ -68,8 +81,28 @@ define(function(require, exports, module) {
         });
 		
 		$(".editUser").click(function(e) {
-            $('#userInfo').modal({backdrop: 'static'});
+			lockscreen.lock();
+			$.get("orders-travel-edit?id=" + $(this).attr("value"),function(data) {
+				 
+				lockscreen.unLock();
+				$("#userBody").html(data);
+				$('#userInfo').modal({backdrop: 'static'});	
+				
+				travelEditValidate = $("#saveFrm").validate({ 
+					submitHandler: function(form) { 
+						$(form).ajaxSubmit({
+							dataType:'json', 
+							success:function(data) {
+								alert(data.message); 
+								location.reload();
+							}
+						});
+					}	
+				}); 
+			});
+           
         });
+		
 	}); 
 	
 	$(".destinationParent").mouseenter(function(e) {

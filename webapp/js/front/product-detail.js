@@ -60,6 +60,71 @@ define(function(require, exports, module) {
         });
 		
 		
+		$.getJSON("comments.json?productResourceId=" + $("#id").val() + "&r=" + Math.random() , function (data, textStatus){  
+			$(".commentsInfo").html(data.result);
+			 
+		});
+		
+		$(document).on("click",".page",function(){ 
+			$.getJSON("comments.json?productResourceId=" + $("#id").val() + "&pageNo=" + $(this).attr("value" ) + "&r=" + Math.random(), function (data, textStatus){  
+				
+				$(".commentsInfo").html(data.result);
+			});
+		});
+		
+		$("#commentsBtn").click(function(e) {
+            
+			$.post("commentsSave.json",{
+				'productResourceId':$("#productResourceId").val(),
+				'productResourceName':$("#productResourceName").val(),
+				'content':$("#content").val()	
+			},function(data) {
+				alert(data.message);
+			},"json");
+			
+			return false;
+        });
+		
+		$(".num").change(function(e) {
+            var target = $(this).attr("target");
+			$(target).val($(this).val());
+        });
+		
+		$("#ordersBtn").click(function(e) {
+            
+			if($("#tplId").val() == "") {
+				alert("请选择类别!");
+				return false;
+			}
+			
+			if($("#cheduleMonth").val() == "") {
+				alert("请选择预订月份!");
+				return false;
+			}
+			
+			if($("#cheduleDay").val() == "") {
+				alert("请选择预订日期!");
+				return false;
+			}
+			
+			if($("#combo").val() == "0") {
+				if($("#priceNum").val() == "") {
+					alert("请输入预订数量!");
+					return false;
+				}
+			} else {
+				if($("#num1").val() == "0" && $("#num2").val() == "0" && 
+				$("#num3").val() == "0" && $("#num4").val() == "0") {
+					alert("请选择出行人数!");
+					return false;
+				}
+			}
+			
+			$("#priceFrm").attr("action","buy"); 
+			$("#priceFrm").submit();
+			
+			return false;
+        });
 	}); 
 	
 	
