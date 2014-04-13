@@ -31,11 +31,11 @@
                   </tr>
                   <tr>
                     <td width="76" height="30" align="right">产品名称：</td>
-                    <td width="664"><a href="#" class="active">巴厘岛宝格丽豪华自由行</a></td>
+                    <td width="664"><a href="#" class="active">${bean.orders.productName}</a></td>
                   </tr>
                   <tr>
                     <td height="30" align="right">出发日期：</td>
-                    <td>2014-02-20</td>
+                    <td><#if flightChedule.startDate??>${flightChedule.startDate?string('yyyy-MM-dd')}  </#if></td>
                   </tr>
                   <tr>
                     <td height="30" align="right">定金金额：</td>

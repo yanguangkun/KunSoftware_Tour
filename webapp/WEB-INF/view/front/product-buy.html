@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预订</title>
+<@c.css />
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/product-buy");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="1" />
+<div class="main main-row1 main-bg2"> </div>
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="950" height="520" valign="top"><form name="buyFrm" id="buyFrm" method="post" action="buy2">
+      <table width="855" border="0" align="center" cellpadding="0" cellspacing="0" class="member">
+        <tr>
+          <td height="60"><span class="customize-title">预订详情</span></td>
+        </tr>
+        <tr>
+          <td height="10"><div class="buy-s1">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="10" colspan="2" align="left"></td>
+              </tr>
+              <tr>
+                <td width="76" height="30" align="right">产品名称：</td>
+                <td width="664"><a href="#" class="active">${productResource.name}</a></td>
+              </tr>
+              <tr>
+                <td height="30" align="right">出发日期：</td>
+                <td><#if flightChedule.startDate??>${flightChedule.startDate?string('yyyy-MM-dd')}  </#if></td>
+              </tr>
+              <tr>
+                <td height="30" align="right">类别：</td>
+                <td><span class="member-s7">${name} | </span> <span class="member-s71">${decribe}</span></td>
+              </tr>
+              <#list retList as item>
+              <tr>
+                <td height="30" align="right"><@ValueSetWrite code="ordersdetail_type" value="${item.type!}" />
+                  ：</td>
+                <td>${item.unitPrice!}元 x ${item.quantity!}</td>
+              </tr>
+              </#list>
+              <tr>
+                <td colspan="2"><div class="buy-s5"></div></td>
+              </tr>
+              <tr>
+                <td height="50"  colspan="2" align="right">预订合计：<span class="buy-s6">${buybean.allTotal}</span> 元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="30" align="right" valign="top"><div class="buy-s2">订单备注：</div></td>
+                <td valign="top"><div class="buy-s3">
+                  <textarea name="remark" id="remark"></textarea>
+                </div></td>
+              </tr>
+              <tr>
+                <td height="30" align="right"><span class="error">*</span> 联系人：</td>
+                <td class="buy-s4"><input type="text" name="linkman" class="required" id="linkman"></td>
+              </tr>
+              <tr>
+                <td height="30" align="right"><span class="error">*</span> 联系手机：</td>
+                <td class="buy-s4"><input type="text" name="linkmanMobile" class="required" id="linkmanMobile"></td>
+              </tr>
+              <tr>
+                <td height="50" colspan="2" align="center"><button type="button" class="backBtn member-btn1"> 返回修改 </button>
+                  <button type="button" class="nextBtn member-btn1"> 下一步 </button></td>
+              </tr>
+            </table>
+          </div></td>
+        </tr>
+        <tr>
+          <td><div class="buy-s45"></div></td>
+        </tr>
+        <tr>
+          <td height="50" align="center">&nbsp;</td>
+        </tr>
+      </table>
+        <input type="hidden" name="id" id="id" value="${buyBean.id}">
+  
+  <input type="hidden" name="tplId" id="tplId" value="${buyBean.id}">
+  <input type="hidden" name="cheduleMonth" id="cheduleMonth" value="${buyBean.id}">
+  <input type="hidden" name="cheduleDay" id="cheduleDay" value="${buyBean.id}">
+  
+  <input type="hidden" name="num1" id="num1" value="${buyBean.num1}">
+  <input type="hidden" name="num2" id="num2" value="${buyBean.num2}">
+  <input type="hidden" name="num3" id="num3" value="${buyBean.num3}">
+  <input type="hidden" name="num4" id="num4" value="${buyBean.num4}">
+  <input type="hidden" name="num5" id="num5" value="${buyBean.num5}">
+  <input type="hidden" name="num6" id="num6" value="${buyBean.num6}">
+  <input type="hidden" name="allTotal" id="allTotal" value="${buyBean.allTotal}">
+    </form></td>
+    <td width="165" bgcolor="#ebeae6"></td>
+  </tr>
+</table>
+<@c.bottom />
+</body>
+</html>

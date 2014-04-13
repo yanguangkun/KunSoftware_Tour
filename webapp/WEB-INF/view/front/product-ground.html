@@ -41,13 +41,7 @@
         <tr>
           <td width="173">&nbsp;</td>
           <td width="174"><div  class="product-content-m2-s7">
-              <ul>
-                <li class="page" value="${pageInfo.previousPageNo}">《</li>
-                <#list 1..pageInfo.totalPages as n>
-               <li class="page" value="${n}">${n}</li>
-                </#list> 
-                <li class="page" value="${pageInfo.nextPageNo}">》</li>
-              </ul>
+              ${pageInfo!}
             </div></td>
         </tr>
       </table></td>

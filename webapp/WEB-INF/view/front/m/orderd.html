@@ -15,68 +15,8 @@
 <div id="userInfo" class="modal">
   <div class="modal-dialog">
     <div class="modal-content"> 
-      <div class="modal-body">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td>
-            <div class="member-s4">订单详情</div>
-            <table width="740" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td height="30" colspan="2" align="left">&nbsp;&nbsp;&nbsp;&nbsp;你正在查看编号为 <span class="member-s7">${bean.orders.code!}</span> 的订单详情</td>
-                </tr>
-                <tr>
-                  <td width="76" height="30" align="right">产品名称：</td>
-                  <td width="664"><a href="#" class="active">巴厘岛宝格丽豪华自由行</a></td>
-                </tr>
-                <tr>
-                  <td height="30" align="right">出发日期：</td>
-                  <td>2014-02-20</td>
-                </tr>
-                <tr>
-                  <td height="30" align="right">类别：</td>
-                  <td><span class="member-s7">${name} | ${decribe}</span></td>
-                </tr>
-                <#list bean.ordersDetail as item>
-                <tr>
-                  <td height="30" align="right"><@ValueSetWrite code="ordersdetail_type" value="${item.type!}" />
-                    ：</td>
-                  <td>${item.unitPrice!}元 x ${item.quantity!}</td>
-                </tr>
-                </#list>
-                <tr>
-                  <td height="30" align="right">订单备注：</td>
-                  <td>${bean.orders.guestRemark}</td>
-                </tr>
-                <tr>
-                  <td height="30" align="right">联系人：</td>
-                  <td><form name="linkmanFrm" id="linkmanFrm2" method="post" action="orderEdit.json">
-                      <span class="userInfo">${bean.orders.linkman}</span> <span class="userInput hide">
-                      <input type="text" class="required" name="linkman2" id="linkman2" placeholder="联系人" value="${bean.orders.linkman}">
-                      <input type="hidden" name="id2" id="id2" value="${bean.orders.id}">
-                      <a href="#" class="linkmanBtn">确定</a> <a href="#" class="cancel">取消</a></span> &nbsp;&nbsp;<a href="#" class="active edit">修改</a>
-                    </form></td>
-                </tr>
-                <tr>
-                  <td height="30" align="right">联系手机：</td>
-                  <td><form name="linkmanMobileFrm" id="linkmanMobileFrm2" method="post" action="orderEdit.json">
-                      <span class="userInfo">${bean.orders.linkmanMobile}</span> <span class="userInput hide">
-                      <input type="text" class="required" name="linkmanMobile2" id="linkmanMobile2" placeholder="联系人" value="${bean.orders.linkmanMobile}">
-                      <input type="hidden" name="id2" id="id2" value="${bean.orders.id}">
-                      <a href="#" class="linkmanMobileBtn">确定</a> <a href="#" class="cancel">取消</a></span> &nbsp;&nbsp;<a href="#" class="active edit">修改</a>
-                    </form></td>
-                </tr>
-              </table> 
-              
-              </td>
-          </tr>
-          <tr>
-          <td> <div class="userInput">
-         <a href="#" class="linkmanMobileBtn">确定</a> 
-         <a href="#" class="cancel" data-dismiss="modal">取消</a>
-        
-      </div></td>
-          </tr>
-        </table>
+      <div class="modal-body " id="userBody">
+         
       </div> 
     </div>
     <!-- /.modal-content --> 
@@ -102,11 +42,11 @@
                   </tr>
                   <tr>
                     <td width="76" height="30" align="right">产品名称：</td>
-                    <td width="664"><a href="#" class="active">巴厘岛宝格丽豪华自由行</a></td>
+                    <td width="664"><a href="#" class="active">${bean.orders.productName}</a></td>
                   </tr>
                   <tr>
                     <td height="30" align="right">出发日期：</td>
-                    <td>2014-02-20</td>
+                    <td><#if flightChedule.startDate??>${flightChedule.startDate?string('yyyy-MM-dd')}  </#if></td>
                   </tr>
                   <tr>
                     <td height="30" align="right">类别：</td>
@@ -176,13 +116,13 @@
                   <#list bean.ordersTravel as item>
                   <tr>
                     <td>${item.name!}</td>
-                    <td>${item.sex!}</td>
+                    <td><@ValueSetWrite code="sex" value="${item.sex!}" /></td>
                     <td><#if item.birthdate??>${item.birthdate?string('yyyy-MM-dd')}  </#if> </td>
                     <td><@ValueSetWrite code="certificate_type" value="${item.certificateType!}" /></td>
                     <td>${item.certificateNum!}</td>
                     <td><#if item.certificateEndDate??>${item.certificateEndDate?string('yyyy-MM-dd')}  </#if> </td>
                     <td><#if item.imagePath??> <a href="${request.contextPath}/images/uploadDir${item.imagePath!}" target="_blank">查看</a> <#else> <a href="#">请上传护照扫描件</a> </#if> </td>
-                    <td><a href="###" class="active editUser">编辑</a></td>
+                    <td><a href="###" value="${item.id}" class="active editUser">编辑</a></td>
                   </tr>
                   </#list>
                 </table>

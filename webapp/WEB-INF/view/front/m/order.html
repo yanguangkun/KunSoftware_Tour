@@ -29,7 +29,7 @@
           <td width="780" valign="top" bgcolor="#FFFFFF" class="groundInfo">
           <div class="member-s3">
             <div class="member-s4">我的订单</div>
-            <div class="member-s5">尊敬的 <a class="active">${memberTrueName}</a> 欢迎光临雅米旅行 :)<br>
+            <div class="member-s5">尊敬的 <a class="active">${memberUserName!}</a> 欢迎光临雅米旅行 :)<br>
             一下为你的所有订单
             </div>
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="member-table">
@@ -52,7 +52,7 @@
                  <td>${item.amount!}</td>
                  <td>${item.earnest!}</td>
                  <td>待处理</td>
-                 <td align="center"><a href="orderd?id=${item.id}" class="active">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="active">点评</a></td>
+                 <td align="center"><a href="orderd?id=${item.id}" class="active">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="orders-comment-edit?id=${item.productId}" class="active">点评</a></td>
                </tr>
                </#list>
              </table>

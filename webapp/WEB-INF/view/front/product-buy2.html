@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预订</title>
+<@c.css />
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/product-buy2");  
+</script>
+</head>
+
+<body>
+<@c.top currentIndex="1" />
+<div class="main main-row1 main-bg2"> </div>
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="950" height="520" valign="top"><form name="buyFrm" id="buyFrm" method="post" action="buy3">
+        <table width="855" border="0" align="center" cellpadding="0" cellspacing="0" class="member">
+          <tr>
+            <td height="60"><span class="customize-title">游客名单</span></td>
+          </tr>
+          <tr>
+            <td height="10"><div class="buy-s1">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td height="10" align="left"></td>
+                  </tr>
+                  <tr>
+                    <td height="30"><table width="823" border="0" align="center" cellpadding="0" cellspacing="0" class="buy-table">
+                        <tr>
+                          <td height="45" colspan="7">我们注意到您的订单有 <span class="error">${num1}</span> 个成人 <span class="error">${num2}</span> 个儿童，请完善必要的资源，以便我们更好的为您服务：）</td>
+                        </tr>
+                        <tr>
+                          <td height="22" align="center" bgcolor="#efefef">游客类别</td>
+                          <td width="125" align="center" bgcolor="#efefef">姓名</td>
+                          <td align="center" bgcolor="#efefef">性别</td>
+                          <td width="125" align="center" bgcolor="#efefef">护照签发地</td>
+                          <td width="125" align="center" bgcolor="#efefef">护照号码</td>
+                          <td width="125" align="center" bgcolor="#efefef">护照有效期</td>
+                          <td width="125" align="center" bgcolor="#efefef">出生日期</td>
+                        </tr>
+                        <#list 1..num1 as n>
+                        <tr>
+                          <td height="30" align="center">成人</td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="name" id="name${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <select name="sex" id="sex${n}" class="required">
+                              <@ValueSet code="sex_s" value="" />
+                            </select></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportAddr" id="passportAddr${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportNum" id="passportNum${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportDate" id="passportDate${n}" class="required"></td>
+                          <td align="center"><span class="error">&nbsp;</span>
+                            <input name="birthdate" type="text" class="required date" id="birthdate${n}" readonly></td>
+                        </tr>
+                        </#list> 
+                        <#if num2 gt 0>  
+                        <#list 1..num2 as n>
+                        <tr>
+                          <td height="30" align="center">儿童</td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="name" id="name1${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <select name="sex" id="sex1${n}" class="required">
+                              <@ValueSet code="sex_s" value="" />
+                            </select></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportAddr" id="passportAddr1${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportNum" id="passportNum1${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <input type="text" name="passportDate" id="passportDate1${n}" class="required"></td>
+                          <td align="center"><span class="error">*</span>
+                            <input name="birthdate" type="text" class="required date" id="birthdate1${n}" readonly></td>
+                        </tr>
+                        </#list></#if>
+                      </table></td>
+                  </tr>
+                  <tr>
+                    <td height="10" align="left"></td>
+                  </tr>
+                </table>
+              </div></td>
+          </tr>
+          <tr>
+            <td height="35"></td>
+          </tr>
+          <tr>
+            <td height="50" align="center"><button type="button" class="backBtn member-btn1"> 返回修改 </button>
+              <button type="button" class="nextBtn member-btn1"> 确定预订 </button></td>
+          </tr>
+        </table>
+        <input type="hidden" name="id" id="id" value="${buyBean.id}">
+        <input type="hidden" name="tplId" id="tplId" value="${buyBean.id}">
+        <input type="hidden" name="cheduleMonth" id="cheduleMonth" value="${buyBean.id}">
+        <input type="hidden" name="cheduleDay" id="cheduleDay" value="${buyBean.id}">
+        <input type="hidden" name="num1" id="num1" value="${buyBean.num1}">
+        <input type="hidden" name="num2" id="num2" value="${buyBean.num2}">
+        <input type="hidden" name="num3" id="num3" value="${buyBean.num3}">
+        <input type="hidden" name="num4" id="num4" value="${buyBean.num4}">
+        <input type="hidden" name="num5" id="num5" value="${buyBean.num5}">
+        <input type="hidden" name="num6" id="num6" value="${buyBean.num6}">
+        <input type="hidden" name="allTotal" id="allTotal" value="${buyBean.allTotal}">
+        <input type="hidden" name="remark" id="remark" value="${buyBean.remark}">
+        <input type="hidden" name="linkman" id="linkman" value="${buyBean.linkman}">
+        <input type="hidden" name="linkmanMobile" id="linkmanMobile" value="${buyBean.linkmanMobile}">
+      </form></td>
+    <td width="165" bgcolor="#ebeae6"></td>
+  </tr>
+</table>
+<@c.bottom />
+</body>
+</html>

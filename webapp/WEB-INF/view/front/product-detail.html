@@ -182,7 +182,7 @@ color4
                 量</div>
               <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
               <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
-              <div class="product-detail-left-s9"> <a href="#">预 订</a></div>
+              <div class="product-detail-left-s9"> <a id="ordersBtn" href="#">预 订</a></div>
               </div>
               <!-- 价格模板结束 -->
               <#else>
@@ -227,13 +227,13 @@ color4
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="13%" height="30"> 
-                      <select name="select" id="select">
+                      <select name="sNum1" id="sNum1" class="num" target="#num1">
                         <#list 0..10 as n> 
                         <option value="${n}">${n}</option>
                         </#list> 
                       </select></td>
                     <td width="33%">成人</td>
-                    <td width="13%"><select name="select" id="select">
+                    <td width="13%"><select name="sNum2" id="sNum2" class="num" target="#num2">
                         <#list 0..10 as n> 
                         <option value="${n}">${n}</option>
                         </#list> 
@@ -241,13 +241,13 @@ color4
                     <td width="41%">儿童占床</td>
                   </tr>
                   <tr>
-                    <td height="30"><select name="select" id="select">
+                    <td height="30"><select name="sNum3" id="sNum3" class="num" target="#num3">
                         <#list 0..10 as n> 
                         <option value="${n}">${n}</option>
                         </#list> 
                       </select></td>
                     <td>成人加床</td>
-                    <td><select name="select" id="select">
+                    <td><select name="sNum4" id="sNum4" class="num" target="#num4">
                         <#list 0..10 as n> 
                         <option value="${n}">${n}</option>
                         </#list> 
@@ -258,7 +258,7 @@ color4
               </div>
               <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
               <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
-              <div class="product-detail-left-s9"> <a href="#">预 订</a></div>
+              <div class="product-detail-left-s9"> <a id="ordersBtn" href="#">预 订</a></div>
               </div>
               <!-- 套餐模板结束 -->
               </#if>
@@ -271,51 +271,50 @@ color4
               <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="210" height="50"><div class="product-left-s1">评论</div></td>
-                  <td width="97"><div class="product-left-s11"><a href="#">发布</a></div></td>
+                  <td width="97"><div class="product-left-s11"><a href="#" id="commentsBtn">发布</a></div></td>
                 </tr>
               </table></td>
             </tr>
             <tr>
               <td bgcolor="#FFFFFF"><div class="product-left-s2">
-                <textarea  name="textarea" id="textarea"></textarea>
+              <input type="hidden" name="productResourceId" id="productResourceId" value="${productResource.id!}">
+               <input type="hidden" name="productResourceName" id="productResourceName" value="${productResource.name!}">
+                <textarea  name="content" id="content"></textarea>
                 <div class="product-left-s3"></div>
               </div></td>
             </tr>
             <tr>
               <td height="50" bgcolor="#FFFFFF">&nbsp;</td>
-            </tr>
-            
+            </tr> 
             <tr>
-              <td bgcolor="#FFFFFF"><div class="product-left-s2"><div class="s1"></div>
+              <td bgcolor="#FFFFFF" class="commentsInfo"><div class="product-left-s2">
+                <div class="s1"></div>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td width="48"><img src="${request.contextPath}/images/img17.jpg" width="48" height="48"></td>
-                    <td>
-                    <div class="product-left-s4"></div>
-                    <div class="product-left-s5">路人：请问巴厘岛怎样做，有什么推荐的行程。</div>
-                    <div class="product-left-s6"></div>
-                    </td>
-                    </tr>
-                    <tr><td colspan="2" height="30"></td></tr>
-                </table>
-              
-              </div>
-              <div class="product-left-s2"><div class="s2"></div>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <td><div class="product-left-s4"></div>
+                      <div class="product-left-s5">路人：请问巴厘岛怎样做，有什么推荐的行程。</div>
+                      <div class="product-left-s6"></div></td>
+                  </tr>
                   <tr>
-                    
-                    <td align="right">
-                    <div class="product-left-s7"></div>
-                    <div class="product-left-s8"><span class="product-left-s10">雅米：</span>巴厘岛怎样玩都好。</div>
-                    <div class="product-left-s9"></div>
-                    </td>
-                    <td width="48"><img src="${request.contextPath}/images/img17.jpg" width="48" height="48"></td>
-                    </tr>
-                    <tr><td colspan="2" height="30"></td></tr>
+                    <td colspan="2" height="30"></td>
+                  </tr>
                 </table>
-              
               </div>
-              </td>
+                <div class="product-left-s2">
+                  <div class="s2"></div>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="right"><div class="product-left-s7"></div>
+                        <div class="product-left-s8"><span class="product-left-s10">雅米：</span>巴厘岛怎样玩都好。</div>
+                        <div class="product-left-s9"></div></td>
+                      <td width="48"><img src="${request.contextPath}/images/yami.jpg" alt="" width="48" height="48"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" height="30"></td>
+                    </tr>
+                  </table>
+                </div></td>
             </tr>
           </table></td>
         </tr>
@@ -328,12 +327,21 @@ color4
     <td bgcolor="#EBEAE6">&nbsp;</td>
   </tr>
 </table>
+
+<input type="hidden" name="combo" id="combo" value="${productResource.combo}">
 <form action="price.json" method="post" id="priceFrm">
   <input type="hidden" name="id" id="id" value="${productResource.id}">
-   
+  
   <input type="hidden" name="tplId" id="tplId">
   <input type="hidden" name="cheduleMonth" id="cheduleMonth">
   <input type="hidden" name="cheduleDay" id="cheduleDay">
+  
+  <input type="hidden" name="num1" id="num1" value="0">
+  <input type="hidden" name="num2" id="num2" value="0">
+  <input type="hidden" name="num3" id="num3" value="0">
+  <input type="hidden" name="num4" id="num4" value="0">
+  <input type="hidden" name="num5" id="num5" value="0">
+  <input type="hidden" name="num6" id="num6" value="0">
 </form>
 <@c.bottom_p />
 </body>

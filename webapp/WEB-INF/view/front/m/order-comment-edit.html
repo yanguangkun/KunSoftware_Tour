@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人资料</title>
+<@c.css />
+<link href="../../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/m/orders-comment-edit");
+</script>
+</head>
+
+<body>
+<form name="saveFrm" id="saveFrm" method="post" action="orders-comment-edit.json">
+  <@c.top currentIndex="1" />
+  <div class="main main-row1 main-bg2"> </div>
+  <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="162" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="955"><table width="955" border="0" cellspacing="0" cellpadding="0" class="member">
+          <tr>
+            <td width="170" height="520" valign="top" bgcolor="#FFFFFF"><@c.member_left currentIndex="3" /></td>
+            <td width="5" valign="top" bgcolor="#EBEAE6"></td>
+            <td width="780" valign="top" bgcolor="#FFFFFF" class="groundInfo"><div class="member-s3">
+                <div class="member-s4">点评订单</div>
+                <div class="member-s5">
+                  <table width="740" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="66" height="30" align="left">产品名称：</td>
+                      <td width="674" align="left"><a href="#" class="active">巴厘岛宝格丽豪华自由行</a></td>
+                    </tr>
+                    <tr>
+                      <td height="30" align="left">出发日期：</td>
+                      <td align="left">2014-02-20</td>
+                    </tr>
+                    <tr>
+                      <td height="30" colspan="2" align="left">旅途归来，和小朋友们分享你的旅途吧：）</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" align="left"><textarea class="member-s16" name="content" id="content">${entity.content!}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td height="30" colspan="2" align="left"><button type="button" class="saveBtn member-btn1">  保存 </button>
+                      
+                      <button type="button" class="backBtn member-btn2"> 返回 </button>
+                        <input type="hidden" name="productResourceId" id="productResourceId" value="${productResource.id!}">
+                        <input type="hidden" name="productResourceName" id="productResourceName" value="${productResource.name!}"></td>
+                    </tr>
+                  </table>
+                </div>
+              </div></td>
+          </tr>
+        </table></td>
+      <td width="163" bgcolor="#ebeae6">&nbsp;</td>
+    </tr>
+    <tr>
+      <td bgcolor="#EBEAE6">&nbsp;</td>
+      <td bgcolor="#EBEAE6"></td>
+      <td bgcolor="#EBEAE6">&nbsp;</td>
+    </tr>
+  </table>
+  <div class="main main-row1 main-bg2"> </div>
+  <@c.bottom/>
+</form>
+</body>
+</html>

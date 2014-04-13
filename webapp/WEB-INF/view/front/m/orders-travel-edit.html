@@ -1,0 +1,86 @@
+
+<form action="orders-travel-edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
+  <div class="panel panel-default">
+    <div class="member-s15"> 修改客人名单 </div>
+    <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+      <tr>
+        <th width="17%" height="30" align="right"> <span class="error">*</span>姓名</th>
+        <td width="2%"></td>
+        <td width="81%"><input type="text" class="form-control input-sm required" name="name"  id="name" placeholder="附件名称" value="${entity.name!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right"> <span class="error">*</span>性别</th>
+        <td></td>
+        <td><@ValueSet name="sex" code="sex" value="${entity.sex!}" /></td>
+      </tr>
+      <tr>
+        <th height="30" align="right"> <span class="error">*</span>出生日期</th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm required date" name="birthdate"  id="birthdate" placeholder="出生日期" value="<#if entity.birthdate??>${entity.birthdate?string('yyyy-MM-dd')}  </#if>" readonly></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">国家 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm " name="country"  id="country" placeholder="国家" value="${entity.country!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">省份</th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm " name="province"  id="province" placeholder="省份" value="${entity.province!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">城市</th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm " name="city"  id="city" placeholder="城市" value="${entity.city!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">常住城市 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm " name="permanentCity"  id="permanentCity" placeholder="常住城市" value="${entity.permanentCity!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right"><span class="error">*</span>证件类型 </th>
+        <td></td>
+        <td><select name="certificateType" id="certificateType" class="form-control input-sm required">
+            <option value="">-请选择-</option>
+            <@ValueSet code="certificate_type" value="${entity.certificateType!}" />
+          </select></td>
+      </tr>
+      <tr>
+        <th height="30" align="right"><span class="error">*</span>证件号码 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm required" name="certificateNum"  id="certificateNum" placeholder="证件号码" value="${entity.certificateNum!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">证件签发日期 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm date" name="certificateStartDate"  id="certificateStartDate" placeholder="证件签发日期" value="<#if entity.certificateStartDate??>${entity.certificateStartDate?string('yyyy-MM-dd')}  </#if>" readonly></td>
+      </tr>
+      <tr>
+        <th height="30" align="right"><span class="error">*</span>证件有效截止日期 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm required date" name="certificateEndDate"  id="certificateEndDate" placeholder="证件有效截止日期" value="<#if entity.certificateEndDate??>${entity.certificateEndDate?string('yyyy-MM-dd')}  </#if>" readonly></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">手机号 </th>
+        <td></td>
+        <td><input type="text" class="form-control input-sm" name="mobile"  id="mobile" placeholder="手机号" value="${entity.mobile!}"></td>
+      </tr>
+      <tr>
+        <th height="30" align="right">护照扫描件 <span class="error">*</span></th>
+        <td></td>
+        <td><div class="row">
+            <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
+          </div>
+          <input type="file" name="orderstravelFile" id="orderstravelFile"></td>
+      </tr>
+      <tr>
+        <td height="35" colspan="3" align="center"><input type="hidden" name="id" id="id" value="${entity.id}">
+         <div class="userInput">
+        <a href="#" class="saveBtn linkmanMobileBtn">确定</a> 
+         <a href="#" class="cancel" data-dismiss="modal">关闭</a>
+      </div></td>
+      </tr>
+    </table>
+  </div>
+</form>
