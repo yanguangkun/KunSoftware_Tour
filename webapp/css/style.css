@@ -28,7 +28,7 @@ body, td, th {
  a:hover{color:#333333;}
 
 .top-base{ float:left; line-height:50px; height:50px;}
-.top-padding-right{ padding-right:20px}
+.top-padding-right{ padding-right:10px}
 .top-padding{ padding:0 3px;}
 .top-col1{ width:140px}
 .top-col2{ width:140px}
@@ -41,7 +41,7 @@ body, td, th {
 .top-member{ padding: 0 0 0 20px; float:left; color:#c8c8c8;line-height:50px; height:50px;}
 .top-member a{ color:#c8c8c8;}
 .top-member a:hover{ color:#fff;}
-.top-login{float:left;height:37px; padding-top:13px; padding-right:10px; cursor:pointer;}
+.top-login{float:left;height:37px;padding:13px 10px 0 20px; cursor:pointer;}
 .top-reg{float:left;height:37px; padding-top:13px; padding-right:10px;cursor:pointer;}
 
 .content-g{margin:auto;width:100%px; height:483px;} 
