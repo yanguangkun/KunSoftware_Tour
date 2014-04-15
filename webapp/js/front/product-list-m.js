@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 	var page = 2;
 	var totalPages = 3;
 	$(document).ready(function(){ 
-		$(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true});
+		$(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,interTime:5000});
 		 
 		$("#moreBtn").click(function(e) { 
 			if(page >= totalPages) return;

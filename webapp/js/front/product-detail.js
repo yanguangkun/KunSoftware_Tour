@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 	require('superslide')($); 
 	require('placeholder');  
 	$(document).ready(function(){ 
-		$(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true}); 
+		$(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,interTime:5000}); 
 		
 		$(".arr").click(function(e) {
             var obj = $(this).parent().parent().find(".introduce"); 

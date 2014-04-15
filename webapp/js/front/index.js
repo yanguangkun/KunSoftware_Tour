@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 	require('placeholder'); 
 	 
 	$(document).ready(function(){ 
-		 $(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true});
+		 $(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,interTime:5000});
 	}); 
 	
 	$(".destination").click(function(e) {
