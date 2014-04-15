@@ -98,7 +98,7 @@ public class FrontProductController extends BaseController {
 		model.addAttribute("groundList", groundList); 
 		model.addAttribute("destination", destination);
 		model.addAttribute("productType", productType);
-		
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		PageUtil.pageInfo(model, pageInfo);
 		return "front/product-list";
 	}
@@ -140,7 +140,7 @@ public class FrontProductController extends BaseController {
 		model.addAttribute("groundTagList", groundTagList); 
 		model.addAttribute("destination", destination);
 		model.addAttribute("productType", productType);
-		
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		PageUtil.pageInfo(model, pageInfo);
 		return "front/product-list-g";
 	}

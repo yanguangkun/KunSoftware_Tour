@@ -47,6 +47,7 @@ import com.kunsoftware.service.ProductPlanTplService;
 import com.kunsoftware.service.ProductPriceTplService;
 import com.kunsoftware.service.ProductResourceService;
 import com.kunsoftware.service.ProductService;
+import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.util.WebUtil;
 
 import freemarker.template.Template;
@@ -99,6 +100,9 @@ public class FrontProductDetailController extends BaseController {
 	@Autowired
 	private FreeMarkerConfigurer  freeMarkerConfigurer = null;  
 	
+	@Autowired
+	private ValueSetService valueSetService;
+	
 	@RequestMapping("/detail")
 	public String detailProduct(ModelMap model,Integer id,PageInfo pageInfo) throws KunSoftwareException {
 		 
@@ -142,7 +146,7 @@ public class FrontProductDetailController extends BaseController {
 		model.addAttribute("monthStart", monthStart);
 		model.addAttribute("monthEnd", monthEnd);
 		model.addAttribute("flightCheduleList", flightCheduleList);
-		
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/product-detail";
 	}
 	

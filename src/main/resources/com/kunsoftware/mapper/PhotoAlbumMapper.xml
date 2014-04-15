@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.PhotoAlbumMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.PhotoAlbum" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="destination" property="destination" jdbcType="INTEGER" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="front_desk" property="frontDesk" jdbcType="VARCHAR" />
+    <result column="index_recommend" property="indexRecommend" jdbcType="VARCHAR" />
+    <result column="index_image_path" property="indexImagePath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, start_date, summary, destination, image_path, front_desk, index_recommend, 
+    index_image_path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo_album
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from photo_album
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.PhotoAlbum" >
+    insert into photo_album (id, title, start_date, 
+      summary, destination, image_path, 
+      front_desk, index_recommend, index_image_path
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{summary,jdbcType=VARCHAR}, #{destination,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
+      #{frontDesk,jdbcType=VARCHAR}, #{indexRecommend,jdbcType=VARCHAR}, #{indexImagePath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.PhotoAlbum" >
+    insert into photo_album
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="destination != null" >
+        destination,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="frontDesk != null" >
+        front_desk,
+      </if>
+      <if test="indexRecommend != null" >
+        index_recommend,
+      </if>
+      <if test="indexImagePath != null" >
+        index_image_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        #{frontDesk,jdbcType=VARCHAR},
+      </if>
+      <if test="indexRecommend != null" >
+        #{indexRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="indexImagePath != null" >
+        #{indexImagePath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.PhotoAlbum" >
+    update photo_album
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=INTEGER},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="frontDesk != null" >
+        front_desk = #{frontDesk,jdbcType=VARCHAR},
+      </if>
+      <if test="indexRecommend != null" >
+        index_recommend = #{indexRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="indexImagePath != null" >
+        index_image_path = #{indexImagePath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.PhotoAlbum" >
+    update photo_album
+    set title = #{title,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      summary = #{summary,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      front_desk = #{frontDesk,jdbcType=VARCHAR},
+      index_recommend = #{indexRecommend,jdbcType=VARCHAR},
+      index_image_path = #{indexImagePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getPhotoAlbumListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from photo_album where 1=1 
+    <if test="destination != null and destination != ''">
+		AND destination = #{destination,jdbcType=INTEGER}
+	</if>
+    <if test="keyword != null and keyword != ''">
+		AND title like CONCAT('%', #{keyword} , '%') 
+	</if> 
+	<if test="frontDesk != null and frontDesk != ''">
+		AND front_desk = #{frontDesk,jdbcType=VARCHAR}
+	</if> 
+    order by id DESC
+  </select>
+</mapper>

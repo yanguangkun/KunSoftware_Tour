@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kunsoftware.mapper.PhotoAlbumTimelineContentMapper" >
+  <resultMap id="BaseResultMap" type="com.kunsoftware.entity.PhotoAlbumTimelineContent" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="photo_album_timeline_id" property="photoAlbumTimelineId" jdbcType="INTEGER" />
+    <result column="order_value" property="orderValue" jdbcType="INTEGER" />
+    <result column="style" property="style" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, photo_album_timeline_id, order_value, style, title, image_path, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo_album_timeline_content
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from photo_album_timeline_content
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kunsoftware.entity.PhotoAlbumTimelineContent" >
+    insert into photo_album_timeline_content (id, photo_album_timeline_id, order_value, 
+      style, title, image_path, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{photoAlbumTimelineId,jdbcType=INTEGER}, #{orderValue,jdbcType=INTEGER}, 
+      #{style,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kunsoftware.entity.PhotoAlbumTimelineContent" >
+    insert into photo_album_timeline_content
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="photoAlbumTimelineId != null" >
+        photo_album_timeline_id,
+      </if>
+      <if test="orderValue != null" >
+        order_value,
+      </if>
+      <if test="style != null" >
+        style,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="photoAlbumTimelineId != null" >
+        #{photoAlbumTimelineId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="style != null" >
+        #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kunsoftware.entity.PhotoAlbumTimelineContent" >
+    update photo_album_timeline_content
+    <set >
+      <if test="photoAlbumTimelineId != null" >
+        photo_album_timeline_id = #{photoAlbumTimelineId,jdbcType=INTEGER},
+      </if>
+      <if test="orderValue != null" >
+        order_value = #{orderValue,jdbcType=INTEGER},
+      </if>
+      <if test="style != null" >
+        style = #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kunsoftware.entity.PhotoAlbumTimelineContent" >
+    update photo_album_timeline_content
+    set photo_album_timeline_id = #{photoAlbumTimelineId,jdbcType=INTEGER},
+      order_value = #{orderValue,jdbcType=INTEGER},
+      style = #{style,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getPhotoAlbumTimelineContentListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    <include refid="Base_Column_List" />
+    from photo_album_timeline_content where 1=1 
+    AND photo_album_timeline_id = #{photoAlbumTimelineId,jdbcType=INTEGER}
+    order by  order_value ASC
+  </select>
+</mapper>
