@@ -126,13 +126,14 @@ body, td, th {
 .bottom a{color:#999999; text-decoration:none;}
 .bottom a:hover{color:#999999;}
 
-.md{ position:relative; z-index:1600}
+.md{ position:relative;}
 .md .arr{ position:absolute; top:49px;left:35px; width:17; height:9px;z-index:101; display:none;line-height:9px}
 .md .d1{ position:absolute; top:50px;left:-196px;width:950px; height:auto; background-image:url(../images/dbg.png);z-index:100; display:none;}
 .md .d1 ul {}
 .md .d1 ul li { width:154px; height:100px; padding:20px 0 10px 30px; text-align:center; color:#333333; float:left;line-height:normal}
 .md .d1 ul li a{color:#333333; text-decoration:none;display:block; padding:0 0px;}
 .md .d1 ul li a:hover{color:#333333;display:block; padding:0 0px; background-color:transparent}
+.md.indexDestination{ z-index:1600}
 
 .destination-g{height:214px;}
 .product-content{ background-color:#ebeae6; display:block; min-height:200px;}

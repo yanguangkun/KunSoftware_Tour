@@ -160,4 +160,14 @@ define(function(require, exports, module) {
 		$(".allPrice").html(v);
 		$(".avgPrice").html(price);
     });
+	
+	$(".indexDestination").mouseenter(function(e) {
+        $(".arr").show();
+		$(".indexDestinationList").show();
+    });
+	
+	$(".indexDestination").mouseleave(function(e) {
+        $(".arr").hide();
+		$(".indexDestinationList").hide();
+    });
 });

@@ -53,6 +53,14 @@ define(function(require, exports, module) {
 		 
 	}); 
 	 
+	$(".indexDestination").mouseenter(function(e) {
+        $(".arr").show();
+		$(".indexDestinationList").show();
+    });
 	
+	$(".indexDestination").mouseleave(function(e) {
+        $(".arr").hide();
+		$(".indexDestinationList").hide();
+    });
 	
 });
