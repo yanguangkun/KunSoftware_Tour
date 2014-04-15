@@ -9,7 +9,8 @@ body, td, th {
 }
 .main {
 	margin: auto;
-	width: 1280px;
+	width: 100%;
+	background-color:#ebeae6
 }
 .error{ color:#ff0101;}
 .hide{ display:none}
@@ -42,7 +43,7 @@ body, td, th {
 .top-login{float:left;height:37px; padding-top:13px; padding-right:10px; cursor:pointer;}
 .top-reg{float:left;height:37px; padding-top:13px; padding-right:10px;cursor:pointer;}
 
-.content-g{margin:auto;width:1280px; height:483px;} 
+.content-g{margin:auto;width:100%px; height:483px;} 
 
 .content{height:750px; background-color:#ebeae6}
 .content-m1{margin:auto; width:955px;height:340px;background-color:#fff}
@@ -94,7 +95,7 @@ body, td, th {
 
 .content-m2-col1{width:276px;height:348px; float:left; padding-left:25px;padding-top:25px;padding-bottom:15px; background-color:#fff}
 .content-m2-col2{width:100%; height:50px; background-color:#333}
-.content-m2-col3{width:100%; height:298px; background-color:#525252}
+.content-m2-col3{width:100%; height:298px; background-color:#fff; line-height:25px; color:#333;}
 .content-m2-col4{width:604px;height:348px; float:left; margin-left:25px;margin-top:25px;margin-bottom:15px;margin-right:25px; background-color:#fff}
 
 .bottom {height:255px; background-color:#333333}
@@ -113,6 +114,7 @@ body, td, th {
 .bottom-m3-s2{padding:20px 0 0 0px; position:relative}
 .bottom-m3-s2 input{ width:175px;border:0px;border-bottom:1px solid #636363;background-color:transparent}
 .bottom-m3-s3{padding:25px 0 0 30px;}
+.bottom-m3-s4{padding:25px 0 0 0px;}
 .bottom .bottom-m3-s2 .phTxt{left:0px; height:0px;}
 
 .bottom-m4{ width:267px; height:255px; float:left; padding:0 69px 0 0; color:#c9c9c9;}
@@ -123,7 +125,7 @@ body, td, th {
 .bottom a{color:#999999; text-decoration:none;}
 .bottom a:hover{color:#999999;}
 
-.md{ position:relative;}
+.md{ position:relative; z-index:1600}
 .md .arr{ position:absolute; top:49px;left:35px; width:17; height:9px;z-index:101; display:none;line-height:9px}
 .md .d1{ position:absolute; top:50px;left:-196px;width:950px; height:auto; background-image:url(../images/dbg.png);z-index:100; display:none;}
 .md .d1 ul {}
@@ -182,7 +184,7 @@ body, td, th {
 
 .product-content-m-s1 { font-size:25px; color:#333333}
 .product-content-m-s2 { font-size:25px; color:#a8a6a7}
-.product-content-m-s3 { padding:0 0 0 15px; position:relative}
+.product-content-m-s3 { padding:0 0 0 15px; position:relative; z-index:100;}
 .product-content-m-s4 {
 	position: absolute;
 	top: 30px;
@@ -383,6 +385,14 @@ body, td, th {
 .member-table td { color:#656565; border-top:1px solid #d0d0d0;}
 .member-table thead th{ background-color:#efefef; font-weight:normal; }
 
+.photo_album_s1{ padding:0 3px 0 8px;}
+.photo_album_s2{ float:left; height:308px; width:308px; padding:5px 5px 5px 0; position:relative; cursor:pointer;}
+.photo_album_s2 .info{ display:none; width:288px; position:absolute; top:200px; left:0; padding:3px 10px; line-height:22px; background:#000; opacity:0.8; color:#a7a3a2;}
+.photo_album_s2:hover .info{ display:block;}
+.photo_album_s3 { }
+.timeline { display:none;}
+.photoalbumContent{width:950px;height:570px; position:absolute; top:80px; background-color:#fff; display:none; z-index:1500}
+
 .buy-s1{ border:1px solid #d7d7d7}
 .buy-s2{ line-height:30px;}
 .buy-s3{ padding:10px 0 0 0;}
@@ -394,7 +404,7 @@ body, td, th {
 .buy-table input{  border:1px solid #bbbbbb; width:90px;}
 
 		/* 本例子css */
-		.slideBox{ width:1280px; height:483px; overflow:hidden; position:relative; border:0px solid #ddd;  }
+		.slideBox{ width:100%; height:483px; overflow:hidden; position:relative; border:0px solid #ddd; background:#999  }
 		
 		.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
 		.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
@@ -402,7 +412,7 @@ body, td, th {
 		.slideBox .hd ul li.on{ background:#f00; color:#fff; }
 		.slideBox .bd{ position:relative; height:100%; z-index:0;   }
 		.slideBox .bd li{ zoom:1; vertical-align:middle; }
-		.slideBox .bd img{  width:1280px; height:483px; display:block;  }
+		.slideBox .bd img{ width: 100%; height:483px; display:block;  }
 
 		/* 下面是前/后按钮代码，如果不需要删除即可 */
 		.slideBox .prev,
