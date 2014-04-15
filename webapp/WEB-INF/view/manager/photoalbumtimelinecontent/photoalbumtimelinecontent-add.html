@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>时间轴管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/photoalbumtimelinecontent/photoalbumtimelinecontent-add");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form name="saveFrm" id="saveFrm" enctype="multipart/form-data"  method="post" action="add.json">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 新增时间轴 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">排序 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required" name="orderValue"  id="orderValue" placeholder="排序" value=""></td>
+          <th width="15%">内容样式 <span class="error">*</span></th>
+          <td width="35%"><select name="style" id="style" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="photoalbumtimelinecontent_style" value="" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>图片标题</th>
+          <td colspan="3"><input type="text" class="form-control input-sm required" name="title"  id="title" placeholder="图片标题" value=""></td>
+        </tr>
+        <tr>
+          <th>图片</th>
+          <td colspan="3"><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="photoalbumImageFile" id="photoalbumImageFile"></td>
+        </tr>
+        <tr>
+          <th>图片</th>
+          <td colspan="3"><textarea name="content" id="content" class="form-control" rows="3"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="">
+            <input type="hidden" name="photoAlbumTimelineId" id="photoAlbumTimelineId" value="${RequestParameters.photoAlbumTimelineId!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list?photoAlbumTimelineId=${RequestParameters.photoAlbumTimelineId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

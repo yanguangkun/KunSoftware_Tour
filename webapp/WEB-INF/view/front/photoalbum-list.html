@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>相册游记</title>
+<@c.css />
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<@c.javascript />
+<script>
+    seajs.use("front/photoalbum-list");  
+</script>
+</head>
+
+<body>
+<div class=" modal modal-backdrop" id="phoneModel"></div>
+<div class="photoalbumContent">
+  <div></div>
+</div>
+
+<@c.top currentIndex="6" />
+<div class="main main-row1 main-bg2"> </div>
+<div class="main">
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="165" bgcolor="#ebeae6">&nbsp;</td>
+    <td width="950" height="520" valign="top" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><div class="product-content-m-s3 destinationMain"> <span class="product-content-m-s1 text1"> 所有相册 /</span> <span class="product-content-m-s2 destinationParent"> 按目的地查看</span>
+        <div class="product-content-m-s4 destinationChild">
+          <div class="product-content-m-s5">请选择目的地</div>
+          <ul>
+            <#list destinationList as item>
+            <li><a href="#" class="destination" value="${item.value}">${item.name}</a></li>
+            </#list>
+          </ul>
+        </div>
+      </div>
+      </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+        <div class="photo_album_s1">
+          <#list retList as item>
+          <div class="photo_album_s2 photo_item">
+            <img src="${request.contextPath}/images/uploadDir${item.imagePath!}" width="308" height="308"> 
+            <div class="info">${item.title}<br><#if item.startDate??>${item.startDate?string('yyyy-MM-dd')}</#if><br>${item.summary}</div>
+            
+            <div class="timeline">222</div>
+          </div> 
+          </#list>  
+        </div>
+        </td>
+      </tr>
+       <tr>
+            <td height="50" align="right"><div class="product-content-m2-s7"><@c.page /><div></td>
+          </tr>
+    </table>
+      </td>
+    <td width="165" bgcolor="#ebeae6"></td>
+  </tr>
+  <tr>
+      <td bgcolor="#ebeae6"></td>
+      <td height="10" valign="top" bgcolor="#EBEAE6"></td>
+      <td bgcolor="#ebeae6"></td>
+    </tr>
+</table>
+</div>
+<@c.bottom />
+</body>
+</html>

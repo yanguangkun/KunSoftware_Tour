@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>时间轴管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/photoalbumtimeline/photoalbumtimeline-list");  
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form id="controlForm" name="controlForm" method="post" action="">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 时间轴列表 </div>
+      <ul class="list-group">
+        <li class="list-group-item">你当前正在查看编号为 <span class="info1">${photoAlbum.id!}</span> 相册名称为 <span class="info1">${photoAlbum.title!}</span> 的时间轴列表</li>
+      </ul>
+      <div class="panel-body form-inline panel-opt"> <a href="###" class="btn btn-default btn-sm editBtn" role="button"><span class="glyphicon glyphicon-pencil"></span> 修改</a> <a href="add?photoAlbumId=${RequestParameters.photoAlbumId!}" class="btn btn-default btn-sm addBtn" role="button"> <span class="glyphicon glyphicon-plus"></span> 新增</a> <a href="###" class="btn btn-default btn-sm delBtn" role="button"> <span class="glyphicon glyphicon-trash"></span> 删除</a> <a href="${request.contextPath}/manager/photoalbum/list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a> </div>
+      <table border="0" align="center" cellspacing="0" class="table table-striped table-hover  table-result">
+        <thead>
+          <tr>
+            <th width="5%"></th>
+            <th width="10%"></th>
+            <th width="15%">编号</th>
+            <th width="15%">排序</th>
+            <th width="65%">标题</th> 
+          </tr>
+        </thead>
+        <#list retList as item>
+        <tr>
+          <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
+          <td><a href="${request.contextPath}/manager/photoalbumtimelinecontent/list?photoAlbumTimelineId=${item.id!}">内容</a></td>
+          <td>${item.id!} </td>
+          <td>${item.orderValue!}</td>
+          <td>${item.title!}</td> 
+        </tr>
+        </#list>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>

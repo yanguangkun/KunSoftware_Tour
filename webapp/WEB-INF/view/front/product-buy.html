@@ -14,10 +14,11 @@
 <body>
 <@c.top currentIndex="1" />
 <div class="main main-row1 main-bg2"> </div>
+<div class="main">
 <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="165" bgcolor="#ebeae6">&nbsp;</td>
-    <td width="950" height="520" valign="top"><form name="buyFrm" id="buyFrm" method="post" action="buy2">
+    <td width="950" height="520" valign="top" bgcolor="#FFFFFF"><form name="buyFrm" id="buyFrm" method="post" action="buy2">
       <table width="855" border="0" align="center" cellpadding="0" cellspacing="0" class="member">
         <tr>
           <td height="60"><span class="customize-title">预订详情</span></td>
@@ -51,7 +52,7 @@
                 <td colspan="2"><div class="buy-s5"></div></td>
               </tr>
               <tr>
-                <td height="50"  colspan="2" align="right">预订合计：<span class="buy-s6">${buybean.allTotal}</span> 元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td height="50"  colspan="2" align="right">预订合计：<span class="buy-s6">${buyBean.allTotal!}</span> 元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
               </tr>
               <tr>
                 <td height="30" align="right" valign="top"><div class="buy-s2">订单备注：</div></td>
@@ -98,6 +99,8 @@
     <td width="165" bgcolor="#ebeae6"></td>
   </tr>
 </table>
+</div>
+<div class="main main-row1 main-bg"> </div>
 <@c.bottom />
 </body>
 </html>

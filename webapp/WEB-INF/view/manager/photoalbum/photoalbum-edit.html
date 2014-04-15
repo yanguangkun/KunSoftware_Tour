@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>相册游记管理 -
+<@cm.sysName />
+</title>
+<@cm.css />
+<@cm.javascript />
+<script>
+    seajs.use("manager/photoalbum/photoalbum-edit");
+</script>
+</head>
+
+<body>
+<div class="main">
+  <@cm.top />
+  <form action="edit.json" method="post" enctype="multipart/form-data" name="saveFrm" id="saveFrm">
+    <div class="panel panel-default">
+      <div class="panel-heading"> 编辑相册 </div>
+      <table border="0" width="100%" align="center" cellspacing="0" class="table table-striped table-bordered table-form">
+        <tr>
+          <th width="15%">相册标题 <span class="error">*</span></th>
+          <td width="35%"><input type="text" class="form-control input-sm required " name="title"  id="title" placeholder="相册标题" value="${entity.title!}"></td>
+          <th width="15%">出发时间 <span class="error">*</span></th>
+          <td width="35%"><input name="startDate" type="text" class="form-control input-sm required date" id="startDate" placeholder="出发时间" value="<#if entity.startDate??>${entity.startDate?string('yyyy-MM-dd')} </#if>" readonly></td>
+        </tr>
+        <tr>
+          <th>摘要</th>
+          <td><input type="text" class="form-control input-sm required" name="summary" id="summary" placeholder="摘要" value="${entity.summary!}"></td>
+          <th>目的地</th>
+          <td><select name="destination" id="destination" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="destination" value="${entity.destination!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>封面图片</th>
+          <td colspan="3"><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.imagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="photoalbumImageFile" id="photoalbumImageFile"></td>
+        </tr>
+        <tr>
+          <th>是否前台显示</th>
+          <td><@ValueSet name="frontDesk" code="yes_no_r" value="${entity.frontDesk!}" /></td>
+          <th>是否推荐到首页</th>
+          <td><@ValueSet name="indexRecommend" code="yes_no_r" value="${entity.indexRecommend!}" /></td>
+        </tr>
+        <tr>
+          <th>首页封面</th>
+          <td colspan="3"><div class="row">
+              <div class="col-xs-6 col-md-3"> <a href="#" class="thumbnail"> <img alt="图片" src="${request.contextPath}/images/uploadDir${entity.indexImagePath!}" width="180" height="100" id="imagePathShow"> </a> </div>
+            </div>
+            <input type="file" name="photoalbumIndexImageFile" id="photoalbumIndexImageFile"></td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
+            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <a href="list" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+</body>
+</html>
