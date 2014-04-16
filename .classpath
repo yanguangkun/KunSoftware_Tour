@@ -26,7 +26,7 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-aspects-3.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-beans-3.2.2.RELEASE.jar" sourcepath="C:/Users/admin/.m2/repository/org/springframework/spring-beans/3.2.2.RELEASE/spring-beans-3.2.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-context-3.2.2.RELEASE.jar" sourcepath="C:/Users/admin/.m2/repository/org/springframework/spring-context/3.2.2.RELEASE/spring-context-3.2.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-context-support-3.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-context-support-3.2.2.RELEASE.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/springframework/spring-context-support/3.2.2.RELEASE/spring-context-support-3.2.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-core-3.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-expression-3.2.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-jdbc-3.2.2.RELEASE.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/springframework/spring-jdbc/3.2.2.RELEASE/spring-jdbc-3.2.2.RELEASE-sources.jar"/>
