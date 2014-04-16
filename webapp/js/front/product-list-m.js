@@ -18,17 +18,33 @@ define(function(require, exports, module) {
 				success:function(data) { 
 					$("#productList").append(data.result);
 					totalPages = data.totalPages;
-					 
 				}
 			});
 		}); 
 		
-		$(document).on("click",".page",function(){ 
-			$.getJSON("ground.json?destination=" + $("#arriveDestination").val() + "&pageNo=" + $(this).attr("value" ), function (data, textStatus){  
+		$.getJSON("questions.json?destination=" + $("#destination").val() + "&banner=" + $("#banner").val()+ "&r=" + Math.random() , function (data, textStatus){  
+			$(".questionsInfo").html(data.result); 
+		});
+		
+		$(document).on("click",".questionsInfo .page",function(){ 
+			$.getJSON("questions.json?destination=" + $("#destination").val() + "&banner=" + $("#banner").val() + "&pageNo=" + $(this).attr("value" ) + "&r=" + Math.random(), function (data, textStatus){  
 				
-				$(".groundInfo").html(data.result); 
+				$(".questionsInfo").html(data.result);
 			});
 		});
+		
+		$("#questionsBtn").click(function(e) {
+            
+			$.post("questionsSave.json",{
+				'destination':$("#destination").val(),
+				'banner':$("#banner").val(),
+				'content':$("#content").val()	
+			},function(data) {
+				alert(data.message);
+			},"json");
+			
+			return false;
+        });
 		 
 	}); 
 	

@@ -12,7 +12,10 @@ define(function(require, exports, module) {
             location.href = "list?destination=" + $(this).attr("value");
         }); 
 		
-		//
+		$("#phoneModel").click(function(e) {
+            $(this).hide();
+			$(".photoalbumContent").hide();
+        });
 		 
 		$(".photo_item").click(function(e) {
             
