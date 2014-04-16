@@ -40,15 +40,10 @@ color4
 <body>
 <@c.top currentIndex="3" />
 <div class="main main-row1 main-bg1"></div>
+<div style=" background-color:#ebeae6; width:100%">
 <div class="content-g destination-g">
   <div id="slideBox" class="slideBox md">
-    <div class="hd">
-      <ul>
-        <#list galleryList as item>
-        <li>${item_index + 1}</li>
-        </#list>
-      </ul>
-    </div>
+     
     <div class="bd">
       <ul>
         <#list galleryList as item>
@@ -58,6 +53,7 @@ color4
     </div>
     <!-- 下面是前/后按钮代码，如果不需要删除即可 --> 
     <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
+</div>
 </div>
 <div class="main main-row1 main-bg2"> </div>
 <div class="main">
@@ -112,25 +108,53 @@ color4
             </table></td>
           <td valign="top" bgcolor="#EBEAE6" class="groundInfo"><table width="347" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#fff;">
             <tr>
-              <td bgcolor="#FFFFFF"><table width="307" border="0" cellspacing="0" cellpadding="0">
+              <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="210" height="50"><div class="product-left-s1">问答</div></td>
-                  <td width="97">&nbsp;</td>
+                  <td width="97"><div class="product-left-s11"><a href="#" id="questionsBtn">发布</a></div></td>
                 </tr>
               </table></td>
             </tr>
             <tr>
-              <td bgcolor="#FFFFFF"><div class="product-left-s2"><textarea  name="textarea" id="textarea"></textarea>
-              
-              <div class="product-left-s3"></div>
-              
+              <td bgcolor="#FFFFFF"><div class="product-left-s2">
+              <input type="hidden" name="destination" id="destination" value="${RequestParameters.arriveDestination!}">
+              <input type="hidden" name="banner" id="banner" value="1">
+                <textarea  name="content" id="content"></textarea>
+                <div class="product-left-s3"></div>
               </div></td>
             </tr>
             <tr>
               <td height="50" bgcolor="#FFFFFF">&nbsp;</td>
-            </tr>
+            </tr> 
             <tr>
-              <td bgcolor="#FFFFFF">&nbsp;</td>
+              <td bgcolor="#FFFFFF" class="questionsInfo"><div class="product-left-s2">
+                <div class="s1"></div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="48"><img src="${request.contextPath}/images/img17.jpg" width="48" height="48"></td>
+                    <td><div class="product-left-s4"></div>
+                      <div class="product-left-s5">路人：请问巴厘岛怎样做，有什么推荐的行程。</div>
+                      <div class="product-left-s6"></div></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" height="30"></td>
+                  </tr>
+                </table>
+              </div>
+                <div class="product-left-s2">
+                  <div class="s2"></div>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="right"><div class="product-left-s7"></div>
+                        <div class="product-left-s8"><span class="product-left-s10">雅米：</span>巴厘岛怎样玩都好。</div>
+                        <div class="product-left-s9"></div></td>
+                      <td width="48"><img src="${request.contextPath}/images/yami.jpg" alt="" width="48" height="48"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" height="30"></td>
+                    </tr>
+                  </table>
+                </div></td>
             </tr>
             <tr>
               <td bgcolor="#FFFFFF">&nbsp;</td>

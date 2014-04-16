@@ -40,15 +40,10 @@ color4
 <body>
 <@c.top currentIndex="1" />
 <div class="main main-row1 main-bg1"></div>
+<div style=" background-color:#ebeae6; width:100%">
 <div class="content-g destination-g">
   <div id="slideBox" class="slideBox md">
-    <div class="hd">
-      <ul>
-        <#list galleryList as item>
-        <li>${item_index + 1}</li>
-        </#list>
-      </ul>
-    </div>
+     
     <div class="bd">
       <ul>
         <#list galleryList as item>
@@ -58,6 +53,7 @@ color4
     </div>
     <!-- 下面是前/后按钮代码，如果不需要删除即可 --> 
     <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
+</div>
 </div>
 <div class="main main-row1 main-bg2"> </div>
 <div class="main">

@@ -37,7 +37,10 @@
               <@ValueSet code="enable_type" value="${entity.enable!}" />
             </select></td>
         </tr>
-        
+        <tr>
+          <th>排序</th>
+          <td colspan="3"><input type="text" class="form-control input-sm required" name="orderValue" id="orderValue" placeholder="排序" value="${entity.orderValue!}"></td> 
+        </tr>
         <tr>
           <th>目的地图片</th>
           <td colspan="3"><div class="row">

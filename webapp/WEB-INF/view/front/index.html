@@ -40,7 +40,7 @@ color4
 <body>
 <@c.top currentIndex="1" />
 <div class="main main-row1 main-bg1"></div>
-<div class="content-g">
+<div class="content-g" style="width:100%;">
   
   <div id="slideBox" class="slideBox">
      
@@ -86,8 +86,8 @@ color4
       </div>
        </form>
     <div class="content-m1-col2">
-      <div class="content-m1-col3" style="background-image:url(images/image2.jpg)"></div>
-      <div class="content-m1-col4">照片分享 游记分享</div>
+      <div class="content-m1-col3" style="background-image:url(${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!})"></div>
+      <div class="content-m1-col4">${photoAlbum.title}</div>
     </div>
     <div class="content-m1-col1">
       <div class="content-m1-col3" style="background-image:url(images/image4.jpg)"></div>

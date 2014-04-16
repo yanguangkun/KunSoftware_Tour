@@ -20,6 +20,7 @@
 
 <#macro top currentIndex>
 <div class="main top">
+  <div style="width:1280px; margin:auto;">
   <div class="top-base top-col1"></div>
   <div class="top-base top-padding-right"><a href="${request.contextPath}"><img src="${request.contextPath}/images/image7.jpg"></a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='1'>current</#if>" href="${request.contextPath}/index" >首页</a></div>
@@ -41,41 +42,14 @@
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='4'>current</#if>" href="${request.contextPath}/customize/info1" >私家定制</a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='5'>current</#if>" href="${request.contextPath}/photoalbum/list" >相册游记</a></div>
   <div class="top-base top-padding"><a class="a1 <#if currentIndex=='6'>current</#if>" href="${request.contextPath}/yamidiary/list" >雅米日记</a></div>
-  <div class="top-base top-col2"><img src="${request.contextPath}/images/img24.jpg" width="136" height="50" /></div>
+  <div class="top-base top-col2"></div>
   <#if Session.Member_Info?exists>
   <div class="top-member"><a href="${request.contextPath}/m/order">我的订单</a>&nbsp;&nbsp;<a href="${request.contextPath}/m/logout">[退出]</a> </div>
   <#else>
   <div class="top-login"><a href="${request.contextPath}/m/login"><img src="${request.contextPath}/images/image8.jpg" /></a></div>
   <div class="top-reg"><a href="${request.contextPath}/reg"><img src="${request.contextPath}/images/image9.jpg"></a></div>
   </#if>
-</div>
-</#macro> 
-<#macro top_p currentIndex>
-<div class="main top product-top">
-  <div class="top-base top-col1"></div>
-  <div class="top-base top-padding-right"><a href="${request.contextPath}"><img src="${request.contextPath}/images/image7.jpg"></a></div>
-  <div class="top-base top-padding"><a class="a1 a2 <#if currentIndex=='1'>current</#if>" href="${request.contextPath}/index" >首页</a></div>
-  
-  <div class="top-base top-padding"><a class="a1" href="#" <#if currentIndex=='3'>class="current"</#if>>巴厘岛</a></div>
-  <div class="top-base top-padding"><a class="a1" href="#" <#if currentIndex=='4'>class="current"</#if>>吉普岛</a></div>
-  <div class="top-base top-padding"><a class="a1" href="#" <#if currentIndex=='5'>class="current"</#if>>马尔代夫</a></div>
-  <div class="top-base top-padding"><a class="a1" href="#" <#if currentIndex=='6'>class="current"</#if>>长滩岛</a></div>
-  <div class="top-base top-padding"><a class="a1" href="#" <#if currentIndex=='6'>class="current"</#if>>沙巴</a></div>
-  <div class="top-base top-col2">
-    <div class="top-col3">
-     <form><input type="text" name="textfield" style="" id="textfield">
-        <span class="phTxt"> 输入目的地名字 </span>  </form>
-    </div>
-    <div class="top-col4">
-      
-    </div>
   </div>
-  <#if Session.Member_Info?exists>
-  <div class="top-member"><a href="${request.contextPath}/m/order">我的订单</a>&nbsp;&nbsp;<a href="${request.contextPath}/m/logout">[退出]</a> </div>
-  <#else>
-  <div class="top-login"><a href="${request.contextPath}/m/login"><img src="${request.contextPath}/images/image8.jpg" /></a></div>
-  <div class="top-reg"><a href="${request.contextPath}/reg"><img src="${request.contextPath}/images/image9.jpg"></a></div>
-  </#if>
 </div>
 </#macro> 
 
@@ -113,27 +87,11 @@
     </div>
   </form>
 </div>
-</#macro>
-
-<#macro bottom_p> 
-<div class="main bottom product-bottom">
-  <div class="bottom-m5"> 
-   <a href="${request.contextPath}/article/detail?id=2">关于雅米</a> |
-   <a href="${request.contextPath}/article/detail?id=1">联系我们</a> |
-   <a href="#">订单查询</a> |
-   <a href="#">合作伙伴</a> |
-   <a href="#">免测声明</a> |
-   <a href="#">帮助中心</a>&nbsp;&nbsp;&nbsp;&nbsp;
-   <img src="${request.contextPath}/images/img7.jpg" width="145" height="27" /><br />
-       2014 yamiclub.com All Rights Reserved
-  </div>
-</div>
-</#macro>
+</#macro> 
 <#macro page> 
 ${pageInfo!}
 ${pageParam!}
 </#macro>
-
 <#macro member_left currentIndex> 
 <div class="member-s1">订单管理</div>
 <div class="member-s2"><a href="${request.contextPath}/m/order" <#if currentIndex=='1'>class="active"</#if>>我的订单</a></div>
