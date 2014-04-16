@@ -22,17 +22,9 @@
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table>-->      
       
-     <table tableName="photo_album" domainObjectName="PhotoAlbum" enableCountByExample="false" enableUpdateByExample="false"
+     <table tableName="destination" domainObjectName="Destination" enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false"
      selectByExampleQueryId="false"></table> 
-     
-     <table tableName="photo_album_timeline" domainObjectName="PhotoAlbumTimeline" enableCountByExample="false" enableUpdateByExample="false"
-     enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>
-     
-     <table tableName="photo_album_timeline_content" domainObjectName="PhotoAlbumTimelineContent" enableCountByExample="false" enableUpdateByExample="false"
-     enableDeleteByExample="false" enableSelectByExample="false"
-     selectByExampleQueryId="false"></table>
      
      
   </context>

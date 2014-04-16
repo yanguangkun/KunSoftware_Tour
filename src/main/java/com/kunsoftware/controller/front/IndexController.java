@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kunsoftware.entity.Gallery;
 import com.kunsoftware.service.GalleryService;
+import com.kunsoftware.service.PhotoAlbumService;
 import com.kunsoftware.service.ValueSetService;
 
 @Controller
@@ -20,6 +21,9 @@ public class IndexController {
 	
 	@Autowired
 	private ValueSetService valueSetService;
+	
+	@Autowired
+	private PhotoAlbumService photoAlbumService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
@@ -34,6 +38,7 @@ public class IndexController {
 		model.addAttribute("customizeImage", valueSetService.selectValueSetByCode("customize_image")); 
 		model.addAttribute("giftadLink", valueSetService.selectValueSetByCode("giftad_link")); 
 		model.addAttribute("giftadImage", valueSetService.selectValueSetByCode("giftad_image")); 
+		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
 		
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/index";

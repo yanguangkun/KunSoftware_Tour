@@ -24,4 +24,6 @@ public interface PhotoAlbumMapper {
     		@Param("keyword") String kewword,   
     		@Param("frontDesk") String frontDesk,  
     		@Param("page") PageInfo page);
+    
+    PhotoAlbum selectByIndexRecommend(@Param("indexRecommend") String indexRecommend);
 }

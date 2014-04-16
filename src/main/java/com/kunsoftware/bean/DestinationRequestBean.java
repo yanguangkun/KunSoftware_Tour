@@ -19,6 +19,8 @@ public class DestinationRequestBean {
     private MultipartFile  imageFile;
 
     private String enable;
+    
+    private Integer orderValue;
 
 	public String getName() {
 		return name;
@@ -82,6 +84,14 @@ public class DestinationRequestBean {
 
 	public void setEnable(String enable) {
 		this.enable = enable;
+	}
+
+	public Integer getOrderValue() {
+		return orderValue;
+	}
+
+	public void setOrderValue(Integer orderValue) {
+		this.orderValue = orderValue;
 	}
     
     

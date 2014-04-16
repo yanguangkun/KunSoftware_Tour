@@ -68,7 +68,7 @@ public class FrontProductController extends BaseController {
 		
 		
 		if(StringUtils.isEmpty(requestBean.getProductType())) {
-			requestBean.setProductType("1");
+			requestBean.setProductType("-1");
 		}
 		
 		String productType = requestBean.getProductType();
@@ -106,11 +106,10 @@ public class FrontProductController extends BaseController {
 	@RequestMapping("/list-g")
 	public String listProductG(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
 		 
-		logger.info("产品列表"); 
-		
+		logger.info("产品列表");  
 		
 		if(StringUtils.isEmpty(requestBean.getProductType())) {
-			requestBean.setProductType("1");
+			requestBean.setProductType("-1");
 		}
 		
 		String productType = requestBean.getProductType();

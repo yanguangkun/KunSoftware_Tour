@@ -155,4 +155,11 @@
 	</if> 
     order by id DESC
   </select>
+  
+  <select id="selectByIndexRecommend" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo_album
+    where index_recommend = #{indexRecommend,jdbcType=VARCHAR} ORDER BY start_date DESC LIMIT 1
+  </select>
 </mapper>

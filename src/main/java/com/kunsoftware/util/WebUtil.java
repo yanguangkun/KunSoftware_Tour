@@ -57,6 +57,7 @@ public class WebUtil {
 	
 	public static String getMemberUserName() {
 		Member member = getMemberEntity();
+		if(member == null) return null;
 		return member.getUserName();
 	}
 	

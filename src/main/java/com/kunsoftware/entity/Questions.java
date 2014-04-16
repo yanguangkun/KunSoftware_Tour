@@ -9,6 +9,8 @@ public class Questions {
 
     private String memberUserName;
 
+    private String memberImagePath;
+    
     private Integer destination;
 
     private String banner;
@@ -51,7 +53,15 @@ public class Questions {
         this.memberUserName = memberUserName;
     }
 
-    public Integer getDestination() {
+    public String getMemberImagePath() {
+		return memberImagePath;
+	}
+
+	public void setMemberImagePath(String memberImagePath) {
+		this.memberImagePath = memberImagePath;
+	}
+
+	public Integer getDestination() {
         return destination;
     }
 

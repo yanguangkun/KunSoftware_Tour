@@ -26,7 +26,13 @@ public class QuestionsService {
 	public List<Questions> getQuestionsListPage(String audit,String reply,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getQuestionsListPage(audit,reply,page);
+		return mapper.getQuestionsListPage(audit,reply,null,null,page);
+	}
+	
+	public List<Questions> getFrontQuestionsListPage(Integer destination,String banner,PageInfo page) {
+		 
+		logger.info("query");
+		return mapper.getQuestionsListPage(null,null,destination,banner,page);
 	}
 	 
 	@Transactional

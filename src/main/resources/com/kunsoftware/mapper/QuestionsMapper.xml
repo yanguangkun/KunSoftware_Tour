@@ -205,6 +205,12 @@
 	<if test="reply != null and reply != ''">
 		AND reply = #{reply,jdbcType=VARCHAR}
 	</if>
+	<if test="destination != null and destination != ''">
+		AND destination = #{destination,jdbcType=VARCHAR}
+	</if>
+	<if test="banner != null and banner != ''">
+		AND banner = #{banner,jdbcType=VARCHAR}
+	</if>
     
     order by id DESC
   </select>

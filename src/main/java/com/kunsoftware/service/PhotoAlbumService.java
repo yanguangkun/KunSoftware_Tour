@@ -2,6 +2,7 @@ package com.kunsoftware.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -53,6 +54,13 @@ private static Logger logger = LoggerFactory.getLogger(PhotoAlbumService.class);
 	public PhotoAlbum selectByPrimaryKey(Integer id) throws KunSoftwareException {
 		
 		return mapper.selectByPrimaryKey(id);
+	}
+	
+	public PhotoAlbum selectByIndexRecommend(@Param("indexRecommend") String indexRecommend) {
+		
+		PhotoAlbum photoAlbum = mapper.selectByIndexRecommend(indexRecommend);
+		if(photoAlbum == null) photoAlbum = new PhotoAlbum();
+		return photoAlbum;
 	}
 	
 	@Transactional

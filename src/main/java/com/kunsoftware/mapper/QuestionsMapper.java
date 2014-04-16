@@ -22,5 +22,7 @@ public interface QuestionsMapper {
 
     int updateByPrimaryKey(Questions record);
     
-    List<Questions> getQuestionsListPage(@Param("audit") String audit,@Param("reply") String reply,@Param("page") PageInfo page);
+    List<Questions> getQuestionsListPage(@Param("audit") String audit,@Param("reply") String reply,
+    		@Param("destination") Integer destination,@Param("banner") String banner,
+    		@Param("page") PageInfo page);
 }
