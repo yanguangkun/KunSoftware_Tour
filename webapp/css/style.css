@@ -128,7 +128,7 @@ body, td, th {
 
 .md{ position:relative;}
 .md .arr{ position:absolute; top:49px;left:35px; width:17; height:9px;z-index:101; display:none;line-height:9px}
-.md .d1{ position:absolute; top:50px;left:-210px;width:950px; height:auto; background-image:url(../images/dbg.png);z-index:100; display:none;}
+.md .d1{ position:absolute; top:50px;left:-222px;width:955px; height:auto; background-image:url(../images/dbg.png);z-index:100; display:none;}
 .md .d1 ul {}
 .md .d1 ul li { width:154px; height:100px; padding:20px 0 10px 30px; text-align:center; color:#333333; float:left;line-height:normal}
 .md .d1 ul li a{color:#333333; text-decoration:none;display:block; padding:0 0px;}
@@ -394,8 +394,24 @@ body, td, th {
 .photo_album_s3 { }
 .timeline { display:none;}
 .photoalbumContent{width:950px;height:570px; position:absolute; left:120px; top:80px; background-color:#fff; display:; z-index:1500;}
-.photoalbumContent .s1{ width:316px; float:left; height:500px;}
+.photoalbumContent .s1{ width:313px; float:left; height:450px; position:relative; margin:20px 0 30px 0; border-left:1px solid #e8e8e8}
+.photoalbumContent .s1 .title{ padding:200px 0 0 0; text-align:center; line-height:22px;}
+.photoalbumContent .s1 .title2{ color: #a8a8a8}
+.photoalbumContent .s1 .text{ padding:100px 30px 0 30px; line-height:25px;}
+.photoalbumContent .s1 .text2{ position:absolute; top:0px; left:20px; width:51px; height:47px;background-image:url(../images/p3.jpg);}
+.photoalbumContent .s1 .text3{ position:absolute; top:380px; right:30px; width:51px; height:47px;background-image:url(../images/p4.jpg);}
+.photoalbumContent .s1 .img{ padding:30px 0 0 10px;}
+
 .photoalbumContent .close{ right:0; top:0; height:35px; width:35px; position:absolute;}
+.photoalbumContent .s2{ position:relative;}
+.photoalbumContent .s3{ position:absolute; padding:15px 0 0 0; top:15px; left:0; margin:0 0 0 100px; border-bottom:1px solid #aeddf5; width:700px;}
+.photoalbumContent .s4{ width:120px; height:57px; float:left;}
+.photoalbumContent .s5{ width:80px; float:left; height:57px; position:relative;cursor:pointer;}
+.photoalbumContent .s6 {width:80px; height:30px; text-align:center; line-height:20px;color:#a8a8a8; }
+.photoalbumContent .s7 {width:9px; height:9px; position:absolute; top:26px; left:35px;background-image:url(../images/p2.jpg); z-index:100; }
+.photoalbumContent .s5.cur .s6{ color:#2aa5e5}
+.photoalbumContent .s5.cur .s7{ background-image:url(../images/p1.jpg)}
+.photoalbumBody {width:950px;height:500px; overflow:hidden;}
 
 .buy-s1{ border:1px solid #d7d7d7}
 .buy-s2{ line-height:30px;}
