@@ -13,14 +13,23 @@
 
 <body>
 <div class=" modal modal-backdrop" id="phoneModel"></div>
-<div class="photoalbumContent">
+<div class="photoalbumContent hide">
+  <div class="photoalbumTarget">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><div class="photoalbumBody">
-  	<div class="text1">
-      <div class="s1"></div>
-      <div class="s1"></div>
-      <div class="s1"></div>
+  	<div class="timeline-content-item">
+      <div class="s1">
+        <div class="title">陈小姐马尔代夫蜜月<br> <span class="title2">2014-02-22</span></div>
+      </div>
+      <div class="s1">
+        <div class="text">陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月</div>
+        <div class="text2"></div>
+        <div class="text3"></div>
+      </div>
+      <div class="s1">
+        <div class="img"><img src="" width="300" height="400"></div>
+      </div>
     </div>
     <div class="text2 hide">
       <div class="s1"></div>
@@ -30,10 +39,25 @@
   </div></td>
   </tr>
   <tr>
-    <td height="57">&nbsp;</td>
+    <td height="57" class="s2 photoalbumTimeline">
+    <div class="s4"></div> 
+    <div class="s5 cur">
+      <div class="s6">序</div>
+      <div class="s7"></div>
+    </div>
+    <div class="s5">
+      <div class="s6">第一天</div>
+      <div class="s7"></div>
+    </div>
+    <div class="s5">
+      <div class="s6">第二天</div>
+      <div class="s7"></div>
+    </div>
+    <div class="s3"></div>
+    </td>
   </tr>
 </table>
-
+</div>
   <div class="close"></div>
 </div>
 
@@ -68,7 +92,42 @@
             <img src="${request.contextPath}/images/uploadDir${item.imagePath!}" width="308" height="308"> 
             <div class="info">${item.title}<br><#if item.startDate??>${item.startDate?string('yyyy-MM-dd')}</#if><br>${item.summary}</div>
             
-            <div class="timeline">222</div>
+            
+            <div class="timeline hide">
+                <div class="s4"></div> 
+                <#list item.timelineList as timeline>
+                <div class="s5 timeline-item <#if timeline_index==0>cur</#if>"  value="#${timeline.id!}">
+                  <div class="s6">${timeline.title}</div>
+                  <div class="s7"></div>
+                </div>
+                </#list> 
+                <div class="s3"></div>
+            </div> 
+            
+            <div class="timeline-content hide" > 
+            <#list item.timelineList as timeline>
+            <div class="timeline-content-item <#if timeline_index!=0>hide</#if>" id="${timeline.id!}">
+              <div class="s1">
+                <div class="title">${item.title}<br> <span class="title2"><#if item.startDate??>${item.startDate?string('yyyy-MM-dd')}</#if></span></div>
+              </div>
+              <#list timeline.contentList as content>
+              
+              <#if content.style=='1'>
+              <div class="s1">
+                <div class="text">${content.content}</div>
+                <div class="text2"></div>
+                <div class="text3"></div>
+              </div>
+              <#else>
+              <div class="s1">
+                <div class="img"><img src="${request.contextPath}/images/uploadDir${content.imagePath!}" width="300" height="400"></div>
+              </div>
+              </#if>
+              </#list> 
+            </div> 
+            </#list> 
+            </div>
+            
           </div> 
           </#list>  
         </div>
