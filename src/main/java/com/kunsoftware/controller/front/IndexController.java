@@ -29,6 +29,7 @@ public class IndexController {
 	public String index(ModelMap model) {
 		
 		List<Gallery> galleryList = galleryService.getGalleryListAll("1");
+		List<Gallery> smallgalleryList = galleryService.getGalleryListAll("3");
 		model.addAttribute("galleryList", galleryList); 
 		model.addAttribute("color1", valueSetService.selectValueSetByCode("index_color1")); 
 		model.addAttribute("color2", valueSetService.selectValueSetByCode("index_color2")); 
@@ -39,6 +40,7 @@ public class IndexController {
 		model.addAttribute("giftadLink", valueSetService.selectValueSetByCode("giftad_link")); 
 		model.addAttribute("giftadImage", valueSetService.selectValueSetByCode("giftad_image")); 
 		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
+		model.addAttribute("smallgalleryList", smallgalleryList); 
 		
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/index";
