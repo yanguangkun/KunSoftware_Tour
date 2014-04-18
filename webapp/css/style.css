@@ -53,8 +53,10 @@ body, td, th {
 .content-m1-col1{width:276px;height:300px; float:left; padding-left:25px;padding-top:25px;padding-bottom:15px;padding-right:25px; background-color:#fff}
 .content-m1-col2{width:303px;height:300px; float:left;padding-top:25px;padding-bottom:15px; background-color:#fff}
 .content-m1-col3{width:100%; height:244px; background-color:#333}
-.content-m1-col4{width:100%; height:56px; background-color:#525252; text-align:center; line-height:56px; color:#fff; font-size:14px;}
-.content-m1-col4 .s1{ font-size:18px;}
+.content-m1-col3 .slideBox{ height:300px;}
+.content-m1-col3 .slideBox .bd img{ height:244px;} 
+.content-m1-col4{width:100%; height:56px; background-color:#525252; text-align:center; line-height:56px; color:#fff; font-size:16px;}
+.content-m1-col4 .s1{ font-size:22px;}
 
 .content-m1-col1:hover .content-m1-col4,
 .content-m1-col2:hover .content-m1-col4
