@@ -65,8 +65,8 @@
           <td align="center"><input type="checkbox" name="id" id="id" value="${item.id}"></td>
           <td><a href="view?id=${item.id}">详情</a> <a href="${request.contextPath}/manager/requirementremark/list?requirementId=${item.id}">备忘</a></td>
           <td>${item.id!}</td>
-          <td><@ValueSetWrite code="country" value="${item.startCountry!}" /></td>
-          <td><@ValueSetWrite code="destination" value="${item.arriveDestination!}" /></td>
+          <td>${item.startCountry!}</td>
+          <td>${item.arriveDestination!}</td>
           <td>${item.membership!}</td>
           <td>${item.startTime!}</td>
           <td>${item.budget!}</td>

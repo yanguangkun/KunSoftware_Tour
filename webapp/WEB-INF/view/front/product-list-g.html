@@ -47,7 +47,7 @@ color4
     <div class="bd">
       <ul>
         <#list galleryList as item>
-        <li><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></li>
+        <li><a href="${item.link}" target="_blank"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></a></li>
         </#list>
       </ul>
     </div>
@@ -84,10 +84,10 @@ color4
                 <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td height="30">&nbsp;</td>
-                      <td width="25"><img src="${request.contextPath}/images/img1.jpg" width="17" height="19"></td>
-                      <td width="56" class="product-content-m1-s8">${item.somePraise!}</td>
+                      <td width="25" style="cursor:pointer;" class="somePraise" value="${item.id}" ><img src="${request.contextPath}/images/img1.jpg" width="17" height="19"></td>
+                      <td width="56" class="product-content-m1-s8 somePraiseV">${item.somePraise!}</td>
                       <td width="26"><img src="${request.contextPath}/images/img2.jpg" width="20" height="17"></td>
-                      <td width="56" class="product-content-m1-s8">188</td>
+                      <td width="56" class="product-content-m1-s8">${item.commentCount}</td>
                     </tr>
                   </table></td>
               </tr>

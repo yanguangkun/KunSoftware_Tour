@@ -43,7 +43,7 @@ color4
 <@c.top currentIndex="4" />
 <div class="main main-row1 main-bg2"> </div>
 <div class="main">
-<form name="saveFrm" method="post" action="" id="saveFrm">
+<form name="saveFrm" method="post" action="info1-save.json" id="saveFrm">
   <table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td width="165" bgcolor="#ebeae6">&nbsp;</td>
@@ -104,51 +104,51 @@ color4
                   <td height="35" align="right" valign="top">&nbsp;</td>
                   <td width="13%" align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的出发地</td>
                   <td width="1%" valign="top">&nbsp;</td>
-                  <td width="76%" valign="top"><input type="text" class="required" name="de" id="de"></td>
+                  <td width="76%" valign="top"><input type="text" value="${chufa}" class="required" name="startCountry" id="startCountry"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的目的地</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield2" id="textfield2"></td>
+                  <td valign="top"><input type="text" value="${destination}" class="required"  name="arriveDestination" id="arriveDestination"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;你的大概出行日期</td>
+                  <td align="right" valign="top">你的大概出行日期</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text" name="startTime" id="startTime"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;你的出行人数</td>
+                  <td align="right" valign="top">你的出行人数</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text" name="membership" id="membership"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;人均预算大概多少</td>
+                  <td align="right" valign="top">人均预算大概多少</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text" name="budget" id="budget"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;和谁一起度假</td>
+                  <td align="right" valign="top">和谁一起度假</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="holidayPartner" id="holidayPartner"></td>
                         <td width="36%" valign="top">和爱人一起蜜月游</td>
-                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="5%" valign="top"><input type="checkbox" name="holidayPartner" id="holidayPartner"></td>
                         <td width="54%" valign="top">和孩子一起亲子游</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayPartner" id="holidayPartner"></td>
                         <td valign="top">和闺蜜一起休闲游</td>
-                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top"><input type="checkbox" name="holidayPartner" id="holidayPartner"></td>
                         <td valign="top">和朋友一起开心游</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayPartner" id="holidayPartner"></td>
                         <td valign="top">和同事一起公司游</td>
                         <td valign="top">&nbsp;</td>
                         <td valign="top">&nbsp;</td>
@@ -157,36 +157,36 @@ color4
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;喜欢的度假风格</td>
+                  <td align="right" valign="top">&nbsp;喜欢的度假风格</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="holidayStyle" id="holidayStyle"></td>
                         <td width="36%" valign="top">休闲长草</td>
-                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="5%" valign="top"><input type="checkbox" name="holidayStyle" id="holidayStyle"></td>
                         <td width="54%" valign="top">异国文化</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayStyle" id="holidayStyle"></td>
                         <td valign="top">观光景点</td>
-                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top"><input type="checkbox" name="holidayStyle" id="holidayStyle"></td>
                         <td valign="top">综合，但别太累</td>
                       </tr>
                     </table></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;度假需要的元素</td>
+                  <td align="right" valign="top">&nbsp;度假需要的元素</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="holidayElement" id="holidayElement"></td>
                         <td width="36%" valign="top">私密独立私家定制一价全包</td>
-                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="5%" valign="top"><input type="checkbox" name="holidayElement" id="holidayElement"></td>
                         <td width="54%" valign="top">省心省力跟着领队全程随团</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayElement" id="holidayElement"></td>
                         <td valign="top">机票？酒店？一日游？单项自己组装</td>
                         <td valign="top">&nbsp;</td>
                         <td valign="top">&nbsp;</td>
@@ -195,23 +195,23 @@ color4
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;酒店式重要的风景</td>
+                  <td align="right" valign="top">酒店式重要的风景</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="holidayFavor" id="holidayFavor"></td>
                         <td width="36%" valign="top">大爱水上活动</td>
-                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="5%" valign="top"><input type="checkbox" name="holidayFavor" id="holidayFavor"></td>
                         <td width="54%" valign="top">吃货美食少不了</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayFavor" id="holidayFavor"></td>
                         <td valign="top">爱下午茶的静</td>
-                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top"><input type="checkbox" name="holidayFavor" id="holidayFavor"></td>
                         <td valign="top">探奇活动最精彩</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="holidayFavor" id="holidayFavor"></td>
                         <td valign="top">SPA、逛街我最爱</td>
                         <td valign="top">&nbsp;</td>
                         <td valign="top">&nbsp;</td>
@@ -220,23 +220,23 @@ color4
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top"><span class="error">*</span>&nbsp;去那儿干嘛呢？</td>
+                  <td align="right" valign="top">&nbsp;去那儿干嘛呢？</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="5%" height="35" valign="top"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                        <td width="5%" height="35" valign="top"><input type="checkbox" name="hotelStyle" id="hotelStyle"></td>
                         <td width="36%" valign="top">国家奢侈大品牌</td>
-                        <td width="5%" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                        <td width="5%" valign="top"><input type="checkbox" name="hotelStyle" id="hotelStyle"></td>
                         <td width="54%" valign="top">本地别致风格奢华</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="hotelStyle" id="hotelStyle"></td>
                         <td valign="top">国际连锁5星度假村</td>
-                        <td valign="top"><input type="checkbox" name="checkbox5" id="checkbox5"></td>
+                        <td valign="top"><input type="checkbox" name="hotelStyle" id="hotelStyle"></td>
                         <td valign="top">性价比本地4-5行酒店</td>
                       </tr>
                       <tr>
-                        <td height="35" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4"></td>
+                        <td height="35" valign="top"><input type="checkbox" name="hotelStyle" id="hotelStyle"></td>
                         <td valign="top">超值精品超值酒店</td>
                         <td valign="top">&nbsp;</td>
                         <td valign="top">&nbsp;</td>
@@ -245,7 +245,7 @@ color4
                         <td height="35" colspan="4">不能面面俱到，亲们喜欢啥自己留言哈：）</td>
                       </tr>
                       <tr>
-                        <td height="150" colspan="4"><textarea name="textarea" id="textarea"></textarea></td>
+                        <td height="150" colspan="4"><textarea name="remark" id="remark"></textarea></td>
                       </tr>
                     </table></td>
                 </tr>
@@ -253,19 +253,19 @@ color4
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;联系人</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text" class="required" name="linkman" id="linkman"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;联系人手机</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text"  class="required"name="mobile" id="mobile"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;邮箱</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" name="textfield3" id="textfield3"></td>
+                  <td valign="top"><input type="text" class="required" name="email" id="email"></td>
                 </tr>
                 <tr>
                   <td height="60" colspan="4" align="center" valign="middle"><a id="saveBtn" href="#">提交需求单</a></td>

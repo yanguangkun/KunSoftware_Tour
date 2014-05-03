@@ -35,7 +35,7 @@ color:${color4};
     <div class="bd">
       <ul>
         <#list galleryList as item>
-        <li><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></li>
+        <li><a href="${item.link}" target="_blank"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></a></li>
         </#list>
       </ul>
     </div>
@@ -50,7 +50,7 @@ color:${color4};
         <div class="content-m1-col3" style="background-image:url(${request.contextPath}/images/uploadDir${customizeImage!})">
           <div class="content-m1-s1">
             <div class="content-m1-s11">
-              <input style=" " placeholder="" name="" type="text">
+              <input id="chufa" placeholder="" name="chufa" type="text">
               <input type="hidden" name="destination" id="destination">
 、 <span class="phTxt"> 输入我的出发地 </span> </div>
           </div>
@@ -88,7 +88,7 @@ color:${color4};
         <#list smallgalleryList as item>
         <li>
         <img src="${request.contextPath}/images/uploadDir${item.imagePath!}" />
-        <div class="content-m1-col4"><a href="#">${item.title1}</a></div>
+        <div class="content-m1-col4"><a href="${item.link}" target="_blank">${item.title1}</a></div>
         </li>
         </#list>
       </ul>
@@ -103,16 +103,10 @@ color:${color4};
   <div class="main1 main-row1 main-bg2"></div>
   <div class="content-m2"  >
     <div class="content-m2-col1">
-      <div class="content-m2-col2" style="background-image:url(images/image5.jpg)">
+      <div class="content-m2-col2" style="background-image:url(${request.contextPath}/images/uploadDir${yamiDiary.indexImagePath!})">
       </div>
       <div class="content-m2-col3">
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你看过了许多美景<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你看过了许多美女<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你迷失在地图上没一道短暂的光阴<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你品尝了夜的巴黎<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你踏过下雪的北京<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你熟记书本里每一句最爱的真理<br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;却说不出你爱我的原因<br>
+       ${yamiDiary.content!}
       </div>
     </div>
     <div class="content-m2-col4"> 

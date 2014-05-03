@@ -75,6 +75,8 @@ color4
                   <div class="product-detail-s3 introduce <#if productIntroduce.expand?? && productIntroduce.expand=='0'>hide</#if>"> ${productIntroduce.introduce!} </div></td>
               </tr>
             </table>
+			
+			<#if (flightSegmentList?size >0)>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td height="10"></td>
@@ -102,6 +104,7 @@ color4
                   </div></td>
               </tr>
             </table>
+			</#if>
             <#list productIntroducelist as item>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
