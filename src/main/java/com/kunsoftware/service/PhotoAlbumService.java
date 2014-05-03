@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kunsoftware.bean.PhotoAlbumRequestBean;
 import com.kunsoftware.entity.PhotoAlbum;
+import com.kunsoftware.entity.PhotoAlbumTimeline;
+import com.kunsoftware.entity.PhotoAlbumTimelineContent;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.mapper.PhotoAlbumMapper;
 import com.kunsoftware.page.PageInfo;
@@ -24,6 +26,12 @@ private static Logger logger = LoggerFactory.getLogger(PhotoAlbumService.class);
 	
 	@Autowired
 	private PhotoAlbumMapper mapper;
+	
+	@Autowired
+	private PhotoAlbumTimelineService timelineService;	
+	
+	@Autowired
+	private PhotoAlbumTimelineContentService contentService;
 	
 	public List<PhotoAlbum> getPhotoAlbumListPage(String destination,String keyword,String frontDesk,PageInfo page) {
 		 
@@ -60,6 +68,12 @@ private static Logger logger = LoggerFactory.getLogger(PhotoAlbumService.class);
 		
 		PhotoAlbum photoAlbum = mapper.selectByIndexRecommend(indexRecommend);
 		if(photoAlbum == null) photoAlbum = new PhotoAlbum();
+		List<PhotoAlbumTimeline> timelineList = timelineService.getPhotoAlbumTimelineListAll(photoAlbum.getId());
+		for(PhotoAlbumTimeline timeline:timelineList) {
+			List<PhotoAlbumTimelineContent> contentList = contentService.getPhotoAlbumTimelineContentListAll(timeline.getId());
+			timeline.setContentList(contentList);
+		}
+		photoAlbum.setTimelineList(timelineList);
 		return photoAlbum;
 	}
 	

@@ -43,7 +43,7 @@ public class IndexController {
 		model.addAttribute("customizeImage", valueSetService.selectValueSetByCode("customize_image")); 
 		model.addAttribute("giftadLink", valueSetService.selectValueSetByCode("giftad_link")); 
 		model.addAttribute("giftadImage", valueSetService.selectValueSetByCode("giftad_image")); 
-		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
+		 
 		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
 		model.addAttribute("yamiDiary", yamiDiaryService.selectByIndexRcommend());
 		model.addAttribute("smallgalleryList", smallgalleryList); 
