@@ -11,12 +11,13 @@ define(function(require, exports, module) {
 	$(".destination").click(function(e) {
         $(".phTxt1").html($(this).text());
 		$(".destinationChild").hide();	
-		$("#destination").val($(this).attr("value"));
+		$("#destination").val($(this).text());
 		
     });
 	
 	$(".customizeBtn").click(function(e) {
-        location.href = "customize/info2?destination=" + $("#destination").val();	
+		 
+        location.href = "customize/info1?chufa="+$("#chufa").val() +"&destination=" + $("#destination").val();	
     });
 	
 	$(".destinationParent").mouseenter(function(e) {

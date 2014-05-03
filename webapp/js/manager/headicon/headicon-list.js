@@ -3,6 +3,7 @@ define(function(require, exports, module) {
 	var $ = require('jquery'); 
 	require('bootstrap')($); 
 	require('page'); 
+	require('jquery-form')($); 
 	$(document).ready(function(){  
 		$(".editBtn").click(function(e) {
             var idLength = $("input[name='id']:checked").length;
@@ -13,9 +14,8 @@ define(function(require, exports, module) {
 		
 		$(".delBtn").click(function(e) {
 			var idLength = $("input[name='id']:checked").length;
-			if(idLength <= 0) {alert("请选择一个进行操作!");return} 
+			if(idLength <= 0) {alert("请选择一个进行操作!");return}  
 			
-			 
 			$("#controlForm").attr("action","del.json");
 			$("#controlForm").ajaxSubmit({
 				dataType:'json', 

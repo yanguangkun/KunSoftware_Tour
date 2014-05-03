@@ -7,6 +7,7 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('datepicker');
 	require('cascade'); 
+	require('placeholder');  
 	var lockscreen = require('lockscreen');
 	  
 	$(document).ready(function(){ 
@@ -14,11 +15,18 @@ define(function(require, exports, module) {
 		
 		$(".nextBtn").click(function(e) { 
 			
-			var check = validate.form();  
-			if(check) {
-				lockscreen.lock();
-			} 
-			$("#buyFrm").submit();
+			$.getJSON("checkLogin.json" , function (data, textStatus){  
+				if(data.isLogin == "0") {
+					alert(data.message);
+					return;
+				} 
+				
+				var check = validate.form();  
+				if(check) {
+					lockscreen.lock();
+				} 
+				$("#buyFrm").submit();
+			}); 
         });
 		 
 		$(".backBtn").click(function(e) { 

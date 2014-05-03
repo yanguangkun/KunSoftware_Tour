@@ -92,36 +92,43 @@ define(function(require, exports, module) {
 		
 		$("#ordersBtn").click(function(e) {
             
-			if($("#tplId").val() == "") {
-				alert("请选择类别!");
-				return false;
-			}
-			
-			if($("#cheduleMonth").val() == "") {
-				alert("请选择预订月份!");
-				return false;
-			}
-			
-			if($("#cheduleDay").val() == "") {
-				alert("请选择预订日期!");
-				return false;
-			}
-			
-			if($("#combo").val() == "0") {
-				if($("#priceNum").val() == "") {
-					alert("请输入预订数量!");
+			$.getJSON("checkLogin.json" , function (data, textStatus){  
+				if(data.isLogin == "0") {
+					alert(data.message);
+					return false;
+				} 
+				
+				if($("#tplId").val() == "") {
+					alert("请选择类别!");
 					return false;
 				}
-			} else {
-				if($("#num1").val() == "0" && $("#num2").val() == "0" && 
-				$("#num3").val() == "0" && $("#num4").val() == "0") {
-					alert("请选择出行人数!");
+				
+				if($("#cheduleMonth").val() == "") {
+					alert("请选择预订月份!");
 					return false;
 				}
-			}
-			
-			$("#priceFrm").attr("action","buy"); 
-			$("#priceFrm").submit();
+				
+				if($("#cheduleDay").val() == "") {
+					alert("请选择预订日期!");
+					return false;
+				}
+				
+				if($("#combo").val() == "0") {
+					if($("#priceNum").val() == "") {
+						alert("请输入预订数量!");
+						return false;
+					}
+				} else {
+					if($("#num1").val() == "0" && $("#num2").val() == "0" && 
+					$("#num3").val() == "0" && $("#num4").val() == "0") {
+						alert("请选择出行人数!");
+						return false;
+					}
+				}
+				
+				$("#priceFrm").attr("action","buy"); 
+				$("#priceFrm").submit();
+			}); 
 			
 			return false;
         });

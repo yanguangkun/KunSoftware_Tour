@@ -16,9 +16,9 @@ define(function(require, exports, module) {
 			$("#listMore").ajaxSubmit({
 				dataType:'json', 
 				success:function(data) { 
+					if(data.totalPages == "1") return;
 					$("#productList").append(data.result);
 					totalPages = data.totalPages;
-					 
 				}
 			});
 		});
@@ -83,9 +83,19 @@ define(function(require, exports, module) {
 				'content':$("#content").val()	
 			},function(data) {
 				alert(data.message); 
+				$.getJSON("questions.json?destination=" + $("#destination").val() + "&banner=" + $("#banner").val()+ "&r=" + Math.random() , function (data, textStatus){  
+					$(".questionsInfo").html(data.result); 
+				});
 			},"json");
 			
 			return false;
+        });
+		
+		$(".somePraise").click(function(e) {
+			var that = this;
+			$.getJSON("praise.json?id=" + $(this).attr("value"), function (data, textStatus){   
+				$(that).parent().find(".somePraiseV").html(data.somePraise);
+			}); 
         });
 		 
 	}); 

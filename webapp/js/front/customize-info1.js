@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 	var lockscreen = require('lockscreen');
 	$(document).ready(function(){ 
 		 var validate =  $("#saveFrm").validate({ 
-			submitHandler: function(form) { 
+			submitHandler: function(form) {
 				$(form).ajaxSubmit({
 					dataType:'json', 
 					success:function(data) {
@@ -27,7 +27,7 @@ define(function(require, exports, module) {
 			if(check) {
 				lockscreen.lock();
 			} 
-			//$("#saveFrm").submit();
+			$("#saveFrm").submit();
 			return false;
         });
 		

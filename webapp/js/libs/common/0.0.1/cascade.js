@@ -37,7 +37,7 @@ define(function(require, exports, module) {
 							$(data.cascadeId).empty();
 							$(data.cascadeId).append("<option value=\"\">-请选择-</option>");
 							$(data.cascadeId).append(data.result);
-							if($(data.cascadeId).attr("cascadeTrigger") == "true") {alert(data.cascadeId);
+							if($(data.cascadeId).attr("cascadeTrigger") == "true") {
 								$(data.cascadeId).trigger();
 							}
 						}

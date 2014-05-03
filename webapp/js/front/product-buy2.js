@@ -7,21 +7,11 @@ define(function(require, exports, module) {
 	require('jquery-form')($); 
 	require('datepicker');
 	require('cascade'); 
+	require('placeholder');  
 	var lockscreen = require('lockscreen');
 	  
 	$(document).ready(function(){ 
-		 var validate =  $("#buyFrm").validate({ 
-		 
-			submitHandler: function(form) { 
-				$(form).ajaxSubmit({
-					dataType:'json', 
-					success:function(data) {
-						alert(data.message); 
-						lockscreen.unLock();
-					}
-				});
-			}	
-		}); 
+		 var validate =  $("#buyFrm").validate(); 
 		 
 		
 		$(".nextBtn").click(function(e) { 
