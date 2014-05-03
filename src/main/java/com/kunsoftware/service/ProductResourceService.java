@@ -46,7 +46,7 @@ public class ProductResourceService {
 		
 		ProductResource record = new ProductResource();
 		BeanUtils.copyProperties(requestBean, record);
-		
+		record.setSomePraise(0);
 		mapper.insert(record);
 		return record;
 	}
