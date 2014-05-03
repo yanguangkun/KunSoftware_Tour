@@ -16,6 +16,7 @@ define(function(require, exports, module) {
 			$("#listMore").ajaxSubmit({
 				dataType:'json', 
 				success:function(data) { 
+					if(data.totalPages == "1") return;
 					$("#productList").append(data.result);
 					totalPages = data.totalPages;
 					 
@@ -55,8 +56,7 @@ define(function(require, exports, module) {
 			return false;
         }); 
 		
-		$(".somePraise").click(function(e) {
-			 
+		$(document).on("click",".somePraise",function(e) {
 			var that = this;
 			$.getJSON("praise.json?id=" + $(this).attr("value"), function (data, textStatus){   
 				$(that).parent().find(".somePraiseV").html(data.somePraise);
@@ -64,6 +64,14 @@ define(function(require, exports, module) {
         });
 	}); 
 	 
+	$(".indexDestination").mouseenter(function(e) {
+        $(".arr").show();
+		$(".indexDestinationList").show();
+    });
 	
+	$(".indexDestination").mouseleave(function(e) {
+        $(".arr").hide();
+		$(".indexDestinationList").hide();
+    });
 	
 });

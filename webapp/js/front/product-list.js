@@ -91,7 +91,7 @@ define(function(require, exports, module) {
 			return false;
         });
 		
-		$(".somePraise").click(function(e) {
+		$(document).on("click",".somePraise",function(e) {
 			var that = this;
 			$.getJSON("praise.json?id=" + $(this).attr("value"), function (data, textStatus){   
 				$(that).parent().find(".somePraiseV").html(data.somePraise);
