@@ -49,6 +49,11 @@ private static Logger logger = LoggerFactory.getLogger(HeadIconTitleService.clas
 		return mapper.selectByPrimaryKey(id);
 	}
 	
+	public HeadIconTitle selectMemberInfo() throws KunSoftwareException {
+		
+		return mapper.selectMemberInfo();
+	}
+	
 	@Transactional
 	public int updateByPrimaryKey(HeadIconTitleRequestBean requestBean,Integer id) throws KunSoftwareException {
 		

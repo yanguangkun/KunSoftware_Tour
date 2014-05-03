@@ -12,9 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kunsoftware.bean.BuyBean;
+import com.kunsoftware.bean.CommentsRequestBean;
+import com.kunsoftware.bean.JsonBean;
 import com.kunsoftware.controller.BaseController;
+import com.kunsoftware.entity.Comments;
 import com.kunsoftware.entity.FlightChedule;
 import com.kunsoftware.entity.FlightChedulePlan;
 import com.kunsoftware.entity.FlightChedulePrice;
@@ -28,6 +32,7 @@ import com.kunsoftware.service.FlightCheduleService;
 import com.kunsoftware.service.OrdersService;
 import com.kunsoftware.service.ProductResourceService;
 import com.kunsoftware.service.ValueSetService;
+import com.kunsoftware.util.WebUtil;
 
 @Controller 
 @RequestMapping("/product")
@@ -51,11 +56,13 @@ public class FrontBuyController extends BaseController {
 	private FlightChedulePlanService flightChedulePlanService;
 	
 	@Autowired
-	private ValueSetService valueSetService;
+	private ValueSetService valueSetService; 
 	
 	@RequestMapping("/buy")
 	public String buy(ModelMap model,BuyBean buyBean) throws KunSoftwareException {
-		 
+		
+		
+		
 		logger.info("购买");  
 		ProductResource productResource = productResourceService.selectByPrimaryKey(buyBean.getId());
 		
@@ -175,11 +182,12 @@ public class FrontBuyController extends BaseController {
 		List retList = new ArrayList();
 		OrdersDetail ordersDetail = null;
 		double allTotal = 0;
+		Integer flightChedulePlanPriceId = null;
 		if("1".equals(productResource.getCombo())) {
 			FlightChedulePlan flightChedulePlan = flightChedulePlanService.selectByFlightCheduleId(flightChedule.getId(), new Integer(buyBean.getTplId()));
 			model.addAttribute("name", flightChedulePlan.getName()); 
 			model.addAttribute("decribe", flightChedulePlan.getPlanDescribe()); 
-			
+			flightChedulePlanPriceId = flightChedulePlan.getId();
 			if(buyBean.getNum1() > 0) {
 				ordersDetail = new OrdersDetail();
 				ordersDetail.setName(flightChedulePlan.getName());
@@ -234,6 +242,7 @@ public class FrontBuyController extends BaseController {
 			}
 		} else {
 			FlightChedulePrice flightChedulePrice = flightChedulePriceService.selectByFlightCheduleId(flightChedule.getId(), new Integer(buyBean.getTplId()));
+			flightChedulePlanPriceId = flightChedulePrice.getId();
 			model.addAttribute("name", flightChedulePrice.getName()); 
 			model.addAttribute("decribe", flightChedulePrice.getPriceDescribe()); 
 			if(buyBean.getNum6() > 0) {
@@ -247,6 +256,7 @@ public class FrontBuyController extends BaseController {
 			}
 		} 
 		
+		buyBean.setFlightChedulePlanPriceId(flightChedulePlanPriceId);
 		Orders orders = service.insertMemberOrder(buyBean, productResource, flightChedule, retList);
 		 
 		model.addAttribute("orders",orders);

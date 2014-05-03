@@ -272,4 +272,11 @@
     
     order by pr.order_value ASC, pr.id DESC
   </select>
+  
+  <select id="getCommentCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select 
+    count(id)
+    from comments where 1=1  
+    AND product_resource_id = #{productResourceId,jdbcType=INTEGER} 
+  </select>
 </mapper>

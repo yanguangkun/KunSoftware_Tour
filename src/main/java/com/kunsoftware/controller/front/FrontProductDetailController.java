@@ -248,4 +248,21 @@ public class FrontProductDetailController extends BaseController {
 		jsonBean.setMessage("操作成功"); 	 
 		return jsonBean;
 	}
+	
+
+	@RequestMapping(value="/checkLogin.json")
+	@ResponseBody 
+	public JsonBean checkLogin(CommentsRequestBean requestBean) throws KunSoftwareException {
+		 
+		JsonBean jsonBean = new JsonBean();
+		if(WebUtil.getMemberId() == null) {
+			jsonBean.setMessage("请登录后再评论。"); 
+			jsonBean.put("isLogin", "0");
+			return jsonBean;
+		}
+		 
+		jsonBean.put("isLogin", "1");
+		jsonBean.setMessage("操作成功"); 	 
+		return jsonBean;
+	}
 }

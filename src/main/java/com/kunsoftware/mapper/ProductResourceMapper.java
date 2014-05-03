@@ -24,4 +24,6 @@ public interface ProductResourceMapper {
     int updateByPrimaryKey(ProductResource record);
     
     List<ProductResource> getProductResourceListPage(@Param("bean") ProductResourceRequestBean bean,@Param("page") PageInfo page);
+    
+    int updateSomePraise(@Param("id") Integer id);
 }

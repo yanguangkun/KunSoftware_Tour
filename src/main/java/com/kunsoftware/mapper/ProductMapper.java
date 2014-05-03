@@ -30,4 +30,6 @@ public interface ProductMapper {
     List<ValueSet> getValueSetListByType(@Param("type") String type);
     
     List<HashMap> getProductResourceListPage(@Param("bean") ProductResourceRequestBean bean,@Param("page") PageInfo page);
+    
+    int getCommentCount(Integer productResourceId); 
 }

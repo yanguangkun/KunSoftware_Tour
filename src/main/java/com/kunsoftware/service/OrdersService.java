@@ -135,7 +135,7 @@ public class OrdersService {
 		record.setProductId(productResource.getId().toString());
 		record.setProductName(productResource.getName());
 		record.setFlightCheduleId(flightChedule.getId());
-		record.setFlightChedulePlanPriceId(buyBean.getTplId());
+		record.setFlightChedulePlanPriceId(buyBean.getFlightChedulePlanPriceId());
 		record.setStatus("1");
 		record.setSource("2");
 		record.setType(productResource.getProductType());

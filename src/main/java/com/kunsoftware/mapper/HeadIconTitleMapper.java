@@ -25,4 +25,6 @@ public interface HeadIconTitleMapper {
     List<ValueSet> selectValueSetList(@Param("type") String type);
     
     List<ValueSet> getValueSetListBySex(@Param("type") String type,@Param("sex") String sex);
+    
+    HeadIconTitle selectMemberInfo();
 }

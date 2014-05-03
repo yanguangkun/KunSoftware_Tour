@@ -7,9 +7,9 @@ public class Requirement {
 
     private String startCountry;
 
-    private Integer arriveDestination;
+    private String arriveDestination;
 
-    private Integer membership;
+    private String membership;
 
     private String startTime;
 
@@ -57,23 +57,24 @@ public class Requirement {
         this.startCountry = startCountry;
     }
 
-    public Integer getArriveDestination() {
-        return arriveDestination;
-    }
 
-    public void setArriveDestination(Integer arriveDestination) {
-        this.arriveDestination = arriveDestination;
-    }
+    public String getArriveDestination() {
+		return arriveDestination;
+	}
 
-    public Integer getMembership() {
-        return membership;
-    }
+	public void setArriveDestination(String arriveDestination) {
+		this.arriveDestination = arriveDestination;
+	}
 
-    public void setMembership(Integer membership) {
-        this.membership = membership;
-    }
+	public String getMembership() {
+		return membership;
+	}
 
-    public String getStartTime() {
+	public void setMembership(String membership) {
+		this.membership = membership;
+	}
+
+	public String getStartTime() {
         return startTime;
     }
 

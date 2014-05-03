@@ -45,7 +45,7 @@ public class FrontQuestionsController extends BaseController {
 	private MemberService memberService;
 	
 	@Autowired
-	private HeadIconTitleService headIconTitleService;
+	private HeadIconTitleService headIconTitleService; 
 	
 	@Autowired
 	private FreeMarkerConfigurer freeMarkerConfigurer = null;  
@@ -66,13 +66,27 @@ public class FrontQuestionsController extends BaseController {
 				Member member = memberService.selectByPrimaryKey(questions.getMemberId());
 				if(member != null && member.getHeadIconId() != null) {
 					HeadIconTitle headIconTitle = headIconTitleService.selectByPrimaryKey(member.getHeadIconId());
+					HeadIconTitle headTitle = headIconTitleService.selectByPrimaryKey(member.getHeadTitleId());
 					if(headIconTitle != null) { 
-						questions.setMemberImagePath("/images/uploadDir" + headIconTitle.getName()); 						
+						questions.setMemberImagePath("/images/uploadDir" + headIconTitle.getName());						 
+					}
+					
+					if(headTitle != null) {
+						questions.setMemberUserName(headTitle.getName());
+					}
+					
+				} else {
+					HeadIconTitle headIconTitle = headIconTitleService.selectMemberInfo();
+					if(headIconTitle != null) {
+						questions.setMemberImagePath("/images/uploadDir" + headIconTitle.getName()); 
 					}
 				}
 				
 				if(StringUtils.isEmpty(questions.getMemberImagePath())) {
 					questions.setMemberImagePath("/images/yami.jpg");
+				}
+				if(StringUtils.isEmpty(questions.getMemberUserName())) {
+					questions.setMemberUserName("路人");
 				}
 			}			
 			

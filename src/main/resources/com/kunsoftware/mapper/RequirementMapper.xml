@@ -5,8 +5,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="start_country" property="startCountry" jdbcType="VARCHAR" />
-    <result column="arrive_destination" property="arriveDestination" jdbcType="INTEGER" />
-    <result column="membership" property="membership" jdbcType="INTEGER" />
+    <result column="arrive_destination" property="arriveDestination" jdbcType="VARCHAR" />
+    <result column="membership" property="membership" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="VARCHAR" />
     <result column="holiday_partner" property="holidayPartner" jdbcType="VARCHAR" />
     <result column="holiday_style" property="holidayStyle" jdbcType="VARCHAR" />
@@ -42,7 +42,7 @@
       remark, linkman, mobile, 
       email)
     values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, 
-      #{arriveDestination,jdbcType=INTEGER}, #{membership,jdbcType=INTEGER}, #{startTime,jdbcType=VARCHAR}, 
+      #{arriveDestination,jdbcType=VARCHAR}, #{membership,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
       #{holidayPartner,jdbcType=VARCHAR}, #{holidayStyle,jdbcType=VARCHAR}, #{holidayElement,jdbcType=VARCHAR}, 
       #{holidayFavor,jdbcType=VARCHAR}, #{hotelStyle,jdbcType=VARCHAR}, #{budget,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
@@ -111,10 +111,10 @@
         #{startCountry,jdbcType=VARCHAR},
       </if>
       <if test="arriveDestination != null" >
-        #{arriveDestination,jdbcType=INTEGER},
+        #{arriveDestination,jdbcType=VARCHAR},
       </if>
       <if test="membership != null" >
-        #{membership,jdbcType=INTEGER},
+        #{membership,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
         #{startTime,jdbcType=VARCHAR},
@@ -161,10 +161,10 @@
         start_country = #{startCountry,jdbcType=VARCHAR},
       </if>
       <if test="arriveDestination != null" >
-        arrive_destination = #{arriveDestination,jdbcType=INTEGER},
+        arrive_destination = #{arriveDestination,jdbcType=VARCHAR},
       </if>
       <if test="membership != null" >
-        membership = #{membership,jdbcType=INTEGER},
+        membership = #{membership,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
         start_time = #{startTime,jdbcType=VARCHAR},
@@ -206,8 +206,8 @@
     update requirement
     set status = #{status,jdbcType=VARCHAR},
       start_country = #{startCountry,jdbcType=VARCHAR},
-      arrive_destination = #{arriveDestination,jdbcType=INTEGER},
-      membership = #{membership,jdbcType=INTEGER},
+      arrive_destination = #{arriveDestination,jdbcType=VARCHAR},
+      membership = #{membership,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=VARCHAR},
       holiday_partner = #{holidayPartner,jdbcType=VARCHAR},
       holiday_style = #{holidayStyle,jdbcType=VARCHAR},

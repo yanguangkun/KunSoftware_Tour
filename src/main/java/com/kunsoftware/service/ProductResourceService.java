@@ -61,6 +61,7 @@ public class ProductResourceService {
 		
 		ProductResource record = mapper.selectByPrimaryKey(id); 
 		BeanUtils.copyProperties(requestBean, record);
+		if(record.getFlightId() == null) record.setFlightId(-1);
 		 
 		return mapper.updateByPrimaryKeySelective(record);
 	}	 
@@ -176,5 +177,11 @@ public class ProductResourceService {
 		} else {
 			return (int) (temp / (24 * 60 * 60 * 1000)) - 1;
 		}
+	}
+	
+	@Transactional
+	public int updateSomePraise(Integer id) throws KunSoftwareException {
+	 
+		return mapper.updateSomePraise(id);
 	}
 }

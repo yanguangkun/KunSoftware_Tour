@@ -12,6 +12,7 @@ import com.kunsoftware.entity.Gallery;
 import com.kunsoftware.service.GalleryService;
 import com.kunsoftware.service.PhotoAlbumService;
 import com.kunsoftware.service.ValueSetService;
+import com.kunsoftware.service.YamiDiaryService;
 
 @Controller
 public class IndexController {
@@ -24,6 +25,9 @@ public class IndexController {
 	
 	@Autowired
 	private PhotoAlbumService photoAlbumService;
+	
+	@Autowired
+	private YamiDiaryService yamiDiaryService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
@@ -40,6 +44,8 @@ public class IndexController {
 		model.addAttribute("giftadLink", valueSetService.selectValueSetByCode("giftad_link")); 
 		model.addAttribute("giftadImage", valueSetService.selectValueSetByCode("giftad_image")); 
 		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
+		model.addAttribute("photoAlbum", photoAlbumService.selectByIndexRecommend("1")); 
+		model.addAttribute("yamiDiary", yamiDiaryService.selectByIndexRcommend());
 		model.addAttribute("smallgalleryList", smallgalleryList); 
 		
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());

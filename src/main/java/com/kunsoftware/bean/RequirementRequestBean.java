@@ -6,9 +6,9 @@ public class RequirementRequestBean {
 
     private String startCountry;
 
-    private Integer arriveDestination;
+    private String arriveDestination;
 
-    private Integer membership;
+    private String membership;
 
     private String startTime;
 
@@ -47,20 +47,21 @@ public class RequirementRequestBean {
 	public void setStartCountry(String startCountry) {
 		this.startCountry = startCountry;
 	}
+ 
 
-	public Integer getArriveDestination() {
+	public String getArriveDestination() {
 		return arriveDestination;
 	}
 
-	public void setArriveDestination(Integer arriveDestination) {
+	public void setArriveDestination(String arriveDestination) {
 		this.arriveDestination = arriveDestination;
 	}
 
-	public Integer getMembership() {
+	public String getMembership() {
 		return membership;
 	}
 
-	public void setMembership(Integer membership) {
+	public void setMembership(String membership) {
 		this.membership = membership;
 	}
 

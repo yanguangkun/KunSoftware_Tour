@@ -8,6 +8,8 @@ public class BuyBean {
 	
 	private Integer tplId;
 	
+	private Integer flightChedulePlanPriceId;
+	
 	private String cheduleMonth;
 	
 	private String cheduleDay;
@@ -54,6 +56,14 @@ public class BuyBean {
 
 	public Integer getTplId() {
 		return tplId;
+	}
+
+	public Integer getFlightChedulePlanPriceId() {
+		return flightChedulePlanPriceId;
+	}
+
+	public void setFlightChedulePlanPriceId(Integer flightChedulePlanPriceId) {
+		this.flightChedulePlanPriceId = flightChedulePlanPriceId;
 	}
 
 	public void setTplId(Integer tplId) {

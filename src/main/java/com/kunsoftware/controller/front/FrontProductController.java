@@ -20,6 +20,7 @@ import com.kunsoftware.bean.ProductResourceRequestBean;
 import com.kunsoftware.controller.BaseController;
 import com.kunsoftware.entity.Destination;
 import com.kunsoftware.entity.Ground;
+import com.kunsoftware.entity.ProductResource;
 import com.kunsoftware.entity.ValueSet;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
@@ -28,6 +29,7 @@ import com.kunsoftware.service.DestinationService;
 import com.kunsoftware.service.GalleryService;
 import com.kunsoftware.service.GroundService;
 import com.kunsoftware.service.GroundTagService;
+import com.kunsoftware.service.ProductResourceService;
 import com.kunsoftware.service.ProductService;
 import com.kunsoftware.service.ValueSetService;
 import com.kunsoftware.util.WebUtil;
@@ -60,6 +62,9 @@ public class FrontProductController extends BaseController {
 	   
 	@Autowired
 	private ValueSetService valueSetService;
+	
+	@Autowired
+	private ProductResourceService productResourceService;
 	
 	@RequestMapping("/list")
 	public String listProduct(ModelMap model,ProductResourceRequestBean requestBean,PageInfo pageInfo) throws KunSoftwareException {
@@ -246,5 +251,18 @@ public class FrontProductController extends BaseController {
 		} catch(Exception e) {
 			throw new KunSoftwareException(e);
 		}
+	}
+	
+	@RequestMapping(value="/praise.json")
+	@ResponseBody 
+	public JsonBean somePraise(Integer id) throws KunSoftwareException {
+		
+		productResourceService.updateSomePraise(id);
+		JsonBean jsonBean = new JsonBean();
+		 
+		ProductResource productResource = productResourceService.selectByPrimaryKey(id);
+		jsonBean.setMessage("操作成功");
+		jsonBean.put("somePraise", productResource.getSomePraise());
+		return jsonBean;
 	}
 }

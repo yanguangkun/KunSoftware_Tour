@@ -398,4 +398,10 @@
     
     order by order_value ASC, id DESC
   </select>
+  
+  <update id="updateSomePraise" parameterType="com.kunsoftware.entity.ProductResource" >
+    update product_resource
+    set some_praise = some_praise+1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

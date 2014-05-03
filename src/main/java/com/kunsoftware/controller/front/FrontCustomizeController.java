@@ -8,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.druid.util.StringUtils;
+import com.kunsoftware.bean.JsonBean;
+import com.kunsoftware.bean.RequirementRequestBean;
 import com.kunsoftware.controller.BaseController;
 import com.kunsoftware.entity.Customize;
+import com.kunsoftware.entity.Requirement;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.page.PageUtil;
 import com.kunsoftware.service.CustomizeService;
+import com.kunsoftware.service.RequirementService;
 import com.kunsoftware.service.ValueSetService;
 
 @Controller 
@@ -29,12 +35,37 @@ public class FrontCustomizeController extends BaseController {
 	@Autowired
 	private CustomizeService customizeService;
 	
+	@Autowired
+	private RequirementService service;
+	
 	@RequestMapping("/info1")
-	public String info1(ModelMap model) throws KunSoftwareException {
+	public String info1(ModelMap model,String chufa,String destination) throws KunSoftwareException {
 		 
+		if(StringUtils.isEmpty(chufa)) {
+			chufa = "上海";
+		}
+		
+		if(StringUtils.isEmpty(destination)) {
+			destination = "巴厘岛";
+		}
+		
 		logger.info("私家定制");
+		model.addAttribute("chufa", chufa);
+		model.addAttribute("destination", destination);
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/customize-info1";
+	}
+	
+	@RequestMapping("/info1-save.json")
+	@ResponseBody 
+	public JsonBean info1Save(ModelMap model,RequirementRequestBean requestBean) throws KunSoftwareException {
+		 
+		logger.info("保存需求单");  
+		Requirement entity = service.insert(requestBean);		
+		JsonBean jsonBean = new JsonBean();
+		jsonBean.put("id", entity.getId());
+		jsonBean.setMessage("操作成功"); 		 
+		return jsonBean;
 	}
 
 	@RequestMapping("/info2")

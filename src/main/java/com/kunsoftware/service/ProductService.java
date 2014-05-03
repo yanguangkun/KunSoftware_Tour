@@ -1,6 +1,7 @@
 package com.kunsoftware.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
@@ -38,10 +39,19 @@ public class ProductService {
 		return mapper.getProductListPage(arriveProduct,type,page);
 	}
 	
-	public List getProductResourceListPage(ProductResourceRequestBean requestBean,PageInfo page) {
+	public List getProductResourceListPage(ProductResourceRequestBean requestBean,PageInfo page) throws KunSoftwareException {
 		
 		logger.info("query");
-		return mapper.getProductResourceListPage(requestBean,page);
+		List list = mapper.getProductResourceListPage(requestBean,page);
+		Map map = null;
+		Integer productResourceId = null;
+		for(int i = 0;i < list.size();i++) {
+			map = (Map)list.get(i);
+			productResourceId = (Integer)map.get("id");
+			map.put("commentCount", getCommentCount(productResourceId));
+		}
+		
+		return list;
 	}
 	 
 	@Transactional
@@ -89,5 +99,10 @@ public class ProductService {
 		for(int i = 0;i < id.length;i++) {
 			mapper.deleteByPrimaryKey(id[i]);
 		} 
+	}
+	
+	 
+	public int getCommentCount(Integer productResourceId) throws KunSoftwareException {
+		return mapper.getCommentCount(productResourceId);
 	}
 }

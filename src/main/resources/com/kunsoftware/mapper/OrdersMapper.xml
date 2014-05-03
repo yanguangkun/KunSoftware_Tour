@@ -44,7 +44,7 @@
     delete from orders
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.kunsoftware.entity.Orders" >
+  <insert id="insert" parameterType="com.kunsoftware.entity.Orders" useGeneratedKeys="true"  keyProperty="id">
     insert into orders (id, product_id, product_name, 
       flight_chedule_id, arrive_country, arrive_destination, 
       source, type, code, 
