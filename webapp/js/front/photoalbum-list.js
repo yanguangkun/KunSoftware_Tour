@@ -20,6 +20,8 @@ define(function(require, exports, module) {
 		$(document).on("click",".photoalbumTarget .photoalbumTimeline .s5",function() {
 			$(".photoalbumBody .timeline-content-item").hide();
 			var target = $(this).attr("value");
+			$(".photoalbumTarget .photoalbumTimeline .s5").removeClass("cur");
+			$(this).addClass("cur");
 			
 			$(".photoalbumBody").find(target).show();
 		});
