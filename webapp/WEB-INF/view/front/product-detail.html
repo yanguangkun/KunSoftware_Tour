@@ -150,8 +150,8 @@ color4
               <div class="product-detail-left-s6">
               
               <ul>
-                <#list monthStart..monthEnd as n>
-                   <li class="product-month ${item.selected!}" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
+                <#list monthList as item>
+                   <li class="product-month ${item.selected!}" value="${item.startMonth}"><a href="#">${item.startMonth}</a><div class="s1"></div></li>
                 </#list> 
               </ul> 
               </div>
@@ -165,7 +165,7 @@ color4
               </div>
               <div class="product-detail-left-s4">请输入预订数量：</div>
               <div class="product-detail-left-s7">
-                <input type="text" name="priceNum" id="priceNum">
+                <input type="text" name="priceNum" id="priceNum" value="${buyBean.num6!}">
                 ${chargeUnit!}</div>
               <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
               <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
@@ -216,13 +216,13 @@ color4
                     <td width="13%" height="30"> 
                       <select name="sNum1" id="sNum1" class="num" target="#num1">
                         <#list 0..10 as n> 
-                        <option value="${n}" <#if n==buyBean.num1>selected="selected"</#if>>${n}</option>
+                        <option value="${n}" <#if buyBean.num1?? && n==buyBean.num1>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td width="33%">成人</td>
                     <td width="13%"><select name="sNum2" id="sNum2" class="num" target="#num2">
                         <#list 0..10 as n> 
-                        <option value="${n}" <#if n==buyBean.num2>selected="selected"</#if>>${n}</option>
+                        <option value="${n}" <#if buyBean.num2?? &&  n==buyBean.num2>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td width="41%">儿童占床</td>
@@ -230,13 +230,13 @@ color4
                   <tr>
                     <td height="30"><select name="sNum3" id="sNum3" class="num" target="#num3">
                         <#list 0..10 as n> 
-                        <option value="${n}" <#if n==buyBean.num3>selected="selected"</#if>>${n}</option>
+                        <option value="${n}" <#if buyBean.num3?? && n==buyBean.num3>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td>成人加床</td>
                     <td><select name="sNum4" id="sNum4" class="num" target="#num4">
                         <#list 0..10 as n> 
-                        <option value="${n}" <#if n==buyBean.num4>selected="selected"</#if>>${n}</option>
+                        <option value="${n}" <#if buyBean.num4?? && n==buyBean.num4>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td>儿童不占床</td>
