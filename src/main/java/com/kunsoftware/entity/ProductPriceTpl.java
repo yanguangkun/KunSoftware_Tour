@@ -19,6 +19,8 @@ public class ProductPriceTpl {
 
     private String remark;
 
+    private String selected;
+    
     public Integer getId() {
         return id;
     }
@@ -82,4 +84,14 @@ public class ProductPriceTpl {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+	public String getSelected() {
+		return selected;
+	}
+
+	public void setSelected(String selected) {
+		this.selected = selected;
+	}
+    
+    
 }

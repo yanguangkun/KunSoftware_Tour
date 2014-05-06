@@ -62,8 +62,8 @@ public class FlightCheduleService {
 		} 
 	}
 	
-	public List getFlightCheduleListAll(Integer productResourceId) {
-		return mapper.getFlightCheduleListAll(productResourceId);
+	public List getFlightCheduleListAll(Integer productResourceId,String startMonth) {
+		return mapper.getFlightCheduleListAll(productResourceId,startMonth);
 	}
 	
 	public FlightChedule selectByResource(Integer productResourceId,String startDate) {

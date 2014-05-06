@@ -27,6 +27,7 @@
     <result column="marry_recommend" property="marryRecommend" jdbcType="VARCHAR" />
     <result column="combo" property="combo" jdbcType="VARCHAR" />
     <result column="some_praise" property="somePraise" jdbcType="INTEGER" />
+    <result column="custom_made" property="customMade" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.kunsoftware.entity.ProductResource" extends="BaseResultMap" >
     <result column="tag" property="tag" jdbcType="LONGVARCHAR" />
@@ -35,7 +36,7 @@
     id, name, start_country, start_city, arrive_country, arrive_city, arrive_destination, 
     product_type, product_id, flight_id, ground_id, travel_days, stay_days, early_days, 
     order_value, standard_price, interact_recommend, whether_shelf, flight_chedule_start, 
-    flight_chedule_end, week, sale_price, marry_recommend, combo, some_praise
+    flight_chedule_end, week, sale_price, marry_recommend, combo, some_praise, custom_made
   </sql>
   <sql id="Blob_Column_List" >
     tag
@@ -61,7 +62,8 @@
       standard_price, interact_recommend, whether_shelf, 
       flight_chedule_start, flight_chedule_end, week, 
       sale_price, marry_recommend, combo, 
-      some_praise, tag)
+      some_praise, custom_made, tag
+      )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{startCountry,jdbcType=VARCHAR}, 
       #{startCity,jdbcType=VARCHAR}, #{arriveCountry,jdbcType=VARCHAR}, #{arriveCity,jdbcType=VARCHAR}, 
       #{arriveDestination,jdbcType=INTEGER}, #{productType,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, 
@@ -70,7 +72,8 @@
       #{standardPrice,jdbcType=INTEGER}, #{interactRecommend,jdbcType=VARCHAR}, #{whetherShelf,jdbcType=VARCHAR}, 
       #{flightCheduleStart,jdbcType=DATE}, #{flightCheduleEnd,jdbcType=DATE}, #{week,jdbcType=VARCHAR}, 
       #{salePrice,jdbcType=VARCHAR}, #{marryRecommend,jdbcType=VARCHAR}, #{combo,jdbcType=VARCHAR}, 
-      #{somePraise,jdbcType=INTEGER}, #{tag,jdbcType=LONGVARCHAR})
+      #{somePraise,jdbcType=INTEGER}, #{customMade,jdbcType=VARCHAR}, #{tag,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.kunsoftware.entity.ProductResource" >
     insert into product_resource
@@ -149,6 +152,9 @@
       </if>
       <if test="somePraise != null" >
         some_praise,
+      </if>
+      <if test="customMade != null" >
+        custom_made,
       </if>
       <if test="tag != null" >
         tag,
@@ -230,6 +236,9 @@
       <if test="somePraise != null" >
         #{somePraise,jdbcType=INTEGER},
       </if>
+      <if test="customMade != null" >
+        #{customMade,jdbcType=VARCHAR},
+      </if>
       <if test="tag != null" >
         #{tag,jdbcType=LONGVARCHAR},
       </if>
@@ -310,6 +319,9 @@
       <if test="somePraise != null" >
         some_praise = #{somePraise,jdbcType=INTEGER},
       </if>
+      <if test="customMade != null" >
+        custom_made = #{customMade,jdbcType=VARCHAR},
+      </if>
       <if test="tag != null" >
         tag = #{tag,jdbcType=LONGVARCHAR},
       </if>
@@ -342,6 +354,7 @@
       marry_recommend = #{marryRecommend,jdbcType=VARCHAR},
       combo = #{combo,jdbcType=VARCHAR},
       some_praise = #{somePraise,jdbcType=INTEGER},
+      custom_made = #{customMade,jdbcType=VARCHAR},
       tag = #{tag,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -370,7 +383,8 @@
       sale_price = #{salePrice,jdbcType=VARCHAR},
       marry_recommend = #{marryRecommend,jdbcType=VARCHAR},
       combo = #{combo,jdbcType=VARCHAR},
-      some_praise = #{somePraise,jdbcType=INTEGER}
+      some_praise = #{somePraise,jdbcType=INTEGER},
+      custom_made = #{customMade,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   

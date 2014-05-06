@@ -15,11 +15,13 @@ import com.kunsoftware.bean.JsonBean;
 import com.kunsoftware.bean.RequirementRequestBean;
 import com.kunsoftware.controller.BaseController;
 import com.kunsoftware.entity.Customize;
+import com.kunsoftware.entity.Destination;
 import com.kunsoftware.entity.Requirement;
 import com.kunsoftware.exception.KunSoftwareException;
 import com.kunsoftware.page.PageInfo;
 import com.kunsoftware.page.PageUtil;
 import com.kunsoftware.service.CustomizeService;
+import com.kunsoftware.service.DestinationService;
 import com.kunsoftware.service.RequirementService;
 import com.kunsoftware.service.ValueSetService;
 
@@ -38,20 +40,26 @@ public class FrontCustomizeController extends BaseController {
 	@Autowired
 	private RequirementService service;
 	
+	@Autowired
+	private DestinationService destinationService;
+	
 	@RequestMapping("/info1")
-	public String info1(ModelMap model,String chufa,String destination) throws KunSoftwareException {
+	public String info1(ModelMap model,String chufa,Integer destination) throws KunSoftwareException {
 		 
 		if(StringUtils.isEmpty(chufa)) {
 			chufa = "上海";
 		}
 		
-		if(StringUtils.isEmpty(destination)) {
-			destination = "巴厘岛";
+		Destination destinationEntity = destinationService.selectByPrimaryKey(destination);
+		if(destinationEntity == null) { 
+			destinationEntity = new Destination();
+			destinationEntity.setId(9);
+			destinationEntity.setName("巴厘岛");
 		}
 		
 		logger.info("私家定制");
 		model.addAttribute("chufa", chufa);
-		model.addAttribute("destination", destination);
+		model.addAttribute("destination", destinationEntity);
 		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
 		return "front/customize-info1";
 	}

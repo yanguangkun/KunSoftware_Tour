@@ -19,5 +19,7 @@ public interface MemberMapper {
     
     Member selectByUserName(String userName);
     
+    Member selectByEmail(String email);
+    
     List<Member> getMemberListAll();
 }

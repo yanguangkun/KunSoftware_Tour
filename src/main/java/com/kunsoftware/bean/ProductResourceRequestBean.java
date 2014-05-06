@@ -51,6 +51,10 @@ public class ProductResourceRequestBean {
     private String marryRecommend;
 
     private String combo;
+    
+    private Integer somePraise;
+
+    private String customMade;
 
     private String tag;
 
@@ -244,6 +248,22 @@ public class ProductResourceRequestBean {
 
 	public void setCombo(String combo) {
 		this.combo = combo;
+	}
+
+	public Integer getSomePraise() {
+		return somePraise;
+	}
+
+	public void setSomePraise(Integer somePraise) {
+		this.somePraise = somePraise;
+	}
+
+	public String getCustomMade() {
+		return customMade;
+	}
+
+	public void setCustomMade(String customMade) {
+		this.customMade = customMade;
 	}
 
 	public String getTag() {

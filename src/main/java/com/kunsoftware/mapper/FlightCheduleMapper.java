@@ -35,7 +35,7 @@ public interface FlightCheduleMapper {
     int selectPriceCount(@Param("flightCheduleId")Integer flightCheduleId);
     
     
-    List getFlightCheduleListAll(@Param("productResourceId")Integer productResourceId);
+    List getFlightCheduleListAll(@Param("productResourceId")Integer productResourceId,@Param("startMonth")String startMonth);
     
     FlightChedule selectByResource(@Param("productResourceId")Integer productResourceId,
     		@Param("startDate")String startDate);

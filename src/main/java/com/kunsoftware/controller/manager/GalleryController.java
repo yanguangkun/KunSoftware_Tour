@@ -51,7 +51,7 @@ public class GalleryController extends BaseController {
 	
 	@RequestMapping(value="/add.json")
 	@ResponseBody 
-	public JsonBean addGallery(@RequestParam(value = "imageFile", required = false) MultipartFile file,GalleryRequestBean requestBean) throws KunSoftwareException {
+	public JsonBean addGallery(@RequestParam(value = "galleryImageFile", required = false) MultipartFile file,GalleryRequestBean requestBean) throws KunSoftwareException {
 		 
 		logger.info("保存相册"); 
 		requestBean.setImageFile(file);

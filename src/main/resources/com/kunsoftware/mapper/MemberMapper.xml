@@ -203,6 +203,12 @@
     from member
     where user_name = #{userName,jdbcType=VARCHAR}
    </select>
+   <select id="selectByEmail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where email = #{email,jdbcType=VARCHAR}
+   </select>
    <select id="getMemberListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
     select 
     <include refid="Base_Column_List" />

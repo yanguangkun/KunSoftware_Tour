@@ -59,6 +59,10 @@ public class FrontLoginController {
 		
 		Member entity = service.selectByUserName(userName);
 		if(entity == null) {
+			entity = service.selectByEmail(userName);
+		}
+		
+		if(entity == null) {
 			model.addAttribute("loginMsg", "用户不存在!"); 
 			model.addAttribute("userName", userName);
 			model.addAttribute("referer", referer);
@@ -106,7 +110,13 @@ public class FrontLoginController {
 		if(service.selectByUserName(requestBean.getUserName()) != null) {			 
 			jsonBean.setMessage("账号已经存在,请不要重复注册!"); 	
 			return jsonBean;
+		}		
+		 
+		if(service.selectByEmail(requestBean.getEmail()) != null) {			 
+			jsonBean.setMessage("电子邮箱已经存在,请不要重复注册!"); 	
+			return jsonBean;
 		}
+		
 		Member entity = service.insert(requestBean);	 
 		jsonBean.put("id", entity.getId());
 		jsonBean.setMessage("操作成功"); 		 

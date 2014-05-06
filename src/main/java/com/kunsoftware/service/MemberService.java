@@ -27,6 +27,12 @@ public class MemberService {
 		logger.info("查询用户");
 		return mapper.selectByUserName(userName);
 	}
+	
+	public Member selectByEmail(String email) {
+		
+		logger.info("查询用户");
+		return mapper.selectByEmail(email);
+	}
 
 	public List<Member> getMemberListAll() {
 		 
