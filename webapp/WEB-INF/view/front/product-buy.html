@@ -57,16 +57,16 @@
               <tr>
                 <td height="30" align="right" valign="top"><div class="buy-s2">订单备注：</div></td>
                 <td valign="top"><div class="buy-s3">
-                  <textarea name="remark" id="remark"></textarea>
+                  <textarea name="remark" id="remark">${buyBean.remark!}</textarea>
                 </div></td>
               </tr>
               <tr>
                 <td height="30" align="right"><span class="error">*</span> 联系人：</td>
-                <td class="buy-s4"><input type="text" name="linkman" class="required" id="linkman"></td>
+                <td class="buy-s4"><input type="text" name="linkman" class="required"  value="${buyBean.linkman!}" id="linkman"></td>
               </tr>
               <tr>
                 <td height="30" align="right"><span class="error">*</span> 联系手机：</td>
-                <td class="buy-s4"><input type="text" name="linkmanMobile" class="required" id="linkmanMobile"></td>
+                <td class="buy-s4"><input type="text" name="linkmanMobile" class="required phone" value="${buyBean.linkmanMobile!}" id="linkmanMobile"></td>
               </tr>
               <tr>
                 <td height="50" colspan="2" align="center"><button type="button" class="backBtn member-btn1"> 返回修改 </button>
@@ -102,5 +102,22 @@
 </div>
 <div class="main main-row1 main-bg"> </div>
 <@c.bottom />
+
+<form name="backFrm" id="backFrm" action="detail"> 
+<input type="hidden" name="id" id="id" value="${buyBean.id}">
+<input type="hidden" name="tplId" id="tplId" value="${buyBean.tplId}">
+<input type="hidden" name="cheduleMonth" id="cheduleMonth" value="${buyBean.cheduleMonth}">
+<input type="hidden" name="cheduleDay" id="cheduleDay" value="${buyBean.cheduleDay}">
+<input type="hidden" name="num1" id="num1" value="${buyBean.num1}">
+<input type="hidden" name="num2" id="num2" value="${buyBean.num2}">
+<input type="hidden" name="num3" id="num3" value="${buyBean.num3}">
+<input type="hidden" name="num4" id="num4" value="${buyBean.num4}">
+<input type="hidden" name="num5" id="num5" value="${buyBean.num5}">
+<input type="hidden" name="num6" id="num6" value="${buyBean.num6}">
+<input type="hidden" name="allTotal" id="allTotal" value="${buyBean.allTotal!}">
+<input type="hidden" name="remark" id="remark" value="${buyBean.remark!}">
+<input type="hidden" name="linkman" id="linkman" value="${buyBean.linkman!}">
+<input type="hidden" name="linkmanMobile" id="linkmanMobile" value="${buyBean.linkmanMobile!}">
+</form>
 </body>
 </html>

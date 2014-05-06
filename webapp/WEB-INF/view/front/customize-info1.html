@@ -104,13 +104,24 @@ color4
                   <td height="35" align="right" valign="top">&nbsp;</td>
                   <td width="13%" align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的出发地</td>
                   <td width="1%" valign="top">&nbsp;</td>
-                  <td width="76%" valign="top"><input type="text" value="${chufa}" class="required" name="startCountry" id="startCountry"></td>
+                  <td width="76%" valign="top"> <input type="text" value="${chufa}" class="required" name="startCountry" id="startCountry">
+                  
+                  </td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;请输入你的目的地</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" value="${destination}" class="required"  name="arriveDestination" id="arriveDestination"></td>
+                  <td valign="top"><div class="product-content-m-s3 customize destinationMain"><span class="product-content-m-s2 customize destinationParent"><input type="text" value="${destination.name}" class="required"  name="arriveDestinationName" id="arriveDestinationName"><input type="hidden" value="${destination.name}" class="required"  name="arriveDestination" id="arriveDestination"></span>
+        <div class="product-content-m-s4 customize destinationChild">
+          <div class="product-content-m-s5">请选择目的地</div>
+          <ul>
+            <#list destinationList as item>
+            <li><a href="#" class="destination" value="${item.value}">${item.name}</a></li>
+            </#list>
+          </ul>
+        </div>
+      </div></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
@@ -195,7 +206,7 @@ color4
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
-                  <td align="right" valign="top">酒店式重要的风景</td>
+                  <td align="right" valign="top">酒店是重要的风景</td>
                   <td valign="top">&nbsp;</td>
                   <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -259,16 +270,16 @@ color4
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;联系人手机</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text"  class="required"name="mobile" id="mobile"></td>
+                  <td valign="top"><input type="text"  class="required phone"name="mobile" id="mobile"></td>
                 </tr>
                 <tr>
                   <td height="35" valign="top">&nbsp;</td>
                   <td align="right" valign="top"><span class="error">*</span>&nbsp;邮箱</td>
                   <td valign="top">&nbsp;</td>
-                  <td valign="top"><input type="text" class="required" name="email" id="email"></td>
+                  <td valign="top"><input type="text" class="required email" name="email" id="email" ></td>
                 </tr>
                 <tr>
-                  <td height="60" colspan="4" align="center" valign="middle"><a id="saveBtn" href="#">提交需求单</a></td>
+                  <td height="60" colspan="4" align="center" valign="middle"><a id="saveBtn" class="s1" href="#">提交需求单</a></td>
                 </tr>
               </table></td>
           </tr>

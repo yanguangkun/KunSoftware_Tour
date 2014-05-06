@@ -59,7 +59,7 @@
                           <td align="center"><span class="error">*</span>
                             <input type="text" name="passportDate" id="passportDate${n}" class="required"></td>
                           <td align="center"><span class="error">&nbsp;</span>
-                            <input name="birthdate" type="text" class="required date" id="birthdate${n}" readonly></td>
+                            <input name="birthdate" type="text" class="date" id="birthdate${n}" readonly></td>
                         </tr>
                         </#list> 
                         <#if num2 gt 0>  
@@ -119,5 +119,22 @@
 </div>
 <div class="main main-row1 main-bg"> </div>
 <@c.bottom />
+
+<form name="backFrm" id="backFrm" action="buy">
+<input type="hidden" name="id" id="id" value="${buyBean.id}">
+<input type="hidden" name="tplId" id="tplId" value="${buyBean.tplId}">
+<input type="hidden" name="cheduleMonth" id="cheduleMonth" value="${buyBean.cheduleMonth}">
+<input type="hidden" name="cheduleDay" id="cheduleDay" value="${buyBean.cheduleDay}">
+<input type="hidden" name="num1" id="num1" value="${buyBean.num1}">
+<input type="hidden" name="num2" id="num2" value="${buyBean.num2}">
+<input type="hidden" name="num3" id="num3" value="${buyBean.num3}">
+<input type="hidden" name="num4" id="num4" value="${buyBean.num4}">
+<input type="hidden" name="num5" id="num5" value="${buyBean.num5}">
+<input type="hidden" name="num6" id="num6" value="${buyBean.num6}">
+<input type="hidden" name="allTotal" id="allTotal" value="${buyBean.allTotal}">
+<input type="hidden" name="remark" id="remark" value="${buyBean.remark!}">
+<input type="hidden" name="linkman" id="linkman" value="${buyBean.linkman!}">
+<input type="hidden" name="linkmanMobile" id="linkmanMobile" value="${buyBean.linkmanMobile!}">
+</form>
 </body>
 </html>

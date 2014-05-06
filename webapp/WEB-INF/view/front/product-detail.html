@@ -133,12 +133,11 @@ color4
               <div class="product-detail-left-s3">
               
               ￥${productResource.standardPrice!} <span class="s1">起</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="s2">出发地：<@ValueSetWrite code="city" value="${productResource.startCity!}" /></span>
-                <div class="s3 productHide"></div>
-                
+                <div class="s3 productHide"></div> 
               </div>
-              <div class="product-detail-left-s4">请选择类别：</div>
+              <div class="product-detail-left-s4">请选择套餐：</div>
               <#list tplList as item>
-              <div class="product-detail-left-s5 product-item" value="${item.id}">
+              <div class="product-detail-left-s5 product-item ${item.selected!}" value="${item.id}">
                 <div class="s0">
                   <div class="s1">${item.name}</div>
                   <div class="s2">${item.priceDescribe}</div>
@@ -152,7 +151,7 @@ color4
               
               <ul>
                 <#list monthStart..monthEnd as n>
-                   <li class="product-month" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
+                   <li class="product-month ${item.selected!}" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
                 </#list> 
               </ul> 
               </div>
@@ -160,14 +159,14 @@ color4
               <div class="product-detail-left-s6">
               <ul>
                 <#list flightCheduleList as item>
-                <li class="product-day" value="<#if item.startDate??>${item.startDate?string('d')}</#if>"><a href="#"><#if item.startDate??>${item.startDate?string('d')} </#if></a><div class="s1"></div></li>
+                <li class="product-day ${item.selected!}" value="${item.startDate!}"><a href="#">${item.startDate!}</a><div class="s1"></div></li>
                 </#list>
               </ul> 
               </div>
               <div class="product-detail-left-s4">请输入预订数量：</div>
               <div class="product-detail-left-s7">
                 <input type="text" name="priceNum" id="priceNum">
-                量</div>
+                ${chargeUnit!}</div>
               <div class="product-detail-left-s8">总价：<span class="s1 allPrice">￥0</span></div>
               <div class="product-detail-left-s8">均价：<span class="s1 avgPrice">￥0</span></div>
               <div class="product-detail-left-s9"> <a id="ordersBtn" href="#">预 订</a></div>
@@ -182,11 +181,11 @@ color4
                 <div class="s3 productHide"></div>
                 
               </div>
-              <div class="product-detail-left-s4">请选择类别：</div>
+              <div class="product-detail-left-s4">请选择套餐：</div>
               <#list tplList as item>
-              <div class="product-detail-left-s5 product-item" value="${item.id}">
+              <div class="product-detail-left-s5 product-item ${item.selected!}" value="${item.id}">
                 <div class="s0">
-                  <div class="s1">${item.name}</div>
+                  <div class="s1" >${item.name}</div>
                   <div class="s2">${item.planDescribe}</div>
                 </div>
                 <div class="s3"></div>
@@ -197,8 +196,8 @@ color4
               <div class="product-detail-left-s6">
               
               <ul>
-                <#list monthStart..monthEnd as n>
-                   <li class="product-month" value="${n}"><a href="#">${n}</a><div class="s1"></div></li>
+                <#list monthList as item>
+                   <li class="product-month ${item.selected!}" value="${item.startMonth}"><a href="#">${item.startMonth}</a><div class="s1"></div></li>
                 </#list> 
               </ul> 
               </div>
@@ -206,7 +205,7 @@ color4
               <div class="product-detail-left-s6">
               <ul>
                 <#list flightCheduleList as item>
-                <li class="product-day" value="<#if item.startDate??>${item.startDate?string('d')}</#if>"><a href="#"><#if item.startDate??>${item.startDate?string('d')} </#if></a><div class="s1"></div></li>
+                <li class="product-day ${item.selected!}" value="${item.startDate!}"><a href="#">${item.startDate!}</a><div class="s1"></div></li>
                 </#list>
               </ul> 
               </div>
@@ -217,13 +216,13 @@ color4
                     <td width="13%" height="30"> 
                       <select name="sNum1" id="sNum1" class="num" target="#num1">
                         <#list 0..10 as n> 
-                        <option value="${n}">${n}</option>
+                        <option value="${n}" <#if n==buyBean.num1>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td width="33%">成人</td>
                     <td width="13%"><select name="sNum2" id="sNum2" class="num" target="#num2">
                         <#list 0..10 as n> 
-                        <option value="${n}">${n}</option>
+                        <option value="${n}" <#if n==buyBean.num2>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td width="41%">儿童占床</td>
@@ -231,13 +230,13 @@ color4
                   <tr>
                     <td height="30"><select name="sNum3" id="sNum3" class="num" target="#num3">
                         <#list 0..10 as n> 
-                        <option value="${n}">${n}</option>
+                        <option value="${n}" <#if n==buyBean.num3>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td>成人加床</td>
                     <td><select name="sNum4" id="sNum4" class="num" target="#num4">
                         <#list 0..10 as n> 
-                        <option value="${n}">${n}</option>
+                        <option value="${n}" <#if n==buyBean.num4>selected="selected"</#if>>${n}</option>
                         </#list> 
                       </select></td>
                     <td>儿童不占床</td>
@@ -317,6 +316,9 @@ color4
 </table>
 </div>
 <input type="hidden" name="combo" id="combo" value="${productResource.combo}">
+
+<input type="hidden" name="isBack" id="isBack" value="<#if buyBean.tplId??>1<#else>0</#if>">
+
 <form action="price.json" method="post" id="priceFrm">
   <input type="hidden" name="id" id="id" value="${productResource.id}">
   
@@ -330,6 +332,9 @@ color4
   <input type="hidden" name="num4" id="num4" value="0">
   <input type="hidden" name="num5" id="num5" value="0">
   <input type="hidden" name="num6" id="num6" value="0">
+  <input type="hidden" name="remark" id="remark" value="${buyBean.remark!}">
+  <input type="hidden" name="linkman" id="linkman" value="${buyBean.linkman!}">
+  <input type="hidden" name="linkmanMobile" id="linkmanMobile" value="${buyBean.linkmanMobile!}">
 </form>
 <@c.bottom />
 </body>
