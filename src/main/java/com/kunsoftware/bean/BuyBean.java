@@ -14,6 +14,8 @@ public class BuyBean {
 	
 	private String cheduleDay;
 	
+	private String priceNum;
+	
 	private Integer num1;
 	
 	private Integer num2;
@@ -217,4 +219,14 @@ public class BuyBean {
 	public Integer getQuantity() {
 		return num1 + num2 + num3 + num4 + num5 + num6;
 	}
+
+	public String getPriceNum() {
+		return priceNum;
+	}
+
+	public void setPriceNum(String priceNum) {
+		this.priceNum = priceNum;
+	}
+	
+	
 }

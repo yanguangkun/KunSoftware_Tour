@@ -136,7 +136,7 @@ public class FrontBuyController extends BaseController {
 				ordersDetail.setUnitPrice(flightChedulePrice.getPrice());
 				ordersDetail.setQuantity(buyBean.getNum6());
 				retList.add(ordersDetail);
-				allTotal = allTotal + flightChedulePrice.getPrice().doubleValue() * buyBean.getNum5();
+				allTotal = allTotal + flightChedulePrice.getPrice().doubleValue() * buyBean.getNum6();
 			}
 		}		
 		
