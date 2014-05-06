@@ -199,6 +199,9 @@ body, td, th {
 	border:1px solid #c0c0c0;
 	display:none;
 }
+.product-content-m-s2.customize{ font-size:12px;}
+.product-content-m-s3.customize{padding:0 0 0 0;}
+.product-content-m-s4.customize{ left:0; top:22px;}
  
 .product-content-m-s4 ul { padding: 0 15px; }
 .product-content-m-s4 ul li { width:80px; float:left; color:#36a6a6a; line-height:25px;}
@@ -251,7 +254,7 @@ body, td, th {
 .product-detail-left-s5 .s1,
 .product-detail-left-s55 .s1{ padding: 8px 0 8px 15px; font-size:20px;}
 .product-detail-left-s5 .s2,
-.product-detail-left-s55 .s2{ padding: 0 0 8px 35px;}
+.product-detail-left-s55 .s2{ padding: 0 0 8px 15px;}
 .product-detail-left-s5 .s3,
 .product-detail-left-s55 .s3{ position:absolute; top:58px; left:303px; width:13px; height:13px;background-image:url(../images/img14.jpg); display:none}
 .product-detail-left-s5:hover,
@@ -320,7 +323,7 @@ body, td, th {
 .customize-table input{ height:22px; width:208px; border:1px solid #bcbcbc}
 .customize-table input[type=checkbox]{height:22px; width:22px; border:1px solid #bcbcbc}
 .customize-table textarea{ border:1px solid #bcbcbc; height:129px; width:556px;}
-.customize-table a{ padding: 5px 30px; background-color:#2aa6e6; color:#fff;}
+.customize-table a.s1{ padding: 5px 30px; background-color:#2aa6e6; color:#fff;}
 
 .customize-content { width:269px; height:320px; float:left; padding:20px 15px 0px 0;}
 .customize-content .s1{ width:269px; height:183px;}

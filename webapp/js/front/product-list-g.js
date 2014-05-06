@@ -62,8 +62,25 @@ define(function(require, exports, module) {
 				$(that).parent().find(".somePraiseV").html(data.somePraise);
 			}); 
         });
+		
+		$("#questionsBtn").click(function(e) {
+            
+			$.post("questionsSave.json",{
+				'destination':$("#destination").val(),
+				'banner':$("#banner").val(),
+				'content':$("#content").val()	
+			},function(data) { 
+				$.getJSON("questions.json?destination=" + $("#destination").val() + "&banner=" + $("#banner").val()+ "&r=" + Math.random() , function (data, textStatus){  
+					$(".questionsInfo").html(data.result); 
+					$("#content").val("");
+				});
+			},"json");
+			
+			return false;
+        });
 	}); 
-	 
+	
+	
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();
 		$(".indexDestinationList").show();

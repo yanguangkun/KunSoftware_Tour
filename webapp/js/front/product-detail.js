@@ -45,7 +45,20 @@ define(function(require, exports, module) {
 			$(".product-month").removeClass("active");
             $(this).addClass("active");
 			$("#cheduleMonth").val($(this).attr("value"));
-			productInfo();
+			
+			$.getJSON("cheduleDay.json?id=" + $("#id").val() + "&startMonth="+$(this).attr("value")+"&r=" + Math.random() , function (data, textStatus){  
+				
+				$(".product-day").addClass("disabled");
+				for(i = 0;i < data.days.length;i++) {
+					if($(".product-day[value='"+data.days[i].startDate+"']").hasClass("active")) {
+						$("#cheduleDay").val("");
+					}
+					$(".product-day[value='"+data.days[i].startDate+"']").removeClass("disabled");
+				}
+				$(".product-day.active").trigger("click");
+				productInfo();
+			});
+			 
 			return false;
         });
 		
@@ -85,13 +98,17 @@ define(function(require, exports, module) {
 			return false;
         });
 		
+		
 		$(".num").change(function(e) {
             var target = $(this).attr("target");
-			$(target).val($(this).val());
+			$(target).val($(this).val()); 
+			 
+			totalPrice();
         });
 		
 		$("#ordersBtn").click(function(e) {
-            
+            $(".num").trigger("change");
+			
 			$.getJSON("checkLogin.json" , function (data, textStatus){  
 				if(data.isLogin == "0") {
 					alert(data.message);
@@ -132,11 +149,24 @@ define(function(require, exports, module) {
 			
 			return false;
         });
+		if($("#isBack").val() == "1") {
+			$(".product").trigger("click");
+		}
+		$(".product-item.active").trigger("click");
+		$(".product-month.active").trigger("click"); 
+		
+		
 	}); 
 	
 	
 	
 	var price = 0;
+	var adultPrice = 0;
+	var adultExtraBedPrice = 0;
+	var childBedPrice = 0;
+	var childNoBedPrice = 0;
+	var singleRoom = 0;
+	
 	function productInfo() {
 		
 		var tplV = $("#tplId").val();
@@ -149,24 +179,72 @@ define(function(require, exports, module) {
 		$("#priceFrm").ajaxSubmit({
 			dataType:'json', 
 			success:function(data) { 
-				price = data.price;
 				
-				$("#priceNum").trigger("change");
+				if(data.success == "0")  {
+					//alert(data.message);
+					return;
+				}
+				
+				if($("#combo").val() == "0") {
+					price = data.price;
+					$("#priceNum").trigger("change");
+				} else {
+					adultPrice = data.adultPrice;;
+					adultExtraBedPrice = data.adultExtraBedPrice;
+					childBedPrice = data.childBedPrice;;
+					childNoBedPrice = data.childNoBedPrice;
+					singleRoom = data.singleRoom; 
+					$(".num").trigger("change");
+				}
 			}
 		});
 	}
 	
-	$("#priceNum").change(function(e) {
+	$("#priceNum").change(function(e) { 
 		
 		if($(this).val() == "") {
 			$(".allPrice").html("￥0");
 			$(".avgPrice").html("￥0");
 			return;
 		}
-        var v = $(this).val() * price;
+		var v = $(this).val() * price;
 		$(".allPrice").html(v);
-		$(".avgPrice").html(price);
+		$(".avgPrice").html(price); 
     });
+	
+	function totalPrice() {
+		
+		var totalPrice = 0;
+		var sNum1V = parseInt($("#sNum1").val());
+		var sNum2V = parseInt($("#sNum2").val());
+		var sNum3V = parseInt($("#sNum3").val());
+		var sNum4V = parseInt($("#sNum4").val());
+		
+		if(sNum1V != 0) {
+			totalPrice += sNum1V * adultPrice
+		}
+		
+		if(sNum2V != 0) {
+			totalPrice += sNum2V * adultExtraBedPrice
+		}
+		
+		if(sNum3V != 0) {
+			totalPrice += sNum3V * childBedPrice
+		}
+		
+		if(sNum4V != 0) {
+			totalPrice += sNum4V * childNoBedPrice
+		}
+		 
+		if(totalPrice == "0") {
+			$(".allPrice").html("￥0");
+			$(".avgPrice").html("￥0");
+			return;
+		}
+		var avgPrice = totalPrice /(sNum1V + sNum2V + sNum3V + sNum4V); 
+		$(".allPrice").html("￥" + Math.round(totalPrice));
+		$(".avgPrice").html("￥" + Math.round(avgPrice)); 
+	}
 	
 	$(".indexDestination").mouseenter(function(e) {
         $(".arr").show();

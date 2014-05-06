@@ -8,6 +8,18 @@ define(function(require, exports, module) {
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
 	var lockscreen = require('lockscreen');
+	
+	function isPhone(value) { 
+		var r = value.match(/^0?(13[0-9]|15[012356789]|18[012356789]|14[57])[0-9]{8}$/); 
+		if(r==null)return false;
+		else return true;
+		
+	} 
+
+	$.validator.addMethod("phone", function (value, element) {  
+        return this.optional(element) || isPhone(value);
+    });
+	
 	$(document).ready(function(){ 
 		 var validate =  $("#saveFrm").validate({ 
 			submitHandler: function(form) {
@@ -47,6 +59,18 @@ define(function(require, exports, module) {
 		$(".indexDestinationList").hide();
     });
 	
+	$(".destinationParent").mouseenter(function(e) {
+        $(".destinationChild").show();
+    });
 	
-	 
+	$(".destinationMain").mouseleave(function(e) {
+        $(".destinationChild").hide();
+    });
+	
+	$(".destination").click(function(e) {
+		$("#arriveDestination").val($(this).attr("value"));
+		$("#arriveDestinationName").val($(this).text());
+		$(".destinationChild").hide();
+		return false;
+    });
 });

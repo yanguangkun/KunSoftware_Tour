@@ -24,7 +24,8 @@ define(function(require, exports, module) {
         });
 		 
 		$(".backBtn").click(function(e) { 
-            location.href = "detail?id=" + $("#id").val();
+            //location.href = "detail?id=" + $("#id").val();
+			$("#backFrm").submit();
         });;
 		
 	}); 

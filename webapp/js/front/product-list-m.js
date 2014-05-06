@@ -42,6 +42,10 @@ define(function(require, exports, module) {
 				'content':$("#content").val()	
 			},function(data) {
 				alert(data.message);
+				$.getJSON("questions.json?destination=" + $("#destination").val() + "&banner=" + $("#banner").val()+ "&r=" + Math.random() , function (data, textStatus){  
+					$(".questionsInfo").html(data.result); 
+					$("#content").val("");
+				});
 			},"json");
 			
 			return false;

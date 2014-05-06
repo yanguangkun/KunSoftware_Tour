@@ -9,7 +9,18 @@ define(function(require, exports, module) {
 	require('cascade'); 
 	require('placeholder');  
 	var lockscreen = require('lockscreen');
-	  
+	
+	function isPhone(value) { 
+		var r = value.match(/^0?(13[0-9]|15[012356789]|18[012356789]|14[57])[0-9]{8}$/); 
+		if(r==null)return false;
+		else return true;
+		
+	} 
+
+	$.validator.addMethod("phone", function (value, element) {  
+        return this.optional(element) || isPhone(value);
+    });
+	
 	$(document).ready(function(){ 
 		 var validate =  $("#buyFrm").validate(); 
 		
@@ -30,7 +41,8 @@ define(function(require, exports, module) {
         });
 		 
 		$(".backBtn").click(function(e) { 
-            history.go(-1)
+            //history.go(-1)
+			$("#backFrm").submit();
         });;
 		
 	}); 

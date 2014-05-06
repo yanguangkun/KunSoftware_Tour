@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 	$(".destination").click(function(e) {
         $(".phTxt1").html($(this).text());
 		$(".destinationChild").hide();	
-		$("#destination").val($(this).text());
+		$("#destination").val($(this).attr("value"));
 		
     });
 	
@@ -52,7 +52,7 @@ define(function(require, exports, module) {
 		$(".photoalbumBody").find(target).show();
 	});
 		
-	$("#photoAlbum").click(function(e) {
+	$(".photoAlbum").click(function(e) {
 		 
         $("#phoneModel").addClass("in").show();
 		var obj = $(".photoalbumContent");//获得相应的Div对象  
