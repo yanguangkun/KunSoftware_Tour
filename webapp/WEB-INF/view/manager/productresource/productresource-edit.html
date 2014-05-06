@@ -114,9 +114,17 @@
           <td><@ValueSet name="marryRecommend" code="yes_no_r" value="${entity.marryRecommend!}" /></td>
         </tr>
         <tr>
-          <th>是否套餐 <span class="error">*</span> </th>
-          <td colspan="3"><@ValueSet name="combo" code="product_resource_combo" value="${entity.combo!}" /></td>
+          <th>是否定制 <span class="error">*</span> </th>
+          <td><@ValueSet name="customMade" code="yes_no_r" value="${entity.customMade!}" /></td>
+          <th>是否套餐 <span class="error">*</span></th>
+          <td><@ValueSet name="combo" code="product_resource_combo" value="${entity.combo!}" /></td>
         </tr>
+        <tr>
+          <th>点赞数 <span class="error">*</span> </th>
+          <td><input type="text" class="form-control input-sm" name="somePraise"  id="somePraise" placeholder="点赞数" value="${entity.somePraise!}"></td>
+          <th></th>
+          <td></td>
+        </tr> 
         <tr>
           <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
             <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
