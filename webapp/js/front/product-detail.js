@@ -135,6 +135,8 @@ define(function(require, exports, module) {
 						alert("请输入预订数量!");
 						return false;
 					}
+					
+					$("#num6").val($("#priceNum").val());
 				} else {
 					if($("#num1").val() == "0" && $("#num2").val() == "0" && 
 					$("#num3").val() == "0" && $("#num4").val() == "0") {
