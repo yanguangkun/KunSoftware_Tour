@@ -104,10 +104,10 @@ color4
             <td>
             <#list retList as item>
             <div class="customize-content">
-            <div class="s1"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" width="269" height="183"></div>
-            <div class="s2">${item.title1}</div>
-            <div class="s2">${item.title2}</div>
-            <div class="s2 s3">${item.title3}</div>
+            <div class="s1"><a href="${request.contextPath}/product/detail?id=${item.productResourceId!}" target="_blank"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" width="269" height="183"></a></div>
+            <div class="s2"><a href="${request.contextPath}/product/detail?id=${item.productResourceId!}" target="_blank">${item.title1}</a></div>
+            <div class="s2"><a href="${request.contextPath}/product/detail?id=${item.productResourceId!}" target="_blank">${item.title2}</a></div>
+            <div class="s2 s3"><a href="${request.contextPath}/product/detail?id=${item.productResourceId!}" target="_blank">${item.title3}</a></div>
             <div class="s4">${item.summary}</div>
             </div>
             </#list>

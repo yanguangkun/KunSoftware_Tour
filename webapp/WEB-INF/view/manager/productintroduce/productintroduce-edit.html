@@ -38,13 +38,20 @@
         </tr>
         <tr>
           <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
-            <input type="hidden" name="productId" id="productId" value="${entity.productId!}">
-            <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
+            <input type="hidden" name="productId" id="productId" value="${entity.productId!}"> 
+            <button type="submit" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
             <a href="list?productId=${entity.productId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
         </tr>
       </table>
     </div>
   </form>
 </div>
+<script type="text/javascript">//<![CDATA[
+window.CKEDITOR_BASEPATH='${request.contextPath}/js/ckeditor/';
+//]]></script>
+<script type="text/javascript" src="${request.contextPath}/js/ckeditor/ckeditor.js?t=B37D54V"></script>
+<script type="text/javascript">//<![CDATA[
+CKEDITOR.replace('introduce', {"filebrowserImageUploadUrl":"${request.contextPath}/manager/imageUpload?type=Image"});
+//]]></script>
 </body>
 </html>
