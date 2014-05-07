@@ -3,7 +3,8 @@ define(function(require, exports, module) {
 	var $ = require('jquery'); 
 	var wdatepicker = require('wdatepicker'); 
 	$(document).ready(function(){ 
-		$(".date,.dateValid").click(function(e) {
+		$(document).on("click",".date,.dateValid",function(e) {
+		//$(".date,.dateValid").click(function(e) {
 			var options = {};
 			if(typeof($(this).attr("minDate")) != "undefined") {
 				options.minDate = $(this).attr("minDate");

@@ -39,22 +39,38 @@ define(function(require, exports, module) {
 			return false;
         });
 		
+		var isFirst = false;
 		$(".product-month").click(function(e) {
 			if($(this).hasClass("disabled")) return;
 			
+			if($("#isBack").val() == "1") {
+				isFirst = true;
+			}
 			$(".product-month").removeClass("active");
             $(this).addClass("active");
 			$("#cheduleMonth").val($(this).attr("value"));
 			
 			$.getJSON("cheduleDay.json?id=" + $("#id").val() + "&startMonth="+$(this).attr("value")+"&r=" + Math.random() , function (data, textStatus){  
 				
-				$(".product-day").addClass("disabled");
+				//$(".product-day").addClass("disabled");
+				$(".product-day").hide();
+				if(!isFirst){
+					$(".product-day").removeClass("active");
+				}
 				for(i = 0;i < data.days.length;i++) {
 					if($(".product-day[value='"+data.days[i].startDate+"']").hasClass("active")) {
 						$("#cheduleDay").val("");
+					} 
+					//$(".product-day[value='"+data.days[i].startDate+"']").removeClass("disabled");
+					$(".product-day[value='"+data.days[i].startDate+"']").show();
+					if(!isFirst && i == 0) {
+						$(".product-day[value='"+data.days[i].startDate+"']").addClass("active");
 					}
-					$(".product-day[value='"+data.days[i].startDate+"']").removeClass("disabled");
-				}
+					
+				} 
+			
+				isFirst = false;
+				$(".product-day:visible:first").addClass("active");
 				$(".product-day.active").trigger("click");
 				productInfo();
 			});
@@ -210,8 +226,9 @@ define(function(require, exports, module) {
 			return;
 		}
 		var v = $(this).val() * price;
-		$(".allPrice").html(v);
-		$(".avgPrice").html(price); 
+		$(".allPrice").html("￥" + v);
+		$(".avgPrice").html("￥" + price); 
+		$(".standardPrice").html("￥" + price);
     });
 	
 	function totalPrice() {
@@ -246,6 +263,7 @@ define(function(require, exports, module) {
 		var avgPrice = totalPrice /(sNum1V + sNum2V + sNum3V + sNum4V); 
 		$(".allPrice").html("￥" + Math.round(totalPrice));
 		$(".avgPrice").html("￥" + Math.round(avgPrice)); 
+		$(".standardPrice").html("￥" + Math.round(avgPrice));
 	}
 	
 	$(".indexDestination").mouseenter(function(e) {

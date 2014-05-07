@@ -8,6 +8,7 @@ define(function(require, exports, module) {
 	require('jquery-validate')($);
 	require('jquery-validate-messages')($); 
 	require('frontpage');
+	require('datepicker');
 	var lockscreen = require('lockscreen');
 	$(document).ready(function(){ 
 		

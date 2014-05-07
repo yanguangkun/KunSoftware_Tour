@@ -30,9 +30,9 @@ define(function(require, exports, module) {
 			if(check) {
 				lockscreen.lock();
 			} 
-			$("#saveFrm").submit();
+			//$("#saveFrm").submit();
         });
 		 
-		$('#introduce').wysiwyg();
+		//$('#introduce').wysiwyg();
 	}); 
 });
