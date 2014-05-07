@@ -203,6 +203,8 @@ public class FrontProductDetailController extends BaseController {
 		
 		if(buyBean.getNum1() == null || buyBean.getNum1().equals(0))
 			buyBean.setNum1(1);
+		if(buyBean.getNum6() == null || buyBean.getNum6().equals(0))
+			buyBean.setNum6(1);
 		model.addAttribute("product", product);
 		model.addAttribute("galleryList", galleryList); 
 		model.addAttribute("productResource", productResource);
