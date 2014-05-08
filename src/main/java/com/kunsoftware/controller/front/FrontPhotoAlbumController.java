@@ -59,4 +59,25 @@ private static Logger logger = LoggerFactory.getLogger(PhotoAlbumController.clas
 		PageUtil.frontPageInfo(model, pageInfo);
 		return "front/photoalbum-list";
 	}
+	
+	@RequestMapping("/detail")
+	public String detailPhotoAlbum(ModelMap model,Integer id) throws KunSoftwareException {
+		
+		logger.info("相册游记列表");  
+		 
+		PhotoAlbum photoAlbum = service.selectByPrimaryKey(id);
+		 
+		List<PhotoAlbumTimeline> timelineList = timelineService.getPhotoAlbumTimelineListAll(photoAlbum.getId());
+		for(PhotoAlbumTimeline timeline:timelineList) {
+			List<PhotoAlbumTimelineContent> contentList = contentService.getPhotoAlbumTimelineContentListAll(timeline.getId());
+			timeline.setContentList(contentList);
+		}
+		photoAlbum.setTimelineList(timelineList);
+		 
+		
+		model.addAttribute("photoAlbum", photoAlbum);
+		model.addAttribute("destinationList", valueSetService.selectValueSetDestinationList());
+		 
+		return "front/photoalbum-detail";
+	}
 }
