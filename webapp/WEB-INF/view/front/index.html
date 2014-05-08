@@ -27,54 +27,6 @@ color:${color4};
 </head>
 
 <body>
-<div class=" modal modal-backdrop" id="phoneModel"></div>
-<div class="photoalbumContent hide ">
-  <div class="photoalbumTarget">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><div class="photoalbumBody">
-  	<div class="timeline-content-item">
-      <div class="s1">
-        <div class="title">陈小姐马尔代夫蜜月<br> <span class="title2">2014-02-22</span></div>
-      </div>
-      <div class="s1">
-        <div class="text">陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月陈小姐马尔代夫蜜月</div>
-        <div class="text2"></div>
-        <div class="text3"></div>
-      </div>
-      <div class="s1">
-        <div class="img"><img src="" width="300" height="400"></div>
-      </div>
-    </div>
-    <div class="text2 hide">
-      <div class="s1"></div>
-      <div class="s1"></div>
-      <div class="s1"></div>
-    </div>
-  </div></td>
-  </tr>
-  <tr>
-    <td height="57" class="s2 photoalbumTimeline">
-    <div class="s4"></div> 
-    <div class="s5 cur">
-      <div class="s6">序</div>
-      <div class="s7"></div>
-    </div>
-    <div class="s5">
-      <div class="s6">第一天</div>
-      <div class="s7"></div>
-    </div>
-    <div class="s5">
-      <div class="s6">第二天</div>
-      <div class="s7"></div>
-    </div>
-    <div class="s3"></div>
-    </td>
-  </tr>
-</table>
-</div>
-  <div class="close"></div>
-</div>
 
 <@c.top currentIndex="1" />
 <div class="main main-row1 main-bg1"></div>
@@ -124,44 +76,8 @@ color:${color4};
       </div>
        </form>
     <div class="content-m1-col2">
-      <div class="content-m1-col3 photoAlbum" style=" cursor:pointer;background-image:url(${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!})"></div>
-      <div class="content-m1-col4" ><a href="#" class="photoAlbum">${photoAlbum.title}</a></div>
-      
-      <div class="timeline hide">
-                <div class="s4"></div> 
-                <#list photoAlbum.timelineList as timeline>
-                <div class="s5 timeline-item <#if timeline_index==0>cur</#if>"  value="#${timeline.id!}">
-                  <div class="s6">${timeline.title}</div>
-                  <div class="s7"></div>
-                </div>
-                </#list> 
-                <div class="s3"></div>
-            </div> 
-            
-            <div class="timeline-content hide" > 
-            <#list photoAlbum.timelineList as timeline>
-            <div class="timeline-content-item <#if timeline_index!=0>hide</#if>" id="${timeline.id!}">
-              <div class="s1">
-                <div class="title">${photoAlbum.title}<br> <span class="title2"><#if photoAlbum.startDate??>${photoAlbum.startDate?string('yyyy-MM-dd')}</#if></span></div>
-              </div>
-              <#list timeline.contentList as content>
-              
-              <#if content.style=='1'>
-              <div class="s1">
-                <div class="text">${content.content}</div>
-                <div class="text2"></div>
-                <div class="text3"></div>
-              </div>
-              <#else>
-              <div class="s1">
-                <div class="img"><img src="${request.contextPath}/images/uploadDir${content.imagePath!}" width="300" height="400"></div>
-              </div>
-              </#if>
-              </#list> 
-            </div> 
-            </#list> 
-            </div>
-            
+      <div class="content-m1-col3 photoAlbum" style=" cursor:pointer;background-image:url(${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!})"> <a href="${request.contextPath}/photoalbum/detail?id=${photoAlbum.id}" target="_blank"><img src="${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!}" width="303" height="244"></a></div>
+      <div class="content-m1-col4" ><a href="${request.contextPath}/photoalbum/detail?id=${photoAlbum.id}" class="photoAlbum" target="_blank">${photoAlbum.title}</a></div>  
     </div>
     <div class="content-m1-col1">
       <div class="content-m1-col3" style="background-image:url(images/image4.jpg)">
