@@ -62,9 +62,11 @@ define(function(require, exports, module) {
 						$("#cheduleDay").val("");
 					} 
 					//$(".product-day[value='"+data.days[i].startDate+"']").removeClass("disabled");
-					$(".product-day[value='"+data.days[i].startDate+"']").show();
+					//alert(".product-day[v='"+data.days[i].startDate+"']");
+					//alert($(".product-day[v='"+data.days[i].startDate+"']").html());
+					$(".product-day[v='"+data.days[i].startDate+"']").show();
 					if(!isFirst && i == 0) {
-						$(".product-day[value='"+data.days[i].startDate+"']").addClass("active");
+						$(".product-day[v='"+data.days[i].startDate+"']").addClass("active");
 					}
 					
 				} 
@@ -244,11 +246,11 @@ define(function(require, exports, module) {
 		}
 		
 		if(sNum2V != 0) {
-			totalPrice += sNum2V * adultExtraBedPrice
+			totalPrice += sNum2V * childBedPrice
 		}
 		
 		if(sNum3V != 0) {
-			totalPrice += sNum3V * childBedPrice
+			totalPrice += sNum3V * adultExtraBedPrice
 		}
 		
 		if(sNum4V != 0) {

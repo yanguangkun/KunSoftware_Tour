@@ -36,6 +36,9 @@ define(function(require, exports, module) {
 				if(check) {
 					lockscreen.lock();
 				} 
+				if($("#combo").val() == "0") {
+					$("#buyFrm").attr("action","buy3");
+				}
 				$("#buyFrm").submit();
 			}); 
         });
