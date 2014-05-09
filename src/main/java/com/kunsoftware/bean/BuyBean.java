@@ -42,9 +42,9 @@ public class BuyBean {
 	
 	private String[] passportAddr;
 	
-	private String[] passportNum;
+	private String[] certificateNum;
 	
-	private String[] passportDate;
+	private Date[] certificateEndDate;
 	
 	private Date[] birthdate;
 
@@ -183,21 +183,22 @@ public class BuyBean {
 	public void setPassportAddr(String[] passportAddr) {
 		this.passportAddr = passportAddr;
 	}
+ 
 
-	public String[] getPassportNum() {
-		return passportNum;
+	public String[] getCertificateNum() {
+		return certificateNum;
 	}
 
-	public void setPassportNum(String[] passportNum) {
-		this.passportNum = passportNum;
+	public void setCertificateNum(String[] certificateNum) {
+		this.certificateNum = certificateNum;
 	}
 
-	public String[] getPassportDate() {
-		return passportDate;
+	public Date[] getCertificateEndDate() {
+		return certificateEndDate;
 	}
 
-	public void setPassportDate(String[] passportDate) {
-		this.passportDate = passportDate;
+	public void setCertificateEndDate(Date[] certificateEndDate) {
+		this.certificateEndDate = certificateEndDate;
 	}
 
 	public Date[] getBirthdate() {

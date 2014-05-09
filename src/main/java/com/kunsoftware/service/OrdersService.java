@@ -171,6 +171,9 @@ public class OrdersService {
 				ordersTravelList.setName(buyBean.getName()[i]);
 				ordersTravelList.setSex(buyBean.getSex()[i]);
 				ordersTravelList.setBirthdate(buyBean.getBirthdate()[i]);
+				ordersTravelList.setCertificateNum(buyBean.getCertificateNum()[i]);
+				ordersTravelList.setCertificateType("2");
+				ordersTravelList.setCertificateEndDate(buyBean.getCertificateEndDate()[i]);
 				
 				ordersTravelMapper.insert(ordersTravelList);			 
 			}
