@@ -163,16 +163,18 @@ public class OrdersService {
 		}
 		
 		OrdersTravelList ordersTravelList = null;
-		for(int i = 0; i < buyBean.getName().length;i++) {
-			ordersTravelList = new OrdersTravelList();
-			ordersTravelList.setOrdersId(record.getId());
-			ordersTravelList.setName(buyBean.getName()[i]);
-			ordersTravelList.setSex(buyBean.getSex()[i]);
-			ordersTravelList.setBirthdate(buyBean.getBirthdate()[i]);
-			
-			ordersTravelMapper.insert(ordersTravelList);			 
+		 
+		if(buyBean.getName()!= null) {
+			for(int i = 0; i < buyBean.getName().length;i++) {
+				ordersTravelList = new OrdersTravelList();
+				ordersTravelList.setOrdersId(record.getId());
+				ordersTravelList.setName(buyBean.getName()[i]);
+				ordersTravelList.setSex(buyBean.getSex()[i]);
+				ordersTravelList.setBirthdate(buyBean.getBirthdate()[i]);
+				
+				ordersTravelMapper.insert(ordersTravelList);			 
+			}
 		}
-		
 		return record;
 	}
 }

@@ -195,7 +195,7 @@
       reply_time = #{replyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="getQuestionsListPage" resultMap="BaseResultMap" parameterType="java.lang.String">
+  <select id="getQuestionsListPage" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
     select 
     <include refid="Base_Column_List" />
     from questions where 1=1 
@@ -212,6 +212,6 @@
 		AND banner = #{banner,jdbcType=VARCHAR}
 	</if>
     
-    order by id DESC
+    order by order_value ASC, id DESC
   </select>
 </mapper>

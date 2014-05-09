@@ -92,40 +92,43 @@ public class FrontBuyController extends BaseController {
 			if(buyBean.getNum2() > 0) {
 				ordersDetail = new OrdersDetail();
 				ordersDetail.setType("2");
-				ordersDetail.setUnitPrice(flightChedulePlan.getAdultExtraBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum2());
 				retList.add(ordersDetail);
 				
-				allTotal = allTotal + flightChedulePlan.getAdultExtraBedPrice().doubleValue() * buyBean.getNum2();
+				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum2();
 			}
 			
 			if(buyBean.getNum3() > 0) {
 				ordersDetail = new OrdersDetail();
 				ordersDetail.setType("3");
-				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getAdultExtraBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum3());
 				retList.add(ordersDetail);
 				
-				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum3();
+				allTotal = allTotal + flightChedulePlan.getAdultExtraBedPrice().doubleValue() * buyBean.getNum3();
 			}
 			
 			if(buyBean.getNum4() > 0) {
 				ordersDetail = new OrdersDetail();
 				ordersDetail.setType("4");
-				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getChildNoBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum4());
 				retList.add(ordersDetail);
-				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum4();
+				allTotal = allTotal + flightChedulePlan.getChildNoBedPrice().doubleValue() * buyBean.getNum4();
 			}
 			
-			if(buyBean.getNum5() > 0) {
+			int allNum = buyBean.getNum1() + buyBean.getNum2() + buyBean.getNum3() + buyBean.getNum4();
+			if(allNum > 1 && allNum %2 != 0) { 				 
 				ordersDetail = new OrdersDetail();
+				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("5");
 				ordersDetail.setUnitPrice(flightChedulePlan.getSingleRoom());
-				ordersDetail.setQuantity(buyBean.getNum5());
+				ordersDetail.setQuantity(1);
 				retList.add(ordersDetail);
-				allTotal = allTotal + flightChedulePlan.getSingleRoom().doubleValue() * buyBean.getNum5();
-			}
+				allTotal = allTotal + flightChedulePlan.getSingleRoom().doubleValue() * 1;
+				 
+			} 
 		} else {
 			FlightChedulePrice flightChedulePrice = flightChedulePriceService.selectByFlightCheduleId(flightChedule.getId(), new Integer(buyBean.getTplId()));
 			model.addAttribute("name", flightChedulePrice.getName()); 
@@ -190,7 +193,6 @@ public class FrontBuyController extends BaseController {
 			flightChedulePlanPriceId = flightChedulePlan.getId();
 			if(buyBean.getNum1() > 0) {
 				ordersDetail = new OrdersDetail();
-				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("1");
 				ordersDetail.setUnitPrice(flightChedulePlan.getAdultPrice());
 				ordersDetail.setQuantity(buyBean.getNum1());
@@ -201,44 +203,43 @@ public class FrontBuyController extends BaseController {
 			
 			if(buyBean.getNum2() > 0) {
 				ordersDetail = new OrdersDetail();
-				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("2");
-				ordersDetail.setUnitPrice(flightChedulePlan.getAdultExtraBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum2());
 				retList.add(ordersDetail);
 				
-				allTotal = allTotal + flightChedulePlan.getAdultExtraBedPrice().doubleValue() * buyBean.getNum2();
+				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum2();
 			}
 			
 			if(buyBean.getNum3() > 0) {
 				ordersDetail = new OrdersDetail();
-				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("3");
-				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getAdultExtraBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum3());
 				retList.add(ordersDetail);
 				
-				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum3();
+				allTotal = allTotal + flightChedulePlan.getAdultExtraBedPrice().doubleValue() * buyBean.getNum3();
 			}
 			
 			if(buyBean.getNum4() > 0) {
 				ordersDetail = new OrdersDetail();
-				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("4");
-				ordersDetail.setUnitPrice(flightChedulePlan.getChildBedPrice());
+				ordersDetail.setUnitPrice(flightChedulePlan.getChildNoBedPrice());
 				ordersDetail.setQuantity(buyBean.getNum4());
 				retList.add(ordersDetail);
-				allTotal = allTotal + flightChedulePlan.getChildBedPrice().doubleValue() * buyBean.getNum4();
+				allTotal = allTotal + flightChedulePlan.getChildNoBedPrice().doubleValue() * buyBean.getNum4();
 			}
 			
-			if(buyBean.getNum5() > 0) {
+			int allNum = buyBean.getNum1() + buyBean.getNum2() + buyBean.getNum3() + buyBean.getNum4();
+			if(allNum > 1 && allNum %2 != 0) { 				 
 				ordersDetail = new OrdersDetail();
 				ordersDetail.setName(flightChedulePlan.getName());
 				ordersDetail.setType("5");
 				ordersDetail.setUnitPrice(flightChedulePlan.getSingleRoom());
-				ordersDetail.setQuantity(buyBean.getNum5());
+				ordersDetail.setQuantity(1);
 				retList.add(ordersDetail);
-				allTotal = allTotal + flightChedulePlan.getSingleRoom().doubleValue() * buyBean.getNum5();
+				allTotal = allTotal + flightChedulePlan.getSingleRoom().doubleValue() * 1;
+				 
 			}
 		} else {
 			FlightChedulePrice flightChedulePrice = flightChedulePriceService.selectByFlightCheduleId(flightChedule.getId(), new Integer(buyBean.getTplId()));
