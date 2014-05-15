@@ -41,19 +41,21 @@ color4
 <@c.top currentIndex="3" />
 <div class="main main-row1 main-bg1"></div>
 <div style=" background-color:#ebeae6; width:100%">
-<div class="content-g destination-g">
-  <div id="slideBox" class="slideBox md">
-     
+<table width="1280" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="162" bgcolor="#ebeae6">&nbsp;</td>
+      <td width="955"><div id="slideBox" class="slideBox md">
     <div class="bd">
       <ul>
         <#list galleryList as item>
         <li><a href="${item.link}" target="_blank"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></a></li>
         </#list>
       </ul>
-    </div>
-    <!-- 下面是前/后按钮代码，如果不需要删除即可 --> 
-    <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
-</div>
+    </div> 
+  </div></td>
+      <td width="163" bgcolor="#ebeae6">&nbsp;</td>
+    </tr>
+</table> 
 </div>
 <div class="main main-row1 main-bg2"> </div>
 <div class="main">

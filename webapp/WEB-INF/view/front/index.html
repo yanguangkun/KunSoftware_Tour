@@ -48,7 +48,7 @@ color:${color4};
 <div class="main content">
   <div class="content-m1">
       <form>
-      <div class="content-m1-col1">
+      <div class="content-m1-col1"> 
         <div class="content-m1-col3" style="background-image:url(${request.contextPath}/images/uploadDir${customizeImage!})">
           <div class="content-m1-s1">
             <div class="content-m1-s11">
@@ -73,24 +73,33 @@ color:${color4};
           </div>
         </div>
         <div class="content-m1-col4"> 有<span class="s1"> ${customizeNum!} </span>接受了雅米定制服务 </div>
+        <div style="position:absolute; width:20px; height:27px; top:300px; left:25px;"><img src="${request.contextPath}/images/yj.png" width="20" height="27"></div>
       </div>
        </form>
     <div class="content-m1-col2">
       <div class="content-m1-col3 photoAlbum" style=" cursor:pointer;background-image:url(${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!})"> <a href="${request.contextPath}/photoalbum/detail?id=${photoAlbum.id}" target="_blank"><img src="${request.contextPath}/images/uploadDir${photoAlbum.indexImagePath!}" width="303" height="244"></a></div>
-      <div class="content-m1-col4" ><a href="${request.contextPath}/photoalbum/detail?id=${photoAlbum.id}" class="photoAlbum" target="_blank">${photoAlbum.title}</a></div>  
+      <div class="content-m1-col4" ><a href="${request.contextPath}/photoalbum/detail?id=${photoAlbum.id}" class="photoAlbum" target="_blank">
+      <span class="t1">照片分享 游记分享</span>
+      <span class="t2">${photoAlbum.title}</span>      
+      </a></div>  
+      <div style="position:absolute; width:20px; height:27px; top:300px; left:0px;"><img src="${request.contextPath}/images/yj.png" width="20" height="27"></div>
     </div>
     <div class="content-m1-col1">
+      
       <div class="content-m1-col3" style="background-image:url(images/image4.jpg)">
       <div class="content-g" style="width:100%;">
   
-  <div id="slideBox" class="slideBox">
+  <div id="slideBox" class="slideBox small">
      
     <div class="bd">
       <ul>
         <#list smallgalleryList as item>
         <li>
         <a href="${item.link}" target="_blank"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" /></a>
-        <div class="content-m1-col4"><a href="${item.link}" target="_blank">${item.title1}</a></div>
+        <div class="content-m1-col4"><a href="${item.link}" target="_blank">        
+        <span class="t1">${item.title1}</span>
+	    <span class="t2">${item.title2}</span>  
+        </a></div>
         </li>
         </#list>
       </ul>
@@ -99,7 +108,7 @@ color:${color4};
     <a class="prev" href="javascript:void(0)"></a> <a class="next" href="javascript:void(0)"></a> </div>
 </div>
       </div>
-      
+      <div style="position:absolute; width:20px; height:27px; top:300px; left:25px;"><img src="${request.contextPath}/images/yj.png" width="20" height="27"></div>
     </div>
   </div>
   <div class="main1 main-row1 main-bg2"></div>
