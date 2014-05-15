@@ -11,11 +11,12 @@ body, td, th {
 .main {
 	margin: auto;
 	width: 100%;
-	background-color:#ebeae6
+	background-color:#ebeae6;
+	min-width:1280px;
 }
 .error{ color:#ff0101;}
 .hide{ display:none}
-.main1{margin:auto;width:100%; }
+.main1{margin:auto;width:100%; min-width:1280px;}
 .main-row1{height:10px;}
 .main-bg1{ background-color:#fff}
 .main-bg2{ background-color:#ebeae6}
@@ -50,13 +51,17 @@ body, td, th {
 .content-m1{margin:auto; width:955px;height:340px;background-color:#fff}
 .content-m2{margin:auto; width:955px;height:388px;background-color:#fff}
 
-.content-m1-col1{width:276px;height:300px; float:left; padding-left:25px;padding-top:25px;padding-bottom:15px;padding-right:25px; background-color:#fff}
-.content-m1-col2{width:303px;height:300px; float:left;padding-top:25px;padding-bottom:15px; background-color:#fff}
+.content-m1-col1{ position:relative;width:276px;height:300px; float:left; padding-left:25px;padding-top:25px;padding-bottom:15px;padding-right:25px; background-color:#fff}
+.content-m1-col2{ position:relative;width:303px;height:300px; float:left;padding-top:25px;padding-bottom:15px; background-color:#fff}
 .content-m1-col3{width:100%; height:244px; background-color:#333}
 .content-m1-col3 .slideBox{ height:300px;}
 .content-m1-col3 .slideBox .bd img{ height:244px;} 
 .content-m1-col4{width:100%; height:56px; background-color:#525252; text-align:center; line-height:56px; color:#fff; font-size:16px;}
 .content-m1-col4 .s1{ font-size:22px;}
+.content-m1-col2 .content-m1-col4 .t1,
+.content-m1-col1 .content-m1-col4 .t1{display:block}
+.content-m1-col2 .content-m1-col4 .t2,
+.content-m1-col1 .content-m1-col4 .t2{display:none;}
 
 .content-m1-col1:hover .content-m1-col4,
 .content-m1-col2:hover .content-m1-col4
@@ -65,7 +70,10 @@ body, td, th {
 .content-m1-col2:hover .content-m1-col4 .s1
 {color:#fff;cursor:pointer}
 
-
+.content-m1-col2:hover .content-m1-col4 .t1,
+.content-m1-col1:hover .content-m1-col4 .t1{ display:none;}
+.content-m1-col2:hover .content-m1-col4 .t2,
+.content-m1-col1:hover .content-m1-col4 .t2{ display:block;}
 
 .content-m1-s1{ padding:20px 0 6px 15px; height:39px; width:123px; position:relative}
 .content-m1-s11{ width: 123px; height:39px; position:relative; background-image:url(../images/tou1.png) }
@@ -433,15 +441,15 @@ body, td, th {
 .buy-table input{  border:1px solid #bbbbbb; width:90px;}
 
 		/* 本例子css */
-		.slideBox{ width:100%; height:483px; overflow:hidden; position:relative; border:0px solid #ddd; background:#999  }
+		.slideBox{ width:100%; height:483px; overflow:hidden; position:relative; border:0px solid #ddd; background:#999;min-width:1280px;}
 		
 		.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
 		.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
 		.slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
 		.slideBox .hd ul li.on{ background:#f00; color:#fff; }
-		.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+		.slideBox .bd{ position:relative; height:100%; z-index:0; min-width:1280px;  }
 		.slideBox .bd li{ zoom:1; vertical-align:middle; }
-		.slideBox .bd img{ width: 100%; height:483px; display:block;  }
+		.slideBox .bd img{ width: 100%; height:483px; display:block; min-width:1280px; }
 
 		/* 下面是前/后按钮代码，如果不需要删除即可 */
 		.slideBox .prev,
@@ -452,8 +460,12 @@ body, td, th {
 		.slideBox .prevStop{ display:none;  }
 		.slideBox .nextStop{ display:none;  }
 		
-		.slideBox.md { height:214px;}
-		.slideBox.md .bd img{   height:214px; }
+		.slideBox.md { height:214px;min-width:955px;}
+		.slideBox.md .bd{min-width:955px;}
+		.slideBox.md .bd img{   height:214px;min-width:955px; }
+		.slideBox.small {min-width:0;}
+		.slideBox.small .bd{ min-width:0;}
+		.slideBox.small .bd img{min-width:0;}
 		
 .modal-open {
   overflow: hidden;
