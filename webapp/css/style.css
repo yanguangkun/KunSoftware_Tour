@@ -88,7 +88,7 @@ body, td, th {
 
 .content-m1-s2{ padding:0px 0 15px 15px; height:39px; width:123px;}
 .content-m1-s22{ height:39px; width:123px; line-height:39px;position:relative;background-image:url(../images/tou2.png) }
-.content-m1-s22 .m1{ display:none;position:absolute; top:0; left:122px; background-color:#fff;width:332px; height:126px; opacity:0.8;}
+.content-m1-s22 .m1{ display:none;position:absolute; top:0; left:122px; background-color:#fff;width:332px; height:126px; opacity:0.8; z-index:600;}
 .content-m1-s22 .m2{ height:36px; width:280px; margin:0 0 0 15px; font-size:14px; border-bottom:1px dashed #d3d3d1;}
 .content-m1-s22 .phTxt1{position:absolute; left:10px; height:39px; line-height:39px; top:0px; z-index:0; color:#696c65;}
 .content-m1-s22 ul { padding: 0 15px;}
