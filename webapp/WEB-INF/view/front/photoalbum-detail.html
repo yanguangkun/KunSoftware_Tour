@@ -48,11 +48,13 @@
           <div style="position:absolute; top:0; left:-12px; width:63px; height:25px;"><img src="${request.contextPath}/images/timeline.jpg"></div>
           <div style="position:absolute; top:0; left:50px; height:26px; background-color:#74bbfd; line-height:26px; color:#fff; padding:0 10px;">${timeline.title}</div>
           <#list timeline.contentList as content>
-            <br>
+            <#if content_index==0>
+            <div style="padding-top:25px;"></div>
+            </#if>
             <#if content.style=='1'>
-              <div style=" padding:20px 0 15px 50px; line-height:22px;">${content.content}</div>
+              <div style=" padding:10px 0 15px 50px; line-height:22px;">${content.content}</div>
             <#else>
-              <div style=" padding:20px 0 15px 50px;">
+              <div style=" padding:20px 0 0px 50px;">
               <img src="${request.contextPath}/images/uploadDir${content.imagePath!}" width="777" height="288">
               <div style="text-align:center;">${content.title}</div>
               </div>
