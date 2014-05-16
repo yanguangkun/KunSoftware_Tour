@@ -40,11 +40,11 @@
             <input type="file" name="photoalbumImageFile" id="photoalbumImageFile"></td>
         </tr>
         <tr>
-          <th>图片</th>
+          <th>内容</th>
           <td colspan="3"><textarea name="content" id="content" class="form-control" rows="3">${entity.content!}</textarea></td>
         </tr>
         <tr>
-          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.photoAlbumTimelineId!}">
+          <td colspan="4" align="center"><input type="hidden" name="id" id="id" value="${entity.id!}">
             <input type="hidden" name="photoAlbumTimelineId" id="photoAlbumTimelineId" value="${entity.photoAlbumTimelineId!}">
             <button type="button" class="saveBtn btn btn-primary btn-sm"> <span class="glyphicon glyphicon-floppy-saved"></span> 保存 </button>
             <a href="list?photoAlbumTimelineId=${entity.photoAlbumTimelineId!}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-chevron-left"></span> 返回</a></td>
