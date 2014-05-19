@@ -55,7 +55,7 @@ public class FrontYamiDiaryController extends BaseController {
 			yamiDiary = service.selectByPrimaryKey(id);
 		}
 		
-		List list = service.getYamiDiaryNextPre(id);
+		List list = service.getYamiDiaryNextPre(yamiDiary.getId());
 		String nextId = "";
 		String preId = "";
 		if(list.size() == 1) {
