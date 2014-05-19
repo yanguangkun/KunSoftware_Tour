@@ -48,7 +48,13 @@ public class FrontYamiDiaryController extends BaseController {
 		 
 		logger.info("目的雅米日记");  
 		 
-		YamiDiary yamiDiary = service.selectByPrimaryKey(id);
+		YamiDiary yamiDiary = null;
+		if(id == null) {
+			yamiDiary = service.selectByIndexRcommend();
+		} else {
+			yamiDiary = service.selectByPrimaryKey(id);
+		}
+		
 		List list = service.getYamiDiaryNextPre(id);
 		String nextId = "";
 		String preId = "";
