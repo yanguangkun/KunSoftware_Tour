@@ -29,8 +29,8 @@
             <td bgcolor=""><table width="100%" border="0" cellspacing="0" cellpadding="0">
               
               <tr >
-                <td width="1%" height="30"></td>
-                <td width="50%" valign="top" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <td width="1%" height="30" bgcolor="#ece9d5"></td>
+                <td width="50%" valign="top" bgcolor="#ece9d5" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td align="center">&nbsp;</td>
                   </tr>
@@ -47,7 +47,7 @@
                     <td style="line-height:25px;">${yamiDiary.content}</td>
                   </tr>
                 </table></td>
-                <td width="49%" align="center" valign="top">
+                <td width="49%" align="center" valign="top" bgcolor="#ece9d5">
                 <div class="yamidiary-s5">
                 <img src="${request.contextPath}/images/uploadDir${yamiDiary.imagePath!}" width="390" height="350"></div></td>
               </tr>
@@ -57,10 +57,10 @@
           <tr>
             <td height="50" align="center">
             <div class="yamidiary-s4">
-            <#if preId != ""><a href="detail?id=${preId}">上一篇</a></#if> 
+            <#if preId != ""><a href="detail?id=${nextId}">上一篇</a></#if> 
             <a href="list">目录</a> 
             <#if nextId != "">
-            <a href="detail?id=${nextId}">下一篇</a></#if>
+            <a href="detail?id=${preId}">下一篇</a></#if>
             </div>
             
             </td>

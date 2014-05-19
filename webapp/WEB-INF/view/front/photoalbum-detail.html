@@ -54,8 +54,8 @@
             <#if content.style=='1'>
               <div style=" padding:10px 0 15px 50px; line-height:22px;">${content.content}</div>
             <#else>
-              <div style=" padding:20px 0 0px 50px;">
-              <img src="${request.contextPath}/images/uploadDir${content.imagePath!}" width="777" height="288">
+              <div style=" padding:20px 0 0px 0px; text-align:center">
+              <img src="${request.contextPath}/images/uploadDir${content.imagePath!}" >
               <div style="text-align:center;">${content.title}</div>
               </div>
             </#if>
