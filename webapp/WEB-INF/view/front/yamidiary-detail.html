@@ -57,9 +57,9 @@
           <tr>
             <td height="50" align="center">
             <div class="yamidiary-s4">
-            <#if preId != ""><a href="detail?id=${nextId}">上一篇</a></#if> 
+            <#if nextId != ""><a href="detail?id=${nextId}">上一篇</a></#if> 
             <a href="list">目录</a> 
-            <#if nextId != "">
+            <#if preId != "">
             <a href="detail?id=${preId}">下一篇</a></#if>
             </div>
             
