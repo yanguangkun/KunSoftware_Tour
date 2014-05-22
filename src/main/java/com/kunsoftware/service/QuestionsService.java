@@ -1,5 +1,6 @@
 package com.kunsoftware.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -32,7 +33,7 @@ public class QuestionsService {
 	public List<Questions> getFrontQuestionsListPage(Integer destination,String banner,PageInfo page) {
 		 
 		logger.info("query");
-		return mapper.getQuestionsListPage(null,null,destination,banner,page);
+		return mapper.getQuestionsListPage("1",null,destination,banner,page);
 	}
 	 
 	@Transactional
@@ -40,6 +41,8 @@ public class QuestionsService {
 		
 		Questions record = new Questions();
 		BeanUtils.copyProperties(requestBean, record); 
+		record.setCreateTime(new Date());
+		record.setAudit("1");
 		 
 		mapper.insert(record);
 		return record;
@@ -55,7 +58,7 @@ public class QuestionsService {
 		
 		Questions record = mapper.selectByPrimaryKey(id); 
 		BeanUtils.copyProperties(requestBean, record);		 
-		
+		record.setReplyTime(new Date());
 		return mapper.updateByPrimaryKeySelective(record);
 	}
 	 

@@ -156,12 +156,24 @@ public class PageUtil {
 		retStr +="<li class=\"page\" value=\""+pageInfo.getPreviousPageNo()+"\">《</li>";
 		
 		int currentPage = pageInfo.getPageNo();
-		int startPage = currentPage - 3;
-		int endPage = currentPage + 3;
+		int startPage = currentPage - 1;
+		int endPage = currentPage + 1;
 		
-		if(startPage <= 0) startPage = 1;
-		if(endPage >= pageInfo.getTotalPages()) endPage = pageInfo.getTotalPages();
+		if(startPage <= 0) {
+			startPage = 1;
+			endPage += 1;
+		}
+		if(endPage >= pageInfo.getTotalPages()) {
+			endPage = pageInfo.getTotalPages();
+		}
 		 
+		if(endPage - startPage == 1) {
+			startPage -=1;
+			if(startPage <= 0) {
+				startPage = 1; 
+			}
+		}
+		
 		for(int i = startPage;i <=endPage;i++) {
 			if(i == currentPage) {
 				retStr += "<li class=\"page active\" value=\""+i+"\">"+i+"</li>";
@@ -169,6 +181,9 @@ public class PageUtil {
 				retStr += "<li class=\"page\" value=\""+i+"\">"+i+"</li>";				
 			}
 			
+		}
+		if(pageInfo.getTotalPages() > endPage) {
+			retStr += "<li class=\"end\">.</li>";	
 		}
 		
 		retStr += "<li class=\"page\" value=\""+pageInfo.getNextPageNo()+"\">》</li>";
