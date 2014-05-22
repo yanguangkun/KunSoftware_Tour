@@ -26,13 +26,18 @@ define(function(require, exports, module) {
 		}); 
 		
 		$(".saveBtn").click(function(e) {  
+			CKupdate();
 			var check = validate.form();  
 			if(check) {
 				lockscreen.lock();
 			} 
-			//$("#saveFrm").submit();
+			$("#saveFrm").submit();
         });
-		 
+		
+		function CKupdate(){
+			for ( instance in CKEDITOR.instances )
+				CKEDITOR.instances[instance].updateElement();
+		}
 		//$('#introduce').wysiwyg();
 	}); 
 });

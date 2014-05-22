@@ -22,14 +22,19 @@ define(function(require, exports, module) {
 		}); 
 		
 		$(".saveBtn").click(function(e) { 
+		    
+			CKupdate();
 			var check = validate.form();  
 			if(check) {
 				lockscreen.lock();
 			} 
-			//$("#saveFrm").submit();
+			$("#saveFrm").submit();
         });
 		
 		//$('#introduce').wysiwyg();
-		 
+		function CKupdate(){
+			for ( instance in CKEDITOR.instances )
+				CKEDITOR.instances[instance].updateElement();
+		}
 	}); 
 });
