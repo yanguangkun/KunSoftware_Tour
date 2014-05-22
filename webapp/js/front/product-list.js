@@ -47,7 +47,8 @@ define(function(require, exports, module) {
 				});
 			} else {
 				if(banner == -1) banner = 0;
-				banner = banner + 1; 
+				//banner = banner + 1; 
+				banner = "1";
 				$("#banner").val(banner);
 				$(".groundInfo").hide();
 				$(".questionsData").show();

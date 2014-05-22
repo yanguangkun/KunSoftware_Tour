@@ -171,10 +171,11 @@ body, td, th {
 .product-content-m2-s4{ padding:10px 10px 0 15px; color:#757575; line-height:25px;}
 .product-content-m2-s5{ padding:10px 10px 10px 15px; color:#333333; line-height:25px; text-align:right;} 
 .product-content-m2-s6{ padding:16px 0 0;  } 
-.product-content-m2-s7{width:150px; float:right;} 
+.product-content-m2-s7{width:170px; float:right;} 
 .product-content-m2-s7 ul {}
 .product-content-m2-s7 ul li { cursor:pointer; border:1px solid #bfbfbf; margin: 0 3px; padding:3px 5px; float:left;}
 .product-content-m2-s7 ul li.active{border:1px solid #2aa6e6;}
+.product-content-m2-s7 ul li.end{border:0px solid #2aa6e6;}
 
 .product-top .top-base a.a1{padding:0 15px;}
 .product-top .top-base a.a2{padding:0 25px; }

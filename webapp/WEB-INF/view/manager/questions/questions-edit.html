@@ -26,13 +26,13 @@
           <td width="35%">${entity.memberUserName!}</td>
         </tr>
         <tr>
-          <th>目的地 <span class="error">*</span></th>
-          <td><select name="destination" id="destination" class="form-control input-sm required">
+          <th>目的地 </th>
+          <td><select name="destination" id="destination" class="form-control input-sm ">
               <option value="">-请选择-</option>
               <@ValueSet code="destination" value="${entity.destination!}" />
             </select></td>
-          <th>栏目 <span class="error">*</span></th>
-          <td><select name="banner" id="banner" class="form-control input-sm required">
+          <th>栏目 </th>
+          <td><select name="banner" id="banner" class="form-control input-sm ">
               <option value="">-请选择-</option>
               <@ValueSet code="questions_banner" value="${entity.banner!}" />
             </select></td>
@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <th>提问时间 <span class="error">*</span> </th>
-          <td colspan="3"><input type="text" class="form-control input-sm required date" name="createTime"  id="createTime" placeholder="选择相册" value="<#if entity.createTime??>${entity.createTime?string('yyyy-MM-dd')}  </#if>" readonly></td>
+          <td colspan="3"><input type="text" class="form-control input-sm" name="createTime" disabled id="createTime" placeholder="选择相册" value="<#if entity.createTime??>${entity.createTime?string('yyyy-MM-dd')}  </#if>"></td>
         </tr>
         <tr>
           <th>回复内容 <span class="error">*</span> </th>
@@ -57,7 +57,14 @@
           <th>审核 <span class="error">*</span> </th>
           <td colspan="3"><select name="audit" id="audit" class="form-control input-sm required">
               <option value="">-请选择-</option>
-              <@ValueSet code="flight_chedule_audit" value="${entity.id!}" />
+              <@ValueSet code="flight_chedule_audit" value="${entity.audit!}" />
+            </select></td>
+        </tr>
+        <tr>
+          <th>是否回复 <span class="error">*</span> </th>
+          <td colspan="3"><select name="reply" id="reply" class="form-control input-sm required">
+              <option value="">-请选择-</option>
+              <@ValueSet code="yes_no_s" value="${entity.reply!}" />
             </select></td>
         </tr>
         <tr>
