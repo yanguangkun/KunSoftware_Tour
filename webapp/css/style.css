@@ -138,7 +138,7 @@ body, td, th {
 
 .md{ position:relative;}
 .md .arr{ position:absolute; top:49px;left:35px; width:17; height:9px;z-index:101; display:none;line-height:9px}
-.md .d1{ position:absolute; top:50px;left:-222px;width:955px; height:auto; background-image:url(../images/dbg.png);z-index:100; display:none;}
+.md .d1{ position:absolute; top:50px;left:-222px;width:955px; height:auto; background-color:#fff;z-index:100; display:none;}
 .md .d1 ul {}
 .md .d1 ul li { width:154px; height:100px; padding:20px 0 10px 30px; text-align:center; color:#333333; float:left;line-height:normal}
 .md .d1 ul li a{color:#333333; text-decoration:none;display:block; padding:0 0px;}
@@ -403,7 +403,7 @@ body, td, th {
 
 .photo_album_s1{ padding:0 3px 0 8px;}
 .photo_album_s2{ float:left; height:308px; width:308px; padding:5px 5px 5px 0; position:relative; cursor:pointer;}
-.photo_album_s2 .info{ display:none; width:288px; position:absolute; top:200px; left:0; padding:3px 10px; line-height:22px; background:#000; opacity:0.8; color:#a7a3a2;}
+.photo_album_s2 .info{display:none; width:288px; position:absolute; top:200px; left:0; padding:3px 10px; line-height:22px; background:#fff; opacity:0.8; color:#333;}
 .photo_album_s2:hover .info{ display:block;}
 .photo_album_s3 { }
 .timeline { display:none;}
@@ -442,7 +442,7 @@ body, td, th {
 .buy-table input{  border:1px solid #bbbbbb; width:90px;}
 
 		/* 本例子css */
-		.slideBox{ width:100%; height:483px; overflow:hidden; position:relative; border:0px solid #ddd; background:#999;min-width:1280px;}
+		.slideBox{ width:100%; max-width:1423px; height:483px; overflow:hidden; position:relative; border:0px solid #ddd; background:#999;min-width:1280px;}
 		
 		.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
 		.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
