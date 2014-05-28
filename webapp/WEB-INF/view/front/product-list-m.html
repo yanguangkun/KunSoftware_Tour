@@ -83,7 +83,7 @@ color4
               <tr class="productItem">
                 <td><div class="product-content-m1-s5"><a href="detail?id=${item.id}"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549"></a></div>
                   <div class="product-content-m1-s6"><a href="detail?id=${item.id}">${item.name!}</a></div>
-                  <div class="product-content-m1-s7">${item.managerComment!}</div></td>
+                  <div class="product-content-m1-s7">${item.managerComment?replace("\n","<br />")}</div></td>
               </tr>
               <tr class="productItem">
                 <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
