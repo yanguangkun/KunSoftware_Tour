@@ -82,7 +82,7 @@ color4
               <tr class="productItem">
                 <td><div class="product-content-m1-s5"><a href="detail?id=${item.id}"><img src="${request.contextPath}/images/uploadDir${item.imagePath!}" alt="" width="549" height="180"></a></div>
                   <div class="product-content-m1-s6"><a href="detail?id=${item.id}">${item.name!}</a></div>
-                  <div class="product-content-m1-s7">${item.managerComment!}</div></td>
+                  <div class="product-content-m1-s7">${item.managerComment?replace("\n","<br />")}</div></td>
               </tr>
               <tr class="productItem">
                 <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -91,7 +91,7 @@ color4
                       <td width="25" style="cursor:pointer;" class="somePraise" value="${item.id}" ><img src="${request.contextPath}/images/img1.jpg" width="17" height="19"></td>
                       <td width="56" class="product-content-m1-s8 somePraiseV">${item.somePraise!}</td>
                       <td width="26"><img src="${request.contextPath}/images/img2.jpg" width="20" height="17"></td>
-                      <td width="56" class="product-content-m1-s8">${item.managerComment?replace("\n","<br />")}</td>
+                      <td width="56" class="product-content-m1-s8">${item.commentCount}</td>
                     </tr>
                   </table></td>
               </tr>
