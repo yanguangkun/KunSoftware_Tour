@@ -97,7 +97,7 @@
         </tr>
         <tr>
           <th>是否上架 <span class="error">*</span> </th>
-          <td><@ValueSet name="whetherShelf" code="yes_no_r" value="whetherShelf" /></td>
+          <td><@ValueSet name="whetherShelf" code="yes_no_r" value="${entity.whetherShelf}" /></td>
           <th>班期起始时间 <span class="error">*</span></th>
           <td><input type="text" class="form-control input-sm required date" name="flightCheduleStart"  id="flightCheduleStart" placeholder="班期起始时间" value="<#if entity.flightCheduleStart??>${entity.flightCheduleStart?string('yyyy-MM-dd')} </#if>" readonly></td>
         </tr>
